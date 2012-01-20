@@ -1,3 +1,12 @@
+nss-pam-ldapd (0.8.5-1) UNRELEASED; urgency=low
+
+  * switch to non-native packaging
+  * updated Norwegian Bokmål debconf translation by Bjørn Steensrud
+    (closes: #654273)
+  * updated Simplified Chinese debconf translation by zym (closes: #654679)
+
+ -- Arthur de Jong <adejong@debian.org>  Fri, 20 Jan 2012 17:24:27 +0100
+
 nss-pam-ldapd (0.8.5) unstable; urgency=low
 
   * support larger gecos values (closes: #640781)
