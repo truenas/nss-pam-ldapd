@@ -1,12 +1,13 @@
 nss-pam-ldapd (0.8.5-1) UNRELEASED; urgency=low
 
   * switch to non-native packaging
-  * add debian/watch file
+    - add debian/watch file
+    - update Vcs-Svn and Vcs-Browser control fields
   * updated Norwegian Bokmål debconf translation by Bjørn Steensrud
     (closes: #654273)
   * updated Simplified Chinese debconf translation by zym (closes: #654679)
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 20 Jan 2012 17:28:56 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sat, 21 Jan 2012 16:46:29 +0100
 
 nss-pam-ldapd (0.8.5) unstable; urgency=low
 
