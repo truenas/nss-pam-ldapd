@@ -196,6 +196,14 @@ then
     echo "Renaming reconnect_maxsleeptime to reconnect_retrytime in $CONFFILE..." >&2
     sed -i 's/^reconnect_maxsleeptime[[:space:]]/reconnect_retrytime /' "$CONFFILE"
   fi
+  # comment out mapping of uniqueMember to member which is now used by default
+  if grep -qi '^map[[:space:]]*group[[:space:]]*uniqueMember[[:space:]]*member[[:space:]]*$' $CONFFILE
+  then
+    echo "Commenting out uniqueMember mapping due to rename in $CONFFILE..." >&2
+    sed -i '/^map[[:space:]]*group[[:space:]]*uniqueMember[[:space:]]*member[[:space:]]*$/i \
+#off# automatically commented out next line because this is now the default
+s/^map[[:space:]]*group[[:space:]]*uniqueMember[[:space:]]*member[[:space:]]*$/#off# &/' "$CONFFILE"
+  fi
   # set server uri
   db_get nslcd/ldap-uris
   cfg_uris "$RET"
