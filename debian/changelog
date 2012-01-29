@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.6-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.6-1) unstable; urgency=low
 
   * new upstream release:
     - a number of code improvements by Jakub Hrozek
@@ -12,7 +12,7 @@ nss-pam-ldapd (0.8.6-1) UNRELEASED; urgency=low
     because member is default now
   * debian/copyright: copyright year updates
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 29 Jan 2012 17:30:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sun, 29 Jan 2012 17:35:00 +0100
 
 nss-pam-ldapd (0.8.5) unstable; urgency=low
 
