@@ -1,5 +1,7 @@
-nss-pam-ldapd (0.8.5-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.6-1) UNRELEASED; urgency=low
 
+  * new upstream release:
+    - a number of code improvements by Jakub Hrozek
   * switch to non-native packaging
     - add debian/watch file
     - update Vcs-Svn and Vcs-Browser control fields
@@ -8,8 +10,9 @@ nss-pam-ldapd (0.8.5-1) UNRELEASED; urgency=low
   * updated Simplified Chinese debconf translation by zym (closes: #654679)
   * automatically comment out mapping of uniqueMember to member on upgrades
     because member is default now
+  * debian/copyright: copyright year updates
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 29 Jan 2012 17:15:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sun, 29 Jan 2012 17:30:00 +0100
 
 nss-pam-ldapd (0.8.5) unstable; urgency=low
 
