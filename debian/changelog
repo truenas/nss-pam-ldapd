@@ -84,7 +84,7 @@ nss-pam-ldapd (0.8.4) unstable; urgency=low
   * updated Russian debconf translation by Yuri Kozlov (closes: #637751)
   * updated French debconf translation by Christian Perrier (closes: #637756)
   * added Slovak debconf translation by Slavko (closes: #637759)
-  * updated Danish debconf translation by Joe Hansen (closes :#637763)
+  * updated Danish debconf translation by Joe Hansen (closes: #637763)
   * updated Brazilian Portuguese debconf translation by Denis Doria
   * updated Portuguese debconf translation by Américo Monteiro
   * updated Japanese debconf translation by Kenshi Muto (closes: #638195)
