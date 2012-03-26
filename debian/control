@@ -11,6 +11,7 @@ Vcs-Browser: http://arthurdejong.org/viewvc/nss-pam-ldapd/debian/nss-pam-ldapd/t
 
 Package: nslcd
 Architecture: any
+Multi-Arch: foreign
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
 Recommends: nscd, libnss-ldapd | libnss-ldap, libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss, ldap-utils, bind9-host | host
 Suggests: kstart

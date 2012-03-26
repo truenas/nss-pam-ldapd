@@ -3,8 +3,10 @@ nss-pam-ldapd (0.8.6-2) UNRELEASED; urgency=low
   * update the X-Start-Before header in the init script to ensure that nslcd
     is started before the display managers
   * update debhelper dependency and remove lintian override
+  * mark nslcd as multi-arch foreign to allow it to satisfy dependencies
+    on any arch
 
- -- Arthur de Jong <adejong@debian.org>  Mon, 26 Mar 2012 19:20:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Mon, 26 Mar 2012 19:40:00 +0200
 
 nss-pam-ldapd (0.8.6-1) unstable; urgency=low
 
