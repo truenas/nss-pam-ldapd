@@ -6,6 +6,7 @@ nss-pam-ldapd (0.8.6-2) UNRELEASED; urgency=low
   * mark nslcd as multi-arch foreign to allow it to satisfy dependencies
     on any arch
   * drop no-symbols-control-file lintian override which is no longer needed
+  * upgrade to standards-version 3.9.3 (no changes needed)
 
  -- Arthur de Jong <adejong@debian.org>  Mon, 26 Mar 2012 20:15:00 +0200
 
