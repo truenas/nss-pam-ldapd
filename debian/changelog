@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.7-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.7-1) unstable; urgency=low
 
   * new upstream release:
     - log the first 10 search results in debug mode to make debugging
@@ -24,7 +24,7 @@ nss-pam-ldapd (0.8.7-1) UNRELEASED; urgency=low
   * drop no-symbols-control-file lintian override which is no longer needed
   * upgrade to standards-version 3.9.3 (no changes needed)
 
- -- Arthur de Jong <adejong@debian.org>  Mon, 26 Mar 2012 20:15:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 22 Apr 2012 22:00:00 +0200
 
 nss-pam-ldapd (0.8.6-1) unstable; urgency=low
 
