@@ -21,7 +21,6 @@ _Description: LDAP server search base:
 Template: nslcd/ldap-auth-type
 Type: select
 __Choices: none, simple, SASL
-Default: none
 _Description: LDAP authentication to use:
  Please choose what type of authentication the LDAP database should
  require (if any):
