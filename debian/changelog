@@ -1,9 +1,11 @@
-nss-pam-ldapd (0.8.7-2) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.8-1) UNRELEASED; urgency=low
 
+  * new upstream release:
+    - fix a problem in the handling of PAM requests in nslcd (closes: #670419)
   * use the configuration file contents to determine the authentication
     type, not the debconf database (closes: #670133)
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 27 Apr 2012 09:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 27 Apr 2012 10:10:00 +0200
 
 nss-pam-ldapd (0.8.7-1) unstable; urgency=low
 
