@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2011-08-09 11:04+0200\n"
+"POT-Creation-Date: 2012-04-27 11:09+0200\n"
 "PO-Revision-Date: 2011-08-14 23:51+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -132,9 +132,9 @@ msgid ""
 "Enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
 msgstr ""
-"Indtast navnet for kontoen som vil blive brugt til at logge ind i "
-"LDAP-databasen. Denne værdi bør angives som et DN (særligt navn - "
-"distinguished name)."
+"Indtast navnet for kontoen som vil blive brugt til at logge ind i LDAP-"
+"databasen. Denne værdi bør angives som et DN (særligt navn - distinguished "
+"name)."
 
 #. Type: password
 #. Description
@@ -162,8 +162,8 @@ msgid ""
 "Choose the SASL mechanism that will be used to authenticate to the LDAP "
 "database:"
 msgstr ""
-"Vælg den SASL-mekanisme som vil blive brugt til at godkende adgang til "
-"LDAP-databasen:"
+"Vælg den SASL-mekanisme som vil blive brugt til at godkende adgang til LDAP-"
+"databasen:"
 
 #. Type: select
 #. Description
@@ -240,7 +240,8 @@ msgstr ""
 msgid ""
 "This is the login used in LOGIN, PLAIN, CRAM-MD5, and DIGEST-MD5 mechanisms."
 msgstr ""
-"Dette er logindet brugt i LOGIN-, PLAIN-, CRAM-MD5- OG DIGEST-MD5-mekanismerne."
+"Dette er logindet brugt i LOGIN-, PLAIN-, CRAM-MD5- OG DIGEST-MD5-"
+"mekanismerne."
 
 #. Type: string
 #. Description
@@ -295,8 +296,8 @@ msgstr "Kerberos' filsti for akkreditivmellemlageret:"
 #: ../nslcd.templates:11001
 msgid "Enter the GSSAPI/Kerberos credential cache file name that will be used."
 msgstr ""
-"Indtast filnavnet for GSSAPI/Kerberos' akkreditivmellemlager som vil "
-"blive brugt."
+"Indtast filnavnet for GSSAPI/Kerberos' akkreditivmellemlager som vil blive "
+"brugt."
 
 #. Type: boolean
 #. Description
@@ -459,34 +460,26 @@ msgstr ""
 "automatisk nu. Sørg for at gennemse ændringer til /etc/nsswitch.conf hvis du "
 "vælger at fjerne indlæggene nu."
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid "Enable shadow lookups through NSS?"
-msgstr "Aktiver skyggeopslag igennem NSS?"
+#~ msgid "Enable shadow lookups through NSS?"
+#~ msgstr "Aktiver skyggeopslag igennem NSS?"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"To allow LDAP users to log in, the NSS module needs to be enabled to perform "
-"shadow password lookups. The shadow entries themselves may be empty - that "
-"is, there is no need for password hashes to be exposed. See http://bugs."
-"debian.org/583492 for background."
-msgstr ""
-"For at tillade LDAP-brugere at logge ind kræver det, at NSS-modulet er "
-"aktiveret til at udføre opslag for skyggeadgangskoder. Skyggepunkterne i sig "
-"selv kan være tomme - det vil sige, at der ingen grund er til at vise hasher "
-"frem for adgangskoder. Se http://bugs.debian.org/583492 for baggrunden."
+#~ msgid ""
+#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
+#~ "perform shadow password lookups. The shadow entries themselves may be "
+#~ "empty - that is, there is no need for password hashes to be exposed. See "
+#~ "http://bugs.debian.org/583492 for background."
+#~ msgstr ""
+#~ "For at tillade LDAP-brugere at logge ind kræver det, at NSS-modulet er "
+#~ "aktiveret til at udføre opslag for skyggeadgangskoder. Skyggepunkterne i "
+#~ "sig selv kan være tomme - det vil sige, at der ingen grund er til at vise "
+#~ "hasher frem for adgangskoder. Se http://bugs.debian.org/583492 for "
+#~ "baggrunden."
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"Please choose whether /etc/nsswitch.conf should have the required entry "
-"added automatically (in which case it should be reviewed afterwards) or "
-"whether it should be left for an administrator to edit manually."
-msgstr ""
-"Vælg venligst hvorvidt /etc/nsswitch.conf automatisk skal have tilføjet det "
-"krævede punkt (i dette tilfælde skal det fjernes efterfølgende) eller "
-"hvorvidt, det skal efterlades til en administrator for manuel redigering."
+#~ msgid ""
+#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
+#~ "added automatically (in which case it should be reviewed afterwards) or "
+#~ "whether it should be left for an administrator to edit manually."
+#~ msgstr ""
+#~ "Vælg venligst hvorvidt /etc/nsswitch.conf automatisk skal have tilføjet "
+#~ "det krævede punkt (i dette tilfælde skal det fjernes efterfølgende) eller "
+#~ "hvorvidt, det skal efterlades til en administrator for manuel redigering."

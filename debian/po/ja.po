@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2011-08-09 11:04+0200\n"
+"POT-Creation-Date: 2012-04-27 11:09+0200\n"
 "PO-Revision-Date: 2011-08-18 00:10+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -96,7 +96,8 @@ msgstr "使用する LDAP 認証:"
 msgid ""
 "Please choose what type of authentication the LDAP database should require "
 "(if any):"
-msgstr "LDAP データベースが (もし何か) 必要とすべき認証の形式を選択してください:"
+msgstr ""
+"LDAP データベースが (もし何か) 必要とすべき認証の形式を選択してください:"
 
 #. Type: select
 #. Description
@@ -122,7 +123,9 @@ msgstr "LDAP データベースユーザ:"
 msgid ""
 "Enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
-msgstr "LDAP データベースへのログインに使われるアカウントの名前を入力してください。この値は DN (識別名) として指定すべきです。"
+msgstr ""
+"LDAP データベースへのログインに使われるアカウントの名前を入力してください。こ"
+"の値は DN (識別名) として指定すべきです。"
 
 #. Type: password
 #. Description
@@ -183,7 +186,8 @@ msgstr "SASL レルム:"
 #: ../nslcd.templates:7001
 msgid ""
 "Enter the SASL realm that will be used to authenticate to the LDAP database."
-msgstr "LDAP データベースを認証するのに使われる SASL レルムを入力してください。"
+msgstr ""
+"LDAP データベースを認証するのに使われる SASL レルムを入力してください。"
 
 #. Type: string
 #. Description
@@ -197,7 +201,9 @@ msgstr "レルムは認証および認可識別子に追加されます。"
 msgid ""
 "For GSSAPI this can be left blank to use information from the Kerberos "
 "credential cache."
-msgstr "GSSAPI では、Kerberos 信用キャッシュからの情報を使うためにこれは空のままにしておくことができます。"
+msgstr ""
+"GSSAPI では、Kerberos 信用キャッシュからの情報を使うためにこれは空のままにし"
+"ておくことができます。"
 
 #. Type: string
 #. Description
@@ -211,14 +217,17 @@ msgstr "SASL 認証アイデンティティ:"
 msgid ""
 "Enter the SASL authentication identity that will be used to authenticate to "
 "the LDAP database."
-msgstr "LDAP データベースを認証するのに使われる SASL 認証アイデンティティを入力してください。"
+msgstr ""
+"LDAP データベースを認証するのに使われる SASL 認証アイデンティティを入力してく"
+"ださい。"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:8001
 msgid ""
 "This is the login used in LOGIN, PLAIN, CRAM-MD5, and DIGEST-MD5 mechanisms."
-msgstr "これは、LOGIN、PLAIN、CRAM-MD5、DIGEST-MD5 機構で使われるログインです。"
+msgstr ""
+"これは、LOGIN、PLAIN、CRAM-MD5、DIGEST-MD5 機構で使われるログインです。"
 
 #. Type: string
 #. Description
@@ -232,7 +241,9 @@ msgstr "SASL 代理認可アイデンティティ:"
 msgid ""
 "Enter the proxy authorization identity that will be used to authenticate to "
 "the LDAP database."
-msgstr "LDAP データベースを認証するのに使われる代理認可アイデンティティを入力してください。"
+msgstr ""
+"LDAP データベースを認証するのに使われる代理認可アイデンティティを入力してくだ"
+"さい。"
 
 #. Type: string
 #. Description
@@ -240,7 +251,9 @@ msgstr "LDAP データベースを認証するのに使われる代理認可ア�
 msgid ""
 "This is the object in the name of which the LDAP request is done. This value "
 "should be specified as a DN (distinguished name)."
-msgstr "これは、LDAP 要求が行われる名前のオブジェクトです。この値は DN (識別名) として指定すべきです。"
+msgstr ""
+"これは、LDAP 要求が行われる名前のオブジェクトです。この値は DN (識別名) とし"
+"て指定すべきです。"
 
 #. Type: string
 #. Description
@@ -254,7 +267,9 @@ msgstr "Cyrus SASL セキュリティプロパティ:"
 msgid ""
 "Enter the Cyrus SASL security properties. Allowed values are described in "
 "the ldap.conf(5) manual page in the SASL OPTIONS section."
-msgstr "Cyrus SASL セキュリティプロパティを入力してください。許される値は、ldap.conf(5) マニュアルページの SASL OPTIONS セクションに記載されています。"
+msgstr ""
+"Cyrus SASL セキュリティプロパティを入力してください。許される値は、ldap.conf"
+"(5) マニュアルページの SASL OPTIONS セクションに記載されています。"
 
 #. Type: string
 #. Description
@@ -425,33 +440,25 @@ msgstr ""
 "す。エントリを今削除することを選ぶ場合、/etc/nsswitch.conf の変更内容を確認し"
 "てください。"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid "Enable shadow lookups through NSS?"
-msgstr "NSS によるシャドーのルックアップを有効にしますか?"
+#~ msgid "Enable shadow lookups through NSS?"
+#~ msgstr "NSS によるシャドーのルックアップを有効にしますか?"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"To allow LDAP users to log in, the NSS module needs to be enabled to perform "
-"shadow password lookups. The shadow entries themselves may be empty - that "
-"is, there is no need for password hashes to be exposed. See http://bugs."
-"debian.org/583492 for background."
-msgstr ""
-"LDAP ユーザがログインできるようにするためには、シャドーパスワードのルックアッ"
-"プを行えるよう NSS モジュールを有効にする必要があります。シャドーのエントリ自"
-"体は空でよく、つまりパスワードハッシュをさらす必要はありません。この背景につ"
-"いては http://bugs.debian.org/583492 を参照してください。"
+#~ msgid ""
+#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
+#~ "perform shadow password lookups. The shadow entries themselves may be "
+#~ "empty - that is, there is no need for password hashes to be exposed. See "
+#~ "http://bugs.debian.org/583492 for background."
+#~ msgstr ""
+#~ "LDAP ユーザがログインできるようにするためには、シャドーパスワードのルック"
+#~ "アップを行えるよう NSS モジュールを有効にする必要があります。シャドーのエ"
+#~ "ントリ自体は空でよく、つまりパスワードハッシュをさらす必要はありません。こ"
+#~ "の背景については http://bugs.debian.org/583492 を参照してください。"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"Please choose whether /etc/nsswitch.conf should have the required entry "
-"added automatically (in which case it should be reviewed afterwards) or "
-"whether it should be left for an administrator to edit manually."
-msgstr ""
-"/etc/nsswitch.conf に自動で必須エントリを追加するか (この場合、後で再確認して"
-"ください)、管理者が手動で変更するためにそのままにしておくかを選んでください。"
+#~ msgid ""
+#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
+#~ "added automatically (in which case it should be reviewed afterwards) or "
+#~ "whether it should be left for an administrator to edit manually."
+#~ msgstr ""
+#~ "/etc/nsswitch.conf に自動で必須エントリを追加するか (この場合、後で再確認"
+#~ "してください)、管理者が手動で変更するためにそのままにしておくかを選んでく"
+#~ "ださい。"

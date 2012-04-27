@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-ldapd 0.6\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2011-08-09 11:04+0200\n"
+"POT-Creation-Date: 2012-04-27 11:09+0200\n"
 "PO-Revision-Date: 2009-07-18 10:02+0200\n"
 "Last-Translator: Marce Villarino <mvillarino@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -445,31 +445,6 @@ msgstr ""
 "Pode editar manualmente /etc/nsswitch.conf ou escoller agora eliminar "
 "automaticamente as entradas. Asegúrese de revisar as modificacións a /etc/"
 "nsswitch.conf se escolle agora eliminar as entradas."
-
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid "Enable shadow lookups through NSS?"
-msgstr ""
-
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"To allow LDAP users to log in, the NSS module needs to be enabled to perform "
-"shadow password lookups. The shadow entries themselves may be empty - that "
-"is, there is no need for password hashes to be exposed. See http://bugs."
-"debian.org/583492 for background."
-msgstr ""
-
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"Please choose whether /etc/nsswitch.conf should have the required entry "
-"added automatically (in which case it should be reviewed afterwards) or "
-"whether it should be left for an administrator to edit manually."
-msgstr ""
 
 #~ msgid ""
 #~ "If the LDAP database requires a login for normal lookups, enter the name "

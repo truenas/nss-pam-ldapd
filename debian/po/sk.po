@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2011-08-09 11:04+0200\n"
+"POT-Creation-Date: 2012-04-27 11:09+0200\n"
 "PO-Revision-Date: 2011-08-14 09:38+0200\n"
 "Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: Slovak <debian-l10n-slovak@lists.debian.org>\n"
@@ -455,34 +455,25 @@ msgstr ""
 "položiek automaticky teraz. Ak si vyberiete odstránenie položiek teraz, "
 "nezabudnite si skontrolovať zmeny v /etc/nsswitch.conf."
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid "Enable shadow lookups through NSS?"
-msgstr "Zapnúť tieňové vyhľadávanie cez NSS?"
+#~ msgid "Enable shadow lookups through NSS?"
+#~ msgstr "Zapnúť tieňové vyhľadávanie cez NSS?"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"To allow LDAP users to log in, the NSS module needs to be enabled to perform "
-"shadow password lookups. The shadow entries themselves may be empty - that "
-"is, there is no need for password hashes to be exposed. See http://bugs."
-"debian.org/583492 for background."
-msgstr ""
-"Aby sa mohli používatelia LDAP prihlásiť, musí mať modul NSS povolené "
-"vykonávanie tieňové (shadow) vyhľadávanie hesla. Samotné tieňové položky "
-"môžu byť prázdne - čo znamená, že nie je potrebné aby boli vystavené "
-"odtlačky hesiel. Podrobností hľadajte v http://bugs.debian.org/583492."
+#~ msgid ""
+#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
+#~ "perform shadow password lookups. The shadow entries themselves may be "
+#~ "empty - that is, there is no need for password hashes to be exposed. See "
+#~ "http://bugs.debian.org/583492 for background."
+#~ msgstr ""
+#~ "Aby sa mohli používatelia LDAP prihlásiť, musí mať modul NSS povolené "
+#~ "vykonávanie tieňové (shadow) vyhľadávanie hesla. Samotné tieňové položky "
+#~ "môžu byť prázdne - čo znamená, že nie je potrebné aby boli vystavené "
+#~ "odtlačky hesiel. Podrobností hľadajte v http://bugs.debian.org/583492."
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"Please choose whether /etc/nsswitch.conf should have the required entry "
-"added automatically (in which case it should be reviewed afterwards) or "
-"whether it should be left for an administrator to edit manually."
-msgstr ""
-"Prosím, vyberte či majú byť vyžadované polia do /etc/nsswitch.conf pridané "
-"automaticky (v tom prípade musia byť neskôr skontrolované) alebo či to má "
-"byť ponechané na manuálnu úpravu administrátorom."
+#~ msgid ""
+#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
+#~ "added automatically (in which case it should be reviewed afterwards) or "
+#~ "whether it should be left for an administrator to edit manually."
+#~ msgstr ""
+#~ "Prosím, vyberte či majú byť vyžadované polia do /etc/nsswitch.conf "
+#~ "pridané automaticky (v tom prípade musia byť neskôr skontrolované) alebo "
+#~ "či to má byť ponechané na manuálnu úpravu administrátorom."

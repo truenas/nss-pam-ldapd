@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2011-08-09 11:04+0200\n"
+"POT-Creation-Date: 2012-04-27 11:09+0200\n"
 "PO-Revision-Date: 2011-08-23 21:16+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -443,37 +443,28 @@ msgstr ""
 "automaticky. Zvolíte-li automatické odstranění, rozhodně si provedené změny "
 "v /etc/nsswitch.conf prohlédněte."
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid "Enable shadow lookups through NSS?"
-msgstr "Povolit vyhledávání v shadow pomocí NSS?"
+#~ msgid "Enable shadow lookups through NSS?"
+#~ msgstr "Povolit vyhledávání v shadow pomocí NSS?"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"To allow LDAP users to log in, the NSS module needs to be enabled to perform "
-"shadow password lookups. The shadow entries themselves may be empty - that "
-"is, there is no need for password hashes to be exposed. See http://bugs."
-"debian.org/583492 for background."
-msgstr ""
-"Abyste umožnili LDAP uživatelům přihlášení do systému, musíte povolit NSS "
-"modul pro vyhledávání ve st9nových heslech. Samotné záznamy v shadow mohou "
-"být prázdné, tj. není důvod vystavovat na venek hashe hesel. Podrobnosti "
-"naleznete v http://bugs.debian.org/583492."
+#~ msgid ""
+#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
+#~ "perform shadow password lookups. The shadow entries themselves may be "
+#~ "empty - that is, there is no need for password hashes to be exposed. See "
+#~ "http://bugs.debian.org/583492 for background."
+#~ msgstr ""
+#~ "Abyste umožnili LDAP uživatelům přihlášení do systému, musíte povolit NSS "
+#~ "modul pro vyhledávání ve st9nových heslech. Samotné záznamy v shadow "
+#~ "mohou být prázdné, tj. není důvod vystavovat na venek hashe hesel. "
+#~ "Podrobnosti naleznete v http://bugs.debian.org/583492."
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"Please choose whether /etc/nsswitch.conf should have the required entry "
-"added automatically (in which case it should be reviewed afterwards) or "
-"whether it should be left for an administrator to edit manually."
-msgstr ""
-"Rozhodněte se, zda se má požadovaný záznam přidat do /etc/nsswitch.conf "
-"automaticky (což byste měli následně zkontrolovat), nebo zda ho tam přidá "
-"správce systému ručně."
+#~ msgid ""
+#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
+#~ "added automatically (in which case it should be reviewed afterwards) or "
+#~ "whether it should be left for an administrator to edit manually."
+#~ msgstr ""
+#~ "Rozhodněte se, zda se má požadovaný záznam přidat do /etc/nsswitch.conf "
+#~ "automaticky (což byste měli následně zkontrolovat), nebo zda ho tam přidá "
+#~ "správce systému ručně."
 
 #~ msgid ""
 #~ "If the LDAP database requires a login for normal lookups, enter the name "

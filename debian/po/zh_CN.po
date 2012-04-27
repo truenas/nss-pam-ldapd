@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2011-08-09 11:04+0200\n"
+"POT-Creation-Date: 2012-04-27 11:09+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: zym <ming_zym@sina.com>\n"
 "Language-Team: \n"
@@ -418,35 +418,26 @@ msgstr ""
 "您现在可以手工修改/etc/nsswitch.conf或者勾选来删除LDAP功能。如果您删除了条"
 "目，请确保检查/etc/nsswitch.conf文件。"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid "Enable shadow lookups through NSS?"
-msgstr "启用通过NSS查询shadow信息？"
+#~ msgid "Enable shadow lookups through NSS?"
+#~ msgstr "启用通过NSS查询shadow信息？"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"To allow LDAP users to log in, the NSS module needs to be enabled to perform "
-"shadow password lookups. The shadow entries themselves may be empty - that "
-"is, there is no need for password hashes to be exposed. See http://bugs."
-"debian.org/583492 for background."
-msgstr ""
-"为了允许LDAP用户登录，NSS模块需要启用shadow密码信息查询功能。就shadow密码本身"
-"而言，其可以是空的：即不会暴露shadow中的密码哈希串。请参考http://bugs.debian."
-"org/583492。"
+#~ msgid ""
+#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
+#~ "perform shadow password lookups. The shadow entries themselves may be "
+#~ "empty - that is, there is no need for password hashes to be exposed. See "
+#~ "http://bugs.debian.org/583492 for background."
+#~ msgstr ""
+#~ "为了允许LDAP用户登录，NSS模块需要启用shadow密码信息查询功能。就shadow密码"
+#~ "本身而言，其可以是空的：即不会暴露shadow中的密码哈希串。请参考http://bugs."
+#~ "debian.org/583492。"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"Please choose whether /etc/nsswitch.conf should have the required entry "
-"added automatically (in which case it should be reviewed afterwards) or "
-"whether it should be left for an administrator to edit manually."
-msgstr ""
-"请选择/etc/nsswitch.conf是自动添加必需的条目（后续应当进行审核）还是留给管理"
-"员手工修改。"
+#~ msgid ""
+#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
+#~ "added automatically (in which case it should be reviewed afterwards) or "
+#~ "whether it should be left for an administrator to edit manually."
+#~ msgstr ""
+#~ "请选择/etc/nsswitch.conf是自动添加必需的条目（后续应当进行审核）还是留给管"
+#~ "理员手工修改。"
 
 #~ msgid ""
 #~ "If the LDAP database requires a login for normal lookups, enter the name "

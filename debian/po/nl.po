@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2011-08-09 11:04+0200\n"
+"POT-Creation-Date: 2012-04-27 11:09+0200\n"
 "PO-Revision-Date: 2011-08-29 20:57+0100\n"
 "Last-Translator: Arthur de Jong <arthur@arthurdejong.org>\n"
 "Language-Team: debian-l10n-dutch <debian-l10n-dutch@lists.debian.org>\n"
@@ -456,34 +456,25 @@ msgstr ""
 "laten verwijderen. Controleer de inhoud van /etc/nsswitch.conf als u ervoor "
 "kiest om ze nu te verwijderen."
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid "Enable shadow lookups through NSS?"
-msgstr "Shadow opzoeken aanzetten via NSS?"
+#~ msgid "Enable shadow lookups through NSS?"
+#~ msgstr "Shadow opzoeken aanzetten via NSS?"
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"To allow LDAP users to log in, the NSS module needs to be enabled to perform "
-"shadow password lookups. The shadow entries themselves may be empty - that "
-"is, there is no need for password hashes to be exposed. See http://bugs."
-"debian.org/583492 for background."
-msgstr ""
-"Om inloggen van LDAP-gebruikers toe te staan moet de NSS module password en "
-"shadow verzoeken afhandelen. De shadow resultaten kunnen zelf leeg zijn, dat "
-"wil zeggen, er is geen noodzaak om wachtwoorden-hashes bloot te stellen. Zie "
-"http://bugs.debian.org/583492 voor meer informatie."
+#~ msgid ""
+#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
+#~ "perform shadow password lookups. The shadow entries themselves may be "
+#~ "empty - that is, there is no need for password hashes to be exposed. See "
+#~ "http://bugs.debian.org/583492 for background."
+#~ msgstr ""
+#~ "Om inloggen van LDAP-gebruikers toe te staan moet de NSS module password "
+#~ "en shadow verzoeken afhandelen. De shadow resultaten kunnen zelf leeg "
+#~ "zijn, dat wil zeggen, er is geen noodzaak om wachtwoorden-hashes bloot te "
+#~ "stellen. Zie http://bugs.debian.org/583492 voor meer informatie."
 
-#. Type: boolean
-#. Description
-#: ../libpam-ldapd.templates:1001
-msgid ""
-"Please choose whether /etc/nsswitch.conf should have the required entry "
-"added automatically (in which case it should be reviewed afterwards) or "
-"whether it should be left for an administrator to edit manually."
-msgstr ""
-"Wilt u dat /etc/nsswitch.conf automatisch wordt bijgewerkt om de vereiste "
-"vermelding toe te voegen (controleer in dat geval de aanpassingen achteraf) "
-"of wilt u het later handmatig doen?"
+#~ msgid ""
+#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
+#~ "added automatically (in which case it should be reviewed afterwards) or "
+#~ "whether it should be left for an administrator to edit manually."
+#~ msgstr ""
+#~ "Wilt u dat /etc/nsswitch.conf automatisch wordt bijgewerkt om de vereiste "
+#~ "vermelding toe te voegen (controleer in dat geval de aanpassingen "
+#~ "achteraf) of wilt u het later handmatig doen?"
