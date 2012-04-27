@@ -14,8 +14,7 @@ nss_list_configured()
 
 # check whether the name is configure to do lookups through
 # LDAP
-# Note: this function is in libnss-ldapd.postinst, libnss-ldapd.postrm
-#       and libpam-ldapd.postinst
+# Note: this function is in libnss-ldapd.postinst and libnss-ldapd.postrm
 nss_is_enabled()
 {
   name="$1"

@@ -7,8 +7,7 @@ set -e
 
 # check whether the name is configure to do lookups through
 # LDAP
-# Note: this function is in libnss-ldapd.postinst, libnss-ldapd.postrm
-#       and libpam-ldapd.postinst
+# Note: this function is in libnss-ldapd.postinst and libnss-ldapd.postrm
 nss_is_enabled()
 {
   name="$1"
@@ -17,7 +16,6 @@ nss_is_enabled()
 
 # check to see if name is configured to do lookups through
 # LDAP and enable if not
-# Note: this function is in libnss-ldapd.postinst and libpam-ldapd.postinst
 nss_enable()
 {
   name="$1"
