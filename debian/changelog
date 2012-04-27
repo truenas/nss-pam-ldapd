@@ -9,8 +9,9 @@ nss-pam-ldapd (0.8.8-1) UNRELEASED; urgency=low
     authorisation checks that pam_unix also does
   * drop functionality to check whether shadow information is exposed
     in /etc/nsswitch.conf, it was no longer needed sine 0.8.4
+  * ensure that /var/run/nslcd is not removed during upgrades
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 27 Apr 2012 11:05:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 27 Apr 2012 11:15:00 +0200
 
 nss-pam-ldapd (0.8.7-1) unstable; urgency=low
 
