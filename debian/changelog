@@ -1,9 +1,9 @@
-nss-pam-ldapd (0.8.8-2) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.8-2) unstable; urgency=low
 
   * switch PAM config back to additional because if shadow information is
     provided pam_unix accepts the user and causes pam_ldap to be skipped
 
- -- Arthur de Jong <adejong@debian.org>  Wed, 02 May 2012 22:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Wed, 02 May 2012 22:48:23 +0200
 
 nss-pam-ldapd (0.8.8-1) unstable; urgency=low
 
