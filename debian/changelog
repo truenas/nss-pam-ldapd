@@ -1,3 +1,10 @@
+nss-pam-ldapd (0.8.8-3) UNRELEASED; urgency=low
+
+  * don't clear the tls_reqcert option when using ssl without the
+    start_tls option or an ldaps:// URL (closes: #672301)
+
+ -- Arthur de Jong <adejong@debian.org>  Wed, 09 May 2012 22:50:00 +0200
+
 nss-pam-ldapd (0.8.8-2) unstable; urgency=low
 
   * switch PAM config back to additional because if shadow information is
