@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.9-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.9-1) unstable; urgency=low
 
   * new upstream release:
     - allow the pam_authz_search option to be specified multiple times
@@ -6,7 +6,7 @@ nss-pam-ldapd (0.8.9-1) UNRELEASED; urgency=low
     - make documentation up-to-date
     - compatibility improvements
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 20 May 2012 22:55:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 20 May 2012 23:00:00 +0200
 
 nss-pam-ldapd (0.8.8-3) unstable; urgency=low
 
