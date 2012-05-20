@@ -1,3 +1,13 @@
+nss-pam-ldapd (0.8.9-1) UNRELEASED; urgency=low
+
+  * new upstream release:
+    - allow the pam_authz_search option to be specified multiple times
+    - implement extra range checking of all numeric values
+    - make documentation up-to-date
+    - compatibility improvements
+
+ -- Arthur de Jong <adejong@debian.org>  Sun, 20 May 2012 22:55:00 +0200
+
 nss-pam-ldapd (0.8.8-3) unstable; urgency=low
 
   * don't clear the tls_reqcert option when using ssl without the
