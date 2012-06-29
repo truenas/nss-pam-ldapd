@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.10-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.10-1) unstable; urgency=low
 
   * New upstream release:
     - documentation improvements
@@ -6,7 +6,7 @@ nss-pam-ldapd (0.8.10-1) UNRELEASED; urgency=low
       even though the old one was wrong
     - log successful password change in nslcd
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 29 Jun 2012 12:19:46 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 29 Jun 2012 12:30:00 +0200
 
 nss-pam-ldapd (0.8.9-1) unstable; urgency=low
 
