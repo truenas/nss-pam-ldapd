@@ -1,6 +1,12 @@
+nss-pam-ldapd (0.8.10-2) UNRELEASED; urgency=low
+
+  * fix typo in comment (thanks Caleb Callaway)
+
+ -- Arthur de Jong <adejong@debian.org>  Sat, 07 Jul 2012 17:07:09 +0200
+
 nss-pam-ldapd (0.8.10-1) unstable; urgency=low
 
-  * New upstream release:
+  * new upstream release:
     - documentation improvements
     - fix a problem that causes the PAM module to prompt for a new password
       even though the old one was wrong
