@@ -21,7 +21,7 @@
 
 ### BEGIN INIT INFO
 # Provides:          nslcd
-# Required-Start:    $remote_fs $syslog
+# Required-Start:    $remote_fs $syslog $time
 # Required-Stop:     $remote_fs $syslog
 # Should-Start:      $named slapd
 # X-Start-Before:    $mail-transport-agent mail-transport-agent exim4 sendmail nullmailer masqmail citadel cron atd autofs am-utils apache2 slim wdm gdm3 xdm kdm
