@@ -2,3 +2,4 @@ README
 AUTHORS
 NEWS
 ldapns.schema
+debian/ldapns.ldif

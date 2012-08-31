@@ -1,6 +1,7 @@
 nss-pam-ldapd (0.8.10-2) UNRELEASED; urgency=low
 
   * fix typo in comment (thanks Caleb Callaway)
+  * install a ldapns.ldif in nslcd doc directory (closes: #674591)
 
  -- Arthur de Jong <adejong@debian.org>  Sat, 07 Jul 2012 17:07:09 +0200
 
