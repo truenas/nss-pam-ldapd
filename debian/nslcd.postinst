@@ -11,7 +11,7 @@ cfg_set()
   parameter="$1"
   value="$2"
   # check if the parameter is defined
-  line=`sed -n '/^'"$parameter"'[[:space:]]*[aeghnprs][acedgihklopsrutwv]*[[:space:]]/d;/^'"$parameter"'[[:space:]]/p' "$CONFFILE" | head -n 1`
+  line=`sed -n '/^'"$parameter"'[[:space:]]*\(aliases\|ethers\|group\|hosts\|netgroup\|networks\|passwd\|protocols\|rpc\|services\|shadow\)[[:space:]]/d;/^'"$parameter"'[[:space:]]/p' "$CONFFILE" | head -n 1`
   if [ -z "$line" ]
   then
     # check if the parameter is commented out
