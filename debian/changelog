@@ -4,8 +4,10 @@ nss-pam-ldapd (0.8.10-2) UNRELEASED; urgency=low
   * install a ldapns.ldif in nslcd doc directory (closes: #674591)
   * ensure that time is set before starting k5start to ensure that Kerberos
     ticket is granted (closes: #659227)
+  * properly parse and write configuration options with an optional map
+    parameter during debconf configuration (LP: #1029062)
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 31 Aug 2012 14:48:58 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 31 Aug 2012 17:02:41 +0200
 
 nss-pam-ldapd (0.8.10-1) unstable; urgency=low
 

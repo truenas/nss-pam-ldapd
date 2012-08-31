@@ -10,19 +10,12 @@ cfg_set()
 {
   parameter="$1"
   value="$2"
-  # make matching of spaces better in parameter
-  # this is complicated becase of the "base [map] dn" keyword
-  param_re=`echo "$parameter" | sed 's#^#[[:space:]]*#;s#[[:space:]][[:space:]]*#[[:space:]][[:space:]]*#g'`
-  # lines to not match
-  nomatch_re="^$param_re[[:space:]][[:space:]]*\(aliases\|ethers\|group\|hosts\|netgroup\|networks\|passwd\|protocols\|rpc\|services\|shadow\)"
   # check if the parameter is defined
-  line=`sed -n '/'"$nomatch_re"'/n;/^'"$param_re"'[[:space:]]/p' "$CONFFILE" | head -n 1`
+  line=`sed -n '/^'"$parameter"'[[:space:]]*[aeghnprs][acedgihklopsrutwv]*[[:space:]]/d;/^'"$parameter"'[[:space:]]/p' "$CONFFILE" | head -n 1`
   if [ -z "$line" ]
   then
     # check if the parameter is commented out
-    param_re="#$param_re"
-    nomatch_re="^$param_re[[:space:]][[:space:]]*\(aliases\|ethers\|group\|hosts\|netgroup\|networks\|passwd\|protocols\|rpc\|services\|shadow\)"
-    line=`sed -n '/'"$nomatch_re"'/n;/^'"$param_re"'[[:space:]]/p' "$CONFFILE" | head -n 1`
+    line=`sed -n '/^#'"$parameter"'[[:space:]]*[aeghnprs][acedgihklopsrutwv]*[[:space:]]/d;/^#'"$parameter"'[[:space:]]/p' "$CONFFILE" | head -n 1`
   fi
   # decide what to do
   if [ -z "$line" ]
