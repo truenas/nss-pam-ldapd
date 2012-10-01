@@ -49,7 +49,7 @@ cfg_disable()
     # lines to not match
     nomatch_re="^$param_re[[:space:]][[:space:]]*\(aliases\|ethers\|group\|hosts\|netgroup\|networks\|passwd\|protocols\|rpc\|services\|shadow\)"
     # comment out the option
-    sed -i '/'"$nomatch_re"'/n;s/^'"$param_re"'[[:space:]].*$/#&/i' "$CONFFILE"
+    sed -i '/'"$nomatch_re"'/!s/^'"$param_re"'[[:space:]].*$/#&/i' "$CONFFILE"
     # we're done
   done
   return 0

@@ -1,3 +1,10 @@
+nss-pam-ldapd (0.8.10-3) UNRELEASED; urgency=low
+
+  * fix a problem in sed logic for commenting out disabled options
+    (closes: #689296)
+
+ -- Arthur de Jong <adejong@debian.org>  Mon, 01 Oct 2012 21:00:00 +0200
+
 nss-pam-ldapd (0.8.10-2) unstable; urgency=low
 
   * fix typo in comment (thanks Caleb Callaway)
