@@ -1,0 +1,438 @@
+Description: use poll() instead of select() to check file descriptor activity
+ This patch replaces the calls in the NSS module to use poll() instead of
+ select() to also correctly do name lookups if more than FD_SETSIZE files
+ are already open.
+Author: Arthur de Jong <arthur@arthurdejong.org>
+Origin: upstream, http://arthurdejong.org/viewvc/nss-pam-ldapd?revision=1783&view=revision
+Bug-Debian: http://bugs.debian.org/690319
+
+--- a/common/tio.h
++++ b/common/tio.h
+@@ -46,9 +46,8 @@
+ typedef struct tio_fileinfo TFILE;
+ 
+ /* Open a new TFILE based on the file descriptor. The timeout is set for any
+-   operation. The timeout value is copied so may be dereferenced after the
+-   call. */
+-TFILE *tio_fdopen(int fd,struct timeval *readtimeout,struct timeval *writetimeout,
++   operation (value in milliseconds). */
++TFILE *tio_fdopen(int fd,int readtimeout,int writetimeout,
+                   size_t initreadsize,size_t maxreadsize,
+                   size_t initwritesize,size_t maxwritesize)
+   LIKE_MALLOC MUST_USE;
+--- a/common/tio.c
++++ b/common/tio.c
+@@ -35,6 +35,7 @@
+ #include <signal.h>
+ #include <stdio.h>
+ #include <limits.h>
++#include <poll.h>
+ 
+ #include "tio.h"
+ 
+@@ -63,8 +64,8 @@ struct tio_fileinfo {
+   int fd;
+   struct tio_buffer readbuffer;
+   struct tio_buffer writebuffer;
+-  struct timeval readtimeout;
+-  struct timeval writetimeout;
++  int readtimeout;
++  int writetimeout;
+   int read_resettable; /* whether the tio_reset() function can be called */
+ #ifdef DEBUG_TIO_STATS
+   /* this is used to collect statistics on the use of the streams
+@@ -74,21 +75,8 @@ struct tio_fileinfo {
+ #endif /* DEBUG_TIO_STATS */
+ };
+ 
+-/* add the second timeval to the first modifing the first */
+-static inline void tio_tv_add(struct timeval *tv1, const struct timeval *tv2)
+-{
+-  /* BUG: we hope that this does not overflow */
+-  tv1->tv_usec+=tv2->tv_usec;
+-  if (tv1->tv_usec>=1000000)
+-  {
+-    tv1->tv_usec-=1000000;
+-    tv1->tv_sec+=1;
+-  }
+-  tv1->tv_sec+=tv2->tv_sec;
+-}
+-
+ /* build a timeval for comparison to when the operation should be finished */
+-static inline void tio_tv_prepare(struct timeval *deadline, const struct timeval *timeout)
++static inline void tio_get_deadline(struct timeval *deadline,int timeout)
+ {
+   if (gettimeofday(deadline,NULL))
+   {
+@@ -97,39 +85,27 @@ static inline void tio_tv_prepare(struct
+     deadline->tv_usec=0;
+     return;
+   }
+-  tio_tv_add(deadline,timeout);
++  deadline->tv_sec+=timeout/1000;
++  deadline->tv_sec+=(timeout%1000)*1000;
+ }
+ 
+-/* update the timeval to the value that is remaining before deadline
++/* update the timeout to the value that is remaining before deadline
+    returns non-zero if there is no more time before the deadline */
+-static inline int tio_tv_remaining(struct timeval *tv, const struct timeval *deadline)
++static inline int tio_time_remaining(const struct timeval *deadline)
+ {
++  struct timeval tv;
+   /* get the current time */
+-  if (gettimeofday(tv,NULL))
++  if (gettimeofday(&tv,NULL))
+   {
+     /* 1 second default if gettimeofday() is broken */
+-    tv->tv_sec=1;
+-    tv->tv_usec=0;
+-    return 0;
++    return 1000;
+   }
+-  /* check if we're too late */
+-  if ( (tv->tv_sec>deadline->tv_sec) ||
+-       ( (tv->tv_sec==deadline->tv_sec) && (tv->tv_usec>deadline->tv_usec) ) )
+-    return -1;
+-  /* update tv */
+-  tv->tv_sec=deadline->tv_sec-tv->tv_sec;
+-  if (tv->tv_usec<=deadline->tv_usec)
+-    tv->tv_usec=deadline->tv_usec-tv->tv_usec;
+-  else
+-  {
+-    tv->tv_sec--;
+-    tv->tv_usec=1000000+deadline->tv_usec-tv->tv_usec;
+-  }
+-  return 0;
++  /* calculate time remaining in miliseconds */
++  return (deadline->tv_sec-tv.tv_sec)*1000 + (deadline->tv_usec-tv.tv_usec)/1000;
+ }
+ 
+ /* open a new TFILE based on the file descriptor */
+-TFILE *tio_fdopen(int fd,struct timeval *readtimeout,struct timeval *writetimeout,
++TFILE *tio_fdopen(int fd,int readtimeout,int writetimeout,
+                   size_t initreadsize,size_t maxreadsize,
+                   size_t initwritesize,size_t maxwritesize)
+ {
+@@ -162,10 +138,8 @@ TFILE *tio_fdopen(int fd,struct timeval
+   fp->writebuffer.start=0;
+   fp->writebuffer.len=0;
+   /* initialize other attributes */
+-  fp->readtimeout.tv_sec=readtimeout->tv_sec;
+-  fp->readtimeout.tv_usec=readtimeout->tv_usec;
+-  fp->writetimeout.tv_sec=writetimeout->tv_sec;
+-  fp->writetimeout.tv_usec=writetimeout->tv_usec;
++  fp->readtimeout=readtimeout;
++  fp->writetimeout=writetimeout;
+   fp->read_resettable=0;
+ #ifdef DEBUG_TIO_STATS
+   fp->byteswritten=0;
+@@ -176,18 +150,15 @@ TFILE *tio_fdopen(int fd,struct timeval
+ 
+ /* wait for any activity on the specified file descriptor using
+    the specified deadline */
+-static int tio_select(TFILE *fp, int readfd, const struct timeval *deadline)
++static int tio_wait(TFILE *fp,int readfd,const struct timeval *deadline)
+ {
+-  struct timeval tv;
+-  fd_set fdset;
++  int timeout;
++  struct pollfd fds[1];
+   int rv;
+   while (1)
+   {
+-    /* prepare our filedescriptorset */
+-    FD_ZERO(&fdset);
+-    FD_SET(fp->fd,&fdset);
+     /* figure out the time we need to wait */
+-    if (tio_tv_remaining(&tv,deadline))
++    if ((timeout=tio_time_remaining(deadline))<0)
+     {
+       errno=ETIME;
+       return -1;
+@@ -195,18 +166,21 @@ static int tio_select(TFILE *fp, int rea
+     /* wait for activity */
+     if (readfd)
+     {
++      fds[0].fd=fp->fd;
++      fds[0].events=POLLIN;
+       /* santiy check for moving clock */
+-      if (tv.tv_sec>fp->readtimeout.tv_sec)
+-        tv.tv_sec=fp->readtimeout.tv_sec;
+-      rv=select(FD_SETSIZE,&fdset,NULL,NULL,&tv);
++      if (timeout>fp->readtimeout)
++        timeout=fp->readtimeout;
+     }
+     else
+     {
++      fds[0].fd=fp->fd;
++      fds[0].events=POLLOUT;
+       /* santiy check for moving clock */
+-      if (tv.tv_sec>fp->writetimeout.tv_sec)
+-        tv.tv_sec=fp->writetimeout.tv_sec;
+-      rv=select(FD_SETSIZE,NULL,&fdset,NULL,&tv);
++      if (timeout>fp->writetimeout)
++        timeout=fp->writetimeout;
+     }
++    rv=poll(fds,1,timeout);
+     if (rv>0)
+       return 0; /* we have activity */
+     else if (rv==0)
+@@ -234,7 +208,7 @@ int tio_read(TFILE *fp, void *buf, size_
+   /* have a more convenient storage type for the buffer */
+   uint8_t *ptr=(uint8_t *)buf;
+   /* build a time by which we should be finished */
+-  tio_tv_prepare(&deadline,&(fp->readtimeout));
++  tio_get_deadline(&deadline,fp->readtimeout);
+   /* loop until we have returned all the needed data */
+   while (1)
+   {
+@@ -292,7 +266,7 @@ int tio_read(TFILE *fp, void *buf, size_
+       }
+     }
+     /* wait until we have input */
+-    if (tio_select(fp,1,&deadline))
++    if (tio_wait(fp,1,&deadline))
+       return -1;
+     /* read the input in the buffer */
+     len=fp->readbuffer.size-fp->readbuffer.start;
+@@ -326,8 +300,7 @@ int tio_skip(TFILE *fp, size_t count)
+ /* Read all available data from the stream and empty the read buffer. */
+ int tio_skipall(TFILE *fp)
+ {
+-  struct timeval tv;
+-  fd_set fdset;
++  struct pollfd fds[1];
+   int rv;
+   size_t len;
+   /* clear the read buffer */
+@@ -342,14 +315,11 @@ int tio_skipall(TFILE *fp)
+ #endif /* SSIZE_MAX */
+   while (1)
+   {
+-    /* prepare our file descriptor set */
+-    FD_ZERO(&fdset);
+-    FD_SET(fp->fd,&fdset);
+-    /* prepare the time to wait */
+-    tv.tv_sec=0;
+-    tv.tv_usec=0;
+     /* see if any data is available */
+-    rv=select(FD_SETSIZE,&fdset,NULL,NULL,&tv);
++    fds[0].fd=fp->fd;
++    fds[0].events=POLLIN;
++    rv=poll(fds,1,0);
++    /* check the poll() result */
+     if (rv==0)
+       return 0; /* no file descriptor ready */
+     if ((rv<0)&&((errno==EINTR)||(errno==EAGAIN)))
+@@ -424,12 +394,12 @@ int tio_flush(TFILE *fp)
+ {
+   struct timeval deadline;
+   /* build a time by which we should be finished */
+-  tio_tv_prepare(&deadline,&(fp->writetimeout));
++  tio_get_deadline(&deadline,fp->writetimeout);
+   /* loop until we have written our buffer */
+   while (fp->writebuffer.len > 0)
+   {
+     /* wait until we can write */
+-    if (tio_select(fp,0,&deadline))
++    if (tio_wait(fp,0,&deadline))
+       return -1;
+     /* write one block */
+     if (tio_writebuf(fp))
+@@ -442,17 +412,12 @@ int tio_flush(TFILE *fp)
+    will accept data */
+ static int tio_flush_nonblock(TFILE *fp)
+ {
+-  struct timeval tv;
+-  fd_set fdset;
++  struct pollfd fds[1];
+   int rv;
+-  /* prepare our filedescriptorset */
+-  FD_ZERO(&fdset);
+-  FD_SET(fp->fd,&fdset);
+-  /* set the timeout to 0 to poll */
+-  tv.tv_sec=0;
+-  tv.tv_usec=0;
+   /* wait for activity */
+-  rv=select(FD_SETSIZE,NULL,&fdset,NULL,&tv);
++  fds[0].fd=fp->fd;
++  fds[0].events=POLLOUT;
++  rv=poll(fds,1,0);
+   /* check if any file descriptors were ready (timeout) or we were
+      interrupted */
+   if ((rv==0)||((rv<0)&&(errno==EINTR)))
+--- a/common/nslcd-prot.c
++++ b/common/nslcd-prot.c
+@@ -38,6 +38,11 @@
+ #include "nslcd-prot.h"
+ #include "compat/socket.h"
+ 
++/* read timeout is 60 seconds because looking up stuff may take some time
++   write timeout is 10 secods because nslcd could be loaded with requests */
++#define READ_TIMEOUT 60*1000
++#define WRITE_TIMEOUT 10*1000
++
+ /* buffer sizes for I/O */
+ #define READBUFFER_MINSIZE 1024
+ #define READBUFFER_MAXSIZE 2*1024*1024
+@@ -56,7 +61,6 @@ TFILE *nslcd_client_open()
+ {
+   int sock;
+   struct sockaddr_un addr;
+-  struct timeval readtimeout,writetimeout;
+   TFILE *fp;
+   /* create a socket */
+   if ( (sock=socket(PF_UNIX,SOCK_STREAM,0))<0 )
+@@ -72,13 +76,8 @@ TFILE *nslcd_client_open()
+     (void)close(sock);
+     return NULL;
+   }
+-  /* set the timeouts */
+-  readtimeout.tv_sec=60; /* looking up stuff may take some time */
+-  readtimeout.tv_usec=0;
+-  writetimeout.tv_sec=10; /* nslcd could be loaded with requests */
+-  writetimeout.tv_usec=0;
+   /* create a stream object */
+-  if ((fp=tio_fdopen(sock,&readtimeout,&writetimeout,
++  if ((fp=tio_fdopen(sock,READ_TIMEOUT,WRITE_TIMEOUT,
+                      READBUFFER_MINSIZE,READBUFFER_MAXSIZE,
+                      WRITEBUFFER_MINSIZE,WRITEBUFFER_MAXSIZE))==NULL)
+   {
+--- a/nslcd/nslcd.c
++++ b/nslcd/nslcd.c
+@@ -68,6 +68,12 @@
+ #include "compat/getpeercred.h"
+ #include "compat/socket.h"
+ 
++/* read timeout is half a second because clients should send their request
++   quickly, write timeout is 60 seconds because clients could be taking some
++   time to process the results */
++#define READ_TIMEOUT 500
++#define WRITE_TIMEOUT 60*1000
++
+ /* buffer sizes for I/O */
+ #define READBUFFER_MINSIZE 32
+ #define READBUFFER_MAXSIZE 64
+@@ -380,7 +386,6 @@ static void handleconnection(int sock,MY
+ {
+   TFILE *fp;
+   int32_t action;
+-  struct timeval readtimeout,writetimeout;
+   uid_t uid=(uid_t)-1;
+   gid_t gid=(gid_t)-1;
+   pid_t pid=(pid_t)-1;
+@@ -390,13 +395,8 @@ static void handleconnection(int sock,MY
+   else
+     log_log(LOG_DEBUG,"connection from pid=%d uid=%d gid=%d",
+                       (int)pid,(int)uid,(int)gid);
+-  /* set the timeouts */
+-  readtimeout.tv_sec=0; /* clients should send their request quickly */
+-  readtimeout.tv_usec=500000;
+-  writetimeout.tv_sec=60; /* clients could be taking some time to process the results */
+-  writetimeout.tv_usec=0;
+   /* create a stream object */
+-  if ((fp=tio_fdopen(sock,&readtimeout,&writetimeout,
++  if ((fp=tio_fdopen(sock,READ_TIMEOUT,WRITE_TIMEOUT,
+                      READBUFFER_MINSIZE,READBUFFER_MAXSIZE,
+                      WRITEBUFFER_MINSIZE,WRITEBUFFER_MAXSIZE))==NULL)
+   {
+--- a/tests/test_tio.c
++++ b/tests/test_tio.c
+@@ -51,18 +51,14 @@ struct helper_args {
+ static void *help_tiowriter(void *arg)
+ {
+   TFILE *fp;
+-  struct timeval timeout;
+   size_t i,j,k;
+   uint8_t *buf;
+   struct helper_args *hargs=(struct helper_args *)arg;
+   /* allocate the buffer */
+   buf=(uint8_t *)malloc(hargs->blocksize);
+   assert(buf!=NULL);
+-  /* set the timeout */
+-  timeout.tv_sec=hargs->timeout;
+-  timeout.tv_usec=0;
+   /* open the file */
+-  fp=tio_fdopen(hargs->fd,&timeout,&timeout,4*1024,8*1024,4*1024,8*1024);
++  fp=tio_fdopen(hargs->fd,hargs->timeout*1000,hargs->timeout*1000,4*1024,8*1024,4*1024,8*1024);
+   assertok(fp!=NULL);
+   /* write the blocks */
+   i=0;
+@@ -83,18 +79,14 @@ static void *help_tiowriter(void *arg)
+ static void *help_tioreader(void *arg)
+ {
+   TFILE *fp;
+-  struct timeval timeout;
+   size_t i,j,k;
+   uint8_t *buf;
+   struct helper_args *hargs=(struct helper_args *)arg;
+   /* allocate the buffer */
+   buf=(uint8_t *)malloc(hargs->blocksize);
+   assert(buf!=NULL);
+-  /* set the timeout */
+-  timeout.tv_sec=hargs->timeout;
+-  timeout.tv_usec=0;
+   /* open the file */
+-  fp=tio_fdopen(hargs->fd,&timeout,&timeout,4*1024,8*1024,4*1024,8*1024);
++  fp=tio_fdopen(hargs->fd,hargs->timeout*1000,hargs->timeout*1000,4*1024,8*1024,4*1024,8*1024);
+   assertok(fp!=NULL);
+   /* read the blocks */
+   i=0;
+@@ -202,7 +194,6 @@ static void test_reset(void)
+   pthread_t wthread;
+   struct helper_args wargs;
+   TFILE *fp;
+-  struct timeval timeout;
+   size_t i,j,k,save;
+   uint8_t buf[20];
+   /* set up the socket pair */
+@@ -214,9 +205,7 @@ static void test_reset(void)
+   wargs.timeout=2;
+   assertok(pthread_create(&wthread,NULL,help_normwriter,&wargs)==0);
+   /* set up read handle */
+-  timeout.tv_sec=2;
+-  timeout.tv_usec=0;
+-  fp=tio_fdopen(sp[1],&timeout,&timeout,2*1024,4*1024,2*1024,4*1024);
++  fp=tio_fdopen(sp[1],2000,2000,2*1024,4*1024,2*1024,4*1024);
+   assertok(fp!=NULL);
+   /* perform 20 reads */
+   i=0;
+@@ -281,7 +270,6 @@ static void test_timeout_reader(void)
+   int sp[2];
+   TFILE *rfp;
+   FILE *wfp;
+-  struct timeval timeout;
+   uint8_t buf[20];
+   time_t start,end;
+   /* set up the socket pair */
+@@ -289,9 +277,7 @@ static void test_timeout_reader(void)
+   /* open the writer */
+   assertok((wfp=fdopen(sp[0],"wb"))!=NULL);
+   /* open the reader */
+-  timeout.tv_sec=1;
+-  timeout.tv_usec=100000;
+-  assertok((rfp=tio_fdopen(sp[1],&timeout,&timeout,2*1024,4*1024,2*1024,4*1024))!=NULL);
++  assertok((rfp=tio_fdopen(sp[1],1100,1100,2*1024,4*1024,2*1024,4*1024))!=NULL);
+   /* perform a read */
+   start=time(NULL);
+   assertok(tio_read(rfp,buf,sizeof(buf))!=0);
+@@ -309,7 +295,6 @@ static void test_timeout_writer(void)
+   FILE *rfp;
+   TFILE *wfp;
+   int i;
+-  struct timeval timeout;
+   uint8_t buf[20];
+   time_t start,end;
+   /* set up the socket pair */
+@@ -317,9 +302,7 @@ static void test_timeout_writer(void)
+   /* open the reader */
+   assertok((rfp=fdopen(sp[0],"rb"))!=NULL);
+   /* open the writer */
+-  timeout.tv_sec=1;
+-  timeout.tv_usec=100000;
+-  assertok((wfp=tio_fdopen(sp[1],&timeout,&timeout,2*1024,4*1024,2*20,4*20+1))!=NULL);
++  assertok((wfp=tio_fdopen(sp[1],1100,1100,2*1024,4*1024,2*20,4*20+1))!=NULL);
+   /* perform a few write (these should be OK because they fill the buffer) */
+   assertok(tio_write(wfp,buf,sizeof(buf))==0);
+   assertok(tio_write(wfp,buf,sizeof(buf))==0);

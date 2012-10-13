@@ -5,8 +5,11 @@ nss-pam-ldapd (0.8.10-3) UNRELEASED; urgency=low
   * support "EXTERNAL" SASL mechanism in debconf configuration (LP: #1063923)
     (the debconf template has been postponed to avoid having to update all
     translations for a relatively minor change)
+  * 01-use-poll-instead-of-select.patch: use poll() instead of select()
+    for checking file descriptor activity to also correctly work if more
+    than FD_SETSIZE files are already open (closes: #690319)
 
- -- Arthur de Jong <adejong@debian.org>  Mon, 08 Oct 2012 22:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sat, 13 Oct 2012 14:00:00 +0200
 
 nss-pam-ldapd (0.8.10-2) unstable; urgency=low
 
