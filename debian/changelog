@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.10-3) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.10-3) unstable; urgency=low
 
   * fix a problem in sed logic for commenting out disabled options
     (closes: #689296)
@@ -9,7 +9,7 @@ nss-pam-ldapd (0.8.10-3) UNRELEASED; urgency=low
     for checking file descriptor activity to also correctly work if more
     than FD_SETSIZE files are already open (closes: #690319)
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 13 Oct 2012 14:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 14 Oct 2012 23:00:00 +0200
 
 nss-pam-ldapd (0.8.10-2) unstable; urgency=low
 
