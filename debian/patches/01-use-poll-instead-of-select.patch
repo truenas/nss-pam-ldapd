@@ -2,6 +2,8 @@ Description: use poll() instead of select() to check file descriptor activity
  This patch replaces the calls in the NSS module to use poll() instead of
  select() to also correctly do name lookups if more than FD_SETSIZE files
  are already open.
+ .
+ These changes are part of the 0.8.11 release.
 Author: Arthur de Jong <arthur@arthurdejong.org>
 Origin: upstream, http://arthurdejong.org/viewvc/nss-pam-ldapd?revision=1783&view=revision
 Bug-Debian: http://bugs.debian.org/690319
