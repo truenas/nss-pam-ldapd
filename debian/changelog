@@ -1,3 +1,22 @@
+nss-pam-ldapd (0.8.11-1) UNRELEASED; urgency=low
+
+  * new upstream release:
+    - add a pam_password_prohibit_message nslcd.conf option to deny password
+      change (thanks to Ted Cheng)
+    - add a sasl_canonicalize option to allow disabling of hostname
+      canonicalisation in OpenLDAP
+    - have the nslcd daemon load the nslcd user's supplementary groups to have
+      more flexibility with assigning group permissions (LP: #1020303)
+    - fix logic error when falling back to getting ranged attribute values for
+      possibly binary attributes (thanks scan-build)
+    - fix a problem when storing negative hit to dn2uid cache (thanks
+      scan-build)
+    - small portability improvements
+    - grow all search filter buffers to 4096 bytes
+  * drop 01-use-poll-instead-of-select.patch which is part of 0.8.11
+
+ -- Arthur de Jong <adejong@debian.org>  Sun, 11 Nov 2012 14:45:00 +0100
+
 nss-pam-ldapd (0.8.10-3) unstable; urgency=low
 
   * fix a problem in sed logic for commenting out disabled options
