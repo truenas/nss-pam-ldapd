@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2012-04-27 11:09+0200\n"
+"POT-Creation-Date: 2012-11-11 15:59+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: zym <ming_zym@sina.com>\n"
 "Language-Team: \n"
@@ -44,7 +44,9 @@ msgstr "使用ldap或ldaps模式时，推荐使用IP地址以防止域名无法�
 #. Type: string
 #. Description
 #: ../nslcd.templates:1001
-msgid "Multiple URIs can be specified by separating them with spaces."
+#, fuzzy
+#| msgid "Multiple URIs can be specified by separating them with spaces."
+msgid "Multiple URIs can be separated by spaces."
 msgstr "可以加入多个URI地址，用空格分开。"
 
 #. Type: string
@@ -154,6 +156,16 @@ msgstr "请选择连接LDAP数据库的SASL机制："
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
+#, fuzzy
+#| msgid ""
+#| " * auto: auto-negotiation;\n"
+#| " * LOGIN: deprecated in favor of PLAIN;\n"
+#| " * PLAIN: simple cleartext password mechanism;\n"
+#| " * NTLM: NT LAN Manager authentication mechanism;\n"
+#| " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
+#| " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
+#| " * GSSAPI: used for Kerberos;\n"
+#| " * OTP: a One Time Password mechanism."
 msgid ""
 " * auto: auto-negotiation;\n"
 " * LOGIN: deprecated in favor of PLAIN;\n"
@@ -161,8 +173,11 @@ msgid ""
 " * NTLM: NT LAN Manager authentication mechanism;\n"
 " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
 " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
+" * SCRAM: a salted challenge-response mechanism;\n"
 " * GSSAPI: used for Kerberos;\n"
-" * OTP: a One Time Password mechanism."
+" * SKEY: an S/KEY mechanism (obsoleted by OTP);\n"
+" * OTP: a One Time Password mechanism;\n"
+" * EXTERNAL: authentication is implicit in the context."
 msgstr ""
 " * auto: 自动选择;\n"
 " * LOGIN: 不推荐，建议使用PLAIN;\n"
