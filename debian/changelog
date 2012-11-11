@@ -14,8 +14,10 @@ nss-pam-ldapd (0.8.11-1) UNRELEASED; urgency=low
     - small portability improvements
     - grow all search filter buffers to 4096 bytes
   * drop 01-use-poll-instead-of-select.patch which is part of 0.8.11
+  * install upstream ldapns.ldif instead of debian/ldapns.ldif one
+  * mark ldapns.schema and ldapns.ldif as example files
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 11 Nov 2012 14:45:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sun, 11 Nov 2012 15:15:00 +0100
 
 nss-pam-ldapd (0.8.10-3) unstable; urgency=low
 
