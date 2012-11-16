@@ -19,10 +19,12 @@ nss-pam-ldapd (0.8.11-1) UNRELEASED; urgency=low
   * upgrade to standards-version 3.9.4 (no changes needed)
   * small language improvement in debconf template and list more SASL
     mechanisms
-  * update the X-Start-Before header in the init script to ensure that nslcd
-    is started before various IMAP servers (closes: #692633)
+  * update X-Start-Before in the init script so that nslcd is started
+    before various IMAP servers (closes: #692633)
+  * update X-Start-Before in the init script so that nslcd is started
+    before a display manager
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 11 Nov 2012 16:30:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Fri, 16 Nov 2012 14:30:00 +0100
 
 nss-pam-ldapd (0.8.10-3) unstable; urgency=low
 
