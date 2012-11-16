@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.11-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.11-1) experimental; urgency=low
 
   * new upstream release:
     - add a pam_password_prohibit_message nslcd.conf option to deny password
@@ -26,7 +26,7 @@ nss-pam-ldapd (0.8.11-1) UNRELEASED; urgency=low
   * update Should-Start in the init script so that nslcd is started after
     a Kerberos KDC is available
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 16 Nov 2012 15:50:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Fri, 16 Nov 2012 21:00:00 +0100
 
 nss-pam-ldapd (0.8.10-3) unstable; urgency=low
 
