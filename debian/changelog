@@ -23,8 +23,10 @@ nss-pam-ldapd (0.8.11-1) UNRELEASED; urgency=low
     before various IMAP servers (closes: #692633)
   * update X-Start-Before in the init script so that nslcd is started
     before a display manager
+  * update Should-Start in the init script so that nslcd is started after
+    a Kerberos KDC is available
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 16 Nov 2012 14:30:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Fri, 16 Nov 2012 15:50:00 +0100
 
 nss-pam-ldapd (0.8.10-3) unstable; urgency=low
 
