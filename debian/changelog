@@ -10,8 +10,9 @@ nss-pam-ldapd (0.8.12-1) UNRELEASED; urgency=low
       or re-establishing the connection to an LDAP server (the message
       accidentally got hidden in 0.7.4)
     - small improvement to PAM error logging
+  * added Turkish debconf translation by Atila KOÇ (closes: #694420)
 
- -- Arthur de Jong <adejong@debian.org>  Tue, 27 Nov 2012 22:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Tue, 27 Nov 2012 23:00:00 +0100
 
 nss-pam-ldapd (0.8.11-1) experimental; urgency=low
 
