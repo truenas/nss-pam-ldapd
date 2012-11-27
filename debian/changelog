@@ -1,3 +1,18 @@
+nss-pam-ldapd (0.8.12-1) UNRELEASED; urgency=low
+
+  * new upstream release
+    - fix a problem with the sasl_canonicalize option that would cause
+      errors on non-SASL enabled systems
+    - ensure that the file descriptors in the NSS and PAM modules for
+      connecting to nslcd are closed on exec of the process
+    - allow attribute options in attribute mapping expressions
+    - show reconnect messages when failing over to a different LDAP server
+      or re-establishing the connection to an LDAP server (the message
+      accidentally got hidden in 0.7.4)
+    - small improvement to PAM error logging
+
+ -- Arthur de Jong <adejong@debian.org>  Tue, 27 Nov 2012 22:00:00 +0100
+
 nss-pam-ldapd (0.8.11-1) experimental; urgency=low
 
   * new upstream release:
