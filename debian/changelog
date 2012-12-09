@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.12-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.12-1) experimental; urgency=low
 
   * new upstream release
     - fix a problem with the sasl_canonicalize option that would cause
@@ -15,7 +15,7 @@ nss-pam-ldapd (0.8.12-1) UNRELEASED; urgency=low
     calculation used in the communication protocol between nslcd and the
     NSS and PAM modules, thanks Julien Cristau
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 09 Dec 2012 20:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sun, 09 Dec 2012 20:34:25 +0100
 
 nss-pam-ldapd (0.8.11-1) experimental; urgency=low
 
