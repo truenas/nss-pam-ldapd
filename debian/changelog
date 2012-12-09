@@ -11,8 +11,11 @@ nss-pam-ldapd (0.8.12-1) UNRELEASED; urgency=low
       accidentally got hidden in 0.7.4)
     - small improvement to PAM error logging
   * added Turkish debconf translation by Atila KOÇ (closes: #694420)
+  * 01-fix-set-usec-instead-of-sec.patch: fix a problem in the timeout
+    calculation used in the communication protocol between nslcd and the
+    NSS and PAM modules, thanks Julien Cristau
 
- -- Arthur de Jong <adejong@debian.org>  Tue, 27 Nov 2012 23:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sun, 09 Dec 2012 20:00:00 +0100
 
 nss-pam-ldapd (0.8.11-1) experimental; urgency=low
 
