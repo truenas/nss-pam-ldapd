@@ -63,7 +63,7 @@ nss-pam-ldapd (0.8.10-3) unstable; urgency=low
     translations for a relatively minor change)
   * 01-use-poll-instead-of-select.patch: use poll() instead of select()
     for checking file descriptor activity to also correctly work if more
-    than FD_SETSIZE files are already open (closes: #690319)
+    than FD_SETSIZE files are already open (closes: #690319) (CVE-2013-0288)
 
  -- Arthur de Jong <adejong@debian.org>  Sun, 14 Oct 2012 23:00:00 +0200
 
