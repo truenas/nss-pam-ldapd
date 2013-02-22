@@ -2,9 +2,11 @@ nss-pam-ldapd (0.8.12-2) UNRELEASED; urgency=low
 
   * remove compatibility code that converted nss-ldapd.conf to nslcd.conf
     for upgrading from pre-0.7 versions of nss-ldapd (thanks Dominik George)
+  * remove code for fixing permissions when upgrading from a pre-0.6.7.1
+    version
   * updated Turkish debconf translation by Atila KOÇ (closes: #701067)
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 21 Dec 2012 22:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Fri, 22 Feb 2013 21:45:00 +0100
 
 nss-pam-ldapd (0.8.12-1) experimental; urgency=low
 

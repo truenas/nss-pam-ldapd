@@ -239,13 +239,6 @@ s/^map[[:space:]]*group[[:space:]]*uniqueMember[[:space:]]*member[[:space:]]*$/#
   fi
   # we're done
   db_stop
-  # fix permissions of configfile if upgrading from an old version
-  if dpkg --compare-versions "$2" lt-nl "0.6.7.1"
-  then
-    echo "Fixing permissions of $CONFFILE"
-    chmod 640 "$CONFFILE"
-    chown root:nslcd "$CONFFILE"
-  fi
 fi
 
 #DEBHELPER#
