@@ -6,8 +6,10 @@ nss-pam-ldapd (0.8.12-2) UNRELEASED; urgency=low
     version
   * updated Turkish debconf translation by Atila KOÇ (closes: #701067)
   * drop Richard A Nelson from uploaders
+  * add build dependency on autotools-dev to ensure config.sub and
+    config.guess are automatically updated during build
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 09 Mar 2013 15:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sat, 09 Mar 2013 16:00:00 +0100
 
 nss-pam-ldapd (0.8.12-1) experimental; urgency=low
 
