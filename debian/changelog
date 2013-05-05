@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.13-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
   * New upstream release
     - include an extra sanity check to ensure not too many file
@@ -24,7 +24,7 @@ nss-pam-ldapd (0.8.13-1) UNRELEASED; urgency=low
   * add build dependency on autotools-dev to ensure config.sub and
     config.guess are automatically updated during build
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 05 May 2013 19:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 05 May 2013 20:00:00 +0200
 
 nss-pam-ldapd (0.8.12-1) experimental; urgency=low
 
