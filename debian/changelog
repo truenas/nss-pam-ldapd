@@ -1,5 +1,20 @@
-nss-pam-ldapd (0.8.12-2) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.13-1) UNRELEASED; urgency=low
 
+  * New upstream release
+    - include an extra sanity check to ensure not too many file
+      descriptors are open
+    - fix handling of gid configuration option if it listed before the uid
+      option
+    - return NSS_STATUS_TRYAGAIN on zero-length (but not-NULL) buffer (thanks
+      Jakub Hrozek)
+    - provide an _nss_ldap_version symbol in the NSS module to help debug
+      problems with a newer nslcd
+    - retry updating the lastChange attribute with the normal nslcd LDAP
+      connection if the update with the user's connection failed
+    - avoid processing passwd_byuid requests for uids below nss_min_uid
+    - fix a few minor or very unlikely to occur memory leaks
+    - miscellaneous minor changes, fixes and compatibility improvements
+  * drop 01-fix-set-usec-instead-of-sec.patch which is part of 0.8.13
   * remove compatibility code that converted nss-ldapd.conf to nslcd.conf
     for upgrading from pre-0.7 versions of nss-ldapd (thanks Dominik George)
   * remove code for fixing permissions when upgrading from a pre-0.6.7.1
@@ -9,7 +24,7 @@ nss-pam-ldapd (0.8.12-2) UNRELEASED; urgency=low
   * add build dependency on autotools-dev to ensure config.sub and
     config.guess are automatically updated during build
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 09 Mar 2013 16:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sun, 05 May 2013 19:30:00 +0200
 
 nss-pam-ldapd (0.8.12-1) experimental; urgency=low
 
