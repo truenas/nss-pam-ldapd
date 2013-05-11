@@ -36,8 +36,10 @@ nss-pam-ldapd (0.9.0-1) UNRELEASED; urgency=low
     - temporary disable the caching functionality of pynslcd
     - usability improvements in the pynslcd implementation
   * debian/copyright: copyright year updates
+  * introduce a nslcd-2 (for the protocol version) virtual package that can
+    be shared between nslcd, pynslcd and potentially nssov
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 11 May 2013 15:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sat, 11 May 2013 17:00:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
