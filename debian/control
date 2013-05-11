@@ -6,6 +6,8 @@ Standards-Version: 3.9.4
 Build-Depends: debhelper (>=9), autotools-dev, libkrb5-dev, libldap2-dev,
                libsasl2-dev, po-debconf (>= 0.5.0), docbook2x, docbook-xml,
                libpam0g-dev
+Build-Depends-Indep: python (>= 2.6.6-3)
+X-Python-Version: >= 2.6
 Homepage: http://arthurdejong.org/nss-pam-ldapd/
 Vcs-Svn: http://arthurdejong.org/svn/nss-pam-ldapd/debian/nss-pam-ldapd/trunk/
 Vcs-Browser: http://arthurdejong.org/viewvc/nss-pam-ldapd/debian/nss-pam-ldapd/trunk/
@@ -18,7 +20,7 @@ Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
 Recommends: nscd,
             libnss-ldapd | libnss-ldap,
             libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss,
-            ldap-utils, bind9-host | host
+            nslcd-utils, ldap-utils, bind9-host | host
 Suggests: kstart
 Replaces: libnss-ldapd (<< 0.7.0), nslcd-2
 Breaks: libnss-ldapd (<< 0.9.0), libpam-ldapd (<< 0.9.0)
@@ -55,3 +57,13 @@ Description: PAM module for using LDAP as an authentication service
  This package provides a Pluggable Authentication Module that allows
  user authentication, authorisation and password management based on
  credentials stored in an LDAP server.
+
+Package: nslcd-utils
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, nslcd-2
+Description: Utilities for querying LDAP via nslcd
+ These programmes provide for means to query and update information in LDAP
+ via nslcd.
+ .
+  getent.ldap - perform LDAP lookups bypassing nsswitch configuration
+  chsh.ldap - change a user's shell in LDAP

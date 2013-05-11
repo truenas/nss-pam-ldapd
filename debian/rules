@@ -9,7 +9,7 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all,-pie
 
 %:
-	dh $@
+	dh $@ --with python2
 
 # pass extra flags to configure
 override_dh_auto_configure:
@@ -25,3 +25,8 @@ override_dh_auto_test:
 # ensure that nslcd is not down during upgrades
 override_dh_installinit:
 	dh_installinit --restart-after-upgrade
+
+# temporary rule to also use the nslcdutils directory
+override_dh_python2:
+	dh_python2
+	dh_python2 /usr/share/nslcdutils

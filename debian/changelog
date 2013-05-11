@@ -38,8 +38,10 @@ nss-pam-ldapd (0.9.0-1) UNRELEASED; urgency=low
   * debian/copyright: copyright year updates
   * introduce a nslcd-2 (for the protocol version) virtual package that can
     be shared between nslcd, pynslcd and potentially nssov
+  * introduce a nslcd-utils package that contains the getent.ldap and
+    chsh.ldap utilities
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 11 May 2013 17:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sat, 11 May 2013 17:15:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
