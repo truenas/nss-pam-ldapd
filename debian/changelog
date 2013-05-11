@@ -1,3 +1,86 @@
+nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
+
+  * debian/copyright: copyright year updates
+
+ -- Arthur de Jong <adejong@debian.org>  Sat, 11 May 2013 11:00:00 +0200
+
+nss-pam-ldapd (0.8.13-1) unstable; urgency=low
+
+  * New upstream release
+    - include an extra sanity check to ensure not too many file
+      descriptors are open
+    - fix handling of gid configuration option if it listed before the uid
+      option
+    - return NSS_STATUS_TRYAGAIN on zero-length (but not-NULL) buffer (thanks
+      Jakub Hrozek)
+    - provide an _nss_ldap_version symbol in the NSS module to help debug
+      problems with a newer nslcd
+    - retry updating the lastChange attribute with the normal nslcd LDAP
+      connection if the update with the user's connection failed
+    - avoid processing passwd_byuid requests for uids below nss_min_uid
+    - fix a few minor or very unlikely to occur memory leaks
+    - miscellaneous minor changes, fixes and compatibility improvements
+  * drop 01-fix-set-usec-instead-of-sec.patch which is part of 0.8.13
+  * remove compatibility code that converted nss-ldapd.conf to nslcd.conf
+    for upgrading from pre-0.7 versions of nss-ldapd (thanks Dominik George)
+  * remove code for fixing permissions when upgrading from a pre-0.6.7.1
+    version
+  * updated Turkish debconf translation by Atila KOÇ (closes: #701067)
+  * drop Richard A Nelson from uploaders
+  * add build dependency on autotools-dev to ensure config.sub and
+    config.guess are automatically updated during build
+
+ -- Arthur de Jong <adejong@debian.org>  Sun, 05 May 2013 20:00:00 +0200
+
+nss-pam-ldapd (0.8.12-1) experimental; urgency=low
+
+  * new upstream release
+    - fix a problem with the sasl_canonicalize option that would cause
+      errors on non-SASL enabled systems
+    - ensure that the file descriptors in the NSS and PAM modules for
+      connecting to nslcd are closed on exec of the process
+    - allow attribute options in attribute mapping expressions
+    - show reconnect messages when failing over to a different LDAP server
+      or re-establishing the connection to an LDAP server (the message
+      accidentally got hidden in 0.7.4)
+    - small improvement to PAM error logging
+  * added Turkish debconf translation by Atila KOÇ (closes: #694420)
+  * 01-fix-set-usec-instead-of-sec.patch: fix a problem in the timeout
+    calculation used in the communication protocol between nslcd and the
+    NSS and PAM modules, thanks Julien Cristau
+
+ -- Arthur de Jong <adejong@debian.org>  Sun, 09 Dec 2012 20:34:25 +0100
+
+nss-pam-ldapd (0.8.11-1) experimental; urgency=low
+
+  * new upstream release:
+    - add a pam_password_prohibit_message nslcd.conf option to deny password
+      change (thanks to Ted Cheng)
+    - add a sasl_canonicalize option to allow disabling of hostname
+      canonicalisation in OpenLDAP
+    - have the nslcd daemon load the nslcd user's supplementary groups to have
+      more flexibility with assigning group permissions (LP: #1020303)
+    - fix logic error when falling back to getting ranged attribute values for
+      possibly binary attributes (thanks scan-build)
+    - fix a problem when storing negative hit to dn2uid cache (thanks
+      scan-build)
+    - small portability improvements
+    - grow all search filter buffers to 4096 bytes
+  * drop 01-use-poll-instead-of-select.patch which is part of 0.8.11
+  * install upstream ldapns.ldif instead of debian/ldapns.ldif one
+  * mark ldapns.schema and ldapns.ldif as example files
+  * upgrade to standards-version 3.9.4 (no changes needed)
+  * small language improvement in debconf template and list more SASL
+    mechanisms
+  * update X-Start-Before in the init script so that nslcd is started
+    before various IMAP servers (closes: #692633)
+  * update X-Start-Before in the init script so that nslcd is started
+    before a display manager
+  * update Should-Start in the init script so that nslcd is started after
+    a Kerberos KDC is available
+
+ -- Arthur de Jong <adejong@debian.org>  Fri, 16 Nov 2012 21:00:00 +0100
+
 nss-pam-ldapd (0.8.10-3) unstable; urgency=low
 
   * fix a problem in sed logic for commenting out disabled options
@@ -7,7 +90,7 @@ nss-pam-ldapd (0.8.10-3) unstable; urgency=low
     translations for a relatively minor change)
   * 01-use-poll-instead-of-select.patch: use poll() instead of select()
     for checking file descriptor activity to also correctly work if more
-    than FD_SETSIZE files are already open (closes: #690319)
+    than FD_SETSIZE files are already open (closes: #690319) (CVE-2013-0288)
 
  -- Arthur de Jong <adejong@debian.org>  Sun, 14 Oct 2012 23:00:00 +0200
 
