@@ -3,7 +3,9 @@ Section: admin
 Priority: extra
 Maintainer: Arthur de Jong <adejong@debian.org>
 Standards-Version: 3.9.4
-Build-Depends: debhelper (>=9), autotools-dev, libkrb5-dev, libldap2-dev, libsasl2-dev, po-debconf (>= 0.5.0), docbook2x, docbook-xml, libpam0g-dev
+Build-Depends: debhelper (>=9), autotools-dev, libkrb5-dev, libldap2-dev,
+               libsasl2-dev, po-debconf (>= 0.5.0), docbook2x, docbook-xml,
+               libpam0g-dev
 Homepage: http://arthurdejong.org/nss-pam-ldapd/
 Vcs-Svn: http://arthurdejong.org/svn/nss-pam-ldapd/debian/nss-pam-ldapd/trunk/
 Vcs-Browser: http://arthurdejong.org/viewvc/nss-pam-ldapd/debian/nss-pam-ldapd/trunk/
@@ -12,10 +14,13 @@ Package: nslcd
 Architecture: any
 Multi-Arch: foreign
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
-Recommends: nscd, libnss-ldapd | libnss-ldap, libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss, ldap-utils, bind9-host | host
+Recommends: nscd,
+            libnss-ldapd | libnss-ldap,
+            libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss,
+            ldap-utils, bind9-host | host
 Suggests: kstart
 Replaces: libnss-ldapd (<< 0.7.0)
-Breaks: libnss-ldapd (<< 0.7.0)
+Breaks: libnss-ldapd (<< 0.9.0), libpam-ldapd (<< 0.9.0)
 Description: Daemon for NSS and PAM lookups using LDAP
  This package provides a daemon for retrieving user account, and other
  system information from LDAP.
@@ -27,7 +32,7 @@ Package: libnss-ldapd
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd (>= 0.7.0)
+Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd (>= 0.9.0)
 Conflicts: libnss-ldap
 Provides: libnss-ldap
 Description: NSS module for using LDAP as a naming service
@@ -40,7 +45,8 @@ Package: libpam-ldapd
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd, libpam-runtime (>= 1.0.1-6), libpam0g (>= 1.1.3-2)
+Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd (>= 0.9.0),
+         libpam-runtime (>= 1.0.1-6), libpam0g (>= 1.1.3-2)
 Conflicts: libpam-ldap
 Provides: libpam-ldap
 Description: PAM module for using LDAP as an authentication service

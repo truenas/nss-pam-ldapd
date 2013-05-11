@@ -1,8 +1,43 @@
-nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
+nss-pam-ldapd (0.9.0-1) UNRELEASED; urgency=low
 
+  * new upstream release
+    - use network byte order in the the communications protocol between
+      nslcd and NSS and PAM modules  to work on mixed endian multiarch
+      systems (closes: #659488)
+    - netgroup lookups now makes a distinction between empty netgroups and
+      non-existing netgroups
+    - request and handle password policy controls on LDAP authentication
+    - implement support for nested groups which can be enabled with the
+      nss_nested_groups option (thanks Steve Hill) (closes: #647502)
+    - add a log option to configure log level and logging to plain files
+      (closes: #699841)
+    - add an nscd_invalidate option to invalidate the nscd cache after
+      recovering from LDAP connection problems (to clear any negative cache
+      entries)
+    - allow trimming expressions with ${foo#bar} syntax in attribute mapping
+      expressions (thanks Thorsten Glaser) (closes: #695044)
+      (pynslcd supports trimming expressions with full shell glob matching)
+    - support password modification in pynslcd
+    - support children search scope for systems that have it
+    - add a getent.ldap utility to perform nslcd queries bypassing the libc
+      NSS stack
+    - implement functionality for changing user information and provide a
+      chsh.ldap utility to allow users to change their login shell
+    - remove deprecated use_sasl, reconnect_tries, reconnect_maxsleeptime and
+      tls_checkpeer options which have been replaced long ago
+    - allow names with one character in default validnames option and allow
+      parentheses (taken from Fedora packages)
+    - fall back to updating the lastChange attribute with the normal LDAP
+      connection
+    - dump full nslcd configuration at debug level on start-up
+    - export an _nss_ldap_version symbol in the NSS module to make finding
+      version mismatches easier (the NSS module version is logged from nslcd)
+    - documentation improvements
+    - temporary disable the caching functionality of pynslcd
+    - usability improvements in the pynslcd implementation
   * debian/copyright: copyright year updates
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 11 May 2013 11:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sat, 11 May 2013 15:00:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
