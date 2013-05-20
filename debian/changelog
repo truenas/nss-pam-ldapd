@@ -40,8 +40,10 @@ nss-pam-ldapd (0.9.0-1) UNRELEASED; urgency=low
     be shared between nslcd, pynslcd and potentially nssov
   * introduce a nslcd-utils package that contains the getent.ldap and
     chsh.ldap utilities
+  * libnss-ldapd.postrm: do not offer to remove entries from nsswitch.conf
+    when switching between module implementation or architecture
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 11 May 2013 17:15:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Mon, 20 May 2013 17:15:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
