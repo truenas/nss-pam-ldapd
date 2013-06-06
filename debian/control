@@ -25,12 +25,10 @@ Suggests: kstart
 Replaces: libnss-ldapd (<< 0.7.0), nslcd-2
 Breaks: libnss-ldapd (<< 0.9.0), libpam-ldapd (<< 0.9.0)
 Conflicts: nslcd-2
-Description: Daemon for NSS and PAM lookups using LDAP
- This package provides a daemon for retrieving user account, and other
- system information from LDAP.
- .
- It is used by the libnss-ldapd and libpam-ldapd packages but by itself is
- not very useful.
+Description: daemon for NSS and PAM lookups using LDAP
+ This package provides a daemon for retrieving user accounts and similar
+ system information from LDAP. It is used by the libnss-ldapd and libpam-ldapd
+ packages but is not very useful by itself.
 
 Package: libnss-ldapd
 Architecture: any
@@ -40,10 +38,10 @@ Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd-2
 Conflicts: libnss-ldap
 Provides: libnss-ldap
 Description: NSS module for using LDAP as a naming service
- This package provides a Name Service Switch module that allows your LDAP
+ This package provides a Name Service Switch module that allows using an LDAP
  server to provide user account, group, host name, alias, netgroup, and
- basically any other information that you would normally get from /etc flat
- files or NIS.
+ basically any other information that would normally be retrieved from /etc
+ flat files or NIS.
 
 Package: libpam-ldapd
 Architecture: any
@@ -54,16 +52,15 @@ Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd-2,
 Conflicts: libpam-ldap
 Provides: libpam-ldap
 Description: PAM module for using LDAP as an authentication service
- This package provides a Pluggable Authentication Module that allows
- user authentication, authorisation and password management based on
- credentials stored in an LDAP server.
+ This package provides a Pluggable Authentication Module that provides user
+ authentication, authorization and password management based on credentials
+ stored in an LDAP server.
 
 Package: nslcd-utils
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, nslcd-2
 Description: Utilities for querying LDAP via nslcd
- These programmes provide for means to query and update information in LDAP
- via nslcd.
- .
-  getent.ldap - perform LDAP lookups bypassing nsswitch configuration
-  chsh.ldap - change a user's shell in LDAP
+ This package provides tools to query and update information in LDAP via
+ nslcd:
+  * chsh.ldap - change a user's shell in LDAP;
+  * getent.ldap - perform LDAP lookups bypassing nsswitch configuration.

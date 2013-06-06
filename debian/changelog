@@ -42,8 +42,11 @@ nss-pam-ldapd (0.9.0-1) UNRELEASED; urgency=low
     chsh.ldap utilities
   * libnss-ldapd.postrm: do not offer to remove entries from nsswitch.conf
     when switching between module implementation or architecture
+  * feedback from the debian-l10n-english contributors on the debconf
+    templates and package descriptions (closes: #707193) (thanks Christian
+    PERRIER and Justin B Rye)
 
- -- Arthur de Jong <adejong@debian.org>  Mon, 20 May 2013 17:15:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Thu, 06 Jun 2013 20:30:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 

@@ -2,7 +2,7 @@ Template: libnss-ldapd/nsswitch
 Type: multiselect
 Choices: aliases, ethers, group, hosts, netgroup, networks, passwd, protocols, rpc, services, shadow
 _Description: Name services to configure:
- For this package to work, you need to modify your /etc/nsswitch.conf to use
+ For this package to work, you need to modify the /etc/nsswitch.conf file to use
  the ldap datasource.
  .
  You can select the services that should have LDAP lookups enabled. The
