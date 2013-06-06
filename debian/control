@@ -59,7 +59,7 @@ Description: PAM module for using LDAP as an authentication service
 Package: nslcd-utils
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, nslcd-2
-Description: Utilities for querying LDAP via nslcd
+Description: utilities for querying LDAP via nslcd
  This package provides tools to query and update information in LDAP via
  nslcd:
   * chsh.ldap - change a user's shell in LDAP;
