@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.0-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.9.0-1) experimental; urgency=low
 
   * new upstream release
     - use network byte order in the the communications protocol between
@@ -52,7 +52,7 @@ nss-pam-ldapd (0.9.0-1) UNRELEASED; urgency=low
   * ensure that /var/run/nslcd is not removed and /etc/nslcd.conf is not
     purged as long as an nslcd implementation is still present
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 07 Jun 2013 11:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 07 Jun 2013 13:00:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
