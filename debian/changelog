@@ -45,8 +45,14 @@ nss-pam-ldapd (0.9.0-1) UNRELEASED; urgency=low
   * feedback from the debian-l10n-english contributors on the debconf
     templates and package descriptions (closes: #707193) (thanks Christian
     PERRIER and Justin B Rye)
+  * introduce a pynslcd package that provides an alternative, experimental
+    implementation of nslcd in Python (this package shares configuration
+    and packaging scripts with nslcd)
+  * 02-fix-missing-self.patch: fix a bug in pynslcd
+  * ensure that /var/run/nslcd is not removed and /etc/nslcd.conf is not
+    purged as long as an nslcd implementation is still present
 
- -- Arthur de Jong <adejong@debian.org>  Thu, 06 Jun 2013 20:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 07 Jun 2013 11:00:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
