@@ -4,9 +4,11 @@ nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
   * feedback from the debian-l10n-english contributors on the debconf
     templates and package descriptions (closes: #707193) (thanks Christian
     PERRIER and Justin B Rye)
-  * updated Japanese debconf translation by Kenshi Muto (closes: #711867)
-  * updated Russian debconf translation by Yuri Kozlov (closes: #711884)
-  * updated Slovak debconf translation by  Slavko (closes: #711889)
+  * debconf translation updates:
+    - Japanese by Kenshi Muto (closes: #711867)
+    - Russian by Yuri Kozlov (closes: #711884)
+    - Slovak by Slavko (closes: #711889)
+    - Portuguese by Américo Monteiro (closes: #712231)
 
  -- Arthur de Jong <adejong@debian.org>  Thu, 06 Jun 2013 20:00:00 +0200
 
