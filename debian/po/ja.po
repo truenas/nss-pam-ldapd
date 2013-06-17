@@ -2,10 +2,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.4\n"
+"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2013-06-10 19:03+0200\n"
-"PO-Revision-Date: 2011-08-18 00:10+0900\n"
+"PO-Revision-Date: 2013-06-10 23:29+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "Language: ja\n"
@@ -44,8 +44,6 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:1001
-#, fuzzy
-#| msgid "Multiple URIs can be specified by separating them with spaces."
 msgid "Multiple URIs can be separated by spaces."
 msgstr "スペースで区切って、複数の URI を指定できます。"
 
@@ -122,10 +120,6 @@ msgstr "LDAP データベースユーザ:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:4001
-#, fuzzy
-#| msgid ""
-#| "Enter the name of the account that will be used to log in to the LDAP "
-#| "database. This value should be specified as a DN (distinguished name)."
 msgid ""
 "Please enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
@@ -142,8 +136,6 @@ msgstr "LDAP ユーザパスワード:"
 #. Type: password
 #. Description
 #: ../nslcd.templates:5001
-#, fuzzy
-#| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
 "Please enter the password that will be used to log in to the LDAP database."
 msgstr "LDAP データベースにログインするのに使うパスワードを入力してください。"
@@ -157,10 +149,6 @@ msgstr "使用する SASL 機構:"
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| "Choose the SASL mechanism that will be used to authenticate to the LDAP "
-#| "database:"
 msgid ""
 "Please choose the SASL mechanism that will be used to authenticate to the "
 "LDAP database:"
@@ -169,16 +157,6 @@ msgstr "LDAP データベースを認証するのに使われる SASL 機構を�
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| " * auto: auto-negotiation;\n"
-#| " * LOGIN: deprecated in favor of PLAIN;\n"
-#| " * PLAIN: simple cleartext password mechanism;\n"
-#| " * NTLM: NT LAN Manager authentication mechanism;\n"
-#| " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
-#| " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
-#| " * GSSAPI: used for Kerberos;\n"
-#| " * OTP: a One Time Password mechanism."
 msgid ""
 " * auto: auto-negotiation;\n"
 " * LOGIN: deprecated in favor of PLAIN;\n"
@@ -198,8 +176,11 @@ msgstr ""
 " * NTLM: NT LAN Manager 認証機構;\n"
 " * CRAM-MD5: HMAC-MD5 ベースのチャレンジ-レスポンス機構;\n"
 " * DIGEST-MD5: HTTP ダイジェスト互換のチャレンジ-レスポンス機構;\n"
+" * SCRAM: salt を使ったチャレンジ-レスポンス機構;\n"
 " * GSSAPI: Kerberos により利用;\n"
-" * OTP: ワンタイムパスワード機構。"
+" * SKEY: S/KEY 機構 (今後は OTP を使うようにしてください);\n"
+" * OTP: ワンタイムパスワード機構;\n"
+" * EXTERNAL: 認証方法はコンテキストによって暗黙的に決まる。"
 
 #. Type: string
 #. Description
@@ -210,10 +191,6 @@ msgstr "SASL レルム:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL realm that will be used to authenticate to the LDAP "
-#| "database."
 msgid ""
 "Please enter the SASL realm that will be used to authenticate to the LDAP "
 "database."
@@ -229,10 +206,6 @@ msgstr "レルムは認証および認可識別子に追加されます。"
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "For GSSAPI this can be left blank to use information from the Kerberos "
-#| "credential cache."
 msgid ""
 "For GSSAPI, this can be left blank to use information from the Kerberos "
 "credentials cache."
@@ -249,10 +222,6 @@ msgstr "SASL 認証アイデンティティ:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:8001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL authentication identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the SASL authentication identity that will be used to "
 "authenticate to the LDAP database."
@@ -277,10 +246,6 @@ msgstr "SASL 代理認可アイデンティティ:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:9001
-#, fuzzy
-#| msgid ""
-#| "Enter the proxy authorization identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the proxy authorization identity that will be used to "
 "authenticate to the LDAP database."
@@ -307,24 +272,18 @@ msgstr "Cyrus SASL セキュリティプロパティ:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid "Cyrus SASL security properties:"
 msgid "Please enter the Cyrus SASL security properties."
-msgstr "Cyrus SASL セキュリティプロパティ:"
+msgstr "Cyrus SASL セキュリティプロパティを入力してください。"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid ""
-#| "Enter the Cyrus SASL security properties. Allowed values are described in "
-#| "the ldap.conf(5) manual page in the SASL OPTIONS section."
 msgid ""
 "Allowed values are described in the ldap.conf(5) manual page in the SASL "
 "OPTIONS section."
 msgstr ""
-"Cyrus SASL セキュリティプロパティを入力してください。許される値は、ldap."
-"conf(5) マニュアルページの SASL OPTIONS セクションに記載されています。"
+"許される値は、ldap.conf(5) マニュアルページの SASL OPTIONS セクションに記載さ"
+"れています。"
 
 #. Type: string
 #. Description
@@ -335,9 +294,6 @@ msgstr "Kerberos 信用キャッシュファイルのパス:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:11001
-#, fuzzy
-#| msgid ""
-#| "Enter the GSSAPI/Kerberos credential cache file name that will be used."
 msgid ""
 "Please enter the GSSAPI/Kerberos credential cache file name that will be "
 "used."
@@ -404,14 +360,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../nslcd.templates:13002
-#, fuzzy
-#| msgid ""
-#| " * never: no certificate will be requested or checked;\n"
-#| " * allow: a certificate will be requested, but it is not\n"
-#| "          required or checked;\n"
-#| " * try: a certificate will be requested and checked, but if no\n"
-#| "        certificate is provided it is ignored;\n"
-#| " * demand: a certificate will be requested, required, and checked."
 msgid ""
 " * never: no certificate will be requested or checked;\n"
 " * allow: a certificate will be requested, but it is not\n"
@@ -446,16 +394,12 @@ msgstr "設定する名前サービス:"
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
-#, fuzzy
-#| msgid ""
-#| "For this package to work, you need to modify your /etc/nsswitch.conf to "
-#| "use the ldap datasource."
 msgid ""
 "For this package to work, you need to modify the /etc/nsswitch.conf file to "
 "use the ldap datasource."
 msgstr ""
 "このパッケージが動作するために、ldap データソースを使うようあなたの /etc/"
-"nsswitch.conf を変更する必要があります。"
+"nsswitch.conf ファイルを変更する必要があります。"
 
 #. Type: multiselect
 #. Description
@@ -511,26 +455,3 @@ msgstr ""
 "/etc/nsswitch.conf を手動で編集するか、エントリを自動で今削除することを選べま"
 "す。エントリを今削除することを選ぶ場合、/etc/nsswitch.conf の変更内容を確認し"
 "てください。"
-
-#~ msgid "Enable shadow lookups through NSS?"
-#~ msgstr "NSS によるシャドーのルックアップを有効にしますか?"
-
-#~ msgid ""
-#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
-#~ "perform shadow password lookups. The shadow entries themselves may be "
-#~ "empty - that is, there is no need for password hashes to be exposed. See "
-#~ "http://bugs.debian.org/583492 for background."
-#~ msgstr ""
-#~ "LDAP ユーザがログインできるようにするためには、シャドーパスワードのルック"
-#~ "アップを行えるよう NSS モジュールを有効にする必要があります。シャドーのエ"
-#~ "ントリ自体は空でよく、つまりパスワードハッシュをさらす必要はありません。こ"
-#~ "の背景については http://bugs.debian.org/583492 を参照してください。"
-
-#~ msgid ""
-#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
-#~ "added automatically (in which case it should be reviewed afterwards) or "
-#~ "whether it should be left for an administrator to edit manually."
-#~ msgstr ""
-#~ "/etc/nsswitch.conf に自動で必須エントリを追加するか (この場合、後で再確認"
-#~ "してください)、管理者が手動で変更するためにそのままにしておくかを選んでく"
-#~ "ださい。"
