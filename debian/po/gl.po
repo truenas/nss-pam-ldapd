@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-ldapd 0.6\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2012-11-11 15:59+0100\n"
+"POT-Creation-Date: 2013-06-10 19:03+0200\n"
 "PO-Revision-Date: 2009-07-18 10:02+0200\n"
 "Last-Translator: Marce Villarino <mvillarino@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -130,7 +130,7 @@ msgstr "Usuario da base de datos LDAP:"
 #, fuzzy
 #| msgid "This value should be specified as a DN (distinguished name)."
 msgid ""
-"Enter the name of the account that will be used to log in to the LDAP "
+"Please enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
 msgstr "Este valor debe especificarse como un DN (nome distintivo)."
 
@@ -143,7 +143,10 @@ msgstr "Contrasinal do usuario de LDAP:"
 #. Type: password
 #. Description
 #: ../nslcd.templates:5001
-msgid "Enter the password that will be used to log in to the LDAP database."
+#, fuzzy
+#| msgid "Enter the password that will be used to log in to the LDAP database."
+msgid ""
+"Please enter the password that will be used to log in to the LDAP database."
 msgstr ""
 "Indique o contrasinal que se ha empregar para acceder á base de datos do "
 "LDAP."
@@ -160,8 +163,8 @@ msgstr ""
 #, fuzzy
 #| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
-"Choose the SASL mechanism that will be used to authenticate to the LDAP "
-"database:"
+"Please choose the SASL mechanism that will be used to authenticate to the "
+"LDAP database:"
 msgstr ""
 "Indique o contrasinal que se ha empregar para acceder á base de datos do "
 "LDAP."
@@ -176,10 +179,10 @@ msgid ""
 " * NTLM: NT LAN Manager authentication mechanism;\n"
 " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
 " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
-" * SCRAM: a salted challenge-response mechanism;\n"
+" * SCRAM: salted challenge-response mechanism;\n"
 " * GSSAPI: used for Kerberos;\n"
-" * SKEY: an S/KEY mechanism (obsoleted by OTP);\n"
-" * OTP: a One Time Password mechanism;\n"
+" * SKEY: S/KEY mechanism (obsoleted by OTP);\n"
+" * OTP: One Time Password mechanism;\n"
 " * EXTERNAL: authentication is implicit in the context."
 msgstr ""
 
@@ -195,7 +198,8 @@ msgstr ""
 #, fuzzy
 #| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
-"Enter the SASL realm that will be used to authenticate to the LDAP database."
+"Please enter the SASL realm that will be used to authenticate to the LDAP "
+"database."
 msgstr ""
 "Indique o contrasinal que se ha empregar para acceder á base de datos do "
 "LDAP."
@@ -210,8 +214,8 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:7001
 msgid ""
-"For GSSAPI this can be left blank to use information from the Kerberos "
-"credential cache."
+"For GSSAPI, this can be left blank to use information from the Kerberos "
+"credentials cache."
 msgstr ""
 
 #. Type: string
@@ -226,8 +230,8 @@ msgstr ""
 #, fuzzy
 #| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
-"Enter the SASL authentication identity that will be used to authenticate to "
-"the LDAP database."
+"Please enter the SASL authentication identity that will be used to "
+"authenticate to the LDAP database."
 msgstr ""
 "Indique o contrasinal que se ha empregar para acceder á base de datos do "
 "LDAP."
@@ -251,8 +255,8 @@ msgstr ""
 #, fuzzy
 #| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
-"Enter the proxy authorization identity that will be used to authenticate to "
-"the LDAP database."
+"Please enter the proxy authorization identity that will be used to "
+"authenticate to the LDAP database."
 msgstr ""
 "Indique o contrasinal que se ha empregar para acceder á base de datos do "
 "LDAP."
@@ -276,9 +280,15 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
+msgid "Please enter the Cyrus SASL security properties."
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:10001
 msgid ""
-"Enter the Cyrus SASL security properties. Allowed values are described in "
-"the ldap.conf(5) manual page in the SASL OPTIONS section."
+"Allowed values are described in the ldap.conf(5) manual page in the SASL "
+"OPTIONS section."
 msgstr ""
 
 #. Type: string
@@ -290,7 +300,9 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:11001
-msgid "Enter the GSSAPI/Kerberos credential cache file name that will be used."
+msgid ""
+"Please enter the GSSAPI/Kerberos credential cache file name that will be "
+"used."
 msgstr ""
 
 #. Type: boolean
@@ -354,12 +366,20 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../nslcd.templates:13002
+#, fuzzy
+#| msgid ""
+#| " * never: no certificate will be requested or checked;\n"
+#| " * allow: a certificate will be requested, but it is not\n"
+#| "          required or checked;\n"
+#| " * try: a certificate will be requested and checked, but if no\n"
+#| "        certificate is provided it is ignored;\n"
+#| " * demand: a certificate will be requested, required, and checked."
 msgid ""
 " * never: no certificate will be requested or checked;\n"
 " * allow: a certificate will be requested, but it is not\n"
 "          required or checked;\n"
 " * try: a certificate will be requested and checked, but if no\n"
-"        certificate is provided it is ignored;\n"
+"        certificate is provided, it is ignored;\n"
 " * demand: a certificate will be requested, required, and checked."
 msgstr ""
 " * nunca: non se pedirá nin se comprobará ningún certificado,\n"
@@ -387,9 +407,13 @@ msgstr "Servizos de nome a configurar:"
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
+#, fuzzy
+#| msgid ""
+#| "For this package to work, you need to modify your /etc/nsswitch.conf to "
+#| "use the ldap datasource."
 msgid ""
-"For this package to work, you need to modify your /etc/nsswitch.conf to use "
-"the ldap datasource."
+"For this package to work, you need to modify the /etc/nsswitch.conf file to "
+"use the ldap datasource."
 msgstr ""
 "Para que este paquete funcione, debe modificar o ficheiro /etc/nsswitch.conf "
 "para que empregue a fonte de datos ldap."
