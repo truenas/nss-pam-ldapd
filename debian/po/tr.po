@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Atila KOÇ <akoc@artielektronik.com.tr>, 2013.
+# Atila KOÇ <akoc@artielektronik.com.tr>, 2012, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd\n"
+"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2013-06-10 19:03+0200\n"
-"PO-Revision-Date: 2013-02-01 17:31+0200\n"
+"PO-Revision-Date: 2013-06-12 17:48+0200\n"
 "Last-Translator: Atila KOÇ <akoc@artielektronik.com.tr>\n"
 "Language-Team: Turkish <debian-l10n-turkish@lists.debian.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. Type: string
 #. Description
@@ -30,10 +31,10 @@ msgid ""
 "is \"ldap://<hostname_or_IP_address>:<port>/\". Alternatively, \"ldaps://\" "
 "or \"ldapi://\" can be used. The port number is optional."
 msgstr ""
-"LDAP sunucusunun Tekdüzen Kaynak Tanımlayıcısını (URI) giriniz.  Bu \"ldap://"
-"<sunucuadı_ya_da_IP>:<bağlantı_noktası>/\" şeklinde bir dizgedir. \"ldaps://"
-"\" ya da \"ldapi://\" de kullanılabilir. Bağlantı noktası (port) numarası "
-"seçime bağlıdır."
+"Lütfen LDAP sunucusunun Tekdüzen Kaynak Tanımlayıcısını (URI) giriniz.  Bu "
+"\"ldap://<sunucuadı_ya_da_IP>:<bağlantı_noktası>/\" şeklinde bir dizgedir. "
+"\"ldaps://\" ya da \"ldapi://\" de kullanılabilir. Bağlantı noktası (port) "
+"numarası seçime bağlıdır."
 
 #. Type: string
 #. Description
@@ -67,8 +68,8 @@ msgid ""
 "domain \"example.net\" would use \"dc=example,dc=net\" as the distinguished "
 "name of the search base."
 msgstr ""
-"LDAP arama tabanının belirgin adını giriniz. Çoğu site bunun için alan "
-"adlarının bileşenlerini kullanır. Örneğin alan adı \"example.net\" olan "
+"Lütfen LDAP arama tabanının belirgin adını giriniz. Çoğu site bunun için "
+"alan adlarının bileşenlerini kullanır. Örneğin alan adı \"example.net\" olan "
 "site, arama tabanı belirgin adı olarak \"dc=example,dc=net\" kullanır."
 
 #. Type: select
@@ -126,16 +127,12 @@ msgstr "LDAP veritabanı kullanıcısı:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:4001
-#, fuzzy
-#| msgid ""
-#| "Enter the name of the account that will be used to log in to the LDAP "
-#| "database. This value should be specified as a DN (distinguished name)."
 msgid ""
 "Please enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
 msgstr ""
-"LDAP veritabanında oturum açmak için kullanılacak hesabın adını giriniz. Bu "
-"değer bir belirgin ad (DN) şeklinde girilmelidir (örneğin dc=example,dc=net)."
+"Lütfen LDAP veritabanında oturum açmak için kullanılacak hesabın adını "
+"giriniz. Bu değer bir belirgin ad (DN) şeklinde girilmelidir."
 
 #. Type: password
 #. Description
@@ -146,11 +143,10 @@ msgstr "LDAP kullanıcı parolası:"
 #. Type: password
 #. Description
 #: ../nslcd.templates:5001
-#, fuzzy
-#| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
 "Please enter the password that will be used to log in to the LDAP database."
-msgstr "LDAP veritabanında oturum açmak için kullanılacak parolayı giriniz."
+msgstr ""
+"Lütfen LDAP veritabanında oturum açmak için kullanılacak parolayı giriniz."
 
 #. Type: select
 #. Description
@@ -161,31 +157,15 @@ msgstr "Kullanılacak SASL yöntemi:"
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| "Choose the SASL mechanism that will be used to authenticate to the LDAP "
-#| "database:"
 msgid ""
 "Please choose the SASL mechanism that will be used to authenticate to the "
 "LDAP database:"
-msgstr "LDAP veritabanında doğrulama için kullanılacak SASL yöntemini seçiniz:"
+msgstr ""
+"Lütfen LDAP veritabanında doğrulama için kullanılacak SASL yöntemini seçiniz:"
 
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| " * auto: auto-negotiation;\n"
-#| " * LOGIN: deprecated in favor of PLAIN;\n"
-#| " * PLAIN: simple cleartext password mechanism;\n"
-#| " * NTLM: NT LAN Manager authentication mechanism;\n"
-#| " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
-#| " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
-#| " * SCRAM: a salted challenge-response mechanism;\n"
-#| " * GSSAPI: used for Kerberos;\n"
-#| " * SKEY: an S/KEY mechanism (obsoleted by OTP);\n"
-#| " * OTP: a One Time Password mechanism;\n"
-#| " * EXTERNAL: authentication is implicit in the context."
 msgid ""
 " * auto: auto-negotiation;\n"
 " * LOGIN: deprecated in favor of PLAIN;\n"
@@ -201,14 +181,14 @@ msgid ""
 msgstr ""
 " * auto: otomatik uzlaşma;\n"
 " * LOGIN: daha yeni olan PLAIN yöntemini kullanmanız önerilir;\n"
-" * PLAIN: basit açık metin parola yöntemi;\n"
+" * PLAIN: basit, açık metin parola yöntemi;\n"
 " * NTLM: NT LAN Manager doğrulama yöntemi;\n"
 " * CRAM-MD5: HMAC-MD5 tabanlı sorma-karşılık alma şeması;\n"
 " * DIGEST-MD5: HTTP Digest uyumlu sorma-karşılık alma şeması;\n"
 " * SCRAM: rastgele veri ile karıştırılmış sorma-karşılık alma şeması;\n"
 " * GSSAPI: Kerberos ile kullanılır;\n"
 " * SKEY: S/KEY düzeneği (artık OTP kullanılmaktadır);\n"
-" * OTP: tek kullanımlık parola yöntemi;\n"
+" * OTP: Tek Kullanımlık Parola yöntemi;\n"
 " * EXTERNAL: doğrulama içeriğin içinde gerçekleşir."
 
 #. Type: string
@@ -220,14 +200,11 @@ msgstr "SASL bölgesi:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL realm that will be used to authenticate to the LDAP "
-#| "database."
 msgid ""
 "Please enter the SASL realm that will be used to authenticate to the LDAP "
 "database."
-msgstr "LDAP veritabanında doğrulama için kullanılacak SASL bölgesini giriniz:"
+msgstr ""
+"Lütfen LDAP veritabanında doğrulama için kullanılacak SASL bölgesini giriniz:"
 
 #. Type: string
 #. Description
@@ -239,16 +216,12 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "For GSSAPI this can be left blank to use information from the Kerberos "
-#| "credential cache."
 msgid ""
 "For GSSAPI, this can be left blank to use information from the Kerberos "
 "credentials cache."
 msgstr ""
-"GSSAPI kullanılması durumunda Kerberos kimlik alanından alınan bilginin "
-"kullanılması için bu bölüm boş bırakılabilir."
+"GSSAPI kullanılması durumunda, Kerberos kimlik alanından alınan bilginin "
+"kullanılması için, bu bölüm boş bırakılabilir."
 
 #. Type: string
 #. Description
@@ -259,16 +232,12 @@ msgstr "SASL doğrulama kimliği:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:8001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL authentication identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the SASL authentication identity that will be used to "
 "authenticate to the LDAP database."
 msgstr ""
-"LDAP veritabanına bağlanmak için kullanılacak SASL doğrulama kimliğini "
-"giriniz."
+"Lütfen LDAP veritabanına bağlanmak için kullanılacak SASL doğrulama "
+"kimliğini giriniz."
 
 #. Type: string
 #. Description
@@ -288,16 +257,12 @@ msgstr "SASL vekili yetkilendirme kimliği:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:9001
-#, fuzzy
-#| msgid ""
-#| "Enter the proxy authorization identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the proxy authorization identity that will be used to "
 "authenticate to the LDAP database."
 msgstr ""
-"LDAP veritabanında doğrulama için kullanılacak vekil doğrulama kimliğini "
-"giriniz."
+"Lütfen LDAP veritabanında doğrulama için kullanılacak vekil doğrulama "
+"kimliğini giriniz."
 
 #. Type: string
 #. Description
@@ -318,24 +283,18 @@ msgstr "Cyrus SASL güvenlik özellikleri:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid "Cyrus SASL security properties:"
 msgid "Please enter the Cyrus SASL security properties."
-msgstr "Cyrus SASL güvenlik özellikleri:"
+msgstr "Lütfen Cyrus SASL güvenlik özelliklerini giriniz."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid ""
-#| "Enter the Cyrus SASL security properties. Allowed values are described in "
-#| "the ldap.conf(5) manual page in the SASL OPTIONS section."
 msgid ""
 "Allowed values are described in the ldap.conf(5) manual page in the SASL "
 "OPTIONS section."
 msgstr ""
-"Cyrus SASL güvenlik özelliklerini giriniz. İzin verilen değerler ldap."
-"conf(5) el kitabında SASL OPTIONS bölümünde açıklanmıştır."
+"İzin verilen değerler ldap.conf(5) el kitabında SASL OPTIONS bölümünde "
+"açıklanmıştır."
 
 #. Type: string
 #. Description
@@ -346,13 +305,11 @@ msgstr "Kerberos yeterlilik belgesi (credential cache) dosya yolu:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:11001
-#, fuzzy
-#| msgid ""
-#| "Enter the GSSAPI/Kerberos credential cache file name that will be used."
 msgid ""
 "Please enter the GSSAPI/Kerberos credential cache file name that will be "
 "used."
-msgstr "Kullanılacak GSSAPI/Kerberos yeterlilik belgesi dosya adını giriniz."
+msgstr ""
+"Lütfen kullanılacak GSSAPI/Kerberos yeterlilik belgesi dosya adını giriniz."
 
 #. Type: boolean
 #. Description
@@ -416,14 +373,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../nslcd.templates:13002
-#, fuzzy
-#| msgid ""
-#| " * never: no certificate will be requested or checked;\n"
-#| " * allow: a certificate will be requested, but it is not\n"
-#| "          required or checked;\n"
-#| " * try: a certificate will be requested and checked, but if no\n"
-#| "        certificate is provided it is ignored;\n"
-#| " * demand: a certificate will be requested, required, and checked."
 msgid ""
 " * never: no certificate will be requested or checked;\n"
 " * allow: a certificate will be requested, but it is not\n"
@@ -434,9 +383,9 @@ msgid ""
 msgstr ""
 " * asla: sertifika istenmeyecek ya da denetlenmeyecek;\n"
 " * izin ver: bir sertifika istenecek, fakat gerekli görülmeyecek\n"
-"          ve denetlenmeyecek;\n"
+"             ve denetlenmeyecek;\n"
 " * dene: bir sertifika istenecek ve denetlenecek, ancak\n"
-"        bir sertifika alınamazsa önemsenmeyecek;\n"
+"         bir sertifika alınamazsa önemsenmeyecek;\n"
 " * talep et: bir sertifika istenecek, gerekli görülecek ve denetlenecek."
 
 #. Type: select
@@ -459,10 +408,6 @@ msgstr "Yapılandırılacak ad hizmetleri:"
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
-#, fuzzy
-#| msgid ""
-#| "For this package to work, you need to modify your /etc/nsswitch.conf to "
-#| "use the ldap datasource."
 msgid ""
 "For this package to work, you need to modify the /etc/nsswitch.conf file to "
 "use the ldap datasource."
