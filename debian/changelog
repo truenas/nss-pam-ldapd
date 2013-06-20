@@ -10,8 +10,9 @@ nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
     - Slovak by Slavko (closes: #711889)
     - Portuguese by Américo Monteiro (closes: #712231)
     - Danish by Joe Hansen (closes: #712311)
+    - German by Chris Leick (closes: #712728)
 
- -- Arthur de Jong <adejong@debian.org>  Thu, 06 Jun 2013 20:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Thu, 20 Jun 2013 22:30:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
