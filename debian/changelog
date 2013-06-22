@@ -13,8 +13,9 @@ nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
     - German by Chris Leick (closes: #712728)
     - French by Christian Perrier (closes: #712847)
     - Turkish by Atila KOÇ (closes: #712876)
+    - Czech by Miroslav Kure (closes: #713047)
 
- -- Arthur de Jong <adejong@debian.org>  Thu, 20 Jun 2013 22:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sat, 22 Jun 2013 10:00:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 

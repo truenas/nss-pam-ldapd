@@ -2,10 +2,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.4\n"
+"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2013-06-10 19:03+0200\n"
-"PO-Revision-Date: 2011-08-23 21:16+0200\n"
+"PO-Revision-Date: 2013-06-22 08:22+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "Language: cs\n"
@@ -44,10 +44,8 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:1001
-#, fuzzy
-#| msgid "Multiple URIs can be specified by separating them with spaces."
 msgid "Multiple URIs can be separated by spaces."
-msgstr "Více URI je možno zadat tak, že je oddělíte mezerami."
+msgstr "Více URI je možno oddělit mezerami."
 
 #. Type: string
 #. Description
@@ -122,16 +120,12 @@ msgstr "LDAP uživatel:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:4001
-#, fuzzy
-#| msgid ""
-#| "Enter the name of the account that will be used to log in to the LDAP "
-#| "database. This value should be specified as a DN (distinguished name)."
 msgid ""
 "Please enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
 msgstr ""
-"Zadejte jméno účtu, který se použije pro přístup k LDAP databázi. Měli byste "
-"jej zadat jako rozlišitelné jméno (DN)."
+"Zadejte jméno účtu, který se použije pro přístup k LDAP databázi. Mělo by to "
+"být zadáno jako rozlišitelné jméno (DN)."
 
 #. Type: password
 #. Description
@@ -142,8 +136,6 @@ msgstr "Heslo LDAP uživatele:"
 #. Type: password
 #. Description
 #: ../nslcd.templates:5001
-#, fuzzy
-#| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
 "Please enter the password that will be used to log in to the LDAP database."
 msgstr "Zadejte heslo, které se použije pro přístup k LDAP databázi."
@@ -157,29 +149,15 @@ msgstr "Metoda SASL, která se má použít:"
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| "Choose the SASL mechanism that will be used to authenticate to the LDAP "
-#| "database:"
 msgid ""
 "Please choose the SASL mechanism that will be used to authenticate to the "
 "LDAP database:"
 msgstr ""
-"Vyberte SASL mechanismus, který se použije pro autentizaci do LDAP databáze."
+"Vyberte SASL mechanismus, který se použije pro autentizaci do LDAP databáze:"
 
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| " * auto: auto-negotiation;\n"
-#| " * LOGIN: deprecated in favor of PLAIN;\n"
-#| " * PLAIN: simple cleartext password mechanism;\n"
-#| " * NTLM: NT LAN Manager authentication mechanism;\n"
-#| " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
-#| " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
-#| " * GSSAPI: used for Kerberos;\n"
-#| " * OTP: a One Time Password mechanism."
 msgid ""
 " * auto: auto-negotiation;\n"
 " * LOGIN: deprecated in favor of PLAIN;\n"
@@ -199,8 +177,11 @@ msgstr ""
 " * NTLM: autentizace stylem NT LAN Manager;\n"
 " * CRAM-MD5: challenge-response schéma založené na HMAC-MD5;\n"
 " * DIGEST-MD5: challenge-response schéma kompatibilní s HTTP Digest;\n"
+" * SCRAM: „osolené“ challenge-response schéma;\n"
 " * GSSAPI: používáno pro Kerberos;\n"
-" * OTP: jednorázová hesla."
+" * SKEY: S/KEY (staré, nahrazeno OTP);\n"
+" * OTP: jednorázová hesla;\n"
+" * EXTERNAL: autentizace je v kontextu implicitní."
 
 #. Type: string
 #. Description
@@ -211,10 +192,6 @@ msgstr "SASL říše:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL realm that will be used to authenticate to the LDAP "
-#| "database."
 msgid ""
 "Please enter the SASL realm that will be used to authenticate to the LDAP "
 "database."
@@ -229,10 +206,6 @@ msgstr "Říše se připojí k autentizačním a autorizačním identitám."
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "For GSSAPI this can be left blank to use information from the Kerberos "
-#| "credential cache."
 msgid ""
 "For GSSAPI, this can be left blank to use information from the Kerberos "
 "credentials cache."
@@ -249,10 +222,6 @@ msgstr "Identita pro SASL autentizaci:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:8001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL authentication identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the SASL authentication identity that will be used to "
 "authenticate to the LDAP database."
@@ -277,10 +246,6 @@ msgstr "Identita pro SASL proxy autorizaci:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:9001
-#, fuzzy
-#| msgid ""
-#| "Enter the proxy authorization identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the proxy authorization identity that will be used to "
 "authenticate to the LDAP database."
@@ -306,24 +271,18 @@ msgstr "Bezpečnostní prvky Cyrus SASL:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid "Cyrus SASL security properties:"
 msgid "Please enter the Cyrus SASL security properties."
-msgstr "Bezpečnostní prvky Cyrus SASL:"
+msgstr "Zadejte bezpečnostní prvky Cyrus SASL."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid ""
-#| "Enter the Cyrus SASL security properties. Allowed values are described in "
-#| "the ldap.conf(5) manual page in the SASL OPTIONS section."
 msgid ""
 "Allowed values are described in the ldap.conf(5) manual page in the SASL "
 "OPTIONS section."
 msgstr ""
-"Zadejte bezpečnostní prvky Cyrus SASL. Povolené hodnoty jsou popsány v "
-"manuálové stránce ldap.conf(5) v části SASL OPTIONS."
+"Povolené hodnoty jsou popsány v manuálové stránce ldap.conf(5) v části SASL "
+"OPTIONS."
 
 #. Type: string
 #. Description
@@ -334,9 +293,6 @@ msgstr "Cesta k cache souboru s Kerberos identitami:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:11001
-#, fuzzy
-#| msgid ""
-#| "Enter the GSSAPI/Kerberos credential cache file name that will be used."
 msgid ""
 "Please enter the GSSAPI/Kerberos credential cache file name that will be "
 "used."
@@ -405,14 +361,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../nslcd.templates:13002
-#, fuzzy
-#| msgid ""
-#| " * never: no certificate will be requested or checked;\n"
-#| " * allow: a certificate will be requested, but it is not\n"
-#| "          required or checked;\n"
-#| " * try: a certificate will be requested and checked, but if no\n"
-#| "        certificate is provided it is ignored;\n"
-#| " * demand: a certificate will be requested, required, and checked."
 msgid ""
 " * never: no certificate will be requested or checked;\n"
 " * allow: a certificate will be requested, but it is not\n"
@@ -447,15 +395,11 @@ msgstr "Jmenné služby, které se mají nastavit:"
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
-#, fuzzy
-#| msgid ""
-#| "For this package to work, you need to modify your /etc/nsswitch.conf to "
-#| "use the ldap datasource."
 msgid ""
 "For this package to work, you need to modify the /etc/nsswitch.conf file to "
 "use the ldap datasource."
 msgstr ""
-"Aby tento balík mohl fungovat, musíte upravit svůj /etc/nsswitch.conf tak, "
+"Aby tento balík mohl fungovat, musíte upravit soubor /etc/nsswitch.conf tak, "
 "aby používal datový zdroj ldap."
 
 #. Type: multiselect
