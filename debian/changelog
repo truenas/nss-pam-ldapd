@@ -18,7 +18,7 @@ nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
-  * New upstream release
+  * new upstream release:
     - include an extra sanity check to ensure not too many file
       descriptors are open
     - fix handling of gid configuration option if it listed before the uid
@@ -46,7 +46,7 @@ nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
 nss-pam-ldapd (0.8.12-1) experimental; urgency=low
 
-  * new upstream release
+  * new upstream release:
     - fix a problem with the sasl_canonicalize option that would cause
       errors on non-SASL enabled systems
     - ensure that the file descriptors in the NSS and PAM modules for
