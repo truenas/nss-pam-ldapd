@@ -2,10 +2,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.4\n"
+"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2013-06-10 19:03+0200\n"
-"PO-Revision-Date: 2011-08-29 20:57+0100\n"
+"PO-Revision-Date: 2013-06-24 22:18+0100\n"
 "Last-Translator: Arthur de Jong <arthur@arthurdejong.org>\n"
 "Language-Team: debian-l10n-dutch <debian-l10n-dutch@lists.debian.org>\n"
 "Language: nl\n"
@@ -45,8 +45,6 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:1001
-#, fuzzy
-#| msgid "Multiple URIs can be specified by separating them with spaces."
 msgid "Multiple URIs can be separated by spaces."
 msgstr "Meerdere URI's kunnen door spaties gescheiden worden."
 
@@ -125,10 +123,6 @@ msgstr "LDAP-databasegebruiker:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:4001
-#, fuzzy
-#| msgid ""
-#| "Enter the name of the account that will be used to log in to the LDAP "
-#| "database. This value should be specified as a DN (distinguished name)."
 msgid ""
 "Please enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
@@ -146,8 +140,6 @@ msgstr "Wachtwoord van de LDAP-gebruiker:"
 #. Type: password
 #. Description
 #: ../nslcd.templates:5001
-#, fuzzy
-#| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
 "Please enter the password that will be used to log in to the LDAP database."
 msgstr ""
@@ -163,10 +155,6 @@ msgstr "SASL-mechanisme dat gebruikt zal worden:"
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| "Choose the SASL mechanism that will be used to authenticate to the LDAP "
-#| "database:"
 msgid ""
 "Please choose the SASL mechanism that will be used to authenticate to the "
 "LDAP database:"
@@ -177,16 +165,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| " * auto: auto-negotiation;\n"
-#| " * LOGIN: deprecated in favor of PLAIN;\n"
-#| " * PLAIN: simple cleartext password mechanism;\n"
-#| " * NTLM: NT LAN Manager authentication mechanism;\n"
-#| " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
-#| " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
-#| " * GSSAPI: used for Kerberos;\n"
-#| " * OTP: a One Time Password mechanism."
 msgid ""
 " * auto: auto-negotiation;\n"
 " * LOGIN: deprecated in favor of PLAIN;\n"
@@ -206,8 +184,11 @@ msgstr ""
 " * NTLM: NT LAN Manager authenticatie-mechanisme;\n"
 " * CRAM-MD5: challenge-response-systeem op basis van HMAC-MD5;\n"
 " * DIGEST-MD5: HTTP Digest compatibel challenge-response-systeem;\n"
+" * SCRAM: gezouten challenge-response mechanisme;\n"
 " * GSSAPI: gebruikt voor Kerberos;\n"
-" * OTP: een eenmalig wachtwoord-mechanisme."
+" * SKEY: S/KEY mechanisme (achterhaald door OTP);\n"
+" * OTP: een eenmalig wachtwoord-mechanisme;\n"
+" * EXTERNAL: authenticatie is impliciet in de context."
 
 #. Type: string
 #. Description
@@ -218,10 +199,6 @@ msgstr "SASL-gebied:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL realm that will be used to authenticate to the LDAP "
-#| "database."
 msgid ""
 "Please enter the SASL realm that will be used to authenticate to the LDAP "
 "database."
@@ -240,10 +217,6 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "For GSSAPI this can be left blank to use information from the Kerberos "
-#| "credential cache."
 msgid ""
 "For GSSAPI, this can be left blank to use information from the Kerberos "
 "credentials cache."
@@ -260,10 +233,6 @@ msgstr "SASL authenticatie-identiteit:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:8001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL authentication identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the SASL authentication identity that will be used to "
 "authenticate to the LDAP database."
@@ -289,10 +258,6 @@ msgstr "SASL proxy autorisatie-identiteit:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:9001
-#, fuzzy
-#| msgid ""
-#| "Enter the proxy authorization identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the proxy authorization identity that will be used to "
 "authenticate to the LDAP database."
@@ -319,18 +284,12 @@ msgstr "Cyrus SASL beveiliginseigenschappen:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid "Cyrus SASL security properties:"
 msgid "Please enter the Cyrus SASL security properties."
-msgstr "Cyrus SASL beveiliginseigenschappen:"
+msgstr "Welke SASL beveiliginseigenschappen wilt u dat er gebruikt worden?"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid ""
-#| "Enter the Cyrus SASL security properties. Allowed values are described in "
-#| "the ldap.conf(5) manual page in the SASL OPTIONS section."
 msgid ""
 "Allowed values are described in the ldap.conf(5) manual page in the SASL "
 "OPTIONS section."
@@ -347,9 +306,6 @@ msgstr "Pad naar de Kerberos identificatie-cache:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:11001
-#, fuzzy
-#| msgid ""
-#| "Enter the GSSAPI/Kerberos credential cache file name that will be used."
 msgid ""
 "Please enter the GSSAPI/Kerberos credential cache file name that will be "
 "used."
@@ -417,14 +373,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../nslcd.templates:13002
-#, fuzzy
-#| msgid ""
-#| " * never: no certificate will be requested or checked;\n"
-#| " * allow: a certificate will be requested, but it is not\n"
-#| "          required or checked;\n"
-#| " * try: a certificate will be requested and checked, but if no\n"
-#| "        certificate is provided it is ignored;\n"
-#| " * demand: a certificate will be requested, required, and checked."
 msgid ""
 " * never: no certificate will be requested or checked;\n"
 " * allow: a certificate will be requested, but it is not\n"
@@ -461,10 +409,6 @@ msgstr "Te configureren naamdiensten:"
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
-#, fuzzy
-#| msgid ""
-#| "For this package to work, you need to modify your /etc/nsswitch.conf to "
-#| "use the ldap datasource."
 msgid ""
 "For this package to work, you need to modify the /etc/nsswitch.conf file to "
 "use the ldap datasource."
@@ -527,26 +471,3 @@ msgstr ""
 "U kunt /etc/nsswitch.conf met de hand bijwerken kunt de items nu automatisch "
 "laten verwijderen. Controleer de inhoud van /etc/nsswitch.conf als u ervoor "
 "kiest om ze nu te verwijderen."
-
-#~ msgid "Enable shadow lookups through NSS?"
-#~ msgstr "Shadow opzoeken aanzetten via NSS?"
-
-#~ msgid ""
-#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
-#~ "perform shadow password lookups. The shadow entries themselves may be "
-#~ "empty - that is, there is no need for password hashes to be exposed. See "
-#~ "http://bugs.debian.org/583492 for background."
-#~ msgstr ""
-#~ "Om inloggen van LDAP-gebruikers toe te staan moet de NSS module password "
-#~ "en shadow verzoeken afhandelen. De shadow resultaten kunnen zelf leeg "
-#~ "zijn, dat wil zeggen, er is geen noodzaak om wachtwoorden-hashes bloot te "
-#~ "stellen. Zie http://bugs.debian.org/583492 voor meer informatie."
-
-#~ msgid ""
-#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
-#~ "added automatically (in which case it should be reviewed afterwards) or "
-#~ "whether it should be left for an administrator to edit manually."
-#~ msgstr ""
-#~ "Wilt u dat /etc/nsswitch.conf automatisch wordt bijgewerkt om de vereiste "
-#~ "vermelding toe te voegen (controleer in dat geval de aanpassingen "
-#~ "achteraf) of wilt u het later handmatig doen?"
