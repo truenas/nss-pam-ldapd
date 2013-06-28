@@ -45,7 +45,7 @@ Replaces: nslcd-2
 Breaks: libnss-ldapd (<< 0.9.0), libpam-ldapd (<< 0.9.0)
 Conflicts: nslcd-2, nslcd
 Description: daemon for NSS and PAM lookups via LDAP - Python version
- This package provides a daemon for retrieving user account and similar
+ This package provides a daemon for retrieving user accounts and similar
  system information from LDAP. It is used by the libnss-ldapd and
  libpam-ldapd packages but is not very useful by itself.
  .
