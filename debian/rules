@@ -28,7 +28,9 @@ override_dh_auto_test:
 override_dh_installinit:
 	sed 's/^\(# Provides: *\|NSLCD_NAME=\)nslcd/\1pynslcd/' debian/nslcd.init > debian/pynslcd.init
 	dh_installinit --restart-after-upgrade
-	rm -f debian/pynslcd.init
+
+override_dh_clean:
+	dh_clean debian/pynslcd.init
 
 # temporary rule to also use the nslcdutils directory
 override_dh_python2:
