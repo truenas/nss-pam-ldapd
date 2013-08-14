@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.13-2) unstable; urgency=low
 
   * debian/copyright: copyright year updates
   * feedback from the debian-l10n-english contributors on the debconf
@@ -24,7 +24,7 @@ nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
     from nslcd.conf and not overwriting debconf values when reading other
     configuration files (closes: #717063)
 
- -- Arthur de Jong <adejong@debian.org>  Wed, 14 Aug 2013 20:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Wed, 14 Aug 2013 23:00:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
