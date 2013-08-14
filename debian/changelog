@@ -1,6 +1,10 @@
 nss-pam-ldapd (0.9.0-3) UNRELEASED; urgency=low
 
   * install the same documentation in pynslcd as with nslcd
+  * debian/nslcd.config: properly handle preseeding and reading values
+    from the configuration file by forcefully overwriting debconf values
+    from nslcd.conf and not overwriting debconf values when reading other
+    configuration files (closes: #717063)
 
  -- Arthur de Jong <adejong@debian.org>  Sun, 04 Aug 2013 16:18:59 +0200
 
