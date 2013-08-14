@@ -19,8 +19,12 @@ nss-pam-ldapd (0.8.13-2) UNRELEASED; urgency=low
     - Swedish by Martin Bagge (closes: #714651)
   * new debconf translations:
     - Polish by Michał Kułach (closes: #713921)
+  * debian/nslcd.config: properly handle preseeding and reading values
+    from the configuration file by forcefully overwriting debconf values
+    from nslcd.conf and not overwriting debconf values when reading other
+    configuration files (closes: #717063)
 
- -- Arthur de Jong <adejong@debian.org>  Mon, 01 Jul 2013 20:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Wed, 14 Aug 2013 20:00:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
