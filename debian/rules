@@ -21,7 +21,9 @@ override_dh_auto_configure:
 
 # run the tests but ignore the results
 override_dh_auto_test:
+	-chmod o-rwx tests/nslcd-test.conf
 	-dh_auto_test
+	-cat tests/test-suite.log
 
 # ensure that nslcd is not down during upgrades and generate a pynslcd
 # init script on the fly

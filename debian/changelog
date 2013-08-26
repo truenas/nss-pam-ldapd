@@ -29,6 +29,8 @@ nss-pam-ldapd (0.9.1-1) UNRELEASED; urgency=low
     from the configuration file by forcefully overwriting debconf values
     from nslcd.conf and not overwriting debconf values when reading other
     configuration files (closes: #717063)
+  * fix the tests by adding python-daemon and python-ldap to Build-Depends
+    and fixing the permissions of the test configuration file
 
  -- Arthur de Jong <adejong@debian.org>  Mon, 26 Aug 2013 22:30:00 +0200
 
