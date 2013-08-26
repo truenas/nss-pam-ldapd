@@ -1,12 +1,36 @@
-nss-pam-ldapd (0.9.0-3) UNRELEASED; urgency=low
+nss-pam-ldapd (0.9.1-1) UNRELEASED; urgency=low
 
+  * new upstream release:
+    - rename the nscd_invalidate option to reconnect_invalidate and allow
+      flushing the nfsidmap cache with the new option (perhaps a fix for
+      #500778)
+    - implement an -n switch to not daemonise (by Caleb Callaway)
+    - nslcd will now return partial shadow information to non-root users to
+      avoid authorisation problems with setgid shadow authentication helpers
+      with some PAM stacks (closes: #706913)
+    - nslcd will now retry failing LDAP connections after receiving SIGUSR1
+      (SIGUSR1 could be sent after re-establishing a network connection)
+    - the code for the nslcd utilities (getent.ldap and chsh.ldap) is now
+      installed in /usr/share/nslcd-utils
+    - improve error and help output of the getent.ldap command
+    - documentation updates
+    - fix for a potential, small memory leak in PAM module regarding temporary
+      saving of old password
+    - a large number of bug fixes and improvements in pynslcd
+    - hide passwords from the pynslcd debug output
+    - support start_tls, pam_password_prohibit_message, nss_min_uid and
+      nss_initgroups_ignoreusers in pynslcd
+    - fix rootpwmodpw handling in pynslcd
+    - complete a basic PAM implementation in pynslcd (some things such as
+      shadow attribute checking remain to be implemented)
+  * drop 02-fix-missing-self.patch which is part of 0.9.1
   * install the same documentation in pynslcd as with nslcd
   * debian/nslcd.config: properly handle preseeding and reading values
     from the configuration file by forcefully overwriting debconf values
     from nslcd.conf and not overwriting debconf values when reading other
     configuration files (closes: #717063)
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 04 Aug 2013 16:18:59 +0200
+ -- Arthur de Jong <adejong@debian.org>  Mon, 26 Aug 2013 22:30:00 +0200
 
 nss-pam-ldapd (0.9.0-2) experimental; urgency=low
 

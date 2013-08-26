@@ -1,2 +1,2 @@
 usr/bin/*.ldap
-usr/share/nslcdutils
+usr/share/nslcd-utils
