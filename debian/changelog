@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.1-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.9.1-1) experimental; urgency=low
 
   * new upstream release:
     - rename the nscd_invalidate option to reconnect_invalidate and allow
@@ -33,7 +33,7 @@ nss-pam-ldapd (0.9.1-1) UNRELEASED; urgency=low
   * install an if-up scripts for nslcd that sends SIGUSR1 to the daemon to
     re-check LDAP server availability
 
- -- Arthur de Jong <adejong@debian.org>  Tue, 27 Aug 2013 19:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Tue, 27 Aug 2013 20:00:00 +0200
 
 nss-pam-ldapd (0.9.0-2) experimental; urgency=low
 
