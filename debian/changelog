@@ -9,7 +9,6 @@ nss-pam-ldapd (0.9.1-1) UNRELEASED; urgency=low
       avoid authorisation problems with setgid shadow authentication helpers
       with some PAM stacks (closes: #706913)
     - nslcd will now retry failing LDAP connections after receiving SIGUSR1
-      (SIGUSR1 could be sent after re-establishing a network connection)
     - the code for the nslcd utilities (getent.ldap and chsh.ldap) is now
       installed in /usr/share/nslcd-utils
     - improve error and help output of the getent.ldap command
@@ -31,8 +30,10 @@ nss-pam-ldapd (0.9.1-1) UNRELEASED; urgency=low
     configuration files (closes: #717063)
   * fix the tests by adding python-daemon and python-ldap to Build-Depends
     and fixing the permissions of the test configuration file
+  * install an if-up scripts for nslcd that sends SIGUSR1 to the daemon to
+    re-check LDAP server availability
 
- -- Arthur de Jong <adejong@debian.org>  Mon, 26 Aug 2013 22:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Tue, 27 Aug 2013 19:00:00 +0200
 
 nss-pam-ldapd (0.9.0-2) experimental; urgency=low
 
