@@ -31,6 +31,7 @@ Description: daemon for NSS and PAM lookups using LDAP
 
 Package: pynslcd
 Architecture: all
+Multi-Arch: foreign
 Provides: nslcd-2
 Depends: ${python:Depends}, ${misc:Depends}, adduser,
          python-daemon, python-ldap, python-setproctitle, python-pyasn1,
