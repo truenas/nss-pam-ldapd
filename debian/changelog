@@ -3,8 +3,10 @@ nss-pam-ldapd (0.8.13-3) UNRELEASED; urgency=low
   * implement-nofork.patch: introduce a -n, --nofork option that skips the
     daemonising step on start-up (this is related to Ubuntu bug 806761 and
     may be required to get nslcd working with upstart)
+  * add init script dependency on $network to ensure that network is up
+    before starting nslcd (closes: #726435)
 
- -- Arthur de Jong <adejong@debian.org>  Wed, 16 Oct 2013 23:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Thu, 17 Oct 2013 21:00:00 +0200
 
 nss-pam-ldapd (0.8.13-2) unstable; urgency=low
 
