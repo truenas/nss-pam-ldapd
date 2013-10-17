@@ -1,1 +1,2 @@
 debian/pynslcd.init
+man/*.?
