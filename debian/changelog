@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.13-3) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.13-3) unstable; urgency=low
 
   * implement-nofork.patch: introduce a -n, --nofork option that skips the
     daemonising step on start-up (this is related to Ubuntu bug 806761 and
