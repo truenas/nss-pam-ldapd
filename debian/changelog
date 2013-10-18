@@ -9,6 +9,9 @@ nss-pam-ldapd (0.9.1-2) UNRELEASED; urgency=low
   * when upgrading from a pre-0.9 version, have the nslcd preinst check if
     a screensaver is running that could end up locking users out of their
     system (heavily based on the eglibc and pam packaging)
+  * when upgrading from a pre-0.9 version, have the nslcd postinst check
+    if any services need to be restarted to load the new modules (heavily
+    based on the eglibc and pam packaging)
 
  -- Arthur de Jong <adejong@debian.org>  Fri, 18 Oct 2013 14:00:00 +0200
 
