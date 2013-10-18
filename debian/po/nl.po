@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2013-10-18 14:41+0200\n"
-"PO-Revision-Date: 2013-06-24 22:18+0100\n"
+"PO-Revision-Date: 2013-10-18 15:00+0200\n"
 "Last-Translator: Arthur de Jong <arthur@arthurdejong.org>\n"
 "Language-Team: debian-l10n-dutch <debian-l10n-dutch@lists.debian.org>\n"
 "Language: nl\n"
@@ -409,14 +409,6 @@ msgstr "xscreensaver en xlockmore moeten voor het opwaarderen worden herstart"
 #. Type: error
 #. Description
 #: ../nslcd.templates:14001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system. Because of incompatible library changes, the "
-#| "upgrade of the GNU libc library will leave you unable to authenticate to "
-#| "these programs. You should arrange for these programs to be restarted or "
-#| "stopped before continuing this upgrade, to avoid locking your users out "
-#| "of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -426,11 +418,11 @@ msgid ""
 "sessions."
 msgstr ""
 "Er zijn één of meer actieve instanties van xscreensaver of xlockmore op dit "
-"systeem gevonden. Vanwege niet-compatibele wijzigingen zal de opwaardering "
-"van de GNU libc bibliotheek het gebruikers onmogelijk maken om zich tegen "
-"deze actieve instanties te authenticeren. U wordt sterk aangeraden om deze "
-"instanties te herstarten of stoppen voordat u de opwaardering van GNU libc "
-"voortzet, anders kunnen gebruikers van hun sessies worden buitengesloten."
+"systeem gevonden. Vanwege niet-compatibele wijzigingen kan de opwaardering "
+"van nslcd het gebruikers onmogelijk maken om zich tegen deze actieve "
+"instanties te authenticeren. U wordt sterk aangeraden om deze instanties te "
+"herstarten of stoppen voordat u de opwaardering van GNU libc voortzet, "
+"anders kunnen gebruikers van hun sessies worden buitengesloten."
 
 #. Type: boolean
 #. Description
@@ -462,21 +454,12 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr "Bij de opwaardering van de PAM-bibliotheek te herstarten diensten:"
+msgstr "Bij de opwaardering van nslcd te herstarten diensten:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -484,31 +467,24 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
-"actieve diensten en programma's die NSS gebruiken dienen herstart te worden, "
-"zo niet kunnen ze mogelijk geen opzoekingen en authenticatie meer doen (voor "
-"diensten zoals ssh kan dit gevolgen hebben voor de mogelijkheid om in te "
-"loggen). Gelieve de volgende, met spaties gescheiden lijst van init.d-"
-"scripts voor diensten die herstart dienen te worden te controleren en indien "
-"nodig bij te werken."
+"Actieve diensten en programma's die nslcd gebruiken dienen herstart te "
+"worden, zo niet kunnen ze mogelijk geen opzoekingen en authenticatie meer "
+"doen (voor diensten zoals ssh kan dit gevolgen hebben voor de mogelijkheid "
+"om in te loggen). Gelieve de volgende, met spaties gescheiden lijst van init."
+"d-scripts voor diensten die herstart dienen te worden te controleren en "
+"indien nodig bij te werken."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Herstarten van sommige diensten bij de PAM-opwaardering is mislukt"
+msgstr "Herstarten van sommige diensten bij de nslcd-opwaardering is mislukt"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr ""
-"De volgende diensten konden niet herstart worden bij de opwaardering van de "
-"PAM-bibliotheek:."
+msgstr "De volgende diensten konden niet herstart worden:"
 
 #. Type: error
 #. Description
@@ -529,12 +505,6 @@ msgstr "De beeldschermbeheerder dient handmatig herstart te worden"
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The wdm and xdm display managers require a restart for the new version of "
-#| "libpam, but there are X login sessions active on your system that would "
-#| "be terminated by this restart.  You will therefore need to restart these "
-#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
@@ -542,9 +512,9 @@ msgid ""
 "services by hand before further X logins will be possible."
 msgstr ""
 "De beelschermbeheerders wdm en xdm vereisen een herstart vanwege de nieuwe "
-"libpam-versie. Er zijn echter X-login-sessies actief op uw systeem die "
-"hierdoor afgesloten zouden worden. Nieuwe X-sessies starten via deze "
-"diensten is pas mogelijk eens u ze handmatig herstart heeft."
+"nslcd. Er zijn echter X-login-sessies actief op uw systeem die hierdoor "
+"afgesloten zouden worden. Nieuwe X-sessies starten via deze diensten is pas "
+"mogelijk eens u ze handmatig herstart heeft."
 
 #. Type: multiselect
 #. Description
