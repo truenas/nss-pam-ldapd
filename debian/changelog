@@ -6,8 +6,11 @@ nss-pam-ldapd (0.9.1-2) UNRELEASED; urgency=low
     before starting nslcd (closes: #726435)
   * clean generated manual pages to allow the package to be built tice in
     a row
+  * when upgrading from a pre-0.9 version, have the nslcd preinst check if
+    a screensaver is running that could end up locking users out of their
+    system (heavily based on the eglibc and pam packaging)
 
- -- Arthur de Jong <adejong@debian.org>  Thu, 17 Oct 2013 21:30:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 18 Oct 2013 14:00:00 +0200
 
 nss-pam-ldapd (0.9.1-1) experimental; urgency=low
 

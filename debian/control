@@ -15,6 +15,7 @@ Package: nslcd
 Architecture: any
 Multi-Arch: foreign
 Provides: nslcd-2
+Pre-Depends: ${misc:Pre-Depends}, debconf (>= 0.5) | debconf-2.0
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
 Recommends: nscd,
             libnss-ldapd | libnss-ldap,
