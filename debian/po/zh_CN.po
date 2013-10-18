@@ -424,11 +424,19 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr ""
+msgstr "在升级前必须重新启动 xscreensaver 和 xlockmore"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:14001
+#, fuzzy
+#| msgid ""
+#| "One or more running instances of xscreensaver or xlockmore have been "
+#| "detected on this system.  Because of incompatible library changes, the "
+#| "upgrade of the libpam-modules package will leave you unable to "
+#| "authenticate to these programs.  You should arrange for these programs to "
+#| "be restarted or stopped before continuing this upgrade, to avoid locking "
+#| "your users out of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -437,6 +445,9 @@ msgid ""
 "continuing this upgrade, to avoid locking your users out of their current "
 "sessions."
 msgstr ""
+"检测到一个或多个 xscreensaver 或 xlockmore 运行实例。因为不兼容的库的变化，"
+"libpam-module 软件包的升级将使您无法向这些程序认证。您需要在继续此升级前安排"
+"这些程序重新启动或者停止运行，以避免将您的用户锁在他们的当前会话之外。"
 
 #. Type: boolean
 #. Description
@@ -460,12 +471,21 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
+#, fuzzy
+#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr ""
+msgstr "因 PAM 库升级而需要重新启动的服务："
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
+#, fuzzy
+#| msgid ""
+#| "Running services and programs that are using NSS need to be restarted, "
+#| "otherwise they might not be able to do lookup or authentication any more "
+#| "(for services such as ssh, this can affect your ability to login). Please "
+#| "review the following space-separated list of init.d scripts for services "
+#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -473,18 +493,26 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
+"使用 NSS 的服务和程序需要重启，否则可能无法查询或验证(对于 ssh 这类的服务，有"
+"可能导致你无法登录)。请检查下面需要重启的 init.d 脚本列表(空格分隔)，如有误请"
+"改正。"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
+#, fuzzy
+#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr ""
+msgstr "为 PAM 升级重新启动某些服务失败"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
+#, fuzzy
+#| msgid ""
+#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr ""
+msgstr "升级 PAM 库时，下列服务无法被重新启动："
 
 #. Type: error
 #. Description
@@ -492,23 +520,33 @@ msgstr ""
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
-msgstr ""
+msgstr "你需要通过手动运行 '/etc/init.d/<service> start' 来启动这些服务。"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
 msgid "Display manager must be restarted manually"
-msgstr ""
+msgstr "必须手动重新启动显示管理器"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
+#, fuzzy
+#| msgid ""
+#| "The kdm, wdm, and xdm display managers require a restart for the new "
+#| "version of libpam, but there are X login sessions active on your system "
+#| "that would be terminated by this restart.  You will therefore need to "
+#| "restart these services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
 "terminated by this restart.  You will therefore need to restart these "
 "services by hand before further X logins will be possible."
 msgstr ""
+"由于 lipam 更新到新版本，显示管理器 kdm、wdm 和 xdm 需要被重新启动。但是您的"
+"系统上有正在运行的 X 登录会话，而如果重新启动显示管理器服务，这些 X 会话就会"
+"被强行结束。因此，您需要手动重新启动这些服务，否则您将无法再登录进 X 窗口系"
+"统。"
 
 #. Type: multiselect
 #. Description

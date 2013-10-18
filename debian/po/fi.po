@@ -392,7 +392,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr ""
+msgstr "xscreensaver ja xlockmore täytyy käynnistää uudelleen ennen päivitystä"
 
 #. Type: error
 #. Description
@@ -428,12 +428,21 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
+#, fuzzy
+#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr ""
+msgstr "Palvelut, jotka käynnistetään uudelleen PAM-kirjastoa päivitettäessä:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
+#, fuzzy
+#| msgid ""
+#| "Running services and programs that are using NSS need to be restarted, "
+#| "otherwise they might not be able to do lookup or authentication any more "
+#| "(for services such as ssh, this can affect your ability to login). Please "
+#| "review the following space-separated list of init.d scripts for services "
+#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -441,18 +450,31 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
+"Käynnissä olevat palvelut ja ohjelmat, jotka käyttävät NSS:ää, täytyy "
+"käynnistää uudelleen. Muuten ne eivät välttämättä enää pysty tekemään "
+"etsintöjä tai tunnistautumisia (esimerkiksi ssh:n kanssa kirjautuminen ei "
+"välttämättä onnistu). Tarkista alla oleva välilyönnein eroteltu lista niiden "
+"palveluiden init.d-komentosarjoista, jotka käynnistetään nyt uudelleen, ja "
+"korjaa sitä tarvittaessa."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
+#, fuzzy
+#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr ""
+msgstr "Virhe käynnistettäessä uudelleen palveluita PAMin päivitystä varten"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
+#, fuzzy
+#| msgid ""
+#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
 msgstr ""
+"Seuraavia palveluita ei voitu käynnistää uudelleen PAM-kirjastoa "
+"päivitettäessä:"
 
 #. Type: error
 #. Description
@@ -461,22 +483,34 @@ msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
 msgstr ""
+"Nämä palvelut tulee käynnistää käsin ajamalla ”/etc/init.d/<palvelu> start”."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
 msgid "Display manager must be restarted manually"
-msgstr ""
+msgstr "Näytönhallintaohjelma tulee käynnistää uudelleen käsin"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
+#, fuzzy
+#| msgid ""
+#| "The kdm, wdm, and xdm display managers require a restart for the new "
+#| "version of libpam, but there are X login sessions active on your system "
+#| "that would be terminated by this restart.  You will therefore need to "
+#| "restart these services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
 "terminated by this restart.  You will therefore need to restart these "
 "services by hand before further X logins will be possible."
 msgstr ""
+"Näytönhallintaohjelma kdm, wdm tai xdm tulee käynnistää uudelleen, jotta "
+"libpamin uusi versio tulee käyttöön. Järjestelmässä on kuitenkin aktiivisia "
+"X-istuntoja, jotka lopetettaisiin uudelleenkäynnistyksen yhteydessä. Tästä "
+"syystä palvelu tulee käynnistää uudelleen käsin ennen kuin uusia X-istuntoja "
+"voidaan avata."
 
 #. Type: multiselect
 #. Description

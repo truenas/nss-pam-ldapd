@@ -404,10 +404,19 @@ msgstr ""
 #: ../nslcd.templates:14001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
 msgstr ""
+"Yükseltme işleminden önce xscreensaver ve xlockmore yeniden başlatılmalı"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:14001
+#, fuzzy
+#| msgid ""
+#| "One or more running instances of xscreensaver or xlockmore have been "
+#| "detected on this system.  Because of incompatible library changes, the "
+#| "upgrade of the libpam-modules package will leave you unable to "
+#| "authenticate to these programs.  You should arrange for these programs to "
+#| "be restarted or stopped before continuing this upgrade, to avoid locking "
+#| "your users out of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -416,6 +425,11 @@ msgid ""
 "continuing this upgrade, to avoid locking your users out of their current "
 "sessions."
 msgstr ""
+"Sisteminizde çalışmakta olan birden fazla xscreensaver ya da xlockmore "
+"örneğine rastlandı. Uyumsuz kitaplık değişiklikleri yüzünden, libpam-modules "
+"paketinin yükseltilmesi bu programlarda kimlik doğrulamasını olanaksız hale "
+"getirecek. Mevcut oturumların kilitlenmesi önlemek için, yükseltme işlemine "
+"devam etmeden önce bu programları durdurmalı ya da yeniden başlatmalısınız."
 
 #. Type: boolean
 #. Description
@@ -439,12 +453,21 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
+#, fuzzy
+#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
 msgstr ""
+"PAM kitaplığının yükseltilmesi için yeniden başlatılacak olan hizmetler:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
+#, fuzzy
+#| msgid ""
+#| "Most services that use PAM need to be restarted to use modules built for "
+#| "this new version of libpam.  Please review the following space-separated "
+#| "list of init.d scripts for services to be restarted now, and correct it "
+#| "if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -452,18 +475,28 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
+"PAM kullanan çoğu hizmet, libpam'ın bu yeni sürümü için derlenmiş "
+"modüllerden yararlanabilmek için yeniden başlatılmak zorunda.  Lütfen "
+"yeniden başlatılacak hizmetlere ilişkin init.d betiklerinin boşluklarla "
+"ayrılmış aşağıdaki listesini inceleyin ve gerekliyse listeyi düzeltin."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
+#, fuzzy
+#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr ""
+msgstr "Bazı hizmetler PAM yükseltmesi için yeniden başlatılamadı"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
+#, fuzzy
+#| msgid ""
+#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
 msgstr ""
+"Aşağıdaki hizmetler PAM kitaplığının yükseltmesi için yeniden başlatılamadı:"
 
 #. Type: error
 #. Description
@@ -472,22 +505,35 @@ msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
 msgstr ""
+"Bu hizmetleri '/etc/init.d/<hizmet> start' komutunu kullanarak elinizle "
+"başlatmanız gerekecek."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
 msgid "Display manager must be restarted manually"
-msgstr ""
+msgstr "Görüntü yöneticisinin elle yeniden başlatılması gerekli"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
+#, fuzzy
+#| msgid ""
+#| "The kdm, wdm, and xdm display managers require a restart for the new "
+#| "version of libpam, but there are X login sessions active on your system "
+#| "that would be terminated by this restart.  You will therefore need to "
+#| "restart these services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
 "terminated by this restart.  You will therefore need to restart these "
 "services by hand before further X logins will be possible."
 msgstr ""
+"kdm, wdm ve xdm görüntü yöneticileri, libpam'ın yeni sürümünden "
+"yararlanabilmek için yeniden başlatılmalı; fakat sisteminizde etkin X "
+"oturumları var. Görüntü yöneticisi yeniden başlatılırsa bu oturumlar da "
+"kapatılır. Bu yüzden ileride yeni X oturumları açabilmek için bu hizmetleri "
+"elle yeniden başlatmanız gerekecek. "
 
 #. Type: multiselect
 #. Description

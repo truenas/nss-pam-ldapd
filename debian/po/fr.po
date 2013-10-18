@@ -416,11 +416,19 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr ""
+msgstr "Redémarrage nécessaire de xscreensaver et xlockmore avant mise à jour"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:14001
+#, fuzzy
+#| msgid ""
+#| "One or more running instances of xscreensaver or xlockmore have been "
+#| "detected on this system. Because of incompatible library changes, the "
+#| "upgrade of the GNU libc library will leave you unable to authenticate to "
+#| "these programs. You should arrange for these programs to be restarted or "
+#| "stopped before continuing this upgrade, to avoid locking your users out "
+#| "of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -429,12 +437,18 @@ msgid ""
 "continuing this upgrade, to avoid locking your users out of their current "
 "sessions."
 msgstr ""
+"Une ou plusieurs instances de xscreensaver et/ou de xlockmore ont été "
+"détectées sur le système. À cause de la modification de certaines "
+"bibliothèques, la mise à niveau de la bibliothèque C entrainera "
+"l'impossibilité de s'authentifier. Avant de poursuivre la mise à niveau, ces "
+"programmes doivent être redémarrés ou arrêtés pour éviter que des "
+"utilisateurs ne puissent plus accéder à leurs sessions."
 
 #. Type: boolean
 #. Description
 #: ../nslcd.templates:15001
 msgid "Restart services during package upgrades without asking?"
-msgstr ""
+msgstr "Redémarrer les services automatiquement lors des mises à jour ?"
 
 #. Type: boolean
 #. Description
@@ -448,16 +462,33 @@ msgid ""
 "necessary restarts will be done for you automatically so you can avoid being "
 "asked questions on each library upgrade."
 msgstr ""
+"Certains services installés sur le système doivent être redémarrés lorsque "
+"certaines bibliothèques, comme libpam, libc ou libssl, sont mises à jour. "
+"Comme ces redémarrages peuvent conduire à une interruption du service, le "
+"choix de les redémarrer ou non est en général offert lors de ces mises à "
+"jour. Vous pouvez choisir ici que ce choix ne soit plus offert et que les "
+"redémarrages aient lieu systématiquement lors des mises à jour de "
+"bibliothèques."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
+#, fuzzy
+#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
 msgstr ""
+"Services à redémarrer lors de la mise à niveau de la bibliothèque PAM :"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:16001
+#, fuzzy
+#| msgid ""
+#| "Running services and programs that are using NSS need to be restarted, "
+#| "otherwise they might not be able to do lookup or authentication any more "
+#| "(for services such as ssh, this can affect your ability to login). Please "
+#| "review the following space-separated list of init.d scripts for services "
+#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -465,18 +496,32 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
+"Les services et programmes qui utilisent NSS (« Name Service Switch ») "
+"doivent être redémarrés car leur système d'authentification risque de ne "
+"plus fonctionner (pour des services comme SSH, cela peut empêcher les "
+"connexions). Veuillez contrôler et éventuellement corriger la liste des "
+"services qui seront redémarrés maintenant (identifiés par le nom de leur "
+"script de démarrage)."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
+#, fuzzy
+#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
 msgstr ""
+"Erreur du redémarrage de certains services pour la mise à niveau de PAM"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:17001
+#, fuzzy
+#| msgid ""
+#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
 msgstr ""
+"Les services suivants n'ont pas pu être redémarrés lors de la mise à niveau "
+"de la bibliothèque PAM :"
 
 #. Type: error
 #. Description
@@ -485,22 +530,35 @@ msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
 msgstr ""
+"Il est nécessaire de les redémarrer vous-même avec la commande « /etc/init.d/"
+"<service> start »."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
 msgid "Display manager must be restarted manually"
-msgstr ""
+msgstr "Pas de redémarrage automatique du gestionnaire graphique de sessions"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
+#, fuzzy
+#| msgid ""
+#| "The wdm and xdm display managers require a restart for the new version of "
+#| "libpam, but there are X login sessions active on your system that would "
+#| "be terminated by this restart.  You will therefore need to restart these "
+#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
 "terminated by this restart.  You will therefore need to restart these "
 "services by hand before further X logins will be possible."
 msgstr ""
+"Les gestionnaires graphiques de session wdm et xdm nécessitent un "
+"redémarrage lors de la mise à niveau de libpam, mais il existe des sessions "
+"X actives sur ce système, qui seraient fermées par ce redémarrage. Vous "
+"devez donc redémarrer ces services vous-même avant de pouvoir effectuer à "
+"nouveau une connexion au serveur graphique."
 
 #. Type: multiselect
 #. Description
