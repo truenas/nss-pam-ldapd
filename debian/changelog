@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.1-2) UNRELEASED; urgency=low
+nss-pam-ldapd (0.9.1-2) experimental; urgency=low
 
   * mark pynslcd as multi-arch foreign to allow it to satisfy dependencies
     on any arch
@@ -15,7 +15,7 @@ nss-pam-ldapd (0.9.1-2) UNRELEASED; urgency=low
   * debconf translation updates:
     - Dutch by Arthur de Jong
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 18 Oct 2013 14:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 18 Oct 2013 16:00:00 +0200
 
 nss-pam-ldapd (0.9.1-1) experimental; urgency=low
 
