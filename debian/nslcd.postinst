@@ -275,7 +275,7 @@ s/^map[[:space:]]*group[[:space:]]*uniqueMember[[:space:]]*member[[:space:]]*$/#
   # applications that otherwise may no longer be able to lookup or
   # authenticate users (when nslcd is being configured, both modules should
   # already be unpacked and will be loaded by restarted services)
-  if dpkg --compare-versions "$2" lt "0.9"
+  if dpkg --compare-versions "$2" lt-nl "0.9"
   then
     # code heavily based on eglibc and pam postinst
 

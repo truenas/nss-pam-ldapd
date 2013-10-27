@@ -6,7 +6,7 @@ set -e
 # screensavers that could lock users out when nslcd is replaced
 # (the NSS and PAM modules loaded will not be able to communicate with the
 # new nslcd)
-if [ "$1" = upgrade ] && dpkg --compare-versions "$2" lt "0.9"
+if [ "$1" = upgrade ] && dpkg --compare-versions "$2" lt-nl "0.9"
 then
   # perhaps only do check if ldap is enabled in NSS and/or PAM stack
   if pidof xscreensaver xlockmore > /dev/null
