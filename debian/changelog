@@ -4,7 +4,7 @@ nss-pam-ldapd (0.9.1-2) experimental; urgency=low
     on any arch
   * add init script dependency on $network to ensure that network is up
     before starting nslcd (closes: #726435)
-  * clean generated manual pages to allow the package to be built tice in
+  * clean generated manual pages to allow the package to be built twice in
     a row
   * when upgrading from a pre-0.9 version, have the nslcd preinst check if
     a screensaver is running that could end up locking users out of their
