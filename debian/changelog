@@ -24,6 +24,7 @@ nss-pam-ldapd (0.9.2-1) UNRELEASED; urgency=low
     - add script for evaluating test environment availability
     - portability improvements in the test scripts and test environment
   * avoid prompting to restart services on initial install
+  * upgrade to standards-version 3.9.5 (no changes needed)
 
  -- Arthur de Jong <adejong@debian.org>  Thu, 31 Oct 2013 20:00:00 +0100
 
