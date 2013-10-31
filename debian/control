@@ -10,6 +10,7 @@ X-Python-Version: >= 2.6
 Homepage: http://arthurdejong.org/nss-pam-ldapd/
 Vcs-Svn: http://arthurdejong.org/svn/nss-pam-ldapd/debian/nss-pam-ldapd/trunk/
 Vcs-Browser: http://arthurdejong.org/viewvc/nss-pam-ldapd/debian/nss-pam-ldapd/trunk/
+XS-Testsuite: autopkgtest
 
 Package: nslcd
 Architecture: any
