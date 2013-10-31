@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.2-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.9.2-1) experimental; urgency=low
 
   * new upstream release:
     - increase password value buffer size (by Bersl)
@@ -28,7 +28,7 @@ nss-pam-ldapd (0.9.2-1) UNRELEASED; urgency=low
   * add DEP-8 autopkgtest end-to-end tests of installed packages running an
     LDAP server and performing NSS and PAM operations
 
- -- Arthur de Jong <adejong@debian.org>  Thu, 31 Oct 2013 21:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Thu, 31 Oct 2013 23:00:00 +0100
 
 nss-pam-ldapd (0.9.1-2) experimental; urgency=low
 
