@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.3-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.9.3-1) experimental; urgency=low
 
   * new upstream release:
     - make the dn2uid cache lifetime configurable with the cache
@@ -23,7 +23,7 @@ nss-pam-ldapd (0.9.3-1) UNRELEASED; urgency=low
   * add build dependencies for used Python modules because the new upstream
     version checks them with configure script
 
- -- Arthur de Jong <adejong@debian.org>  Wed, 12 Mar 2014 22:53:53 +0100
+ -- Arthur de Jong <adejong@debian.org>  Wed, 12 Mar 2014 23:00:00 +0100
 
 nss-pam-ldapd (0.9.2-1) experimental; urgency=low
 
