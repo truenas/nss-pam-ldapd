@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.8.14-1) UNRELEASED; urgency=low
+nss-pam-ldapd (0.8.14-1) unstable; urgency=low
 
   * new upstream release:
     - implement an -n switch to not daemonise (by Caleb Callaway)
