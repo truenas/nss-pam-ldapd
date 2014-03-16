@@ -13,6 +13,7 @@ nss-pam-ldapd (0.8.14-1) UNRELEASED; urgency=low
     - only log broken pipe errors in debugging mode
     - ignore SIGUSR1 and SIGUSR2 for future compatibility
   * drop implement-nofork.patch which is part of 0.8.14
+  * upgrade to standards-version 3.9.5 (no changes needed)
 
  -- Arthur de Jong <adejong@debian.org>  Sun, 16 Mar 2014 18:00:00 +0100
 
