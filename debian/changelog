@@ -1,3 +1,21 @@
+nss-pam-ldapd (0.8.14-1) UNRELEASED; urgency=low
+
+  * new upstream release:
+    - implement an -n switch to not daemonise (by Caleb Callaway)
+    - increase password value buffer size (by Bersl)
+    - fix for pwdLastSet attribute value handling (thanks Joshua Shire)
+    - fix buffer overflow on interrupted read that is hard to trigger (thanks
+      John Sullivan)
+    - fix a possible crash in the NSS module when retrieving large networks
+      entries (thanks Lukas Slebodnik)
+    - avoid more broken pipe errors by using a low timeout when aborting reading
+      requested information from nslcd (thanks John Sullivan)
+    - only log broken pipe errors in debugging mode
+    - ignore SIGUSR1 and SIGUSR2 for future compatibility
+  * drop implement-nofork.patch which is part of 0.8.14
+
+ -- Arthur de Jong <adejong@debian.org>  Sun, 16 Mar 2014 18:00:00 +0100
+
 nss-pam-ldapd (0.8.13-3) unstable; urgency=low
 
   * implement-nofork.patch: introduce a -n, --nofork option that skips the
