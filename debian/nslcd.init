@@ -2,7 +2,7 @@
 
 # /etc/init.d/nslcd script for starting and stopping nslcd
 # Copyright (C) 2006 West Consulting
-# Copyright (C) 2006, 2008, 2009, 2010, 2011, 2012 Arthur de Jong
+# Copyright (C) 2006, 2008, 2009, 2010, 2011, 2012, 2013 Arthur de Jong
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -34,7 +34,8 @@
 ### END INIT INFO
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
-NSLCD_BIN=/usr/sbin/nslcd
+NSLCD_NAME=nslcd
+NSLCD_BIN=/usr/sbin/$NSLCD_NAME
 NSLCD_DESC="LDAP connection daemon"
 NSLCD_CFG=/etc/nslcd.conf
 NSLCD_STATEDIR=/var/run/nslcd
@@ -68,7 +69,7 @@ then
 fi
 
 # read defaults
-[ -f /etc/default/nslcd ] && . /etc/default/nslcd
+[ -f /etc/default/$NSLCD_NAME ] && . /etc/default/$NSLCD_NAME
 
 k5start_start()
 {
@@ -119,7 +120,7 @@ start)
   # start k5start if needed
   k5start_start
   # start nslcd
-  log_daemon_msg "Starting $NSLCD_DESC" "nslcd"
+  log_daemon_msg "Starting $NSLCD_DESC" "$NSLCD_NAME"
   start-stop-daemon --start --oknodo \
                     --pidfile $NSLCD_PIDFILE \
                     --startas $NSLCD_BIN
@@ -127,10 +128,10 @@ start)
   ;;
 stop)
   # stop nslcd
-  log_daemon_msg "Stopping $NSLCD_DESC" "nslcd"
+  log_daemon_msg "Stopping $NSLCD_DESC" "$NSLCD_NAME"
   start-stop-daemon --stop --oknodo \
                     --pidfile $NSLCD_PIDFILE \
-                    --name nslcd
+                    --name "$NSLCD_NAME"
   log_end_msg $?
   [ -n "$NSLCD_PIDFILE" ] && rm -f $NSLCD_PIDFILE
   # stop k5start
@@ -139,10 +140,10 @@ stop)
 restart|force-reload)
   [ -d "$NSLCD_STATEDIR" ] || ( mkdir -m 755 "$NSLCD_STATEDIR" ; \
                                 chown nslcd:nslcd "$NSLCD_STATEDIR" )
-  log_daemon_msg "Restarting $NSLCD_DESC" "nslcd"
+  log_daemon_msg "Restarting $NSLCD_DESC" "$NSLCD_NAME"
   start-stop-daemon --stop --quiet --retry 10 \
                     --pidfile $NSLCD_PIDFILE \
-                    --name nslcd
+                    --name "$NSLCD_NAME"
   [ -n "$NSLCD_PIDFILE" ] && rm -f $NSLCD_PIDFILE
   k5start_stop
   k5start_start
@@ -156,14 +157,14 @@ status)
   then
     if $NSLCD_BIN --check
     then
-      log_success_msg "nslcd running (pid `cat $NSLCD_PIDFILE`)"
+      log_success_msg "$NSLCD_NAME running (pid `cat $NSLCD_PIDFILE`)"
       exit 0
     else
-      log_success_msg "nslcd stopped"
+      log_success_msg "$NSLCD_NAME stopped"
       exit 1
     fi
   else
-    log_success_msg "nslcd stopped"
+    log_success_msg "$NSLCD_NAME stopped"
     exit 3
   fi
   k5start_status

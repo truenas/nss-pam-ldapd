@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-06-10 19:03+0200\n"
+"POT-Creation-Date: 2013-10-18 14:41+0200\n"
 "PO-Revision-Date: 2013-06-10 20:52+0400\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
@@ -401,6 +401,149 @@ msgid ""
 msgstr ""
 "Если разрешена проверка сертификата, то в файле /etc/nslcd.conf должен быть "
 "параметр tls_cacertdir или tls_cacertfile."
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:14001
+msgid "xscreensaver and xlockmore must be restarted before upgrading"
+msgstr "Перед обновлением требуется перезапустить xscreensaver и xlockmore"
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:14001
+#, fuzzy
+#| msgid ""
+#| "One or more running instances of xscreensaver or xlockmore have been "
+#| "detected on this system. Because of incompatible library changes, the "
+#| "upgrade of the GNU libc library will leave you unable to authenticate to "
+#| "these programs. You should arrange for these programs to be restarted or "
+#| "stopped before continuing this upgrade, to avoid locking your users out "
+#| "of their current sessions."
+msgid ""
+"One or more running instances of xscreensaver or xlockmore have been "
+"detected on this system. Because of incompatible library changes, the "
+"upgrade of nslcd may leave you unable to authenticate to these programs. You "
+"should arrange for these programs to be restarted or stopped before "
+"continuing this upgrade, to avoid locking your users out of their current "
+"sessions."
+msgstr ""
+"В системе обнаружен один или несколько экземпляров xscreensaver или "
+"xlockmore. Так данное обновление устанавливает несовместимую с прошлой "
+"версией библиотеку GNU libc, эти программы не смогут проводить "
+"аутентификацию. Перед тем как продолжить данное обновление вам нужно "
+"перезапустить или остановить эти программы, чтобы избежать блокировки "
+"имеющихся сеансов пользователей."
+
+#. Type: boolean
+#. Description
+#: ../nslcd.templates:15001
+msgid "Restart services during package upgrades without asking?"
+msgstr "Перезапускать службы при обновлении пакета не задавая вопрос?"
+
+#. Type: boolean
+#. Description
+#: ../nslcd.templates:15001
+msgid ""
+"There are services installed on your system which need to be restarted when "
+"certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
+"these restarts may cause interruptions of service for the system, you will "
+"normally be prompted on each upgrade for the list of services you wish to "
+"restart.  You can choose this option to avoid being prompted; instead, all "
+"necessary restarts will be done for you automatically so you can avoid being "
+"asked questions on each library upgrade."
+msgstr ""
+"В системе установлены службы, которые требуют перезапуска после обновления "
+"определённых библиотек (например, libpam, libc и libssl). Так как это может "
+"вызвать перерыв в работе службы, обычно, при каждом обновлении выдаётся "
+"список служб, которые нужно перезапустить. Чтобы этот вопрос не задавался, "
+"вы можете ответить утвердительно; в этом случае все необходимые службы будут "
+"перезапущены автоматически."
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:16001
+#, fuzzy
+#| msgid "Services to restart for PAM library upgrade:"
+msgid "Services to restart for nslcd upgrade:"
+msgstr "Службы, которые будут перезапущены после обновления библиотеки PAM:"
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:16001
+#, fuzzy
+#| msgid ""
+#| "Running services and programs that are using NSS need to be restarted, "
+#| "otherwise they might not be able to do lookup or authentication any more "
+#| "(for services such as ssh, this can affect your ability to login). Please "
+#| "review the following space-separated list of init.d scripts for services "
+#| "to be restarted now, and correct it if needed."
+msgid ""
+"Running services and programs that are using nslcd need to be restarted, "
+"otherwise they might not be able to do lookup or authentication any more "
+"(for services such as ssh, this can affect your ability to login). Please "
+"review the following space-separated list of init.d scripts for services to "
+"be restarted now, and correct it if needed."
+msgstr ""
+"Запущенные службы и программы, которые используют NSS, должны быть "
+"перезапущены, иначе они не будут способны выполнять поиск или аутентификацию "
+"(для таких служб, как ssh, это может повлиять на возможность входа в "
+"систему). Просмотрите следующий разделённый пробелами список из скриптов "
+"init.d для служб, которые будут сейчас перезапущены и отредактируйте его при "
+"необходимости."
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:17001
+#, fuzzy
+#| msgid "Failure restarting some services for PAM upgrade"
+msgid "Failure restarting some services for nslcd upgrade"
+msgstr "При обновлении PAM перезапуск некоторых служб завершился неудачно"
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:17001
+#, fuzzy
+#| msgid ""
+#| "The following services could not be restarted for the PAM library upgrade:"
+msgid "The following services could not be restarted:"
+msgstr ""
+"При обновлении библиотеки PAM не удалось перезапустить следующие службы:"
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:17001
+msgid ""
+"You will need to start these manually by running '/etc/init.d/<service> "
+"start'."
+msgstr ""
+"Вам будет нужно запустить их вручную, для чего следует выполнить '/etc/init."
+"d/<служба> start'."
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:18001
+msgid "Display manager must be restarted manually"
+msgstr "Программу входа в систему нужно перезапустить вручную"
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:18001
+#, fuzzy
+#| msgid ""
+#| "The wdm and xdm display managers require a restart for the new version of "
+#| "libpam, but there are X login sessions active on your system that would "
+#| "be terminated by this restart.  You will therefore need to restart these "
+#| "services by hand before further X logins will be possible."
+msgid ""
+"The wdm and xdm display managers require a restart for the new version of "
+"nslcd, but there are X login sessions active on your system that would be "
+"terminated by this restart.  You will therefore need to restart these "
+"services by hand before further X logins will be possible."
+msgstr ""
+"Для работы с новой версией libpam программам для входа в систему wdm и xdm "
+"требуется перезапуск, но это прервёт все запущенные X-сеансы. Поэтому вам "
+"нужно перезапустить эти службы вручную для того, чтобы можно было снова "
+"входить в систему через X."
 
 #. Type: multiselect
 #. Description

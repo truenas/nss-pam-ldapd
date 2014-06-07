@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-06-10 19:03+0200\n"
+"POT-Creation-Date: 2013-10-18 14:41+0200\n"
 "PO-Revision-Date: 2012-01-01 15:17+0100\n"
 "Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
@@ -447,6 +447,139 @@ msgid ""
 msgstr ""
 "Hvis sertifikatkontroll er slått på, så må minst ett av valgene tls."
 "cacertdir eller tls.cscertfile være lagt inn i /etc/nslcd.conf."
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:14001
+msgid "xscreensaver and xlockmore must be restarted before upgrading"
+msgstr "xscreensaver og xlockmore må restartes før oppgradering"
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:14001
+#, fuzzy
+#| msgid ""
+#| "One or more running instances of xscreensaver or xlockmore have been "
+#| "detected on this system. Because of incompatible library changes, the "
+#| "upgrade of the GNU libc library will leave you unable to authenticate to "
+#| "these programs. You should arrange for these programs to be restarted or "
+#| "stopped before continuing this upgrade, to avoid locking your users out "
+#| "of their current sessions."
+msgid ""
+"One or more running instances of xscreensaver or xlockmore have been "
+"detected on this system. Because of incompatible library changes, the "
+"upgrade of nslcd may leave you unable to authenticate to these programs. You "
+"should arrange for these programs to be restarted or stopped before "
+"continuing this upgrade, to avoid locking your users out of their current "
+"sessions."
+msgstr ""
+"En eller flere instanser av xsreensaver eller xlockmore kjører nå på dette "
+"systemet. På  grunn av  ikke-kompatible endringer i biblioteket vil "
+"oppgraderingen gjøre det umulig å autentisere til disse programmene. Du må "
+"sørge for at disse programmene blir stoppet eller restartet før denne "
+"oppgraderingen fortsetter, slik at dine brukere ikke blir utestengt fra sine "
+"gjeldende økter."
+
+#. Type: boolean
+#. Description
+#: ../nslcd.templates:15001
+msgid "Restart services during package upgrades without asking?"
+msgstr "Skal tjenester restartes uten spørsmål under pakkeoppgraderinger?"
+
+#. Type: boolean
+#. Description
+#: ../nslcd.templates:15001
+msgid ""
+"There are services installed on your system which need to be restarted when "
+"certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
+"these restarts may cause interruptions of service for the system, you will "
+"normally be prompted on each upgrade for the list of services you wish to "
+"restart.  You can choose this option to avoid being prompted; instead, all "
+"necessary restarts will be done for you automatically so you can avoid being "
+"asked questions on each library upgrade."
+msgstr ""
+"På systemet ditt finnes det tjenester som må startes på nytt når visse "
+"biblioteker, slik som libpam, libc og libssl, oppgraderes. Slike omstarter "
+"kan avbryte tjenester på systemet, og normalt blir du spurt ved hver "
+"oppgradering om hvilke tjenester du vil starte på nytt. Du kan slå på dette "
+"valget for å slippe å bli spurt, da blir i stedet alle nødvendige omstarter "
+"gjort automatisk slik at du ikke får spørsmål ved hver "
+"biblioteksoppgradering."
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:16001
+#, fuzzy
+#| msgid "Services to restart for GNU libc library upgrade:"
+msgid "Services to restart for nslcd upgrade:"
+msgstr "Tjenester som skal restartes for oppgradering av GNU libc-biblioteket:"
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:16001
+#, fuzzy
+#| msgid ""
+#| "Running services and programs that are using NSS need to be restarted, "
+#| "otherwise they might not be able to do lookup or authentication any more "
+#| "(for services such as ssh, this can affect your ability to login). Please "
+#| "review the following space-separated list of init.d scripts for services "
+#| "to be restarted now, and correct it if needed."
+msgid ""
+"Running services and programs that are using nslcd need to be restarted, "
+"otherwise they might not be able to do lookup or authentication any more "
+"(for services such as ssh, this can affect your ability to login). Please "
+"review the following space-separated list of init.d scripts for services to "
+"be restarted now, and correct it if needed."
+msgstr ""
+"Tjenester og programmer som nå kjører og bruker NSS må startes på nytt, "
+"ellers vil de kanskje ikke kunne gjøre oppslag eller autentisering lenger "
+"(for tjenester slik som ssh kan dette påvirke din mulighet til å logge inn). "
+"Se gjennom denne lista over init.d-skripter som skal restartes nå, og rett "
+"opp hvis det trengs."
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:17001
+#, fuzzy
+#| msgid "Failure restarting some services for GNU libc upgrade"
+msgid "Failure restarting some services for nslcd upgrade"
+msgstr "Noen tjenester kunne ikke restartes for GNU libc-oppgradering"
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:17001
+#, fuzzy
+#| msgid ""
+#| "The following services could not be restarted for the GNU libc library "
+#| "upgrade:"
+msgid "The following services could not be restarted:"
+msgstr ""
+"Følgende tjenester kunne ikke restartes for oppgradering av GNU libc-"
+"biblioteket:"
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:17001
+msgid ""
+"You will need to start these manually by running '/etc/init.d/<service> "
+"start'."
+msgstr "Du må starte disse manuelt ved å kjøre «/etc/init.d/<service> start»."
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:18001
+msgid "Display manager must be restarted manually"
+msgstr ""
+
+#. Type: error
+#. Description
+#: ../nslcd.templates:18001
+msgid ""
+"The wdm and xdm display managers require a restart for the new version of "
+"nslcd, but there are X login sessions active on your system that would be "
+"terminated by this restart.  You will therefore need to restart these "
+"services by hand before further X logins will be possible."
+msgstr ""
 
 #. Type: multiselect
 #. Description

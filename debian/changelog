@@ -1,40 +1,142 @@
-nss-pam-ldapd (0.8.14-1) unstable; urgency=low
+nss-pam-ldapd (0.9.4-1) UNRELEASED; urgency=medium
+
+  * NOT RELEASED YET
+  * new upstream release:
+    - also handle password policy information on BIND failure (this makes it
+      possible to distinguish between a wrong password and an expired
+      password)
+    - fix mapping the member attribute to an empty string
+    - any buffers that may have held passwords are cleared before the memory
+      is released
+    - increase buffer size for passwords to support extremely long passwords
+      (thanks ushi)
+    - increase buffer size for DN to support very long names or names with
+      non-ASCII characters
+    - log an error in almost all places where a defined buffer is not large
+      enough to hold the provided data instead of just (sometimes silently)
+      failing
+    - logging improvements (start-up problems, login failures)
+  * add signature checking option to watch file
+
+ -- Arthur de Jong <adejong@debian.org>  Sat, 07 Jun 2014 23:17:06 +0200
+
+nss-pam-ldapd (0.9.3-1) experimental; urgency=low
 
   * new upstream release:
-    - implement an -n switch to not daemonise (by Caleb Callaway)
-    - increase password value buffer size (by Bersl)
+    - make the dn2uid cache lifetime configurable with the cache
+      configuration option
+    - have the nslcd process only exit after the service is completely
+      available to avoid race conditions in the init script
+    - the nslcd daemon now properly daemonises (double fork)
+    - support mapping the member attribute to an empty string to disable the
+      functionality to do extra lookups for member DN to member uid
+      translations
+    - implement deref control handling to request the LDAP server to
+      dereference group member attribute values to uid values
+    - support getting built-in groups from Active Directory (thanks Davy
+      Defaud)
     - fix for pwdLastSet attribute value handling (thanks Joshua Shire)
-    - fix buffer overflow on interrupted read that is hard to trigger (thanks
-      John Sullivan)
     - fix a possible crash in the NSS module when retrieving large networks
       entries (thanks Lukas Slebodnik)
-    - avoid more broken pipe errors by using a low timeout when aborting reading
-      requested information from nslcd (thanks John Sullivan)
+    - correct NSS h_errnop return value to indicate buffer too small (thanks
+      Nalin Dahyabhai)
+    - fix a bug with shadow values on 64-bit architectures (closes: #739330)
+  * debian/copyright: copyright year updates
+  * add build dependencies for used Python modules because the new upstream
+    version checks them with configure script
+
+ -- Arthur de Jong <adejong@debian.org>  Wed, 12 Mar 2014 23:00:00 +0100
+
+nss-pam-ldapd (0.9.2-1) experimental; urgency=low
+
+  * new upstream release:
+    - increase password value buffer size (by Bersl)
+    - avoid more broken pipe errors by using a low timeout when aborting
+      reading requested information from nslcd (thanks John Sullivan)
     - only log broken pipe errors in debugging mode
-    - ignore SIGUSR1 and SIGUSR2 for future compatibility
-  * drop implement-nofork.patch which is part of 0.8.14
+    - fix buffer overflow on interrupted read that is hard to trigger (thanks
+      John Sullivan)
+    - use clock_gettime() with CLOCK_MONOTONIC for timeout calculations to
+      avoid clock adjustments errors (thanks John Sullivan)
+    - extend test suite to test for CLOCK_MONOTONIC and timed IO timeout
+      calculations
+    - increase the maximum number of base statements per map to 31
+    - use larger nslcd send buffers to reduce the number of write operations
+      in nslcd and consequently the number of reads in the NSS and PAM modules
+      (thanks John Sullivan)
+    - also run invalidators after first successful search
+    - various clean-ups, portability improvements and fixes for compiler
+      warnings
+    - import configure checks of Python modules
+    - provide a script for setting up slapd in a test environment,
+      automatically loaded with the required test data
+    - add script for evaluating test environment availability
+    - portability improvements in the test scripts and test environment
+  * avoid prompting to restart services on initial install
   * upgrade to standards-version 3.9.5 (no changes needed)
+  * add DEP-8 autopkgtest end-to-end tests of installed packages running an
+    LDAP server and performing NSS and PAM operations
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 16 Mar 2014 18:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Thu, 31 Oct 2013 23:00:00 +0100
 
-nss-pam-ldapd (0.8.13-3) unstable; urgency=low
+nss-pam-ldapd (0.9.1-2) experimental; urgency=low
 
-  * implement-nofork.patch: introduce a -n, --nofork option that skips the
-    daemonising step on start-up (this is related to Ubuntu bug 806761 and
-    may be required to get nslcd working with upstart)
+  * mark pynslcd as multi-arch foreign to allow it to satisfy dependencies
+    on any arch
   * add init script dependency on $network to ensure that network is up
     before starting nslcd (closes: #726435)
-  * clean generated manual pages to allow the package to be built tice in
+  * clean generated manual pages to allow the package to be built twice in
     a row
+  * when upgrading from a pre-0.9 version, have the nslcd preinst check if
+    a screensaver is running that could end up locking users out of their
+    system (heavily based on the eglibc and pam packaging)
+  * when upgrading from a pre-0.9 version, have the nslcd postinst check
+    if any services need to be restarted to load the new modules (heavily
+    based on the eglibc and pam packaging)
+  * debconf translation updates:
+    - Dutch by Arthur de Jong
 
- -- Arthur de Jong <adejong@debian.org>  Thu, 17 Oct 2013 23:50:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 18 Oct 2013 16:00:00 +0200
 
-nss-pam-ldapd (0.8.13-2) unstable; urgency=low
+nss-pam-ldapd (0.9.1-1) experimental; urgency=low
 
-  * debian/copyright: copyright year updates
-  * feedback from the debian-l10n-english contributors on the debconf
-    templates and package descriptions (closes: #707193) (thanks Christian
-    PERRIER and Justin B Rye)
+  * new upstream release:
+    - rename the nscd_invalidate option to reconnect_invalidate and allow
+      flushing the nfsidmap cache with the new option (perhaps a fix for
+      #500778)
+    - implement an -n switch to not daemonise (by Caleb Callaway)
+    - nslcd will now return partial shadow information to non-root users to
+      avoid authorisation problems with setgid shadow authentication helpers
+      with some PAM stacks (closes: #706913)
+    - nslcd will now retry failing LDAP connections after receiving SIGUSR1
+    - the code for the nslcd utilities (getent.ldap and chsh.ldap) is now
+      installed in /usr/share/nslcd-utils
+    - improve error and help output of the getent.ldap command
+    - documentation updates
+    - fix for a potential, small memory leak in PAM module regarding temporary
+      saving of old password
+    - a large number of bug fixes and improvements in pynslcd
+    - hide passwords from the pynslcd debug output
+    - support start_tls, pam_password_prohibit_message, nss_min_uid and
+      nss_initgroups_ignoreusers in pynslcd
+    - fix rootpwmodpw handling in pynslcd
+    - complete a basic PAM implementation in pynslcd (some things such as
+      shadow attribute checking remain to be implemented)
+  * drop 02-fix-missing-self.patch which is part of 0.9.1
+  * install the same documentation in pynslcd as with nslcd
+  * debian/nslcd.config: properly handle preseeding and reading values
+    from the configuration file by forcefully overwriting debconf values
+    from nslcd.conf and not overwriting debconf values when reading other
+    configuration files (closes: #717063)
+  * fix the tests by adding python-daemon and python-ldap to Build-Depends
+    and fixing the permissions of the test configuration file
+  * install an if-up scripts for nslcd that sends SIGUSR1 to the daemon to
+    re-check LDAP server availability
+
+ -- Arthur de Jong <adejong@debian.org>  Tue, 27 Aug 2013 20:00:00 +0200
+
+nss-pam-ldapd (0.9.0-2) experimental; urgency=low
+
   * debconf translation updates:
     - Japanese by Kenshi Muto (closes: #711867)
     - Russian by Yuri Kozlov (closes: #711884)
@@ -50,12 +152,67 @@ nss-pam-ldapd (0.8.13-2) unstable; urgency=low
     - Swedish by Martin Bagge (closes: #714651)
   * new debconf translations:
     - Polish by Michał Kułach (closes: #713921)
-  * debian/nslcd.config: properly handle preseeding and reading values
-    from the configuration file by forcefully overwriting debconf values
-    from nslcd.conf and not overwriting debconf values when reading other
-    configuration files (closes: #717063)
+  * remove debian/pynslcd.init in clean target
+  * move python build dependency from Build-Depends-Indep to Build-Depends
+    because dh_python2 is used for every dh invocation
 
- -- Arthur de Jong <adejong@debian.org>  Wed, 14 Aug 2013 23:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Mon, 15 Jul 2013 23:00:00 +0200
+
+nss-pam-ldapd (0.9.0-1) experimental; urgency=low
+
+  * new upstream release:
+    - use network byte order in the the communications protocol between
+      nslcd and NSS and PAM modules  to work on mixed endian multiarch
+      systems (closes: #659488)
+    - netgroup lookups now makes a distinction between empty netgroups and
+      non-existing netgroups
+    - request and handle password policy controls on LDAP authentication
+    - implement support for nested groups which can be enabled with the
+      nss_nested_groups option (thanks Steve Hill) (closes: #647502)
+    - add a log option to configure log level and logging to plain files
+      (closes: #699841)
+    - add an nscd_invalidate option to invalidate the nscd cache after
+      recovering from LDAP connection problems (to clear any negative cache
+      entries)
+    - allow trimming expressions with ${foo#bar} syntax in attribute mapping
+      expressions (thanks Thorsten Glaser) (closes: #695044)
+      (pynslcd supports trimming expressions with full shell glob matching)
+    - support password modification in pynslcd
+    - support children search scope for systems that have it
+    - add a getent.ldap utility to perform nslcd queries bypassing the libc
+      NSS stack
+    - implement functionality for changing user information and provide a
+      chsh.ldap utility to allow users to change their login shell
+    - remove deprecated use_sasl, reconnect_tries, reconnect_maxsleeptime and
+      tls_checkpeer options which have been replaced long ago
+    - allow names with one character in default validnames option and allow
+      parentheses (taken from Fedora packages)
+    - fall back to updating the lastChange attribute with the normal LDAP
+      connection
+    - dump full nslcd configuration at debug level on start-up
+    - export an _nss_ldap_version symbol in the NSS module to make finding
+      version mismatches easier (the NSS module version is logged from nslcd)
+    - documentation improvements
+    - temporary disable the caching functionality of pynslcd
+    - usability improvements in the pynslcd implementation
+  * debian/copyright: copyright year updates
+  * introduce a nslcd-2 (for the protocol version) virtual package that can
+    be shared between nslcd, pynslcd and potentially nssov
+  * introduce a nslcd-utils package that contains the getent.ldap and
+    chsh.ldap utilities
+  * libnss-ldapd.postrm: do not offer to remove entries from nsswitch.conf
+    when switching between module implementation or architecture
+  * feedback from the debian-l10n-english contributors on the debconf
+    templates and package descriptions (closes: #707193) (thanks Christian
+    PERRIER and Justin B Rye)
+  * introduce a pynslcd package that provides an alternative, experimental
+    implementation of nslcd in Python (this package shares configuration
+    and packaging scripts with nslcd)
+  * 02-fix-missing-self.patch: fix a bug in pynslcd
+  * ensure that /var/run/nslcd is not removed and /etc/nslcd.conf is not
+    purged as long as an nslcd implementation is still present
+
+ -- Arthur de Jong <adejong@debian.org>  Fri, 07 Jun 2013 13:00:00 +0200
 
 nss-pam-ldapd (0.8.13-1) unstable; urgency=low
 
