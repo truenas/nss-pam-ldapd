@@ -1,6 +1,6 @@
-nss-pam-ldapd (0.9.4-1) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.4-1) unstable; urgency=medium
 
-  * NOT RELEASED YET
+  * upload to unstable
   * new upstream release:
     - also handle password policy information on BIND failure (this makes it
       possible to distinguish between a wrong password and an expired
