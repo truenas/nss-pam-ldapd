@@ -1,3 +1,11 @@
+nss-pam-ldapd (0.9.4-2) UNRELEASED; urgency=medium
+
+  * NOT RELEASED YET
+  * debconf translation updates:
+    - Portuguese by Américo Monteiro (closes: #751047)
+
+ -- Arthur de Jong <adejong@debian.org>  Tue, 10 Jun 2014 20:00:00 +0200
+
 nss-pam-ldapd (0.9.4-1) unstable; urgency=medium
 
   * upload to unstable
