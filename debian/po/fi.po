@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-ldapd\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-10-18 14:41+0200\n"
+"POT-Creation-Date: 2014-06-08 11:45+0200\n"
 "PO-Revision-Date: 2009-06-23 21:44+0300\n"
 "Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
 "Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
@@ -378,25 +378,29 @@ msgstr ""
 "               ei saada, tästä ei välitetä\n"
 " * vaadi:      Varmenne vaaditaan ja tarkastetaan."
 
-#. Type: select
+#. Type: string
 #. Description
-#: ../nslcd.templates:13002
-msgid ""
-"If certificate checking is enabled, at least one of the tls_cacertdir or "
-"tls_cacertfile options must be put in /etc/nslcd.conf."
+#: ../nslcd.templates:14001
+msgid "Certificate authority certificate:"
 msgstr ""
-"Jos tarkastus on käytössä, tulisi ainakin toinen asetuksista tls_cacertdir "
-"ja tls_cacertfile laittaa tiedostoon /etc/nslcd.conf."
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:14001
+msgid ""
+"When certificate checking is enabled this file contains the X.509 "
+"certificate that is used to check the certificate provided by the server."
+msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
 msgstr "xscreensaver ja xlockmore täytyy käynnistää uudelleen ennen päivitystä"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -408,13 +412,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid ""
 "There are services installed on your system which need to be restarted when "
 "certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
@@ -427,7 +431,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
@@ -435,7 +439,7 @@ msgstr "Palvelut, jotka käynnistetään uudelleen PAM-kirjastoa päivitettäess
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid ""
 #| "Running services and programs that are using NSS need to be restarted, "
@@ -459,7 +463,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
@@ -467,7 +471,7 @@ msgstr "Virhe käynnistettäessä uudelleen palveluita PAMin päivitystä varten
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid ""
 #| "The following services could not be restarted for the PAM library upgrade:"
@@ -478,7 +482,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
@@ -487,13 +491,13 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 msgid "Display manager must be restarted manually"
 msgstr "Näytönhallintaohjelma tulee käynnistää uudelleen käsin"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 #, fuzzy
 #| msgid ""
 #| "The kdm, wdm, and xdm display managers require a restart for the new "
@@ -586,6 +590,13 @@ msgstr ""
 "Voit muokata tiedostoa /etc/nsswitch.conf käsin tai poistaa tietueet nyt "
 "automaattisesti. Muista tarkastaa tiedoston /etc/nsswitch.conf muutokset, "
 "jos poistat tietueet nyt."
+
+#~ msgid ""
+#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
+#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
+#~ msgstr ""
+#~ "Jos tarkastus on käytössä, tulisi ainakin toinen asetuksista "
+#~ "tls_cacertdir ja tls_cacertfile laittaa tiedostoon /etc/nslcd.conf."
 
 #~ msgid ""
 #~ "If the LDAP database requires a login for normal lookups, enter the name "

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-10-18 14:41+0200\n"
+"POT-Creation-Date: 2014-06-08 11:45+0200\n"
 "PO-Revision-Date: 2013-06-15 23:51+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -395,25 +395,29 @@ msgstr ""
 " * kræv: Der vil blive spurgt efter et certifikat, det er krævet og det\n"
 "         kontrolleres."
 
-#. Type: select
+#. Type: string
 #. Description
-#: ../nslcd.templates:13002
-msgid ""
-"If certificate checking is enabled, at least one of the tls_cacertdir or "
-"tls_cacertfile options must be put in /etc/nslcd.conf."
+#: ../nslcd.templates:14001
+msgid "Certificate authority certificate:"
 msgstr ""
-"Hvis certifikattjek er aktiveret skal mindst en af tilvalgene tls_cacertdir "
-"eller tls_cacertfile være placeret i /etc/nslcd.conf."
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:14001
+msgid ""
+"When certificate checking is enabled this file contains the X.509 "
+"certificate that is used to check the certificate provided by the server."
+msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
 msgstr "xscreensaver og xlockmore skal genstartes før opgradering"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 #, fuzzy
 #| msgid ""
 #| "One or more running instances of xscreensaver or xlockmore have been "
@@ -439,13 +443,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr "Genstart tjenester under pakkeopgraderinger uden at spørge?"
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid ""
 "There are services installed on your system which need to be restarted when "
 "certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
@@ -465,7 +469,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
@@ -473,7 +477,7 @@ msgstr "Tjenester at genstarte for PAM-biblioteksopgradering:"
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid ""
 #| "Running services and programs that are using NSS need to be restarted, "
@@ -496,7 +500,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
@@ -505,7 +509,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid ""
 #| "The following services could not be restarted for the PAM library upgrade:"
@@ -515,7 +519,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
@@ -524,13 +528,13 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 msgid "Display manager must be restarted manually"
 msgstr "Visningshåndtering skal genstartes manuelt"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 #, fuzzy
 #| msgid ""
 #| "The wdm and xdm display managers require a restart for the new version of "
@@ -620,3 +624,10 @@ msgstr ""
 "Du kan redigere /etc/nsswitch.conf i hånden eller vælge at fjerne punkterne "
 "automatisk nu. Sørg for at gennemse ændringer til /etc/nsswitch.conf hvis du "
 "vælger at fjerne indlæggene nu."
+
+#~ msgid ""
+#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
+#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
+#~ msgstr ""
+#~ "Hvis certifikattjek er aktiveret skal mindst en af tilvalgene "
+#~ "tls_cacertdir eller tls_cacertfile være placeret i /etc/nslcd.conf."

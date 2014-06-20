@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.7.9\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-10-18 14:41+0200\n"
+"POT-Creation-Date: 2014-06-08 11:45+0200\n"
 "PO-Revision-Date: 2010-09-29 22:21+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: \n"
@@ -377,27 +377,30 @@ msgstr ""
 "\t\t\t\tnếu chứng nhận không được cung cấp\n"
 " • đòi hỏi\t\t\tmột chứng nhận được yêu cầu, đòi hỏi và kiểm tra."
 
-#. Type: select
+#. Type: string
 #. Description
-#: ../nslcd.templates:13002
-msgid ""
-"If certificate checking is enabled, at least one of the tls_cacertdir or "
-"tls_cacertfile options must be put in /etc/nslcd.conf."
+#: ../nslcd.templates:14001
+msgid "Certificate authority certificate:"
 msgstr ""
-"Nếu tính năng kiểm tra được hiệu lực thì ít nhất một của hai tuỳ chọn « "
-"tls_cacertdir » và « tls_cacertfile » phải được để vào tập tin cấu hình « /"
-"etc/nslcd.conf »."
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:14001
+msgid ""
+"When certificate checking is enabled this file contains the X.509 "
+"certificate that is used to check the certificate provided by the server."
+msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
 msgstr ""
 "Trước khi nâng cấp thì cần phải khởi chạy lại xscreensaver và xlockmore"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 #, fuzzy
 #| msgid ""
 #| "One or more running instances of xscreensaver or xlockmore have been "
@@ -423,13 +426,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid ""
 "There are services installed on your system which need to be restarted when "
 "certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
@@ -442,7 +445,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
@@ -450,7 +453,7 @@ msgstr "Dịch vụ cần khởi chạy lại để nâng cấp thư viện PAM:
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid ""
 #| "Running services and programs that are using NSS need to be restarted, "
@@ -473,7 +476,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
@@ -481,7 +484,7 @@ msgstr "Lỗi khởi chạy lại một số dịch vụ để nâng cấp PAM"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid ""
 #| "The following services could not be restarted for the PAM library upgrade:"
@@ -491,7 +494,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
@@ -501,13 +504,13 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 msgid "Display manager must be restarted manually"
 msgstr "Trình quản lý trình bày phải được khởi chạy bằng tay"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 #, fuzzy
 #| msgid ""
 #| "The kdm, wdm, and xdm display managers require a restart for the new "
@@ -601,6 +604,14 @@ msgstr ""
 "Bạn có thể tự sửa đổi tập tin cấu hình « /etc/nsswitch.conf », hoặc chọn tự "
 "động gỡ bỏ các mục nhập ngay bây giờ. Xem lại kỹ các thay đổi trong « /etc/"
 "nsswitch.conf » nếu bạn chọn gỡ bỏ các mục nhập ngay bây giờ."
+
+#~ msgid ""
+#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
+#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
+#~ msgstr ""
+#~ "Nếu tính năng kiểm tra được hiệu lực thì ít nhất một của hai tuỳ chọn « "
+#~ "tls_cacertdir » và « tls_cacertfile » phải được để vào tập tin cấu hình "
+#~ "« /etc/nslcd.conf »."
 
 #~ msgid "Enable shadow lookups through NSS?"
 #~ msgstr "Bật tra tìm bóng qua NSS ?"

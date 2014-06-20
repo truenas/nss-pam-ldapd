@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.4\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-10-18 14:41+0200\n"
+"POT-Creation-Date: 2014-06-08 11:45+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: zym <ming_zym@sina.com>\n"
 "Language-Team: \n"
@@ -411,24 +411,29 @@ msgstr ""
 " * try: 会请求服务器证书，如服务器提供证书则验证，如无则忽略。\n"
 " * demand: 会请求服务器证书，必须有证书并验证证书。"
 
-#. Type: select
+#. Type: string
 #. Description
-#: ../nslcd.templates:13002
-msgid ""
-"If certificate checking is enabled, at least one of the tls_cacertdir or "
-"tls_cacertfile options must be put in /etc/nslcd.conf."
+#: ../nslcd.templates:14001
+msgid "Certificate authority certificate:"
 msgstr ""
-"如果启用证书检查，/etc/nslcd.conf必须有tls_cacertdir或者tls_cacertfile选项。"
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:14001
+msgid ""
+"When certificate checking is enabled this file contains the X.509 "
+"certificate that is used to check the certificate provided by the server."
+msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
 msgstr "在升级前必须重新启动 xscreensaver 和 xlockmore"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 #, fuzzy
 #| msgid ""
 #| "One or more running instances of xscreensaver or xlockmore have been "
@@ -451,13 +456,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid ""
 "There are services installed on your system which need to be restarted when "
 "certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
@@ -470,7 +475,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
@@ -478,7 +483,7 @@ msgstr "因 PAM 库升级而需要重新启动的服务："
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid ""
 #| "Running services and programs that are using NSS need to be restarted, "
@@ -499,7 +504,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
@@ -507,7 +512,7 @@ msgstr "为 PAM 升级重新启动某些服务失败"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid ""
 #| "The following services could not be restarted for the PAM library upgrade:"
@@ -516,7 +521,7 @@ msgstr "升级 PAM 库时，下列服务无法被重新启动："
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
@@ -524,13 +529,13 @@ msgstr "你需要通过手动运行 '/etc/init.d/<service> start' 来启动这�
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 msgid "Display manager must be restarted manually"
 msgstr "必须手动重新启动显示管理器"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 #, fuzzy
 #| msgid ""
 #| "The kdm, wdm, and xdm display managers require a restart for the new "
@@ -617,6 +622,13 @@ msgid ""
 msgstr ""
 "您现在可以手工修改/etc/nsswitch.conf或者勾选来删除LDAP功能。如果您删除了条"
 "目，请确保检查/etc/nsswitch.conf文件。"
+
+#~ msgid ""
+#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
+#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
+#~ msgstr ""
+#~ "如果启用证书检查，/etc/nslcd.conf必须有tls_cacertdir或者tls_cacertfile选"
+#~ "项。"
 
 #~ msgid "Enable shadow lookups through NSS?"
 #~ msgstr "启用通过NSS查询shadow信息？"

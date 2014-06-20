@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-10-18 14:41+0200\n"
+"POT-Creation-Date: 2014-06-08 11:45+0200\n"
 "PO-Revision-Date: 2013-10-18 15:00+0200\n"
 "Last-Translator: Arthur de Jong <arthur@arthurdejong.org>\n"
 "Language-Team: debian-l10n-dutch <debian-l10n-dutch@lists.debian.org>\n"
@@ -389,26 +389,29 @@ msgstr ""
 " * eis: een certificaat wordt gevraagd, gecontroleerd en is\n"
 "        verplicht."
 
-#. Type: select
+#. Type: string
 #. Description
-#: ../nslcd.templates:13002
-msgid ""
-"If certificate checking is enabled, at least one of the tls_cacertdir or "
-"tls_cacertfile options must be put in /etc/nslcd.conf."
+#: ../nslcd.templates:14001
+msgid "Certificate authority certificate:"
 msgstr ""
-"Als certificaat-controle is ingeschakeld moet minstens één van de "
-"tls_cacertdir of tls_cacertfile opties geconfigureerd worden in /etc/nslcd."
-"conf."
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:14001
+msgid ""
+"When certificate checking is enabled this file contains the X.509 "
+"certificate that is used to check the certificate provided by the server."
+msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
 msgstr "xscreensaver en xlockmore moeten voor het opwaarderen worden herstart"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -426,13 +429,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr "Diensten zonder vragen herstarten bij het opwaarderen van pakketten?"
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid ""
 "There are services installed on your system which need to be restarted when "
 "certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
@@ -453,13 +456,13 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 msgid "Services to restart for nslcd upgrade:"
 msgstr "Bij de opwaardering van nslcd te herstarten diensten:"
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -476,19 +479,19 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid "Failure restarting some services for nslcd upgrade"
 msgstr "Herstarten van sommige diensten bij de nslcd-opwaardering is mislukt"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid "The following services could not be restarted:"
 msgstr "De volgende diensten konden niet herstart worden:"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
@@ -498,13 +501,13 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 msgid "Display manager must be restarted manually"
 msgstr "De beeldschermbeheerder dient handmatig herstart te worden"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
@@ -587,3 +590,11 @@ msgstr ""
 "U kunt /etc/nsswitch.conf met de hand bijwerken kunt de items nu automatisch "
 "laten verwijderen. Controleer de inhoud van /etc/nsswitch.conf als u ervoor "
 "kiest om ze nu te verwijderen."
+
+#~ msgid ""
+#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
+#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
+#~ msgstr ""
+#~ "Als certificaat-controle is ingeschakeld moet minstens één van de "
+#~ "tls_cacertdir of tls_cacertfile opties geconfigureerd worden in /etc/"
+#~ "nslcd.conf."

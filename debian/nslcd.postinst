@@ -213,6 +213,12 @@ then
     echo "Renaming reconnect_maxsleeptime to reconnect_retrytime in $CONFFILE..." >&2
     sed -i 's/^reconnect_maxsleeptime[[:space:]]/reconnect_retrytime /' "$CONFFILE"
   fi
+  # rename tls_cacert to tls_cacertfile
+  if grep -qi '^tls_cacert[[:space:]]' $CONFFILE
+  then
+    echo "Renaming tls_cacert to tls_cacertfile in $CONFFILE..." >&2
+    sed -i 's/^tls_cacert[[:space:]]/tls_cacertfile /' "$CONFFILE"
+  fi
   # comment out mapping of uniqueMember to member which is now used by default
   if grep -qi '^map[[:space:]]*group[[:space:]]*uniqueMember[[:space:]]*member[[:space:]]*$' $CONFFILE
   then
@@ -260,6 +266,7 @@ s/^map[[:space:]]*group[[:space:]]*uniqueMember[[:space:]]*member[[:space:]]*$/#
     cfg_disable sasl_mech sasl_realm sasl_authcid sasl_authzid sasl_secprops krb5_ccname
   esac
   update_config nslcd/ldap-reqcert tls_reqcert
+  update_config nslcd/ldap-cacertfile tls_cacertfile
   # remove password from database
   db_set nslcd/ldap-bindpw ""
   # set ssl option

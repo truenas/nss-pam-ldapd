@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-10-18 14:41+0200\n"
+"POT-Creation-Date: 2014-06-08 11:45+0200\n"
 "PO-Revision-Date: 2013-06-12 17:48+0200\n"
 "Last-Translator: Atila KOÇ <akoc@artielektronik.com.tr>\n"
 "Language-Team: Turkish <debian-l10n-turkish@lists.debian.org>\n"
@@ -388,27 +388,30 @@ msgstr ""
 "         bir sertifika alınamazsa önemsenmeyecek;\n"
 " * talep et: bir sertifika istenecek, gerekli görülecek ve denetlenecek."
 
-#. Type: select
+#. Type: string
 #. Description
-#: ../nslcd.templates:13002
-msgid ""
-"If certificate checking is enabled, at least one of the tls_cacertdir or "
-"tls_cacertfile options must be put in /etc/nslcd.conf."
+#: ../nslcd.templates:14001
+msgid "Certificate authority certificate:"
 msgstr ""
-"Eğer sertifika denetimi etkinleştirilirse, tls_cacertdir ya da "
-"tls_cacertfile seçeneklerinden en az birinin /etc/nslcd.conf dosyasına "
-"konulması gerekecektir."
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:14001
+msgid ""
+"When certificate checking is enabled this file contains the X.509 "
+"certificate that is used to check the certificate provided by the server."
+msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
 msgstr ""
 "Yükseltme işleminden önce xscreensaver ve xlockmore yeniden başlatılmalı"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 #, fuzzy
 #| msgid ""
 #| "One or more running instances of xscreensaver or xlockmore have been "
@@ -433,13 +436,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid ""
 "There are services installed on your system which need to be restarted when "
 "certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
@@ -452,7 +455,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
@@ -461,7 +464,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid ""
 #| "Most services that use PAM need to be restarted to use modules built for "
@@ -482,7 +485,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
@@ -490,7 +493,7 @@ msgstr "Bazı hizmetler PAM yükseltmesi için yeniden başlatılamadı"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid ""
 #| "The following services could not be restarted for the PAM library upgrade:"
@@ -500,7 +503,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
@@ -510,13 +513,13 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 msgid "Display manager must be restarted manually"
 msgstr "Görüntü yöneticisinin elle yeniden başlatılması gerekli"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 #, fuzzy
 #| msgid ""
 #| "The kdm, wdm, and xdm display managers require a restart for the new "
@@ -608,3 +611,11 @@ msgstr ""
 "kendiliğinden çıkarılmasını seçebilirsiniz. Girdilerin kendiliğinden "
 "çıkarılmasını seçerseniz, /etc/nsswitch.conf dosyasında yapılan "
 "değişiklikleri denetlediğinizden emin olunuz."
+
+#~ msgid ""
+#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
+#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
+#~ msgstr ""
+#~ "Eğer sertifika denetimi etkinleştirilirse, tls_cacertdir ya da "
+#~ "tls_cacertfile seçeneklerinden en az birinin /etc/nslcd.conf dosyasına "
+#~ "konulması gerekecektir."

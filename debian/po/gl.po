@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-ldapd 0.6\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2013-10-18 14:41+0200\n"
+"POT-Creation-Date: 2014-06-08 11:45+0200\n"
 "PO-Revision-Date: 2009-07-18 10:02+0200\n"
 "Last-Translator: Marce Villarino <mvillarino@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -388,25 +388,29 @@ msgstr ""
 "   ningún ignorarase,\n"
 " * demandar:pedirase, requirirase e comprobarase un certificado."
 
-#. Type: select
+#. Type: string
 #. Description
-#: ../nslcd.templates:13002
-msgid ""
-"If certificate checking is enabled, at least one of the tls_cacertdir or "
-"tls_cacertfile options must be put in /etc/nslcd.conf."
+#: ../nslcd.templates:14001
+msgid "Certificate authority certificate:"
 msgstr ""
-"Se desactiva a comprobación do certificado, debe ter no ficheiro /etc/nslcd."
-"conf polo menos unha das opcións tls_cacertdir ou tlscacertfile."
+
+#. Type: string
+#. Description
+#: ../nslcd.templates:14001
+msgid ""
+"When certificate checking is enabled this file contains the X.509 "
+"certificate that is used to check the certificate provided by the server."
+msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
 msgstr "xscreensaver e xlockmore deben ser reiniciados antes de actualizar"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:14001
+#: ../nslcd.templates:15001
 #, fuzzy
 #| msgid ""
 #| "One or more running instances of xscreensaver or xlockmore have been "
@@ -431,13 +435,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../nslcd.templates:15001
+#: ../nslcd.templates:16001
 msgid ""
 "There are services installed on your system which need to be restarted when "
 "certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
@@ -450,7 +454,7 @@ msgstr ""
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
@@ -458,7 +462,7 @@ msgstr "Servizos a reiniciar para a actualización da biblioteca PAM:"
 
 #. Type: string
 #. Description
-#: ../nslcd.templates:16001
+#: ../nslcd.templates:17001
 #, fuzzy
 #| msgid ""
 #| "Running services and programs that are using NSS need to be restarted, "
@@ -481,7 +485,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
@@ -489,7 +493,7 @@ msgstr "Fallou o reinicio de algúns servizos para a actualización de PAM"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 #, fuzzy
 #| msgid ""
 #| "The following services could not be restarted for the PAM library upgrade:"
@@ -500,7 +504,7 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:17001
+#: ../nslcd.templates:18001
 msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
@@ -510,13 +514,13 @@ msgstr ""
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 msgid "Display manager must be restarted manually"
 msgstr "Débese reiniciar manualmente o xestor de pantallas"
 
 #. Type: error
 #. Description
-#: ../nslcd.templates:18001
+#: ../nslcd.templates:19001
 #, fuzzy
 #| msgid ""
 #| "The wdm and xdm display managers require a restart for the new version of "
@@ -610,6 +614,13 @@ msgstr ""
 "Pode editar manualmente /etc/nsswitch.conf ou escoller agora eliminar "
 "automaticamente as entradas. Asegúrese de revisar as modificacións a /etc/"
 "nsswitch.conf se escolle agora eliminar as entradas."
+
+#~ msgid ""
+#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
+#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
+#~ msgstr ""
+#~ "Se desactiva a comprobación do certificado, debe ter no ficheiro /etc/"
+#~ "nslcd.conf polo menos unha das opcións tls_cacertdir ou tlscacertfile."
 
 #~ msgid ""
 #~ "If the LDAP database requires a login for normal lookups, enter the name "
