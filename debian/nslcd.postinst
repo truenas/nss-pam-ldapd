@@ -112,6 +112,7 @@ base dc=example,dc=net
 # SSL options
 #ssl off
 #tls_reqcert never
+tls_cacertfile /etc/ssl/certs/ca-certificates.crt
 
 # The search scope.
 #scope sub
