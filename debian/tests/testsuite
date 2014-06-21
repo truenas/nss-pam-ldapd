@@ -35,17 +35,25 @@ service pynslcd stop || true
 service nscd stop || true
 service unscd stop || true
 
+# temporary file to keep nslcd debug output
+nslcd_debug_log=`mktemp -t nslcd.debug.log.XXXXXX`
+
 # Clean up on exit
 cleanup() {
   echo "$script: cleaning up..."
   service nslcd stop || true
   service pynslcd stop || true
   [ -n "$tmpslapd" ] && tests/setup_slapd.sh "$tmpslapd" clean
+  echo "$script: restoring configuration..."
   if [ -n "$bkdir" ]
   then
     cp -p "$bkdir"/nsswitch.conf /etc/nsswitch.conf
     cp -p "$bkdir"/nslcd.conf  /etc/nslcd.conf
     rm -rf "$bkdir"
+  fi
+  if [ -n "$nslcd_debug_log" ]
+  then
+    rm -f "$nslcd_debug_log"
   fi
 }
 trap cleanup EXIT
@@ -69,11 +77,20 @@ tmpslapd=`mktemp -d -t slapd.XXXXXX`
 tests/setup_slapd.sh "$tmpslapd" setup
 tests/setup_slapd.sh "$tmpslapd" start
 
-# configure and start nslcd (or pynslcd)
-echo "$script: configure and start (py)nslcd..."
+# set up nslcd.conf
+echo "$script: setting up nslcd.conf..."
 cat tests/nslcd-test.conf > /etc/nslcd.conf
-if [ -x /usr/sbin/nslcd ] ; then service nslcd start; fi
-if [ -x /usr/sbin/pynslcd ] ; then service pynslcd start; fi
+
+# start nslcd (or pynslcd)
+[ -x /usr/sbin/nslcd ] && daemon="nslcd" || true
+[ -x /usr/sbin/pynslcd ] && daemon="pynslcd" || true
+if [ -z "$daemon" ]
+then
+  echo "$script: neither nslcd nor pynslcd found..."
+  exit 1
+fi
+echo "$script: starting $daemon..."
+/usr/sbin/$daemon -d > "$nslcd_debug_log" 2>&1 &
 
 # allow for a second to have nslcd up and running
 sleep 1
@@ -84,13 +101,26 @@ tests/testenv.sh check
 tests/testenv.sh check_nss \
   passwd group shadow hosts networks protocols services ethers rpc netgroup aliases
 
+# see if anything failed
+fail=""
+
 # run the NSS tests
 echo "$script: running NSS tests..."
-tests/test_nsscmds.sh
+tests/test_nsscmds.sh || fail="fail"
 
 # run the PAM tests
 echo "$script: running PAM tests..."
-tests/test_pamcmds.sh
+tests/test_pamcmds.sh || fail="fail"
 
-echo "$script: all tests passed!"
-exit 0
+# dump nslcd debug output on failure
+if [ -n "$fail" ]
+then
+  echo "$script: FAIL"
+  echo "$script: $daemon debug output:"
+  service $daemon stop || true
+  cat "$nslcd_debug_log"
+  exit 1
+else
+  echo "$script: all tests passed!"
+  exit 0
+fi
