@@ -2,10 +2,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-1\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2013-06-10 23:29+0900\n"
+"PO-Revision-Date: 2013-10-18 21:41+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "Language: ja\n"
@@ -399,14 +399,6 @@ msgstr ""
 #. Type: error
 #. Description
 #: ../nslcd.templates:15001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system. Because of incompatible library changes, the "
-#| "upgrade of the GNU libc library will leave you unable to authenticate to "
-#| "these programs. You should arrange for these programs to be restarted or "
-#| "stopped before continuing this upgrade, to avoid locking your users out "
-#| "of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -416,10 +408,10 @@ msgid ""
 "sessions."
 msgstr ""
 "このシステムで 1 つ以上の xscreensaver あるいは xlockmore の動作が検出されま"
-"した。非互換のライブラリ変更のため、GNU libc パッケージの更新はこれらのプログ"
-"ラムでの認証ができない状態になるでしょう。ユーザが現在のセッションの外に締め"
-"出されるのを避けるため、このパッケージの更新を続ける前に、これらのプログラム"
-"を再起動するか停止するように手配すべきです。"
+"した。非互換のライブラリ変更のため、nslcd パッケージの更新はこれらのプログラ"
+"ムでの認証ができない状態になるかもしれません。ユーザが現在のセッションの外に"
+"締め出されるのを避けるため、このパッケージの更新を続ける前に、これらのプログ"
+"ラムを再起動するか停止するように手配すべきです。"
 
 #. Type: boolean
 #. Description
@@ -451,21 +443,12 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr "PAM ライブラリの更新のために再起動するサービス:"
+msgstr "nslcd の更新のために再起動するサービス:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -473,28 +456,23 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
-"NSS を利用している実行中のサービスおよびプログラムは、再起動する必要がありま"
-"す。さもないと、ルックアップおよび認証がもう利用できないことになります (ssh "
-"のようなサービスでは、これはログインできるかどうかに影響します)。以下のスペー"
-"スで区切られた、以下の init.d スクリプト一覧を確認して、サービスをここで再起"
-"動する必要があれば修正してください。"
+"nslcd を利用している実行中のサービスおよびプログラムは、再起動する必要があり"
+"ます。さもないと、ルックアップおよび認証がもう利用できないことになります "
+"(ssh のようなサービスでは、これはログインできるかどうかに影響します)。以下の"
+"スペースで区切られた、以下の init.d スクリプト一覧を確認して、サービスをここ"
+"で再起動する必要があれば修正してください。"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr "PAM 更新のためのいくつかのサービスの再起動で失敗"
+msgstr "nslcd 更新のためのいくつかのサービスの再起動で失敗"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr "PAM ライブラリ更新のための、以下のサービスの再起動ができませんでした:"
+msgstr "以下のサービスの再起動ができませんでした:"
 
 #. Type: error
 #. Description
@@ -515,19 +493,13 @@ msgstr "ディスプレイマネージャは手動で再起動されなければ
 #. Type: error
 #. Description
 #: ../nslcd.templates:19001
-#, fuzzy
-#| msgid ""
-#| "The wdm and xdm display managers require a restart for the new version of "
-#| "libpam, but there are X login sessions active on your system that would "
-#| "be terminated by this restart.  You will therefore need to restart these "
-#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
 "terminated by this restart.  You will therefore need to restart these "
 "services by hand before further X logins will be possible."
 msgstr ""
-"wdm および xdm ディスプレイマネージャは libpam の新しいバージョンのために再起"
+"wdm および xdm ディスプレイマネージャは nslcd の新しいバージョンのために再起"
 "動が必要ですが、あなたのシステムには、この再起動で強制終了してしまう実行中の "
 "X ログインセッションが存在します。そのため、以降の X のログインが可能な状態の"
 "うちに、これらのサービスを手動で再起動する必要があります。"
