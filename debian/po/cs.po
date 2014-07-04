@@ -2,10 +2,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2013-06-22 08:22+0200\n"
+"PO-Revision-Date: 2014-07-04 15:22+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "Language: cs\n"
@@ -380,7 +380,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "Certifikát certifikační autority:"
 
 #. Type: string
 #. Description
@@ -389,6 +389,8 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"Je-li povolena kontrola certifikátů, tento soubor obsahuje certifikát X.509, "
+"který se používá pro kontrolu certifikátů poskytovaných serverem."
 
 #. Type: error
 #. Description
@@ -400,14 +402,6 @@ msgstr ""
 #. Type: error
 #. Description
 #: ../nslcd.templates:15001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system. Because of incompatible library changes, the "
-#| "upgrade of the GNU libc library will leave you unable to authenticate to "
-#| "these programs. You should arrange for these programs to be restarted or "
-#| "stopped before continuing this upgrade, to avoid locking your users out "
-#| "of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -418,10 +412,10 @@ msgid ""
 msgstr ""
 "Zdá se, že v systému běží jedna nebo více instancí programu xscreensaver "
 "resp. xlockmore. Z důvodu nekompatibilních změn v knihovnách se po "
-"aktualizaci knihovny GNU libc nebudete moci pomocí těchto programů "
-"autentizovat. To jinými slovy znamená, že se uživatelé nedostanou ke svým "
-"uzamčeným sezením. Abyste tomu předešli, měli byste před aktualizací zmíněné "
-"programy zastavit, nebo je ve vhodný čas restartovat."
+"aktualizaci nslcd nebudete moci v těchto programech autentizovat. To jinými "
+"slovy znamená, že se uživatelé nedostanou ke svým uzamčeným sezením. Abyste "
+"tomu předešli, měli byste před aktualizací zmíněné programy zastavit, nebo "
+"je ve vhodný čas restartovat."
 
 #. Type: boolean
 #. Description
@@ -451,21 +445,12 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr "Služby, které se mají restartovat po aktualizaci knihovny PAM:"
+msgstr "Služby, které se mají restartovat pro aktualizaci nslcd:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -473,7 +458,7 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
-"Běžící služby a programy využívající NSS se musí restartovat, protože jinak "
+"Běžící služby a programy využívající nslcd se musí restartovat, protože jinak "
 "se může stát, že nebudou moci vyhledávat v systémových databázích nebo "
 "ověřovat uživatele. (U služeb typu ssh to může ovlivnit možnost přihlášení "
 "se.) Zkontrolujte prosím následující mezerami oddělený seznam služeb, které "
@@ -483,20 +468,14 @@ msgstr ""
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Restartování některých služeb při aktualizaci PAMu selhalo"
+msgstr "Restartování některých služeb při aktualizaci nslcd selhalo"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr ""
-"Následující služby nemohly být při aktualizaci knihovny PAM restartovány:"
+msgstr "Následující služby nemohly být restartovány:"
 
 #. Type: error
 #. Description
@@ -516,21 +495,15 @@ msgstr "Správce displeje se musí restartovat ručně"
 #. Type: error
 #. Description
 #: ../nslcd.templates:19001
-#, fuzzy
-#| msgid ""
-#| "The wdm and xdm display managers require a restart for the new version of "
-#| "libpam, but there are X login sessions active on your system that would "
-#| "be terminated by this restart.  You will therefore need to restart these "
-#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
 "terminated by this restart.  You will therefore need to restart these "
 "services by hand before further X logins will be possible."
 msgstr ""
-"Správcové displejů wdm a xdm musí být s novou verzí knihovny libpam "
-"restartováni. Restart těchto služeb by však ukončil probíhající X sezení a "
-"proto je ponechán restart zmíněných správců displejů na vás, až určíte, že "
+"Správcové displejů wdm a xdm musí být s novou verzí nslcd restartováni. "
+"Restart těchto služeb by však ukončil probíhající X sezení a proto je "
+"ponechán restart zmíněných správců displejů na vás, až určíte, že "
 "nastal vhodný okamžik. S restartem byste neměli otálet, protože do té doby "
 "se pomocí nich nebudou moci uživatelé přihlásit."
 
