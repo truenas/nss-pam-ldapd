@@ -7,6 +7,7 @@ nss-pam-ldapd (0.9.4-2) UNRELEASED; urgency=low
     - Japanese by Kenshi Muto (closes: #752515)
     - Russian by Yuri Kozlov (closes: #752550)
     - Dutch by Arthur de Jong
+    - Swedish Martin Bagge (closes: #753691)
   * for new installs add tls_cacertfile /etc/ssl/certs/ca-certificates.crt to
     nslcd.conf (closes: #750949)
   * provide a debconf prompt for tls_cacertfile if TLS is enabled and reqcert
@@ -14,7 +15,7 @@ nss-pam-ldapd (0.9.4-2) UNRELEASED; urgency=low
   * update autopkgtest tests to dump daemon debug info if tests fail and not
     stop the tests on first failure
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 04 Jul 2014 13:24:21 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 04 Jul 2014 13:46:10 +0200
 
 nss-pam-ldapd (0.9.4-1) unstable; urgency=medium
 
