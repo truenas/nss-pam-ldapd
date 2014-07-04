@@ -2,10 +2,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2013-10-18 15:00+0200\n"
+"PO-Revision-Date: 2014-07-04 13:23+0100\n"
 "Last-Translator: Arthur de Jong <arthur@arthurdejong.org>\n"
 "Language-Team: debian-l10n-dutch <debian-l10n-dutch@lists.debian.org>\n"
 "Language: nl\n"
@@ -393,7 +393,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "CA (certificaatautoriteit) certificaat:"
 
 #. Type: string
 #. Description
@@ -402,6 +402,9 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"Als certificaatcontrole aan staat bevat dit bestand het X.509 certificaat "
+"dat gebruikt wordt om het certificaat dat door de server gestuurd wordt te "
+"controleren."
 
 #. Type: error
 #. Description
