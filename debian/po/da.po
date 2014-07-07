@@ -1,17 +1,18 @@
 # Danish translation nss-pam-ldapd.
-# Copyright (C) 2013 nss-pam-ldapd og nedenstående oversættere.
+# Copyright (C) 2014 nss-pam-ldapd og nedenstående oversættere.
 # This file is distributed under the same license as the nss-pam-ldapd package.
 #
 # Translators:
 #
 # Jonas Smedegaard <dr@jones.dk>, 2008.
-# Joe Hansen <joedalton2@yahoo.dk>, 2010, 2011, 2013.
+# Joe Hansen <joedalton2@yahoo.dk>, 2010, 2011, 2013,2014
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2013-06-15 23:51+0200\n"
+"PO-Revision-Date: 2014-07-06 23:51+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -399,7 +400,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "Certifikat for certifikatautoritet:"
 
 #. Type: string
 #. Description
@@ -408,6 +409,9 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"Når certifikatkontrol er aktiveret, så indeholde denne fil X.509-"
+"certifikatet, som bruges til at kontrollere certifikatet leveret af "
+"serveren."
 
 #. Type: error
 #. Description
@@ -418,14 +422,6 @@ msgstr "xscreensaver og xlockmore skal genstartes før opgradering"
 #. Type: error
 #. Description
 #: ../nslcd.templates:15001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system. Because of incompatible library changes, the "
-#| "upgrade of the GNU libc library will leave you unable to authenticate to "
-#| "these programs. You should arrange for these programs to be restarted or "
-#| "stopped before continuing this upgrade, to avoid locking your users out "
-#| "of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -436,10 +432,10 @@ msgid ""
 msgstr ""
 "En eller flere kørende instanser af xscreensaver eller xlockmore er blevet "
 "registreret på dette system. På grund af biblioteksændringer der ikke er "
-"kompatible, vil opgraderingen af GNU libc-biblioteket gøre, at du ikke kan "
-"godkende disse programmer. Du skal sørge for, at disse programmer bliver "
-"genstartet eller stoppet, før du fortsætter denne opgradering, så du undgår "
-"at lukke dine brugere ud af deres igangværende sessioner."
+"kompatible, vil opgraderingen af nslcd gøre, at du ikke kan godkende disse "
+"programmer. Du skal sørge for, at disse programmer bliver genstartet eller "
+"stoppet, før du fortsætter denne opgradering, så du undgår at lukke dine "
+"brugere ud af deres igangværende sessioner."
 
 #. Type: boolean
 #. Description
@@ -470,21 +466,12 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr "Tjenester at genstarte for PAM-biblioteksopgradering:"
+msgstr "Tjenester at genstarte for nslcd-opgradering:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -492,7 +479,7 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
-"Kørende tjenester og programmer som bruger NSS skal genstartes, ellers vil "
+"Kørende tjenester og programmer som bruger nslcd skal genstartes, ellers vil "
 "de måske ikke mere kunne foretage opslag eller opnå godkendelse (for "
 "tjenester såsom ssh, kan dette påvirke din mulighed for at logge ind). "
 "Gennemse venligst den følgende kommaadskilte liste af init.d-skripter til "
@@ -501,21 +488,15 @@ msgstr ""
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
 msgstr ""
-"Der opstod en fejl under genstart af nogle tjenester til PAM-opgradering"
+"Der opstod en fejl under genstart af nogle tjenester til nslcd-opgradering"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr ""
-"De følgende tjenester kunne ikke genstartes for PAM-biblioteksopgraderingen:"
+msgstr "De følgende tjenester kunne ikke genstartes:"
 
 #. Type: error
 #. Description
@@ -535,20 +516,14 @@ msgstr "Visningshåndtering skal genstartes manuelt"
 #. Type: error
 #. Description
 #: ../nslcd.templates:19001
-#, fuzzy
-#| msgid ""
-#| "The wdm and xdm display managers require a restart for the new version of "
-#| "libpam, but there are X login sessions active on your system that would "
-#| "be terminated by this restart.  You will therefore need to restart these "
-#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
 "terminated by this restart.  You will therefore need to restart these "
 "services by hand before further X logins will be possible."
 msgstr ""
-"wdm- og xdm-visningshåndteringerne kræver en genstart for den nye version af "
-"libpam, men der er X-logindsessioner, som er aktive på dit system og som vil "
+"Wdm- og xdm-visningshåndteringerne kræver en genstart for den nye version af "
+"nslcd, men der er X-logindsessioner, som er aktive på dit system og som vil "
 "blive afsluttet af denne genstart. Du skal derfor manuelt genstarte disse "
 "tjenester, før yderligere X-logind'er vil være mulige."
 
@@ -624,10 +599,3 @@ msgstr ""
 "Du kan redigere /etc/nsswitch.conf i hånden eller vælge at fjerne punkterne "
 "automatisk nu. Sørg for at gennemse ændringer til /etc/nsswitch.conf hvis du "
 "vælger at fjerne indlæggene nu."
-
-#~ msgid ""
-#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
-#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
-#~ msgstr ""
-#~ "Hvis certifikattjek er aktiveret skal mindst en af tilvalgene "
-#~ "tls_cacertdir eller tls_cacertfile være placeret i /etc/nslcd.conf."
