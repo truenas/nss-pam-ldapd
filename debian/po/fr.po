@@ -10,10 +10,10 @@
 # Christian Perrier <bubulle@debian.org>, 2009, 2010, 2011, 2013, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.9.1-2\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2014-06-10 07:19+0200\n"
+"PO-Revision-Date: 2014-07-07 07:35+0200\n"
 "Last-Translator: Christian Perrier <bubulle@debian.org>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
 "Language: fr\n"
@@ -405,7 +405,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "Certificat de l'autorité de certification :"
 
 #. Type: string
 #. Description
@@ -414,6 +414,9 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"Si le contrôle des certificats est activé, le fichier indiqué ici doit être "
+"le certificat X.509 qui servira à vérifier le certificat fourni par le "
+"serveur."
 
 #. Type: error
 #. Description
