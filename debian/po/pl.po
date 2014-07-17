@@ -2,13 +2,13 @@
 # Copyright (C) 2013
 # This file is distributed under the same license as the nss-pam-ldapd package.
 #
-# Michał Kułach <michal.kulach@gmail.com>, 2013.
+# Michał Kułach <michal.kulach@gmail.com>, 2013, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2013-06-23 23:03+0200\n"
+"PO-Revision-Date: 2014-07-06 21:33+0200\n"
 "Last-Translator: Michał Kułach <michal.kulach@gmail.com>\n"
 "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
 "Language: pl\n"
@@ -393,7 +393,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "Certyfikat urzędu certyfikacji:"
 
 #. Type: string
 #. Description
@@ -402,6 +402,8 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"Gdy włączone jest sprawdzanie certyfikatu plik ten zawiera certyfikat X.509 "
+"używany do sprawdzenia certyfikatu dostarczonego przez serwer."
 
 #. Type: error
 #. Description
@@ -412,14 +414,6 @@ msgstr "xscreensaver i xlockmore muszą zostać zrestartowane przed aktualizacj�
 #. Type: error
 #. Description
 #: ../nslcd.templates:15001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system. Because of incompatible library changes, the "
-#| "upgrade of the GNU libc library will leave you unable to authenticate to "
-#| "these programs. You should arrange for these programs to be restarted or "
-#| "stopped before continuing this upgrade, to avoid locking your users out "
-#| "of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -429,10 +423,10 @@ msgid ""
 "sessions."
 msgstr ""
 "Wykryto jedną lub więcej działających kopii programu xscreensaver lub "
-"xlockmore. Z powodu niekompatybilnych zmian biblioteki, aktualizacja "
-"biblioteki GNU libc uniemożliwiłaby autoryzację użytkownika do tych "
-"programów. Należy zrestartować lub zatrzymać te programy przed aktualizacją, "
-"aby zapobiec utknięciu użytkowników poza ich aktualnymi sesjami."
+"xlockmore. Z powodu niekompatybilnych zmian biblioteki, aktualizacja nslcd "
+"uniemożliwiłaby autoryzację użytkownika do tych programów. Należy "
+"zrestartować lub zatrzymać te programy przed aktualizacją, aby zapobiec "
+"utknięciu użytkowników poza ich aktualnymi sesjami."
 
 #. Type: boolean
 #. Description
@@ -463,22 +457,12 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr ""
-"Usługi które mają być zrestartowane, w związku z aktualizacją biblioteki PAM:"
+msgstr "Usługi które mają być zrestartowane, w związku z aktualizacją nslcd:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -486,30 +470,23 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
-"Uruchomione usługi i programy wykorzystujące NSS wymagają restartu. W "
+"Uruchomione usługi i programy wykorzystujące nslcd wymagają restartu. W "
 "przeciwnym wypadku operacje związane z autoryzacją nie będą działały "
 "prawidłowo. Przy usługach takich jak ssh będzie to oznaczało brak możliwości "
-"zalogowania. \n"
-"Zalecane jest przejrzenie listy skryptów startowych i jej ewentualne "
-"poprawienie."
+"zalogowania. Zalecane jest przejrzenie listy skryptów startowych i jej "
+"ewentualne poprawienie."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Nie udało się zrestartować niektórych usług w celu aktualizacji PAM"
+msgstr "Nie udało się zrestartować niektórych usług w celu aktualizacji nslcd"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr ""
-"Następujące usługi nie mogły zostać zrestartowane z celu aktualizacji PAM:"
+msgstr "Następujące usługi nie mogły zostać zrestartowane:"
 
 #. Type: error
 #. Description
@@ -530,22 +507,16 @@ msgstr "Menedżer logowania musi być zrestartowany ręcznie"
 #. Type: error
 #. Description
 #: ../nslcd.templates:19001
-#, fuzzy
-#| msgid ""
-#| "The wdm and xdm display managers require a restart for the new version of "
-#| "libpam, but there are X login sessions active on your system that would "
-#| "be terminated by this restart.  You will therefore need to restart these "
-#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
 "terminated by this restart.  You will therefore need to restart these "
 "services by hand before further X logins will be possible."
 msgstr ""
-"Menedżery logowania wdm i xdm wymagają restartu z powodu nowej wersji "
-"libpam, ale występują aktywne sesje logowania X, które mogą być przerwane "
-"przez ten restart. Będzie istniała potrzeba ręcznego restartu tych usług, "
-"aby kolejne logowania X stały się możliwe."
+"Menedżery logowania wdm i xdm wymagają restartu z powodu nowej wersji nslcd, "
+"ale występują aktywne sesje logowania X, które mogą być przerwane przez ten "
+"restart. Będzie istniała potrzeba ręcznego restartu tych usług, aby kolejne "
+"logowania X stały się możliwe."
 
 #. Type: multiselect
 #. Description
