@@ -9,6 +9,7 @@
 #
 #   - Updates
 #       Francisco Javier Cuadrado <fcocuadrado@gmail.com>, 2009, 2010, 2011
+#       Matías A. Bellone <matiasbellone+debian@gmail.com>, 2014
 #
 # Traductores, si no conocen el formato PO, merece la pena leer la
 # documentación de gettext, especialmente las secciones dedicadas a este
@@ -30,11 +31,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.4\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2011-08-15 12:59+0100\n"
-"Last-Translator: Francisco Javier Cuadrado <fcocuadrado@gmail.com>\n"
+"PO-Revision-Date: 2014-07-11 20:50-0300\n"
+"Last-Translator: Matías A. Bellone <matiasbellone+debian@gmail.com>\n"
 "Language-Team: Debian l10n Spanish <debian-l10n-spanish@lists.debian.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -69,15 +70,13 @@ msgid ""
 msgstr ""
 "Cuando utilice los esquemas ldap o ldaps es siempre una buena idea "
 "especificar una dirección IP para evitar fallos en caso de que el servicio "
-"de nombres no esté disponible."
+"de nombres de dominio (DNS) no esté disponible."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:1001
-#, fuzzy
-#| msgid "Multiple URIs can be specified by separating them with spaces."
 msgid "Multiple URIs can be separated by spaces."
-msgstr "Se pueden especificar múltiples URI separándolos con espacios."
+msgstr "Puede separar múltiples URI con espacios."
 
 #. Type: string
 #. Description
@@ -97,7 +96,7 @@ msgid ""
 msgstr ""
 "Introduzca el nombre distintivo (DN) de la base de búsquedas de LDAP. En "
 "muchos sitios se utilizan las componentes del nombre de dominio con este "
-"propósito. Por ejemplo, el dominio «ejemplo.net» utilizaría «dc=ejemplo,"
+"propósito. Por ejemplo, el dominio «example.net» utilizaría «dc=example,"
 "dc=net» como nombre distintivo de la base de búsquedas."
 
 #. Type: select
@@ -223,10 +222,6 @@ msgstr "Usuario de la base de datos LDAP:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:4001
-#, fuzzy
-#| msgid ""
-#| "Enter the name of the account that will be used to log in to the LDAP "
-#| "database. This value should be specified as a DN (distinguished name)."
 msgid ""
 "Please enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
@@ -244,8 +239,6 @@ msgstr "Contraseña del usuario LDAP:"
 #. Type: password
 #. Description
 #: ../nslcd.templates:5001
-#, fuzzy
-#| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
 "Please enter the password that will be used to log in to the LDAP database."
 msgstr ""
@@ -261,10 +254,6 @@ msgstr "Mecanismo SASL a utilizar:"
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| "Choose the SASL mechanism that will be used to authenticate to the LDAP "
-#| "database:"
 msgid ""
 "Please choose the SASL mechanism that will be used to authenticate to the "
 "LDAP database:"
@@ -275,16 +264,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| " * auto: auto-negotiation;\n"
-#| " * LOGIN: deprecated in favor of PLAIN;\n"
-#| " * PLAIN: simple cleartext password mechanism;\n"
-#| " * NTLM: NT LAN Manager authentication mechanism;\n"
-#| " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
-#| " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
-#| " * GSSAPI: used for Kerberos;\n"
-#| " * OTP: a One Time Password mechanism."
 msgid ""
 " * auto: auto-negotiation;\n"
 " * LOGIN: deprecated in favor of PLAIN;\n"
@@ -299,13 +278,16 @@ msgid ""
 " * EXTERNAL: authentication is implicit in the context."
 msgstr ""
 " * auto: negociación automática.\n"
-" * LOGIN: obsoleta, sustituida por PLAIN.\n"
+" * LOGIN: obsoleto, sustituida por PLAIN.\n"
 " * PLAIN: mecanismo sencillo con contraseñas en claro.\n"
 " * NTLM: mecanismo de autenticación mediante el gestor NT LAN.\n"
 " * CRAM-MD5: esquema desafío-respuesta basado en HMAC-MD5.\n"
 " * DIGEST-MD5: esquema desafío-respuesta compatible con HTTP Digest.\n"
+" * SCRAM: esquema desafío-respuesta con sales («salts»).\n"
 " * GSSAPI: utilizado por Kerberos.\n"
-" * OTP: mecanismo de contraseñas de un solo uso («One Time Password»)."
+" * SKEY: mecanismo S/KEY (obsoleto, sustituido por OTP).\n"
+" * OTP: mecanismo de contraseñas de un solo uso («One Time Password»).\n"
+" * EXTERNAL: autenticación implícita del contexto."
 
 #. Type: string
 #. Description
@@ -316,10 +298,6 @@ msgstr "Reino SASL:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL realm that will be used to authenticate to the LDAP "
-#| "database."
 msgid ""
 "Please enter the SASL realm that will be used to authenticate to the LDAP "
 "database."
@@ -336,15 +314,11 @@ msgstr "El reino se añade a las identidades de autenticación y autorización."
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "For GSSAPI this can be left blank to use information from the Kerberos "
-#| "credential cache."
 msgid ""
 "For GSSAPI, this can be left blank to use information from the Kerberos "
 "credentials cache."
 msgstr ""
-"Para GSSAPI esto se puede dejar vacío para utilizar la información de la "
+"Si utiliza GSSAPI puede dejarlo vacío para utilizar la información de la "
 "caché de credenciales de Kerberos."
 
 #. Type: string
@@ -356,10 +330,6 @@ msgstr "Identidad de autenticación de SASL:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:8001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL authentication identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the SASL authentication identity that will be used to "
 "authenticate to the LDAP database."
@@ -373,8 +343,8 @@ msgstr ""
 msgid ""
 "This is the login used in LOGIN, PLAIN, CRAM-MD5, and DIGEST-MD5 mechanisms."
 msgstr ""
-"Este es el usuario utilizado en los mecanismos LOGIN, PLAIN, CRAM-MDT y "
-"DIGEST-MD5."
+"Este es el nombre de usuario que se usa en los mecanismos LOGIN, PLAIN, "
+"CRAM-MDT y DIGEST-MD5."
 
 #. Type: string
 #. Description
@@ -385,10 +355,6 @@ msgstr "Identidad de autorización del proxy SASL:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:9001
-#, fuzzy
-#| msgid ""
-#| "Enter the proxy authorization identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the proxy authorization identity that will be used to "
 "authenticate to the LDAP database."
@@ -415,25 +381,18 @@ msgstr "Propiedades de seguridad de Cyrus SASL:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid "Cyrus SASL security properties:"
 msgid "Please enter the Cyrus SASL security properties."
-msgstr "Propiedades de seguridad de Cyrus SASL:"
+msgstr "Introduzca las propiedades de seguridad de Cyrus SASL:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid ""
-#| "Enter the Cyrus SASL security properties. Allowed values are described in "
-#| "the ldap.conf(5) manual page in the SASL OPTIONS section."
 msgid ""
 "Allowed values are described in the ldap.conf(5) manual page in the SASL "
 "OPTIONS section."
 msgstr ""
-"Introduzca las propiedades de seguridad de Cyrus SASL. Los valores "
-"permitidos se describen en la página del manual ldap.conf(5) en la sección "
-"«SASL OPTIONS»."
+"Los valores permitidos se describen en la página del manual ldap.conf(5) en "
+"la sección «SASL OPTIONS»."
 
 #. Type: string
 #. Description
@@ -444,9 +403,6 @@ msgstr "Ruta a la caché de las credenciales de Kerberos:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:11001
-#, fuzzy
-#| msgid ""
-#| "Enter the GSSAPI/Kerberos credential cache file name that will be used."
 msgid ""
 "Please enter the GSSAPI/Kerberos credential cache file name that will be "
 "used."
@@ -516,14 +472,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../nslcd.templates:13002
-#, fuzzy
-#| msgid ""
-#| " * never: no certificate will be requested or checked;\n"
-#| " * allow: a certificate will be requested, but it is not\n"
-#| "          required or checked;\n"
-#| " * try: a certificate will be requested and checked, but if no\n"
-#| "        certificate is provided it is ignored;\n"
-#| " * demand: a certificate will be requested, required, and checked."
 msgid ""
 " * never: no certificate will be requested or checked;\n"
 " * allow: a certificate will be requested, but it is not\n"
@@ -543,7 +491,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "Certificado de la autoridad de certificación:"
 
 #. Type: string
 #. Description
@@ -552,6 +500,9 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"Este archivo contiene el certificado X.509 que se utilizará para comprobar "
+"el certificado provisto por el servidor cuando esté activa la comprobación "
+"de certificados."
 
 #. Type: error
 #. Description
@@ -562,14 +513,6 @@ msgstr "Se deben reiniciar xscreensaver y xlockmore antes de actualizar"
 #. Type: error
 #. Description
 #: ../nslcd.templates:15001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system. Because of incompatible library changes, the "
-#| "upgrade of the GNU libc library will leave you unable to authenticate to "
-#| "these programs. You should arrange for these programs to be restarted or "
-#| "stopped before continuing this upgrade, to avoid locking your users out "
-#| "of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -579,9 +522,9 @@ msgid ""
 "sessions."
 msgstr ""
 "Se han detectado una o más instancias de los programas xscreensaver o "
-"xlockmore. La actualización de la biblioteca libc de GNU podría impedir que "
-"pueda autenticarse en estos programas debido a cambios incompatibles en las "
-"bibliotecas. Debería procurar que estos programas se reinicien o se paren "
+"xlockmore. La actualización de nslcd podría impedir que pueda autenticarse "
+"en estos programas debido a cambios incompatibles en las bibliotecas. "
+"Debería procurar que estos programas se reinicien o se paren "
 "antes de continuar con la actualización. Así evitará que los usuarios queden "
 "bloqueados sin poder reanudar sus sesiones actuales."
 
@@ -590,7 +533,7 @@ msgstr ""
 #: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr ""
-"¿Quiere que los servicios se actualicen durante una actualización de paquete "
+"¿Desea que los servicios se reinicien durante una actualización de paquetes "
 "sin solicitar confirmación?"
 
 #. Type: boolean
@@ -617,21 +560,12 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr "Servicios a reiniciar para la actualización de la biblioteca de PAM:"
+msgstr "Servicios a reiniciar para la actualización de nslcd:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -639,7 +573,7 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
-"Los servicios y programas en ejecución que utilicen NSS se necesitan "
+"Los servicios y programas en ejecución que utilicen nslcd se necesitan "
 "reiniciar, o por el contrario puede que ya no sean capaces de realizar "
 "búsquedas o autenticación (para servicios como «ssh», esto puede afectar a "
 "su capacidad para iniciar sesión en el sistema). Por favor, revise la "
@@ -649,21 +583,14 @@ msgstr ""
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Fallo al reiniciar alguno de los servicios en la actualización de PAM"
+msgstr "Fallo al reiniciar alguno de los servicios en la actualización de nslcd"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr ""
-"No fue posible reiniciar los servicios indicados a continuación dentro la "
-"actualización de la biblioteca de PAM:"
+msgstr "No fue posible reiniciar los servicios indicados a continuación:"
 
 #. Type: error
 #. Description
@@ -683,12 +610,6 @@ msgstr "Debe reiniciar manualmente los gestores de pantalla"
 #. Type: error
 #. Description
 #: ../nslcd.templates:19001
-#, fuzzy
-#| msgid ""
-#| "The wdm and xdm display managers require a restart for the new version of "
-#| "libpam, but there are X login sessions active on your system that would "
-#| "be terminated by this restart.  You will therefore need to restart these "
-#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
@@ -696,7 +617,7 @@ msgid ""
 "services by hand before further X logins will be possible."
 msgstr ""
 "Entre los servicios que deben reiniciarse debido a la nueva versión de "
-"libpam están los gestores de pantalla wdm y xdm. Sin embargo, hay sesiones "
+"nslcd están los gestores de pantalla wdm y xdm. Sin embargo, hay sesiones "
 "de X ejecutándose en el sistema que se terminarían si se reiniciaran estos "
 "servicios. Debe reiniciarlos manualmente si desea que funcionen los accesos "
 "a través de una sesión X más adelante."
@@ -705,15 +626,11 @@ msgstr ""
 #. Description
 #: ../libnss-ldapd.templates:1001
 msgid "Name services to configure:"
-msgstr "Indique los servicios a configurar:"
+msgstr "Indique los servicios de nombre a configurar:"
 
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
-#, fuzzy
-#| msgid ""
-#| "For this package to work, you need to modify your /etc/nsswitch.conf to "
-#| "use the ldap datasource."
 msgid ""
 "For this package to work, you need to modify the /etc/nsswitch.conf file to "
 "use the ldap datasource."
