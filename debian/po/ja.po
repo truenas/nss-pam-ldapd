@@ -2,10 +2,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.9.4-1\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2013-10-18 21:41+0900\n"
+"PO-Revision-Date: 2014-06-08 18:45+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "Language: ja\n"
@@ -379,7 +379,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "認証局の証明書:"
 
 #. Type: string
 #. Description
@@ -388,6 +388,8 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"これは、証明書の検証を有効にした場合にサーバから提供された証明書を検証するの"
+"に利用する X.509 証明書を収録するファイルです。"
 
 #. Type: error
 #. Description
@@ -574,10 +576,3 @@ msgstr ""
 "/etc/nsswitch.conf を手動で編集するか、エントリを自動で今削除することを選べま"
 "す。エントリを今削除することを選ぶ場合、/etc/nsswitch.conf の変更内容を確認し"
 "てください。"
-
-#~ msgid ""
-#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
-#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
-#~ msgstr ""
-#~ "証明書のチェックが有効の場合、tls_cacertdir、tls_cacertfile オプションのう"
-#~ "ちの少なくとも 1 つは /etc/nslcd.conf に掲載されている必要があります。"
