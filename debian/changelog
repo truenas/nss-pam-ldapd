@@ -8,6 +8,7 @@ nss-pam-ldapd (0.9.4-2) UNRELEASED; urgency=low
     - Russian by Yuri Kozlov (closes: #752550)
     - Dutch by Arthur de Jong
     - Swedish by Martin Bagge (closes: #753691)
+      (with corrections by Anders Jonsson)
     - Czech by Miroslav Kure (closes: #753710)
     - Danish by Joe Hansen (closes: #753948)
     - Turkish by Mert Dirik (closes: #754101)
@@ -22,7 +23,7 @@ nss-pam-ldapd (0.9.4-2) UNRELEASED; urgency=low
   * update autopkgtest tests to dump daemon debug info if tests fail and not
     stop the tests on first failure
 
- -- Arthur de Jong <adejong@debian.org>  Thu, 17 Jul 2014 17:53:13 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 18 Jul 2014 11:05:58 +0200
 
 nss-pam-ldapd (0.9.4-1) unstable; urgency=medium
 

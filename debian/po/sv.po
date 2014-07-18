@@ -182,13 +182,13 @@ msgid ""
 " * EXTERNAL: authentication is implicit in the context."
 msgstr ""
 " * auto: automatisk förhandling\n"
-" * LOGIN: utfasas tillförmån för PLAIN\n"
+" * LOGIN: utfasas till förmån för PLAIN\n"
 " * PLAIN: enkel lösenordsmekanism med lösenord i klartext\n"
 " * NTLM: NT LAN Manager autentiseringsmekanism\n"
 " * CRAM-MD5: challenge-response-schema baserad på HMAC-MD5\n"
 " * DIGEST-MD5: HTTP Digest kompatibel challenge-response-schema\n"
 " * GSSAPI: används för Kerberos\n"
-" * SKEY: S/KEY-mekanism (utfasas tillförmån för OTP);\n"
+" * SKEY: S/KEY-mekanism (utfasas till förmån för OTP);\n"
 " * OTP: engångslösenord (\"One Time Password\").\n"
 " * EXTERNAL: autentisering är implicit i kontexten."
 
@@ -246,7 +246,7 @@ msgstr ""
 msgid ""
 "This is the login used in LOGIN, PLAIN, CRAM-MD5, and DIGEST-MD5 mechanisms."
 msgstr ""
-"Detta används i inloggningsmekaniskerna LOGIN, PLAIN, CRAM-MD5 och DIGEST-"
+"Detta används i inloggningsmekanismerna LOGIN, PLAIN, CRAM-MD5 och DIGEST-"
 "MD5."
 
 #. Type: string
@@ -285,7 +285,7 @@ msgstr "Säkerhetsalternativ för Cyrus SASL:"
 #. Description
 #: ../nslcd.templates:10001
 msgid "Please enter the Cyrus SASL security properties."
-msgstr "Ange Cyrus SASL skerhetsegenskaper:"
+msgstr "Ange Cyrus SASL säkerhetsegenskaper:"
 
 #. Type: string
 #. Description
@@ -422,7 +422,7 @@ msgid ""
 "sessions."
 msgstr ""
 "En eller flera instanser av xscreensaver eller xlockmore har hittats på "
-"systemet. På grund av inkompatabilitet i och med förändringar av biblioteket "
+"systemet. På grund av inkompatibilitet i och med förändringar av biblioteket "
 "kan uppgraderingen av nslcd innebära att du inte kan autentisera med dessa "
 "program. Se till att alla instanser av programmen startas om eller stoppas "
 "innan du fortsätter med denna uppgradering för att undvika att användare "
@@ -432,7 +432,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
-msgstr "Ska tjänster startas om vid paketuppgraderinger utan att först fråga?"
+msgstr "Ska tjänster startas om vid paketuppgraderingar utan att först fråga?"
 
 #. Type: boolean
 #. Description
