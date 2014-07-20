@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the nss-pam-ldapd package.
 # Translators:
 # Vincenzo Campanella <vinz65@gmail.com>, 2009, 2010.
-# Beatrice Torracca <beatricet@libero.it>, 2013.
+# Beatrice Torracca <beatricet@libero.it>, 2013, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.13-2\n"
+"Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2013-06-24 17:49+0200\n"
+"PO-Revision-Date: 2014-07-19 17:17+0200\n"
 "Last-Translator: Beatrice Torracca <beatricet@libero.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 "Language: it\n"
@@ -387,7 +387,7 @@ msgstr ""
 " * mai:      non verrà richiesto né controllato alcun certificato;\n"
 " * consenti: un certificato viene richiesto, ma non in modo vincolante,\n"
 "             né viene controllato;\n"
-" * prova:    un certificato verrà richiesto e controllato, ma l'assenza\n"
+" * prova:    un certificato viene richiesto e controllato, ma l'assenza\n"
 "             di un certificato viene ignorata;\n"
 " * richiedi: un certificato viene richiesto in modo vincolante e controllato."
 
@@ -395,7 +395,7 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "Certificato dell'autorità di certificazione:"
 
 #. Type: string
 #. Description
@@ -404,6 +404,9 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"Quando è abilitato il controllo del certificato questo file contiene il "
+"certificato X.509 che viene usato per controllare il certificato fornito dal "
+"server"
 
 #. Type: error
 #. Description
@@ -414,14 +417,6 @@ msgstr "Riavvio di xscreensaver e xlockmore prima dell'aggiornamento"
 #. Type: error
 #. Description
 #: ../nslcd.templates:15001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system. Because of incompatible library changes, the "
-#| "upgrade of the GNU libc library will leave you unable to authenticate to "
-#| "these programs. You should arrange for these programs to be restarted or "
-#| "stopped before continuing this upgrade, to avoid locking your users out "
-#| "of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -432,16 +427,17 @@ msgid ""
 msgstr ""
 "Su questo sistema sono state rilevate una o più istanze di xscreensaver o "
 "xlockmore in esecuzione. A causa di modifiche incompatibili nella libreria, "
-"l'aggiornamento della libreria GNU libc impedirà di autenticarsi con questi "
+"l'aggiornamento di nslcd potrà impedire di autenticarsi con questi "
 "programmi. È necessario riavviare o fermare questi servizi prima di "
-"proseguire con questo aggiornamento per evitare di buttare fuori gli utenti "
-"dalle sessioni attualmente aperte."
+"proseguire con questo aggiornamento per evitare di chiudere le sessioni "
+"attualmente aperte degli utenti."
 
 #. Type: boolean
 #. Description
 #: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
 msgstr ""
+"Riavviare i servizi durante l'aggiornamento dei pacchetti senza chiedere?"
 
 #. Type: boolean
 #. Description
@@ -455,25 +451,24 @@ msgid ""
 "necessary restarts will be done for you automatically so you can avoid being "
 "asked questions on each library upgrade."
 msgstr ""
+"Nel sistema sono installati servizi che necessitano di essere riavviati "
+"quando alcune librerie, come libpam, libc e libssl vengono aggiornate. Dato "
+"che questi riavvii possono causare interruzioni di servizio per il sistema, "
+"normalmente viene chiesto ad ogni aggiornamento l'elenco dei servizi che si "
+"desidera riavviare. Si può scegliere questa opzione per evitare che venga "
+"posta la domanda; tutti i necessari riavvii saranno invece fatti "
+"automaticamente per conto dell'utente in modo da evitare che vengano poste "
+"domande ad ogni aggiornamento di libreria."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr "Servizi da riavviare per l'aggiornamento della libreria PAM:"
+msgstr "Servizi da riavviare per l'aggiornamento di nslcd:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -481,31 +476,24 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
-"I servizi e i programmi in esecuzione che usano NSS devono essere riavviati "
-"altrimenti potrebbero non essere più in grado di effettuare ricerche o "
-"autenticazioni (i servizi tipo ssh potrebbero avere problemi d'accesso). "
-"Controllare il seguente elenco di nomi di script per init.d separati da uno "
-"spazio relativi ai servizi che devono essere riavviati e, se necessario, "
-"correggerlo."
+"I servizi e i programmi in esecuzione che usano nslcd devono essere "
+"riavviati altrimenti potrebbero non essere più in grado di effettuare "
+"ricerche o autenticazioni (i servizi tipo ssh potrebbero avere problemi "
+"d'accesso). Controllare il seguente elenco di nomi di script per init.d "
+"separati da uno spazio relativi ai servizi che devono essere riavviati e, se "
+"necessario, correggerlo."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Fallito il riavvio di alcuni servizi per l'aggiornamento di PAM"
+msgstr "Fallito il riavvio di alcuni servizi per l'aggiornamento di nslcd"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr ""
-"Non è stato possibile il riavvio dei seguenti servizi per l'aggiornamento "
-"della libreria PAM:"
+msgstr "Non è stato possibile il riavvio dei seguenti servizi:"
 
 #. Type: error
 #. Description
@@ -524,12 +512,6 @@ msgstr "Il display manager deve essere riavviato manualmente"
 #. Type: error
 #. Description
 #: ../nslcd.templates:19001
-#, fuzzy
-#| msgid ""
-#| "The wdm and xdm display managers require a restart for the new version of "
-#| "libpam, but there are X login sessions active on your system that would "
-#| "be terminated by this restart.  You will therefore need to restart these "
-#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
@@ -537,7 +519,7 @@ msgid ""
 "services by hand before further X logins will be possible."
 msgstr ""
 "I display manager wdm e xdm richiedono di essere riavviati per la nuova "
-"versione di libpam, ma ci sono sessioni di login X attive sul sistema che "
+"versione di nslcd, ma ci sono sessioni di login X attive sul sistema che "
 "verrebbero terminate da questo riavvio. Bisognerà riavviare questi servizi "
 "manualmente prima che sia possibile ogni altro login al server X."
 
