@@ -3,6 +3,8 @@ nss-pam-ldapd (0.9.4-3) UNRELEASED; urgency=medium
   * NOT RELEASED YET
   * use-ip-range-for-tests.patch: use a different IP range for running the
     autopkgtest tests to avoid conflicts in test environments
+  * debconf translation updates:
+    - Norwegian Bokmål by Petter Reinholdtsen (closes: #758693)
 
  -- Arthur de Jong <adejong@debian.org>  Wed, 20 Aug 2014 22:00:00 +0200
 
