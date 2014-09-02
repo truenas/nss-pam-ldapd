@@ -59,7 +59,7 @@ Package: libnss-ldapd
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd-2
+Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd (>= 0.9.0) | nslcd-2
 Conflicts: libnss-ldap
 Provides: libnss-ldap
 Description: NSS module for using LDAP as a naming service
@@ -72,7 +72,7 @@ Package: libpam-ldapd
 Architecture: any
 Multi-Arch: same
 Pre-Depends: ${misc:Pre-Depends}
-Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd-2,
+Depends: ${misc:Depends}, ${shlibs:Depends}, nslcd (>= 0.9.0) | nslcd-2,
          libpam-runtime (>= 1.0.1-6), libpam0g (>= 1.1.3-2)
 Conflicts: libpam-ldap
 Provides: libpam-ldap
@@ -83,7 +83,7 @@ Description: PAM module for using LDAP as an authentication service
 
 Package: nslcd-utils
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, nslcd-2
+Depends: ${python:Depends}, ${misc:Depends}, nslcd (>= 0.9.0) | nslcd-2
 Description: utilities for querying LDAP via nslcd
  This package provides tools to query and update information in LDAP via
  nslcd:
