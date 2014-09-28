@@ -1,6 +1,5 @@
-nss-pam-ldapd (0.9.4-3) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.4-3) unstable; urgency=low
 
-  * NOT RELEASED YET
   * use-ip-range-for-tests.patch: use a different IP range for running the
     autopkgtest tests to avoid conflicts in test environments
   * debconf translation updates:
