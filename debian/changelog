@@ -6,8 +6,10 @@ nss-pam-ldapd (0.9.4-3) UNRELEASED; urgency=medium
   * debconf translation updates:
     - Norwegian Bokmål by Petter Reinholdtsen (closes: #758693)
   * prefer nslcd as nslcd-2 implementation (closes: #760287)
+  * do not remove PAM profile when another architecture remains (taken from
+    the libpam_ldap package)
 
- -- Arthur de Jong <adejong@debian.org>  Tue, 02 Sep 2014 20:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 28 Sep 2014 15:00:00 +0200
 
 nss-pam-ldapd (0.9.4-2) unstable; urgency=low
 
