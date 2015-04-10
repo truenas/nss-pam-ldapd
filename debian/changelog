@@ -12,6 +12,7 @@ nss-pam-ldapd (0.9.5-1) UNRELEASED; urgency=medium
     - adjust the Linux OOM (Out-Of-Memory) killer score to avoid killing
       nslcd (thanks Patrick McLean)
   * drop use-ip-range-for-tests.patch which is part of 0.9.5
+  * debian/copyright: copyright year updates
 
  -- Arthur de Jong <adejong@debian.org>  Fri, 10 Apr 2015 10:00:00 +0200
 
