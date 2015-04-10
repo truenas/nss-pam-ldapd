@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.5-1) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.5-1) unstable; urgency=medium
 
   * new upstream release:
     - handle situation better when server (or firewall) closed the connection
@@ -15,7 +15,7 @@ nss-pam-ldapd (0.9.5-1) UNRELEASED; urgency=medium
   * debian/copyright: copyright year updates
   * upgrade to standards-version 3.9.6 (no changes needed)
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 10 Apr 2015 10:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 10 Apr 2015 16:00:00 +0200
 
 nss-pam-ldapd (0.9.4-3) unstable; urgency=low
 
