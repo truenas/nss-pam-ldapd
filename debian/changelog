@@ -1,3 +1,20 @@
+nss-pam-ldapd (0.9.5-1) UNRELEASED; urgency=medium
+
+  * new upstream release:
+    - handle situation better when server (or firewall) closed the connection
+      (thanks Tim Harder)
+    - make daemonising a little more robust and try to log more failures
+    - fix integer format strings (thanks Jianhai Luan and Patrick McLean)
+    - documentation updates (thanks Dalibor Pospíšil)
+    - fix range check for search access (thanks David Binderma)
+    - fix a bug in the NSS library when encountering IPv6 addresses in
+      the hosts map (thanks Mark R Bannister)
+    - adjust the Linux OOM (Out-Of-Memory) killer score to avoid killing
+      nslcd (thanks Patrick McLean)
+  * drop use-ip-range-for-tests.patch which is part of 0.9.5
+
+ -- Arthur de Jong <adejong@debian.org>  Fri, 10 Apr 2015 10:00:00 +0200
+
 nss-pam-ldapd (0.9.4-3) unstable; urgency=low
 
   * use-ip-range-for-tests.patch: use a different IP range for running the
