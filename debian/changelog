@@ -15,8 +15,10 @@ nss-pam-ldapd (0.9.6-1) UNRELEASED; urgency=medium
       (thanks Andrew Elble)
   * drop avoid-signal-race.patch which is part of 0.9.6
   * drop XS-Testsuite from debian/control
+  * use pathfind from Developer's Reference instead of full path to nslcd and
+    pynslcd
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 14 Jun 2015 23:27:24 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 14 Jun 2015 23:42:54 +0200
 
 nss-pam-ldapd (0.9.5-2) unstable; urgency=medium
 
