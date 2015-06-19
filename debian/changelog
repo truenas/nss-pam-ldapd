@@ -1,6 +1,5 @@
-nss-pam-ldapd (0.9.6-1) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.6-1) unstable; urgency=medium
 
-  * NOT RELEASED YET
   * new upstream release:
     - fix a race condition in signal handling during start-up that would
       cause nslcd to exit if a signal (such as SIGUSR1 that can be sent when
@@ -18,7 +17,7 @@ nss-pam-ldapd (0.9.6-1) UNRELEASED; urgency=medium
   * use pathfind from Developer's Reference instead of full path to nslcd and
     pynslcd
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 14 Jun 2015 23:42:54 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 19 Jun 2015 11:30:00 +0200
 
 nss-pam-ldapd (0.9.5-2) unstable; urgency=medium
 
