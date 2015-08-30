@@ -1,0 +1,145 @@
+Description: Fix password policy warnings
+ Previously, when a password was about to expire, nslcd would incorrectly
+ signal the PAM module to force a password change. This changes this to
+ only present a message to the user.
+ This also ensures that the PAM module logs messages that are presented
+ to the user.
+Author: Arthur de Jong <arthur@arthurdejong.org>
+Origin: upstream, http://arthurdejong.org/git/nss-pam-ldapd/commit/?id=4302901a2708d55b24880b77437e3d782b0de1cb
+Origin: upstream, http://arthurdejong.org/git/nss-pam-ldapd/commit/?id=263a44340badb1e553c997f2dfb4986fb2f4c28b
+Origin: upstream, http://arthurdejong.org/git/nss-pam-ldapd/commit/?id=309f127416cd38f972d28b29f59e784ea5403785
+Bug-Debian: https://bugs.debian.org/794068
+
+--- a/nslcd/myldap.c
++++ b/nslcd/myldap.c
+@@ -5,7 +5,7 @@
+ 
+    Copyright (C) 1997-2006 Luke Howard
+    Copyright (C) 2006-2007 West Consulting
+-   Copyright (C) 2006-2014 Arthur de Jong
++   Copyright (C) 2006-2015 Arthur de Jong
+ 
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+@@ -406,7 +406,7 @@ static int do_sasl_interact(LDAP UNUSED(
+   }
+ 
+ #if defined(HAVE_LDAP_SASL_BIND) && defined(LDAP_SASL_SIMPLE)
+-static void handle_ppasswd_controls(MYLDAP_SESSION *session, LDAP *ld, LDAPControl **ctrls)
++static void handle_ppolicy_controls(MYLDAP_SESSION *session, LDAP *ld, LDAPControl **ctrls)
+ {
+   int i;
+   int rc;
+@@ -434,10 +434,9 @@ static void handle_ppasswd_controls(MYLD
+       sec = atol(seconds);
+       log_log(LOG_DEBUG, "got LDAP_CONTROL_PWEXPIRING (password will expire in %ld seconds)",
+               sec);
+-      /* return this warning to PAM */
+-      if (session->policy_response == NSLCD_PAM_SUCCESS)
++      /* return this warning so PAM can present it to the user */
++      if (strlen(session->policy_message) == 0)
+       {
+-        session->policy_response = NSLCD_PAM_NEW_AUTHTOK_REQD;
+         mysnprintf(session->policy_message, sizeof(session->policy_message),
+                    "password will expire in %ld seconds",  sec);
+       }
+@@ -453,9 +452,8 @@ static void handle_ppasswd_controls(MYLD
+       else
+       {
+         /* log returned control information */
+-        if (error != PP_noError)
+-          log_log(LOG_DEBUG, "got LDAP_CONTROL_PASSWORDPOLICYRESPONSE (%s)",
+-                  ldap_passwordpolicy_err2txt(error));
++        log_log(LOG_DEBUG, "got LDAP_CONTROL_PASSWORDPOLICYRESPONSE (%s)",
++                ldap_passwordpolicy_err2txt(error));
+         if (expire >= 0)
+           log_log(LOG_DEBUG, "got LDAP_CONTROL_PASSWORDPOLICYRESPONSE (password will expire in %d seconds)",
+                   expire);
+@@ -467,7 +465,8 @@ static void handle_ppasswd_controls(MYLD
+             ((session->policy_response == NSLCD_PAM_SUCCESS) ||
+              (session->policy_response == NSLCD_PAM_NEW_AUTHTOK_REQD)))
+         {
+-          session->policy_response = NSLCD_PAM_AUTHTOK_EXPIRED;
++          /* this means that the password has expired and must be reset */
++          session->policy_response = NSLCD_PAM_NEW_AUTHTOK_REQD;
+           mysnprintf(session->policy_message, sizeof(session->policy_message),
+                      "%s", ldap_passwordpolicy_err2txt(error));
+         }
+@@ -475,6 +474,8 @@ static void handle_ppasswd_controls(MYLD
+                  ((session->policy_response == NSLCD_PAM_SUCCESS) ||
+                   (session->policy_response == NSLCD_PAM_NEW_AUTHTOK_REQD)))
+         {
++          /* this means that the account is locked and the user cannot log
++             in (the bind probably failed already) */
+           session->policy_response = NSLCD_PAM_ACCT_EXPIRED;
+           mysnprintf(session->policy_message, sizeof(session->policy_message),
+                      "%s", ldap_passwordpolicy_err2txt(error));
+@@ -482,6 +483,8 @@ static void handle_ppasswd_controls(MYLD
+         else if ((error == PP_changeAfterReset) &&
+                  (session->policy_response == NSLCD_PAM_SUCCESS))
+         {
++          /* this indicates that the password must be changed before the
++             user is allowed to perform any other operation */
+           session->policy_response = NSLCD_PAM_NEW_AUTHTOK_REQD;
+           mysnprintf(session->policy_message, sizeof(session->policy_message),
+                      "%s", ldap_passwordpolicy_err2txt(error));
+@@ -490,22 +493,23 @@ static void handle_ppasswd_controls(MYLD
+                  ((session->policy_response == NSLCD_PAM_SUCCESS) ||
+                   (session->policy_response == NSLCD_PAM_NEW_AUTHTOK_REQD)))
+         {
++          /* any other error is assumed to mean that the operation failed */
+           session->policy_response = NSLCD_PAM_PERM_DENIED;
+           mysnprintf(session->policy_message, sizeof(session->policy_message),
+                      "%s", ldap_passwordpolicy_err2txt(error));
+         }
+-        else if ((expire >= 0) &&
+-                 ((session->policy_response == NSLCD_PAM_SUCCESS) ||
+-                  (session->policy_response == NSLCD_PAM_NEW_AUTHTOK_REQD)))
++        /* both expire and grace should just be warnings to the user */
++        if ((expire >= 0) && (strlen(session->policy_message) == 0))
+         {
+-          session->policy_response = NSLCD_PAM_NEW_AUTHTOK_REQD;
++          /* if no other error has happened, this indicates that the password
++             will soon expire (number of seconds) */
+           mysnprintf(session->policy_message, sizeof(session->policy_message),
+                      "Password will expire in %d seconds", expire);
+         }
+-        else if ((grace >= 0) &&
+-                 (session->policy_response == NSLCD_PAM_SUCCESS))
++        else if ((grace >= 0) && (strlen(session->policy_message) == 0))
+         {
+-          session->policy_response = NSLCD_PAM_NEW_AUTHTOK_REQD;
++          /* this indicates the number of grace logins that are left before
++             no further login attempts will be allowed */
+           mysnprintf(session->policy_message, sizeof(session->policy_message),
+                      "Password expired, %d grace logins left", grace);
+         }
+@@ -580,7 +584,7 @@ static int do_ppolicy_bind(MYLDAP_SESSIO
+   /* handle any returned controls */
+   if (responsectrls != NULL)
+   {
+-    handle_ppasswd_controls(session, ld, responsectrls);
++    handle_ppolicy_controls(session, ld, responsectrls);
+     ldap_controls_free(responsectrls);
+   }
+   /* return the result of the BIND operation */
+--- a/pam/pam.c
++++ b/pam/pam.c
+@@ -581,9 +581,17 @@ int pam_sm_acct_mgmt(pam_handle_t *pamh,
+     pam_syslog(pamh, LOG_DEBUG, "authorization succeeded");
+   /* present any informational messages to the user */
+   if ((authz_resp.msg[0] != '\0') && (!cfg.no_warn))
++  {
+     pam_info(pamh, "%s", authz_resp.msg);
++    pam_syslog(pamh, LOG_INFO, "%s; user=%s",
++               authz_resp.msg, username);
++  }
+   if ((ctx->saved_authz.msg[0] != '\0') && (!cfg.no_warn))
++  {
+     pam_info(pamh, "%s", ctx->saved_authz.msg);
++    pam_syslog(pamh, LOG_INFO, "%s; user=%s",
++               ctx->saved_authz.msg, username);
++  }
+   return PAM_SUCCESS;
+ }
+ 

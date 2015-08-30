@@ -1,3 +1,9 @@
+nss-pam-ldapd (0.9.6-3) UNRELEASED; urgency=medium
+
+  * fix password policy expiration warnings (closes: #794068)
+
+ -- Arthur de Jong <adejong@debian.org>  Sun, 30 Aug 2015 13:00:00 +0200
+
 nss-pam-ldapd (0.9.6-2) unstable; urgency=medium
 
   * ensure proper return code of init script (closes: #794686)
