@@ -1,3 +1,10 @@
+nss-pam-ldapd (0.9.6-4) UNRELEASED; urgency=medium
+
+  * debconf translation updates:
+    - Brazilian Portuguese by Adriano Rafael Gomes (closes: #799414)
+
+ -- Arthur de Jong <adejong@debian.org>  Sun, 20 Sep 2015 13:30:00 +0200
+
 nss-pam-ldapd (0.9.6-3) unstable; urgency=medium
 
   * fix-ppolicy-expiration-warnings.patch: fix password policy expiration

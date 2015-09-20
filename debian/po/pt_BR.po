@@ -1,13 +1,18 @@
-# Translation of nss-pam-ldapd debconf templates to Brazilian Portuguese.
+# Debconf translations for nss-pam-ldapd.
+# Copyright (C) 2015 THE nss-pam-ldapd'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the nss-pam-ldapd package.
+# André Luís Lopes <andrelop@ig.com.br>, 2003.
+# Denis Doria <denisdoria@gmail.com>, 2011.
+# Adriano Rafael Gomes <adrianorg@arg.eti.br>, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: nss-pam-ldapd 0.8.4\n"
+"Project-Id-Version: nss-pam-ldapd\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
 "POT-Creation-Date: 2014-06-08 11:45+0200\n"
-"PO-Revision-Date: 2011-08-14 15:53-0300\n"
-"Last-Translator: Denis Doria <denisdoria@gmail.com>\n"
-"Language-Team: Debian-BR Project <debian-l10n-portuguese@lists.debian.org>\n"
+"PO-Revision-Date: 2015-09-18 20:18-0300\n"
+"Last-Translator: Adriano Rafael Gomes <adrianorg@arg.eti.br>\n"
+"Language-Team: Brazilian Portuguese <debian-l10n-portuguese@lists.debian.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,8 +32,8 @@ msgid ""
 "is \"ldap://<hostname_or_IP_address>:<port>/\". Alternatively, \"ldaps://\" "
 "or \"ldapi://\" can be used. The port number is optional."
 msgstr ""
-"Por favor entre com o Identicador Uniforme do Recurso (URI) do servidor "
-"LDAP. O formato é \"ldap://<hostname_or_IP_address>:<port>/\". "
+"Por favor, informe o Identificador Uniforme de Recurso (URI) do servidor "
+"LDAP. O formato é \"ldap://<nomedemaquina_ou_endereco_IP>:<porta>/\". "
 "Alternativamente, \"ldaps://\" ou \"ldapi://\" pode ser usado. O número da "
 "porta é opcional."
 
@@ -39,16 +44,14 @@ msgid ""
 "When using an ldap or ldaps scheme it is recommended to use an IP address to "
 "avoid failures when domain name services are unavailable."
 msgstr ""
-"Quando usando métodos ldap ou ldaps é recomendado o uso de um endereço IP "
-"para evitar falhas quando os serviços de nome de domínio estão indisponí­veis."
+"Ao usar um esquema ldap ou ldaps, é recomendado usar um endereço IP para "
+"evitar falhas quando os serviços de nome de domínio estiverem indisponíveis."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:1001
-#, fuzzy
-#| msgid "Multiple URIs can be specified by separating them with spaces."
 msgid "Multiple URIs can be separated by spaces."
-msgstr "Múltiplas URIs podem ser especifícadas separando-as com espaços."
+msgstr "Múltiplas URIs podem ser separadas por espaços."
 
 #. Type: string
 #. Description
@@ -65,10 +68,10 @@ msgid ""
 "domain \"example.net\" would use \"dc=example,dc=net\" as the distinguished "
 "name of the search base."
 msgstr ""
-"Por favor informe o nome distinto da base de procura LDAP. Muitos sites usam "
-"componentes de seus nomes de domí­nio para este propósito. Por exemplo, o "
-"domínio \"example.net\" usaria \"dc=example,dc=net\" como o nome distinto da "
-"base de procura."
+"Por favor, informe o nome distinto da base de procura LDAP. Muitos sites "
+"usam os componentes de seus nomes de domínio para esse propósito. Por "
+"exemplo, o domínio \"example.net\" usaria \"dc=example,dc=net\" como o nome "
+"distinto da base de procura."
 
 #. Type: select
 #. Choices
@@ -101,8 +104,8 @@ msgid ""
 "Please choose what type of authentication the LDAP database should require "
 "(if any):"
 msgstr ""
-"Por favor escolha qual o tipo de autenticação a base de dados LDAP deve "
-"requerir (se alguma):"
+"Por favor, escolha qual o tipo de autenticação que o banco de dados LDAP "
+"deve requerer (se algum):"
 
 #. Type: select
 #. Description
@@ -112,29 +115,26 @@ msgid ""
 " * simple: simple bind DN and password authentication;\n"
 " * SASL: any Simple Authentication and Security Layer mechanism."
 msgstr ""
-"* none: sem autenticação;\n"
-"* simple: DN vínculo simples e autenticação por senha;\n"
-"* SASL: qualquer Autenticação Simples e um mecanismo de Camada de Segurança"
+"* nenhum: sem autenticação;\n"
+"* simples: simples bind DN e autenticação por senha;\n"
+"* SASL: qualquer mecanismo de Autenticação Simples e Camada de Segurança"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:4001
 msgid "LDAP database user:"
-msgstr "Base de dados de usuários LDAP:"
+msgstr "Usuário do banco de dados LDAP:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:4001
-#, fuzzy
-#| msgid ""
-#| "Enter the name of the account that will be used to log in to the LDAP "
-#| "database. This value should be specified as a DN (distinguished name)."
 msgid ""
 "Please enter the name of the account that will be used to log in to the LDAP "
 "database. This value should be specified as a DN (distinguished name)."
 msgstr ""
-"Informe o nome da conta que será usada para se autenticar na base de dados "
-"LDAP. Este valor deverá ser especificado como um ND (nome distinto)"
+"Por favor, informe o nome da conta que será usada para se autenticar no "
+"banco de dados LDAP. Este valor deverá ser especificado como um DN (nome "
+"distinto)."
 
 #. Type: password
 #. Description
@@ -145,12 +145,11 @@ msgstr "Senha do usuário LDAP:"
 #. Type: password
 #. Description
 #: ../nslcd.templates:5001
-#, fuzzy
-#| msgid "Enter the password that will be used to log in to the LDAP database."
 msgid ""
 "Please enter the password that will be used to log in to the LDAP database."
 msgstr ""
-"Informe a senha que será usada para a autenticação na base de dados LDAP."
+"Por favor, informe a senha que será usada para a autenticação no banco de "
+"dados LDAP."
 
 #. Type: select
 #. Description
@@ -161,30 +160,16 @@ msgstr "Mecanismo SASL para utilizar:"
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| "Choose the SASL mechanism that will be used to authenticate to the LDAP "
-#| "database:"
 msgid ""
 "Please choose the SASL mechanism that will be used to authenticate to the "
 "LDAP database:"
 msgstr ""
-"Escolha o mecanismo SASL que deverá ser utilizado para autenticar na base de "
-"dados LDAP."
+"Por favor, escolha o mecanismo SASL que deverá ser utilizado para autenticar "
+"no banco de dados LDAP."
 
 #. Type: select
 #. Description
 #: ../nslcd.templates:6001
-#, fuzzy
-#| msgid ""
-#| " * auto: auto-negotiation;\n"
-#| " * LOGIN: deprecated in favor of PLAIN;\n"
-#| " * PLAIN: simple cleartext password mechanism;\n"
-#| " * NTLM: NT LAN Manager authentication mechanism;\n"
-#| " * CRAM-MD5: challenge-response scheme based on HMAC-MD5;\n"
-#| " * DIGEST-MD5: HTTP Digest compatible challenge-response scheme;\n"
-#| " * GSSAPI: used for Kerberos;\n"
-#| " * OTP: a One Time Password mechanism."
 msgid ""
 " * auto: auto-negotiation;\n"
 " * LOGIN: deprecated in favor of PLAIN;\n"
@@ -199,52 +184,47 @@ msgid ""
 " * EXTERNAL: authentication is implicit in the context."
 msgstr ""
 " * auto: negociação automática;\n"
-" * LOGIN: depreciada em favor de PLAIN;\n"
-" * PLAIN: mecanismo simples de senha em texto puro\n"
+" * LOGIN: tornada obsoleta em favor de PLAIN;\n"
+" * PLAIN: mecanismo simples de senha em texto puro;\n"
 " * NTLM: mecanismo de autenticação NT LAN Manager;\n"
-" * CRAM-MD5: método desafio-resposta baseado em HMAC-MD5;\n"
-" * DIGEST-MD5:  método compatí­vel desafio-resposta HTTP Digest;\n"
+" * CRAM-MD5: esquema desafio-resposta baseado em HMAC-MD5;\n"
+" * DIGEST-MD5: esquema desafio-resposta compatível com HTTP Digest;\n"
+" * SCRAM: mecanismo desafio-resposta \"salted\";\n"
 " * GSSAPI: utilizado pelo Kerberos;\n"
-" * OTP: um mecanismo de senha de apenas uma vez."
+" * SKEY: mecanismo S/KEY (tornado obsoleto pelo OTP);\n"
+" * OTP: mecanismo de senha de apenas uma vez;\n"
+" * EXTERNAL: autenticação é implícita no contexto."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
 msgid "SASL realm:"
-msgstr "Domí­nio SASL:"
+msgstr "Domínio SASL:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL realm that will be used to authenticate to the LDAP "
-#| "database."
 msgid ""
 "Please enter the SASL realm that will be used to authenticate to the LDAP "
 "database."
 msgstr ""
-"Entre com o domínio SASL que será utilizado para autenticação na base de "
-"dados LDAP."
+"Por favor, informe o domínio SASL que será utilizado para autenticação no "
+"banco de dados LDAP."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
 msgid "The realm is appended to authentication and authorization identities."
-msgstr "O domí­nio é anexado a autenticação e as identidades de autorização."
+msgstr "O domínio é anexado às identidades de autenticação e de autorização."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:7001
-#, fuzzy
-#| msgid ""
-#| "For GSSAPI this can be left blank to use information from the Kerberos "
-#| "credential cache."
 msgid ""
 "For GSSAPI, this can be left blank to use information from the Kerberos "
 "credentials cache."
 msgstr ""
-"Para o GSSAPI isto pode ser deixado em branco para utilizar a informação do "
+"Para o GSSAPI, isto pode ser deixado em branco para utilizar a informação do "
 "cache de credenciais Kerberos."
 
 #. Type: string
@@ -256,16 +236,12 @@ msgstr "Identidade de autenticação SASL:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:8001
-#, fuzzy
-#| msgid ""
-#| "Enter the SASL authentication identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the SASL authentication identity that will be used to "
 "authenticate to the LDAP database."
 msgstr ""
-"Entre com a identidade de autenticação SASL que será utilizada para "
-"autenticar na base de dados LDAP."
+"Por favor, informe a identidade de autenticação SASL que será utilizada para "
+"autenticar no banco de dados LDAP."
 
 #. Type: string
 #. Description
@@ -279,21 +255,17 @@ msgstr ""
 #. Description
 #: ../nslcd.templates:9001
 msgid "SASL proxy authorization identity:"
-msgstr "Identidade do proxy de autorização SASL:"
+msgstr "Identidade de autorização de proxy SASL:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:9001
-#, fuzzy
-#| msgid ""
-#| "Enter the proxy authorization identity that will be used to authenticate "
-#| "to the LDAP database."
 msgid ""
 "Please enter the proxy authorization identity that will be used to "
 "authenticate to the LDAP database."
 msgstr ""
-"Entre com a identidade de autorização do proxy que será utilizada para "
-"autenticar na base de dados LDAP."
+"Por favor, informe a identidade de autorização do proxy que será utilizada "
+"para autenticar no banco de dados LDAP."
 
 #. Type: string
 #. Description
@@ -302,8 +274,8 @@ msgid ""
 "This is the object in the name of which the LDAP request is done. This value "
 "should be specified as a DN (distinguished name)."
 msgstr ""
-"Este é o nome do objeto o qual a requisição LDAP é feita. Este valor deveria "
-"ser especificado como um ND (nome distinto)."
+"Este é o objeto em nome do qual a requisição LDAP é feita. Este valor deverá "
+"ser especificado como um DN (nome distinto)."
 
 #. Type: string
 #. Description
@@ -314,24 +286,18 @@ msgstr "Propriedades de segurança Cyrus SASL:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid "Cyrus SASL security properties:"
 msgid "Please enter the Cyrus SASL security properties."
-msgstr "Propriedades de segurança Cyrus SASL:"
+msgstr "Por favor, informe as propriedades de segurança Cyrus SASL."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:10001
-#, fuzzy
-#| msgid ""
-#| "Enter the Cyrus SASL security properties. Allowed values are described in "
-#| "the ldap.conf(5) manual page in the SASL OPTIONS section."
 msgid ""
 "Allowed values are described in the ldap.conf(5) manual page in the SASL "
 "OPTIONS section."
 msgstr ""
-"Entre com as propriedades de segurança Cyrus SASL. Valores permitidos estão "
-"descritos na página de manual ldap.conf(5) na seção SASL OPTIONS."
+"Valores permitidos estão descritos na página de manual ldap.conf(5), na "
+"seção SASL OPTIONS."
 
 #. Type: string
 #. Description
@@ -342,14 +308,12 @@ msgstr "Caminho do arquivo de cache de credenciais Kerberos:"
 #. Type: string
 #. Description
 #: ../nslcd.templates:11001
-#, fuzzy
-#| msgid ""
-#| "Enter the GSSAPI/Kerberos credential cache file name that will be used."
 msgid ""
 "Please enter the GSSAPI/Kerberos credential cache file name that will be "
 "used."
 msgstr ""
-"Entre com o nome do arquivo de cache GSSAPI/Kerberos que será utilizado."
+"Por favor, informe o nome do arquivo de cache de credenciais GSSAPI/Kerberos "
+"que será utilizado."
 
 #. Type: boolean
 #. Description
@@ -364,8 +328,8 @@ msgid ""
 "Please choose whether the connection to the LDAP server should use StartTLS "
 "to encrypt the connection."
 msgstr ""
-"Por favor escolha se a conexão com o servidor LDAP deve usar StartTLS para "
-"criptografar a mesma."
+"Por favor, escolha se deverá ser usado StartTLS para criptografar a conexão "
+"com o servidor LDAP."
 
 #. Type: select
 #. Choices
@@ -389,7 +353,7 @@ msgstr "tentar"
 #. Choices
 #: ../nslcd.templates:13001
 msgid "demand"
-msgstr "demanda"
+msgstr "exigir"
 
 #. Type: select
 #. Description
@@ -405,22 +369,14 @@ msgid ""
 "and checked. Please choose whether lookups should be configured to require a "
 "certificate, and whether certificates should be checked for validity:"
 msgstr ""
-"Quando uma conexão criptografada é utilizada, um servidor certificado pode "
-"ser requerido e verificado. Por favor escolha se as pesquisas devem ser "
-"configuradas para requerir um certificado, e se o certificado deve ter a "
-"validade verificada."
+"Quando uma conexão criptografada é utilizada, um certificado do servidor "
+"pode ser solicitado e verificado. Por favor, escolha se as pesquisas devem "
+"ser configuradas para solicitar um certificado, e se o certificado deve ter "
+"a validade verificada:"
 
 #. Type: select
 #. Description
 #: ../nslcd.templates:13002
-#, fuzzy
-#| msgid ""
-#| " * never: no certificate will be requested or checked;\n"
-#| " * allow: a certificate will be requested, but it is not\n"
-#| "          required or checked;\n"
-#| " * try: a certificate will be requested and checked, but if no\n"
-#| "        certificate is provided it is ignored;\n"
-#| " * demand: a certificate will be requested, required, and checked."
 msgid ""
 " * never: no certificate will be requested or checked;\n"
 " * allow: a certificate will be requested, but it is not\n"
@@ -429,18 +385,19 @@ msgid ""
 "        certificate is provided, it is ignored;\n"
 " * demand: a certificate will be requested, required, and checked."
 msgstr ""
-" * never: nenhum certificado será requisitado ou verificado;\n"
-" * allow: um certificado será requisitado, mas não é\n"
-"          requerido ou verificado;\n"
-" * try: um certificado será requisitado e verificado, mas se nenhum\n"
-"        certificado é provido o mesmo é ignorado;\n"
-" * demand: um certificado será requisitado, requerido, e validado."
+" * nunca: nenhum certificado será solicitado ou verificado;\n"
+" * permitir: um certificado será solicitado, mas ele não é\n"
+"             obrigatório nem verificado;\n"
+" * tentar: um certificado será solicitado e verificado, mas se\n"
+"           nenhum certificado for fornecido, isso é ignorado;\n"
+" * exigir: um certificado será solicitado, é obrigatório e\n"
+"           será validado."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:14001
 msgid "Certificate authority certificate:"
-msgstr ""
+msgstr "Certificado da autoridade certificadora:"
 
 #. Type: string
 #. Description
@@ -449,24 +406,19 @@ msgid ""
 "When certificate checking is enabled this file contains the X.509 "
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
+"Quando a verificação de certificado é habilitada, esse arquivo contém o "
+"certificado X.509 que é usado para verificar o certificado fornecido pelo "
+"servidor."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:15001
 msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr "O xscreensaver e xlockmore precisam ser reiniciados antes de atualizar"
+msgstr "xscreensaver e xlockmore devem ser reiniciados antes da atualização"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:15001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system.  Because of incompatible library changes, the "
-#| "upgrade of the libpam-modules package will leave you unable to "
-#| "authenticate to these programs.  You should arrange for these programs to "
-#| "be restarted or stopped before continuing this upgrade, to avoid locking "
-#| "your users out of their current sessions."
 msgid ""
 "One or more running instances of xscreensaver or xlockmore have been "
 "detected on this system. Because of incompatible library changes, the "
@@ -477,16 +429,16 @@ msgid ""
 msgstr ""
 "Uma ou mais instâncias do xscreensaver ou do xlockmore foram detectadas em "
 "execução neste sistema. Por causa de modificações incompatíveis de "
-"biblioteca a atualização do pacote libpam-modules impossibilitará você de se "
-"autenticar nestes programas. Você deve providenciar que estes programas "
-"sejam reiniciados ou parados antes de continuar com esta atualização, para "
-"evitar bloquear seus usuários fora de suas sessões atuais."
+"biblioteca, a atualização do nslcd impossibilitará você de se autenticar "
+"nestes programas. Você deve providenciar que estes programas sejam "
+"reiniciados ou parados antes de continuar com esta atualização, para evitar "
+"bloquear seus usuários fora de suas sessões atuais."
 
 #. Type: boolean
 #. Description
 #: ../nslcd.templates:16001
 msgid "Restart services during package upgrades without asking?"
-msgstr ""
+msgstr "Reiniciar serviços durante a atualização de pacotes sem perguntar?"
 
 #. Type: boolean
 #. Description
@@ -500,25 +452,24 @@ msgid ""
 "necessary restarts will be done for you automatically so you can avoid being "
 "asked questions on each library upgrade."
 msgstr ""
+"Existem serviços instalados no seu sistema que precisam ser reiniciados "
+"quando determinadas bibliotecas, tais como libpam, libc e libssl são "
+"atualizadas. Uma vez que essas reinicializações podem causar interrupções de "
+"serviços para o sistema, normalmente você terá que responder a cada "
+"atualização qual será a lista de serviços que quiser reiniciar. Você pode "
+"escolher esta opção para evitar novas solicitações; ao invés disso, todas as "
+"reinicializações necessárias serão realizadas automaticamente, para evitar "
+"que você responda a cada atualização de biblioteca."
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
 msgid "Services to restart for nslcd upgrade:"
-msgstr "Serviços a serem reiniciados para a atualização de bibliotecas PAM:"
+msgstr "Serviços a serem reiniciados para atualização do nslcd:"
 
 #. Type: string
 #. Description
 #: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
 msgid ""
 "Running services and programs that are using nslcd need to be restarted, "
 "otherwise they might not be able to do lookup or authentication any more "
@@ -526,30 +477,24 @@ msgid ""
 "review the following space-separated list of init.d scripts for services to "
 "be restarted now, and correct it if needed."
 msgstr ""
-"Serviços em execução e programas que usam NSS precisam ser reiniciados, caso "
-"contrário eles podem não ser capazes de realizar consultas ou autenticação "
-"(para serviços como ssh, isto pode afetar sua habilidade de fazer login). "
-"Por favor, reveja a seguinte lista separada por espaços de scripts init.d "
-"que serão reiniciados agora, e corrija se necessário."
+"Serviços e programas em execução que usam nslcd precisam ser reiniciados, "
+"caso contrário, eles podem não ser capazes de realizar consultas ou "
+"autenticação (para serviços como ssh, isto pode afetar sua habilidade de "
+"fazer login). Por favor, revise a seguinte lista separada por espaços de "
+"scripts init.d de serviços que serão reiniciados agora, e a corrija, se "
+"necessário."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
 msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Falha ao reiniciar alguns serviços para a atualização da PAM"
+msgstr "Falha ao reiniciar alguns serviços para atualização do nslcd"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
 msgid "The following services could not be restarted:"
-msgstr ""
-"Os seguintes serviços não puderam ser reiniciados para a atualização da "
-"biblioteca PAM:"
+msgstr "Os seguintes serviços não puderam ser reiniciados:"
 
 #. Type: error
 #. Description
@@ -558,24 +503,18 @@ msgid ""
 "You will need to start these manually by running '/etc/init.d/<service> "
 "start'."
 msgstr ""
-"Você terá que iniciar esses serviços manualmente executando '/etc/init.d/"
-"<serviço> start'."
+"Você precisará iniciá-los manualmente executando \"/etc/init.d/<serviço> "
+"start\"."
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:19001
 msgid "Display manager must be restarted manually"
-msgstr "Gerenciadores de display devem ser reiniciados manualmente"
+msgstr "Gerenciador de display deve ser reiniciado manualmente"
 
 #. Type: error
 #. Description
 #: ../nslcd.templates:19001
-#, fuzzy
-#| msgid ""
-#| "The wdm and xdm display managers require a restart for the new version of "
-#| "libpam, but there are X login sessions active on your system that would "
-#| "be terminated by this restart.  You will therefore need to restart these "
-#| "services by hand before further X logins will be possible."
 msgid ""
 "The wdm and xdm display managers require a restart for the new version of "
 "nslcd, but there are X login sessions active on your system that would be "
@@ -583,8 +522,8 @@ msgid ""
 "services by hand before further X logins will be possible."
 msgstr ""
 "Os gerenciadores de display wdm e xdm precisam ser reiniciados para a nova "
-"versão da libpam, mas existem sessões de login X ativas em seu sistema que "
-"podem ser terminadas por este reinicio. Você consequentemente necessitará "
+"versão do nslcd, mas existem sessões de login X ativas em seu sistema que "
+"serão terminadas por este reinício. Você consequentemente necessitará "
 "reiniciar estes serviços manualmente antes que logins X adicionais sejam "
 "possíveis."
 
@@ -597,16 +536,12 @@ msgstr "Serviços de nome para configurar:"
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
-#, fuzzy
-#| msgid ""
-#| "For this package to work, you need to modify your /etc/nsswitch.conf to "
-#| "use the ldap datasource."
 msgid ""
 "For this package to work, you need to modify the /etc/nsswitch.conf file to "
 "use the ldap datasource."
 msgstr ""
-"Para que este pacote funcione, você precisa modificar seu /etc/nsswitch.conf "
-"para utilizar a fonte de dados ldap."
+"Para este pacote funcionar, você precisa modificar o arquivo /etc/nsswitch."
+"conf para utilizar a fonte de dados ldap."
 
 #. Type: multiselect
 #. Description
@@ -616,15 +551,15 @@ msgid ""
 "LDAP lookups will be added as the last datasource. Be sure to review these "
 "changes."
 msgstr ""
-"Você pode selecionar os serviços que deveriam ter pesquisas LDAP ativadas. "
-"As novas pesquisas LDAP serão adicionadas como última fonte de dados. Tenha "
-"certeza de rever essas mudanças."
+"Você pode selecionar os serviços que devem ter pesquisas LDAP habilitadas. "
+"As novas pesquisas LDAP serão adicionadas como a última fonte de dados. "
+"Tenha certeza de revisar essas mudanças."
 
 #. Type: boolean
 #. Description
 #: ../libnss-ldapd.templates:2001
 msgid "Remove LDAP from nsswitch.conf now?"
-msgstr "Remover agora o LDAP do nsswitch.conf?"
+msgstr "Remover o LDAP do nsswitch.conf agora?"
 
 #. Type: boolean
 #. Description
@@ -634,7 +569,7 @@ msgid ""
 "  ${services}\n"
 "but the libnss-ldapd package is about to be removed."
 msgstr ""
-"Os serviços a seguir continuam configuradas para utilizar o  LDAP para "
+"Os serviços a seguir continuam configurados para utilizar o LDAP para "
 "pesquisas:\n"
 "  ${services}\n"
 "mas o pacote libnss-ldapd está prestes a ser removido."
@@ -648,10 +583,10 @@ msgid ""
 "most services, not cause problems, but host name resolution could be "
 "affected in subtle ways."
 msgstr ""
-"Você está avisado para remover as entradas se não planeja continuar "
+"É aconselhado que você remova as entradas se você não planeja continuar "
 "utilizando o LDAP para resolução de nomes. Não remover o ldap do nsswitch."
-"conf deve, para a maioria dos serviços, não causar problemas, mas a "
-"resolução de nome do host deverá ser afetada de maneiras misteriosas."
+"conf, para a maioria dos serviços, não deverá causar problemas, mas a "
+"resolução de nome de host poderá ser afetada de maneira sutil."
 
 #. Type: boolean
 #. Description
@@ -662,162 +597,5 @@ msgid ""
 "you choose to remove the entries now."
 msgstr ""
 "Você pode editar /etc/nsswitch.conf manualmente ou escolher remover as "
-"entradas automaticamente agora. Tenha certeza de rever as mudanças no /etc/"
-"nsswitch.conf se escolher remover as entradas agora."
-
-#~ msgid ""
-#~ "If certificate checking is enabled, at least one of the tls_cacertdir or "
-#~ "tls_cacertfile options must be put in /etc/nslcd.conf."
-#~ msgstr ""
-#~ "Se a verificação do certificado está ativa, pelo menos uma das opções "
-#~ "tls_cacertdir ou tls_cacertfile deve ser inclusa no /etc/nslcd.conf."
-
-#~ msgid "Enable shadow lookups through NSS?"
-#~ msgstr "Ativar pesquisas obscuras através do NSS?"
-
-#~ msgid ""
-#~ "To allow LDAP users to log in, the NSS module needs to be enabled to "
-#~ "perform shadow password lookups. The shadow entries themselves may be "
-#~ "empty - that is, there is no need for password hashes to be exposed. See "
-#~ "http://bugs.debian.org/583492 for background."
-#~ msgstr ""
-#~ "Para permitir os usuários LDAP conectarrem-se, o módulo NSS deve estar "
-#~ "ativado para fazer as pesquisas de senhas obscuras. As entradas obscuras "
-#~ "podem estar vazias - isto é, nã há necessidade de hashes de senhas serem "
-#~ "expostos. Veja http://bugs.debian.org/583492 para mais informações."
-
-#~ msgid ""
-#~ "Please choose whether /etc/nsswitch.conf should have the required entry "
-#~ "added automatically (in which case it should be reviewed afterwards) or "
-#~ "whether it should be left for an administrator to edit manually."
-#~ msgstr ""
-#~ "Por favor escolha se /etc/nsswitch.conf deve ter a entrada de valor "
-#~ "acrescentado automaticamente (caso ao qual deve ser revisto mais tarde) "
-#~ "ou se deve ser deixado para um administrador para editar manualmente."
-
-#, fuzzy
-#~ msgid ""
-#~ "Enter the password that will be used to log in to the LDAP database when "
-#~ "the root process does lookups."
-#~ msgstr ""
-#~ "Informe a senha que será usada para a autenticação na base de dados LDAP."
-
-#, fuzzy
-#~ msgid ""
-#~ "Please enter which version of the LDAP protocol is to use. It is usually "
-#~ "a good idea to set this to highest available version number."
-#~ msgstr ""
-#~ "Por favor informe qual versão do protocolo LDAP ldapns deve ser usada. "
-#~ "Normalmente é uma boa idéia definir esta opção para o número de versão "
-#~ "mais alto disponível."
-
-#, fuzzy
-#~ msgid ""
-#~ "For this package to work, you need to modify your /etc/nsswitch.conf to "
-#~ "use the ldap datasource. There is an example file at /usr/share/doc/"
-#~ "libnss-ldap/examples/nsswitch.ldap which can be used as an example for "
-#~ "your nsswitch setup."
-#~ msgstr ""
-#~ "Para que este pacote funcione, você precisa modificar seu arquivo /etc/"
-#~ "nsswitch.conf para usar a fonte de dados ldap. Existe um arquivo de "
-#~ "exemplo em /usr/share/doc/libnss-ldap/examples/nsswitch.ldap que pode ser "
-#~ "usado como um exemplo para a sua configuração do nsswitch ou que pode ser "
-#~ "copiado sobrepondo sua configuração atual."
-
-#~ msgid "distinguished name of the search base"
-#~ msgstr "O nome distinto (dn) da base de procura."
-
-#~ msgid "password for database login account"
-#~ msgstr "Senha para a autenticação na base de dados."
-
-#~ msgid "nsswitch.conf is not managed automatically"
-#~ msgstr "O arquivo nsswitch.conf não é gerenciado automaticamente."
-
-#~ msgid "make configuration readable/writeable by owner only"
-#~ msgstr "Tornar a configuração legível/gravável somente pelo dono"
-
-#~ msgid ""
-#~ "Should the libnss-ldap configuration file be readable and writable only "
-#~ "by the file owner?"
-#~ msgstr ""
-#~ "O arquivo de configuração da libnss-ldap deve ser legível e gravável "
-#~ "somente pelo dono do arquivo ?"
-
-#~ msgid ""
-#~ "If you use passwords in your libnss-ldap configuration, it is usually a "
-#~ "good idea to have the configuration set with mode 0600 (readable and "
-#~ "writable only by the file's owner)."
-#~ msgstr ""
-#~ "Caso você use senhas em seu arquivo de configuração da libnss-ldap é "
-#~ "normalmente uma boa idéia ter as permissões do arquivo de configuração "
-#~ "definidas para o modo 0600 (legível e gravável apenas pelo dono do "
-#~ "arquivo)."
-
-#~ msgid ""
-#~ "Note: As a sanity check, libnss-ldap will check if you have nscd "
-#~ "installed and will only set the mode to 0600 if nscd is present."
-#~ msgstr ""
-#~ "Nota : Como uma medida extra, a libnss-ldap irá checar se você possui o "
-#~ "nscd instalado e somente irá deinir o modo 0600 caso o nscd esteja "
-#~ "instalado."
-
-#~ msgid "database requires login"
-#~ msgstr "Base de dados requer autenticação."
-
-#~ msgid "Does the LDAP database require login?"
-#~ msgstr "A base de dados LDAP requer autenticação ?"
-
-#~ msgid ""
-#~ "Answer this question affirmatively only if you can't retreive entries "
-#~ "from the database without logging in."
-#~ msgstr ""
-#~ "Responda a esta questão afirmativamente somente caso você não possa obter "
-#~ "entradas da base de dados LDAP sem antes se autenticar."
-
-#~ msgid "Note: Under a normal setup, this is not needed."
-#~ msgstr "Nota : Sob um configuração normal, isto não é necessário."
-
-#~ msgid "enable automatic configuration updates by debconf"
-#~ msgstr "Habilitar atualizações automáticas de configuração pelo debconf"
-
-#~ msgid ""
-#~ "Should debconf automatically update libnss-ldap's configuration file?"
-#~ msgstr ""
-#~ "O debconf deve atualizar automaticamente o arquivo de configuração da "
-#~ "libnss-ldap ?"
-
-#~ msgid "libnss-ldap has been moved to use debconf for its configuration."
-#~ msgstr "A libnss-ldap está agora usando debconf para sua configuração."
-
-#~ msgid ""
-#~ "The file will be prepended with \"###DEBCONF###\"; you can disable the "
-#~ "debconf updates by removing that line."
-#~ msgstr ""
-#~ "O arquivo de configuração será marcado com \"###DEBCONF###\"; você pode "
-#~ "desabilitar as atualizações debconf removendo essa linha."
-
-#~ msgid "All new installations will have this by default."
-#~ msgstr "Todas as novas instalações terão isso por padrão."
-
-#~ msgid ""
-#~ "Also, before removing this package, it is wise to remove the ldap entries "
-#~ "from nsswitch.conf to keep basic services functioning."
-#~ msgstr ""
-#~ "Adicionalmente, antes de remover este pacote, é sábio remover as entradas "
-#~ "ldap do arquivo nsswitch.conf para manter os serviços básicos funcionando."
-
-#~ msgid "dc=example,dc=net"
-#~ msgstr "dc=example,dc=net"
-
-#~ msgid "cn=proxyuser,dc=example,dc=net"
-#~ msgstr "cn=proxyuser,dc=example,dc=net"
-
-#~ msgid "3, 2"
-#~ msgstr "3, 2"
-
-#, fuzzy
-#~ msgid "ldap://127.0.0.1/"
-#~ msgstr "127.0.0.1"
-
-#~ msgid "Please enter the address of the LDAP server used."
-#~ msgstr "Por favor informe o endereço do servidor LDAP usada."
+"entradas automaticamente agora. Tenha certeza de revisar as mudanças no /etc/"
+"nsswitch.conf se você escolher remover as entradas agora."
