@@ -4,8 +4,9 @@ nss-pam-ldapd (0.9.6-4) UNRELEASED; urgency=medium
     - Brazilian Portuguese by Adriano Rafael Gomes (closes: #799414)
   * have init script stop action only return when nslcd has actually stopped
     (closes: #814881)
+  * update Vcs and homepage URLs to HTTPS (thanks lintian)
 
- -- Arthur de Jong <adejong@debian.org>  Wed, 17 Feb 2016 23:30:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Thu, 26 May 2016 23:30:00 +0200
 
 nss-pam-ldapd (0.9.6-3) unstable; urgency=medium
 
