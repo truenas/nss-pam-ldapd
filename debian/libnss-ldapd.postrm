@@ -87,10 +87,4 @@ then
   fi
 fi
 
-# call ldconfig to signal the removal of our NSS library
-if [ "$1" = "remove" ]
-then
-  ldconfig
-fi
-
 #DEBHELPER#
