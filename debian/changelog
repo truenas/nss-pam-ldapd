@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.6-4) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.6-4) unstable; urgency=medium
 
   * debconf translation updates:
     - Brazilian Portuguese by Adriano Rafael Gomes (closes: #799414)
@@ -8,7 +8,7 @@ nss-pam-ldapd (0.9.6-4) UNRELEASED; urgency=medium
   * remove explicit ldconfig call from libnss-ldapd.postrm (thanks lintian)
   * upgrade to standards-version 3.9.8 (no changes needed)
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 27 May 2016 10:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 27 May 2016 11:30:00 +0200
 
 nss-pam-ldapd (0.9.6-3) unstable; urgency=medium
 
