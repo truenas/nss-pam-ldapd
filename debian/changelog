@@ -6,8 +6,9 @@ nss-pam-ldapd (0.9.6-4) UNRELEASED; urgency=medium
     (closes: #814881)
   * update Vcs and homepage URLs to HTTPS (thanks lintian)
   * remove explicit ldconfig call from libnss-ldapd.postrm (thanks lintian)
+  * upgrade to standards-version 3.9.8 (no changes needed)
 
- -- Arthur de Jong <adejong@debian.org>  Thu, 26 May 2016 23:43:43 +0200
+ -- Arthur de Jong <adejong@debian.org>  Fri, 27 May 2016 10:00:00 +0200
 
 nss-pam-ldapd (0.9.6-3) unstable; urgency=medium
 
