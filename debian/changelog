@@ -1,3 +1,9 @@
+nss-pam-ldapd (0.9.6-5) UNRELEASED; urgency=medium
+
+  * put nsswitch.conf services in more natural order in debconf question
+
+ -- Arthur de Jong <adejong@debian.org>  Wed, 27 Jul 2016 12:36:13 +0200
+
 nss-pam-ldapd (0.9.6-4) unstable; urgency=medium
 
   * debconf translation updates:
