@@ -1,8 +1,26 @@
-nss-pam-ldapd (0.9.6-5) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.7-2) UNRELEASED; urgency=medium
 
+  * new upstream release:
+    - check existence of TLS certificate and key files on start-up
+    - fix password policy expiration handling when password was about to
+      expire (thanks Mathieu Baeumler for tracking this down)
+      (closes: #794068)
+    - fix updating of shadowLastChange attribute when chasing referrals
+      (thanks Vasilis Tsiligiannis)
+    - add an pam_authc_ppolicy option to allows completely disabling ppolicy
+      handling (thanks Mathieu Baeumler)
+    - fix handling of nss_disable_enumeration (thanks Andrew W Elble for
+      pointing this out)
+    - display human readable password expiry messages (thanks Mathieu
+      Baeumler)
+    - fix error when changing PAM user name (thanks 依云)
+    - support substring expressions ${var:offset:length} in attribute mapping
+      (thanks Giovanni Mascellani)
+    - also honor the ignorecase option in PAM
+  * drop fix-ppolicy-expiration-warnings.patch which is part of 0.9.7
   * put nsswitch.conf services in more natural order in debconf question
 
- -- Arthur de Jong <adejong@debian.org>  Wed, 27 Jul 2016 12:36:13 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 14 Aug 2016 22:44:57 +0200
 
 nss-pam-ldapd (0.9.6-4) unstable; urgency=medium
 
