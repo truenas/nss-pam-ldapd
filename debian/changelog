@@ -19,8 +19,9 @@ nss-pam-ldapd (0.9.7-2) UNRELEASED; urgency=medium
     - also honor the ignorecase option in PAM
   * drop fix-ppolicy-expiration-warnings.patch which is part of 0.9.7
   * put nsswitch.conf services in more natural order in debconf question
+  * update debian/copyright
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 14 Aug 2016 22:44:57 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 14 Aug 2016 22:55:36 +0200
 
 nss-pam-ldapd (0.9.6-4) unstable; urgency=medium
 
