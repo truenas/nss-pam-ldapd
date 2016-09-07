@@ -1,3 +1,11 @@
+nss-pam-ldapd (0.9.7-2) UNRELEASED; urgency=medium
+
+  * recommend ca-certificate which is needed due to adding tls_cacertfile by
+    default (see #750949) and the checking of tls_cacertfile in 0.9.7
+    (closes: #836720)
+
+ -- Arthur de Jong <adejong@debian.org>  Wed, 07 Sep 2016 23:10:45 +0200
+
 nss-pam-ldapd (0.9.7-1) unstable; urgency=medium
 
   * new upstream release:

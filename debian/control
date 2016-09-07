@@ -18,7 +18,7 @@ Multi-Arch: foreign
 Provides: nslcd-2
 Pre-Depends: ${misc:Pre-Depends}, debconf (>= 0.5) | debconf-2.0
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
-Recommends: nscd,
+Recommends: nscd, ca-certificates,
             libnss-ldapd | libnss-ldap,
             libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss,
             nslcd-utils, ldap-utils, bind9-host | host
@@ -38,7 +38,7 @@ Provides: nslcd-2
 Depends: ${python:Depends}, ${misc:Depends}, adduser,
          python-daemon, python-ldap, python-setproctitle, python-pyasn1,
          python-pyasn1-modules
-Recommends: nscd,
+Recommends: nscd, ca-certificates,
             libnss-ldapd | libnss-ldap,
             libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss,
             nslcd-utils, ldap-utils, bind9-host | host
