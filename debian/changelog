@@ -5,8 +5,9 @@ nss-pam-ldapd (0.9.7-2) UNRELEASED; urgency=medium
     (closes: #836720)
   * fix parsing of nslcd.conf tls_cacert option in package configuration
     (closes: #851564)
+  * add dependency on lsb-base for init script (thanks lintian)
 
- -- Arthur de Jong <adejong@debian.org>  Tue, 17 Jan 2017 14:42:28 +0100
+ -- Arthur de Jong <adejong@debian.org>  Wed, 18 Jan 2017 23:19:58 +0100
 
 nss-pam-ldapd (0.9.7-1) unstable; urgency=medium
 

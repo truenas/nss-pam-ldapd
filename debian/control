@@ -17,7 +17,7 @@ Architecture: any
 Multi-Arch: foreign
 Provides: nslcd-2
 Pre-Depends: ${misc:Pre-Depends}, debconf (>= 0.5) | debconf-2.0
-Depends: ${misc:Depends}, ${shlibs:Depends}, adduser
+Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, lsb-base (>= 3.0-6)
 Recommends: nscd, ca-certificates,
             libnss-ldapd | libnss-ldap,
             libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss,
@@ -35,7 +35,7 @@ Package: pynslcd
 Architecture: all
 Multi-Arch: foreign
 Provides: nslcd-2
-Depends: ${python:Depends}, ${misc:Depends}, adduser,
+Depends: ${python:Depends}, ${misc:Depends}, adduser, lsb-base (>= 3.0-6),
          python-daemon, python-ldap, python-setproctitle, python-pyasn1,
          python-pyasn1-modules
 Recommends: nscd, ca-certificates,
