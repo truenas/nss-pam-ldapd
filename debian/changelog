@@ -1,3 +1,9 @@
+nss-pam-ldapd (0.9.7-3) UNRELEASED; urgency=medium
+
+  * update debian/watch file to use HTTPS
+
+ -- Arthur de Jong <adejong@debian.org>  Wed, 01 Feb 2017 21:41:12 +0100
+
 nss-pam-ldapd (0.9.7-2) unstable; urgency=medium
 
   * recommend ca-certificate which is needed due to adding tls_cacertfile by
