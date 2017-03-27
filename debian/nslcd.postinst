@@ -187,7 +187,6 @@ then
     # create nslcd user and group
     adduser --system --group --home /var/run/nslcd/ \
             --gecos "nslcd name service LDAP connection daemon" \
-            --no-create-home \
             nslcd
     # add uid/gid options to the config file if it exists
     # (this is when we're upgrading)
