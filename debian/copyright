@@ -12,7 +12,7 @@ The software was renamed to nss-pam-ldapd when PAM code contributed by Howard
 Chu for the OpenLDAP nssov module was integrated. Solaris compatibility was
 developed by Ted C. Cheng of Symas Corporation.
 
-http://arthurdejong.org/nss-pam-ldapd/
+https://arthurdejong.org/nss-pam-ldapd/
 
 Arthur de Jong is both the upstream and Debian package maintainer, so there
 are no differences between the Debian package and the upstream version.

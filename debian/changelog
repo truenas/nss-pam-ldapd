@@ -12,7 +12,7 @@ nss-pam-ldapd (0.9.8-1) UNRELEASED; urgency=medium
     - improvements to getent.ldap command (a few minor bug fixes and
       preparations for Python 3 support)
     - log entries and lookups failing nss_min_uid at debug level
-  * update debian/watch file to use HTTPS
+  * update links to use HTTPS
   * remove --no-create-home from adduser to hide a few warnings
     (closes: #858826)
   * remove pie from hardening blacklist because it is no longer needed for
