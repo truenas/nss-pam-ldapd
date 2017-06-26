@@ -1,12 +1,24 @@
-nss-pam-ldapd (0.9.7-3) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.8-1) UNRELEASED; urgency=medium
 
+  * new upstream release:
+    - add a pam_authc_search option that can be used to configure the search
+      operation that is performed after authentication
+    - add nss_uid_offset and nss_gid_offset options that can be used to
+      change returned numeric user and group ids from LDAP (thanks Seth
+      Wright)
+    - do not retry failed user password on second LDAP server
+    - the validnames option now also applies to shadow lookups
+    - support ethernet addresses in LDAP in compact and long formats
+    - improvements to getent.ldap command (a few minor bug fixes and
+      preparations for Python 3 support)
+    - log entries and lookups failing nss_min_uid at debug level
   * update debian/watch file to use HTTPS
   * remove --no-create-home from adduser to hide a few warnings
     (closes: #858826)
   * remove pie from hardening blacklist because it is no longer needed for
     stretch (thanks Adrian Bunk) (closes: #859432)
 
- -- Arthur de Jong <adejong@debian.org>  Fri, 21 Apr 2017 23:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Mon, 26 Jun 2017 13:00:00 +0200
 
 nss-pam-ldapd (0.9.7-2) unstable; urgency=medium
 
