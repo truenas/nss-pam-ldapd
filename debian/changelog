@@ -17,6 +17,7 @@ nss-pam-ldapd (0.9.8-1) UNRELEASED; urgency=medium
     (closes: #858826)
   * remove pie from hardening blacklist because it is no longer needed for
     stretch (thanks Adrian Bunk) (closes: #859432)
+  * update debian/copyright
 
  -- Arthur de Jong <adejong@debian.org>  Mon, 26 Jun 2017 13:00:00 +0200
 
