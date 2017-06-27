@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.8-1) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.8-1) unstable; urgency=medium
 
   * new upstream release:
     - add a pam_authc_search option that can be used to configure the search
@@ -20,7 +20,7 @@ nss-pam-ldapd (0.9.8-1) UNRELEASED; urgency=medium
   * update debian/copyright
   * upgrade to standards-version 4.0.0 (no changes needed)
 
- -- Arthur de Jong <adejong@debian.org>  Mon, 26 Jun 2017 13:00:00 +0200
+ -- Arthur de Jong <adejong@debian.org>  Tue, 27 Jun 2017 22:00:00 +0200
 
 nss-pam-ldapd (0.9.7-2) unstable; urgency=medium
 
