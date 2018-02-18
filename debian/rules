@@ -21,9 +21,11 @@ override_dh_auto_configure:
 
 # run the tests but ignore the results
 override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	-chmod o-rwx tests/nslcd-test.conf
 	-dh_auto_test
 	-cat tests/test-suite.log
+endif
 
 # generate a pynslcd init script on the fly
 override_dh_installinit:
