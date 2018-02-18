@@ -25,8 +25,7 @@ override_dh_auto_test:
 	-dh_auto_test
 	-cat tests/test-suite.log
 
-# ensure that nslcd is not down during upgrades and generate a pynslcd
-# init script on the fly
+# generate a pynslcd init script on the fly
 override_dh_installinit:
 	sed 's/^\(# Provides: *\|NSLCD_NAME=\)nslcd/\1pynslcd/' debian/nslcd.init > debian/pynslcd.init
-	dh_installinit --restart-after-upgrade
+	dh_installinit

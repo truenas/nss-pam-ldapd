@@ -4,8 +4,9 @@ nss-pam-ldapd (0.9.9-1) UNRELEASED; urgency=medium
     - support spaces in attribute mapping expressions
     - allow parsing longer lines in the configuration file
     - allow for longer host names (closes: #890508)
+  * upgrade to debhelper compatibility level 7
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 18 Feb 2018 21:00:00 +0100
+ -- Arthur de Jong <adejong@debian.org>  Sun, 18 Feb 2018 22:00:00 +0100
 
 nss-pam-ldapd (0.9.8-1) unstable; urgency=medium
 
