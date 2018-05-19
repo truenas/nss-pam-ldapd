@@ -1,0 +1,56 @@
+'\" -*- coding: utf-8 -*-
+.if \n(.g .ds T< \\FC
+.if \n(.g .ds T> \\F[\n[.fam]]
+.de URL
+\\$2 \(la\\$1\(ra\\$3
+..
+.if \n(.g .mso www.tmac
+.TH chsh.ldap 1 "Feb 2018" "Version 0.9.9" "User Commands"
+.SH NAME
+chsh.ldap \- change login shell in LDAP
+.SH SYNOPSIS
+'nh
+.fi
+.ad l
+\fBchsh.ldap\fR \kx
+.if (\nx>(\n(.l/2)) .nr x (\n(.l/5)
+'in \n(.iu+\nxu
+[\fIoptions\fR] [\fILOGIN\fR]
+'in \n(.iu-\nxu
+.ad b
+'hy
+.SH DESCRIPTION
+The \fBchsh.ldap\fR command can be used to change user's
+login shell (command interpreter).
+.PP
+The actual change in LDAP is performed by the
+\fBnslcd\fR daemon and is subject to the access controls
+configured in the LDAP server.
+.SH OPTIONS
+The options that may be specified to the \fBchsh.ldap\fR
+command are:
+.TP 
+\*(T<\fB\-s\fR\*(T>, \*(T<\fB\-\-shell\fR\*(T> \fISHELL\fR 
+The name of the user's new login shell.
+Setting this field to blank causes the system to select the default
+login shell.
+.TP 
+\*(T<\fB\-l\fR\*(T>, \*(T<\fB\-\-list\-shells\fR\*(T> 
+Print the list of shells found in \*(T<\fI/etc/shells\fR\*(T> and exit.
+.TP 
+\*(T<\fB\-h\fR\*(T>, \*(T<\fB\-\-help\fR\*(T> 
+Display short help and exit.
+.TP 
+\*(T<\fB\-V, \-\-version\fR\*(T> 
+Output version information and exit.
+.PP
+If no option is specified \fBchsh.ldap\fR will prompt the
+user to enter a value for the shell.
+.SH FILES
+\*(T<\fI/etc/shells\fR\*(T> - list of valid login shells
+.SH "SEE ALSO"
+\fBchsh\fR(1),
+\fBshells\fR(5),
+\fBnslcd\fR(8)
+.SH AUTHOR
+This manual was written by Arthur de Jong <arthur@arthurdejong.org>.

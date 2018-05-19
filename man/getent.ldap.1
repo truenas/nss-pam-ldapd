@@ -1,0 +1,148 @@
+'\" -*- coding: utf-8 -*-
+.if \n(.g .ds T< \\FC
+.if \n(.g .ds T> \\F[\n[.fam]]
+.de URL
+\\$2 \(la\\$1\(ra\\$3
+..
+.if \n(.g .mso www.tmac
+.TH getent.ldap 1 "Feb 2018" "Version 0.9.9" "User Commands"
+.SH NAME
+getent.ldap \- query information from LDAP
+.SH SYNOPSIS
+'nh
+.fi
+.ad l
+\fBgetent.ldap\fR \kx
+.if (\nx>(\n(.l/2)) .nr x (\n(.l/5)
+'in \n(.iu+\nxu
+[\fIoptions\fR] [\fIDATABASE\fR] [\fIKEY...\fR]
+'in \n(.iu-\nxu
+.ad b
+'hy
+.SH DESCRIPTION
+The \fBgetent.ldap\fR command can be used to lookup or
+enumerate information from LDAP.
+Unlike the
+\fBgetent\fR(1)
+command, this command completely bypasses the lookups configured in
+\*(T<\fI/etc/nsswitch.conf\fR\*(T> and queries the
+\fBnslcd\fR(8)
+daemon directly.
+.PP
+\fBgetent.ldap\fR tries to match the behaviour and output of
+\fBgetent\fR and the format in the corresponding flat files
+as much as possible, however there are a number of differences.
+If multiple entries are found in LDAP that match a
+specific query, multiple values are printed (e.g. ethernet addresses that
+have multiple names, services that support multiple protocols, etc.).
+Also, some databases have extra options as described below.
+.SH OPTIONS
+The options that may be specified to the \fBgetent.ldap\fR
+command are:
+.TP 
+\*(T<\fB\-h\fR\*(T>, \*(T<\fB\-\-help\fR\*(T> 
+Display short help and exit.
+.TP 
+\*(T<\fB\-V, \-\-version\fR\*(T> 
+Output version information and exit.
+.SH DATABASES
+The \fIDATABASE\fR argument may be any of the
+supported databases below:
+.TP 
+\*(T<\fBaliases\fR\*(T>
+Lists or queries email aliases.
+If \fIKEY\fR is given it searches for the alias
+by name, otherwise it returns all aliases from
+LDAP.
+.TP 
+\*(T<\fBethers\fR\*(T>
+Lists or queries ethernet addresses.
+If \fIKEY\fR matches the format of an ethernet
+address a search by address is performed, otherwise a search by name
+is performed or all entries are returned if
+\fIKEY\fR is omitted.
+Unlike \fBgetent\fR, \fBgetent.ldapd\fR
+does support enumerating all ethernet addresses.
+.TP 
+\*(T<\fBgroup\fR\*(T>
+Lists or queries groups.
+If \fIKEY\fR is numeric, it searches for the
+group by group id.
+.TP 
+\*(T<\fBgroup.bymember\fR\*(T>
+The \fIKEY\fR is a user name and groups are
+returned for which this user is a member.
+The format is similar to the \*(T<\fBgroup\fR\*(T> output but the
+group members are left out for performance reasons.
+.TP 
+\*(T<\fBhosts\fR\*(T>
+List or search host names and addresses by either host name,
+IPv4 or IPv6 address. This returns both IPv4 and IPv6 addresses
+(if available).
+.TP 
+\*(T<\fBhostsv4\fR\*(T>
+Similar to \*(T<\fBhosts\fR\*(T> but any supplied IPv6 addresses are
+treated as host names and only IPv4 addresses are returned.
+.TP 
+\*(T<\fBhostsv6\fR\*(T>
+Similar to \*(T<\fBhosts\fR\*(T> but \fIKEY\fR
+is treated as an IPv6 address or a host name and only IPv6 addresses
+are returned.
+.TP 
+\*(T<\fBnetgroup\fR\*(T>
+List or query netgroups and netgroup triples (host, user, domain) that
+are a member of the netgroup.
+Unlike \fBgetent\fR, \fBgetent.ldapd\fR
+does support enumerating all ethernet addresses.
+.TP 
+\*(T<\fBnetgroup.norec\fR\*(T>
+Similar to \*(T<\fBnetgroup\fR\*(T> except that no subsequent
+lookups are done to expand netgroups which are member of the
+supplied netgroup and the output may contain both other netgroup
+names and netgroup triples.
+.TP 
+\*(T<\fBnetworks\fR\*(T>
+List or query network names and addresses.
+\fIKEY\fR may be a network name or address.
+This map can return both IPv4 and IPv6 network addresses.
+.TP 
+\*(T<\fBnetworksv4\fR\*(T>
+Only return IPv4 network addresses.
+.TP 
+\*(T<\fBnetworksv6\fR\*(T>
+Only return IPv6 network addresses.
+.TP 
+\*(T<\fBpasswd\fR\*(T>
+Enumerate or search the user account database.
+\fIKEY\fR may be a user name or numeric user id
+or be omitted to list all users.
+.TP 
+\*(T<\fBprotocols\fR\*(T>
+Enumerate the internet protocols database.
+.TP 
+\*(T<\fBrpc\fR\*(T>
+List or search user readable names that map to RPC program numbers.
+Searching by \fIKEY\fR can be done on name or
+rpc program number.
+.TP 
+\*(T<\fBservices\fR\*(T>
+List or search the mapping between names for internet services and
+their corresponding port numbers and protocol types.
+The \fIKEY\fR can be either a service name or
+number, followed by an optional slash and protocol name to restrict
+the search to only entries for the specified protocol.
+.TP 
+\*(T<\fBshadow\fR\*(T>
+Enumerate or search extended user account information.
+Note that shadow information is likely only exposed to the root user
+and by default \fBnslcd\fR does not expose password
+hashes, even to root.
+.SH "SEE ALSO"
+\fBgetent\fR(1),
+\fBnslcd\fR(8)
+.SH AUTHOR
+This manual was written by Arthur de Jong <arthur@arthurdejong.org>.
+.SH BUGS
+Currently, \fBgetent.ldapd\fR does not correctly set an
+exit code. It should return the same kind of exit codes as
+\fBgetent\fR does (e.g. for missing entries).
