@@ -1,0 +1,260 @@
+This document tries to describe the software layout and design of
+nss-pam-ldapd. It should provide some help for contributing code to this
+package.
+
+CONTRIBUTING TO NSS-PAM-LDAPD
+=============================
+
+Contributions to nss-pam-ldapd are most welcome. Integrating contributions
+will be done on a best-effort basis and can be made easier if the following
+are considered:
+
+* for large changes it is a good idea to send an email first
+* send your patches in unified diff (diff -u) format, Git patches or Git pull
+  requests
+* try to use the Git version of the software to develop the patch
+* clearly state which problem you're trying to solve and how this is
+  accomplished
+* please follow the existing coding conventions
+* please test the patch and include information on tested platforms, etc.
+* add a copyright statement with the patch if you feel the contribution is
+  significant enough (e.g. more than a few lines)
+* ensure that the code you contribute can be integrated in the project
+  under the LGPL (when including third-party code, retain copyright
+  information license, you have permission to distribute the code, etc.)
+
+Please email nss-pam-ldapd-users@lists.arthurdejong.org if you want to
+contribute. All contributions will be acknowledged in the AUTHORS file.
+
+
+BUILD DEPENDENCIES
+==================
+
+For building Git snapshots the following tools are needed:
+
+* autoconf (2.65 is currently used but 2.61 is minimal)
+* automake (1.14 is currently used but older versions may also work)
+* OpenLDAP libraries (2.4 is generally used)
+* PAM libraries
+* optionally a Kerberos library (MIT Kerberos is tested)
+* optionally a SASL library (only Cyrus SASL is tested)
+* docbook2x for generating the manual pages
+
+To build the Git snapshot run the autogen.sh shell script to build the
+configure script. When developing patches please use --enable-warnings with
+configure and avoid introducing new warnings.
+
+
+RELEASE VERSIONING
+==================
+
+The versioning scheme of nss-pam-ldapd is a simple major.minor.micro
+numbering. The idea is to keep a stable (x.y) branch that only gets bug fixes
+and small enhancements while development goes in another branch. Backwards
+incompatible changes should be announced clearly.
+
+
+GENERAL DESIGN
+==============
+
+The basic design splits the functionality in three parts. The NSS part
+interfaces with libc and translates the NSS requests into simple generic
+requests (e.g. "get user with name test", "get group with gid 101" or "get all
+shadow entries").
+
+Another part is the PAM module which handles authentication requests from the
+system. The PAM operations are also translated into atomic, stateless
+requests.
+
+Both these parts translate the queries in a simple protocol used to
+communicate with the nslcd daemon. This daemon translates the requests into
+LDAP searches. As a result, the NSS and PAM modules don't need to known
+anything about LDAP (in fact replacing it with another lookup method should be
+very simple) and don't have to link with the LDAP libraries.
+
+  libc NSS -> libnss_ldap.so
+                 \
+                  |->  nslcd  -> OpenLDAP -> LDAP server
+                 /
+  PAM stack -> pam_ldap.so
+
+An alternative implementation of nslcd in Python is provided as pynslcd. This
+implementation is less mature but it easier to add advanced features there. A
+collection of utilities is also provided that communicate with nslcd that can
+provide additional functions.
+
+design goals
+------------
+* make it as simple as possible
+* simpler configuration and semantics
+* simpler, clearer and completer documentation
+* split source code into manageable parts
+* get rid of unneeded code and complexity
+* have a stable, easily maintainable piece of high quality software
+
+
+NSS MODULE
+==========
+
+The NSS module is implemented in the nss directory. The functions are split
+into files according to the database they support. The files support multiple
+NSS implementations.
+
+The NSS interface is specific to the C library that is used. The original
+implementation was for the GNU C Library but now also includes an
+implementation for Solaris' C Library and has some support for FreeBSD.
+
+GNU C Library notes
+-------------------
+
+Function definitions for glibc look like:
+
+_nss_ldap_FUNCTION_r(...)
+  This function opens the connection to the nslcd (with a time-out), builds
+  the correct data structures and does a request (write()) to the nslcd
+  waiting for an answer (again with a time-out)
+
+The complete list of exported functions can be found in exports.linux and
+prototypes.h.
+
+Currently a number of macros are used to build most of the function bodies for
+these functions. Part of this is defined in the common/nslcd-prot.h file and
+the NSS-specific stuff is in nss/common.h.
+
+For memory management, the general mechanism that is expected to be used is to
+return NSS_STATUS_TRYAGAIN and set errno to ERANGE. This causes glibc to retry
+the request with a larger buffer.
+
+Some useful links:
+http://www.gnu.org/software/libc/manual/html_node/index.html
+
+Solaris C Library notes
+-----------------------
+
+The Solaris C library uses a different mechanism. For each map a back-end
+object is allocated per thread which is used to do queries. The object is
+created with a constructor (e.g. _nss_ldap_passwd_constr()) that returns a
+back-end that contains a list of function pointer to lookup methods and a
+destructor.
+
+A buffer is passed with every request but a local buffer that is stored in the
+back-end can presumably also be created.
+
+Earlier versions of Solaris expected the NSS functions to return the binary
+representation of the lookups (e.g. struct passwd) but later versions expect a
+string representation of the data to be returned (just like a single line out
+of /etc/passwd was read) but only if running from nscd. If args->buf.result is
+NULL a string representation is requested (except for ether by address lookup
+which is special).
+
+Source and documentation pointers for Solaris NSS:
+https://java.net/projects/solaris/sources/on-src/show/usr/src/lib/nsswitch
+https://java.net/projects/solaris/sources/on-src/content/usr/src/head/nss_common.h
+https://java.net/projects/solaris/sources/on-src/content/usr/src/head/nss_dbdefs.h
+https://hg.openindiana.org/upstream/illumos/illumos-gate/file/tip/usr/src/lib/nsswitch
+https://hg.openindiana.org/upstream/illumos/illumos-gate/file/tip/usr/src/head/nss_common.h
+https://hg.openindiana.org/upstream/illumos/illumos-gate/file/tip/usr/src/head/nss_dbdefs.h
+
+FreeBSD C Libarary notes
+------------------------
+
+The FreeBSD C library seems to have support for exposing GNU C Library NSS
+module functions through a wrapper function. This makes it very easy to
+implement NSS support on FreeBSD.
+
+Pointers for more documentation on this is welcome. Some information is
+available here:
+http://www.freebsd.org/cgi/man.cgi?query=nsdispatch
+https://github.com/freebsd/freebsd/blob/master/include/nss.h
+
+
+PAM MODULE
+==========
+
+The PAM module is implemented in the pam directory. Implementation is fairly
+straight-forward. The PAM module stores some state between calls to nslcd in a
+struct. The calls to nslcd are however stateless. The PAM module may supply
+some information that help lookups (most notably DNs of user entries).
+
+Care must be taken with the communication because the nslcd requests are not
+authenticated (e.g. changing passwords requests should include all
+credentials). The PAM requests may result in state changes on the LDAP server
+and this is where they are most notably different from the NSS requests.
+
+Some useful links:
+http://www.kernel.org/pub/linux/libs/pam/
+http://www.opengroup.org/tech/rfc/rfc86.0.html
+
+
+THE COMMUNICATIONS PROTOCOL
+===========================
+
+The protocol used for communicating between the NSS library and PAM module on
+one end and the nslcd daemon on the other is very simple and almost fully
+described in the nslcd.h header file. The common/nslcd-prot.h header file
+defines some macros that are used for reading and writing protocol entities
+(strings, 32-bit integers, etc).
+
+Every NSS database has a corresponding source file in the nss and the nslcd
+directory. The PAM module is built up of a single file in both the pam and
+nslcd directories.
+
+If the protocol is changed in an incompatible way the protocol version should
+be incremented in nslcd.h. There is currently no versioning scheme available
+for this.
+
+A communications module (common/tio.c) was made so we can define simpler
+semantics for time-out values and buffer sizes. All components use this module
+which means that it includes functionality that is needed for both (e.g. large
+write buffers for the server part and large resettable read buffers for the
+NSS part). Maybe building two modules from the same source with different
+features in them is an option (e.g. the NSS part needs the read buffers and
+handling of SIGPIPE and the nslcd part needs the write buffers and possibly
+flushing in the background).
+
+The common directory also contains some other generally useful modules that
+are used in some components.
+
+
+SERVER PART
+===========
+
+At the server end a dispatcher picks up the request and delegates it to one of
+the database specific functions.
+
+nslcd_FUNCION(...)
+  This functions fills in the correct parameters from the request. This
+  function should write responses to the stream.
+
+Big parts of the request handling functions are generated by macros because
+the structure is very similar across the different NSS requests.
+
+
+SECURITY NOTES
+==============
+
+This design does open up the system to more potential security issues
+(relative to nss_ldap) because there is now a local interface to a daemon with
+privileges. With nss_ldad, processes could only potentially exploit bugs in
+the library and gain the privileges of the process that was doing the name
+lookups. In this case the privileges of the daemon are potentially exposed.
+
+Extra care should be taken with processes that normally require extra
+privileges (getting shadow entries, authentication, updating session
+information, etc).
+
+Any user on the system can perform nslcd queries so either the nslcd daemon
+needs to check the userid of the caller or the request needs to contain the
+needed credentials itself.
+
+On the other hand the design also offers some security improvements. It is
+much easier to handle security updates of the LDAP, SSL or related libraries
+and access to privileged LDAP configuration information can be much better
+constrained.
+
+
+TEST SET-UP
+===========
+
+In the test directory there are a number of tests available. See the file
+README in the test directory for more details.

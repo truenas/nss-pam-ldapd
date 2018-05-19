@@ -1,0 +1,72 @@
+
+This document tries to descrive the test in this directory. Most of these
+tests should be self-explanitory as they should be simple unit tests of the
+shipped modules (more unit tests are welcome).
+
+Since nss-pam-ldapd is meant for providing data from an LDAP server for some
+tests you should have an LDAP server running and for other tests you also need
+to have nslcd (or pynslcd) running.
+
+For this a test environment should be set up (the tests are ignored if no such
+environment was detected). In my development environment I use a chroot jail
+with Debian. The instructions in this document assume a similar environment.
+
+
+TEST ENVIRONMENT
+================
+
+LDAP server configuration
+-------------------------
+
+An LDAP server listening on ldap://localhost and ldapi:// is assumed that
+serves a particular test directory. For setting up an LDAP server for testing
+a setup_slapd.sh script is provided. This uses the config.ldif and test.ldif
+files to setup an LDAP server in a dedicated directory.
+
+If you have an LDAP server already set up on another machine with the test
+database, you should configure nslcd.conf and nslcd-test.conf to point to that
+server.
+
+Most of the names in the database have been randomly generated based on a
+combination of name-lists that were found on the Internet.
+
+
+nsswitch.conf
+-------------
+
+The /etc/nsswitch.conf file is expected to contain something like the
+following. All maps should be looked up through LDAP and some tests may expect
+the LDAP lookup to come after the files lookup.
+
+passwd:         files ldap
+group:          files ldap
+shadow:         files ldap
+hosts:          files ldap dns mdns
+networks:       files ldap
+protocols:      db files ldap
+services:       db files ldap
+ethers:         db files ldap
+rpc:            db files ldap
+netgroup:       files ldap
+aliases:        files ldap
+
+nslcd.conf
+----------
+
+The /etc/nslcd.conf file is expected to be configured like the following.
+
+uid nslcd
+gid nslcd
+uri ldapi:///
+base dc=test,dc=tld
+#pagesize 100 # paging and referrals don't mix
+timelimit 2
+bind_timelimit 4
+reconnect_sleeptime 4
+reconnect_retrytime 10
+filter group (|(objectClass=posixGroup)(objectClass=groupOfNames))
+base passwd ou=people,dc=test,dc=tld
+base shadow ou=people,dc=test,dc=tld
+base group ou=groups,dc=test,dc=tld
+rootpwmoddn cn=admin,dc=test,dc=tld
+rootpwmodpw test

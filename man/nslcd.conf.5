@@ -1,0 +1,657 @@
+'\" -*- coding: utf-8 -*-
+.if \n(.g .ds T< \\FC
+.if \n(.g .ds T> \\F[\n[.fam]]
+.de URL
+\\$2 \(la\\$1\(ra\\$3
+..
+.if \n(.g .mso www.tmac
+.TH nslcd.conf 5 "Feb 2018" "Version 0.9.9" "System Manager's Manual"
+.SH NAME
+nslcd.conf \- configuration file for LDAP nameservice daemon
+.SH DESCRIPTION
+The \fInss-pam-ldapd\fR package allows LDAP
+directory servers to be used as a primary source of name service
+information. (Name service information typically includes users, hosts,
+groups, and other such data historically stored in flat files or
+NIS.)
+.PP
+The file \*(T<\fInslcd.conf\fR\*(T> contains the
+configuration information for running \fBnslcd\fR (see
+\fBnslcd\fR(8)).
+The file contains options, one on each line, defining the way
+NSS lookups and PAM actions
+are mapped to LDAP lookups.
+.SH OPTIONS
+.SS "RUNTIME OPTIONS"
+.TP 
+\*(T<\fBthreads\fR\*(T> \fINUM\fR
+Specifies the number of threads to start that can handle requests
+and perform LDAP queries.
+Each thread opens a separate connection to the LDAP
+server.
+The default is to start 5 threads.
+.TP 
+\*(T<\fBuid\fR\*(T> \fIUID\fR
+This specifies the user id with which the daemon should be run.
+This can be a numerical id or a symbolic value.
+If no uid is specified no attempt to change the user will be made.
+Note that you should use values that don't need LDAP
+to resolve.
+.TP 
+\*(T<\fBgid\fR\*(T> \fIGID\fR
+This specifies the group id with which the daemon should be run.
+This can be a numerical id or a symbolic value.
+If no gid is specified no attempt to change the group will be made.
+Note that you should use values that don't need LDAP
+to resolve.
+.TP 
+\*(T<\fBlog\fR\*(T> \fISCHEME\fR [\fILEVEL\fR]
+This option controls the way logging is done.
+The \fISCHEME\fR argument may either be
+\*(T<none\*(T>, \*(T<syslog\*(T> or an absolute
+file name.
+The \fILEVEL\fR argument is optional and specifies
+the log level.
+The log level may be one of: \*(T<crit\*(T>,
+\*(T<error\*(T>, \*(T<warning\*(T>,
+\*(T<notice\*(T>, \*(T<info\*(T> or
+\*(T<debug\*(T>. The default log level is \*(T<info\*(T>.
+All messages with the specified loglevel or higher are logged.
+This option can be supplied multiple times.
+If this option is omitted \*(T<syslog info\*(T> is assumed.
+.SS "GENERAL CONNECTION OPTIONS"
+.TP 
+\*(T<\fBuri\fR\*(T> \fIURI\fR ...
+Specifies the LDAP URI of the
+server to connect to.
+The URI scheme may be \*(T<ldap\*(T>,
+\*(T<ldapi\*(T> or \*(T<ldaps\*(T>, specifying
+LDAP over TCP,
+ICP or SSL respectively (if
+supported by the LDAP library).
+
+Alternatively, the value \*(T<DNS\*(T> may be
+used to try to lookup the server using DNS
+SRV records. 
+By default the current domain is used but another domain can
+be queried by using the
+\*(T<DNS:\*(T>\fIDOMAIN\fR syntax.
+
+When using the ldapi scheme, %2f should be used to escape slashes
+(e.g. ldapi://%2fvar%2frun%2fslapd%2fldapi/), although most of the
+time this should not be needed.
+
+This option may be specified multiple times and/or with more
+URIs on the line, separated by space. Normally, only the first
+server will be used with the following servers as fall-back (see
+\*(T<\fBbind_timelimit\fR\*(T> below).
+
+If LDAP lookups are used for host name resolution,
+any host names should be specified as an IP address or name that can be
+resolved without using LDAP.
+.TP 
+\*(T<\fBldap_version\fR\*(T> \fIVERSION\fR
+Specifies the version of the LDAP protocol to use.
+The default is to use the maximum version supported by the
+LDAP library.
+.TP 
+\*(T<\fBbinddn\fR\*(T> \fIDN\fR
+Specifies the distinguished name with which to bind to the directory
+server for lookups.
+The default is to bind anonymously.
+.TP 
+\*(T<\fBbindpw\fR\*(T> \fIPASSWORD\fR
+Specifies the credentials with which to bind.
+This option is only applicable when used with \*(T<\fBbinddn\fR\*(T> above.
+If you set this option you should consider changing the permissions
+of the \*(T<\fInslcd.conf\fR\*(T> file to only grant access to
+the root user.
+.TP 
+\*(T<\fBrootpwmoddn\fR\*(T> \fIDN\fR
+Specifies the distinguished name to use when the root user tries to
+modify a user's password using the PAM module.
+
+Note that currently this DN needs to exist as a real entry in the
+LDAP directory.
+.TP 
+\*(T<\fBrootpwmodpw\fR\*(T> \fIPASSWORD\fR
+Specifies the credentials with which to bind if the root
+user tries to change a user's password.
+This option is only applicable when used with
+\*(T<\fBrootpwmoddn\fR\*(T> above.
+If this option is not specified the PAM module prompts the user for
+this password.
+If you set this option you should consider changing the permissions
+of the \*(T<\fInslcd.conf\fR\*(T> file to only grant access to
+the root user.
+.SS "SASL AUTHENTICATION OPTIONS"
+.TP 
+\*(T<\fBsasl_mech\fR\*(T> \fIMECHANISM\fR
+Specifies the SASL mechanism to be used when
+performing SASL authentication.
+.TP 
+\*(T<\fBsasl_realm\fR\*(T> \fIREALM\fR
+Specifies the SASL realm to be used when performing
+SASL authentication.
+.TP 
+\*(T<\fBsasl_authcid\fR\*(T> \fIAUTHCID\fR
+Specifies the authentication identity to be used when performing
+SASL authentication.
+.TP 
+\*(T<\fBsasl_authzid\fR\*(T> \fIAUTHZID\fR
+Specifies the authorization identity to be used when performing
+SASL authentication.
+Must be specified in one of the formats: dn:<distinguished name>
+or u:<username>.
+.TP 
+\*(T<\fBsasl_secprops\fR\*(T> \fIPROPERTIES\fR
+Specifies Cyrus SASL security properties.
+Allowed values are described in the
+\fBldap.conf\fR(5)
+manual page.
+.TP 
+\*(T<\fBsasl_canonicalize\fR\*(T> yes|no
+Determines whether the LDAP server host name should
+be canonicalised. If this is set to yes the LDAP
+library will do a reverse host name lookup.
+By default, it is left up to the LDAP library
+whether this check is performed or not.
+.SS "KERBEROS AUTHENTICATION OPTIONS"
+.TP 
+\*(T<\fBkrb5_ccname\fR\*(T> \fINAME\fR
+Set the name for the GSS-API Kerberos credentials cache.
+.SS "SEARCH/MAPPING OPTIONS"
+.TP 
+\*(T<\fBbase\fR\*(T> [\fIMAP\fR] \fIDN\fR
+Specifies the base distinguished name (DN)
+to use as search base.
+This option may be supplied multiple times and all specified bases
+will be searched.
+
+A global search base may be specified or a MAP-specific one.
+If no MAP-specific search bases are defined the global ones are used.
+
+If, instead of a DN, the value
+\fIDOMAIN\fR is specified, the host's
+DNS domain is used to construct a search base.
+
+If this value is not defined an attempt is made to look it up
+in the configured LDAP server. Note that if the
+LDAP server is unavailable during start-up
+\fBnslcd\fR will not start.
+.TP 
+\*(T<\fBscope\fR\*(T> [\fIMAP\fR] sub[tree]|one[level]|base|children
+Specifies the search scope (subtree, onelevel, base or children).
+The default scope is subtree; base scope is almost never useful for
+name service lookups; children scope is not supported on all servers.
+.TP 
+\*(T<\fBderef\fR\*(T> never|searching|finding|always
+Specifies the policy for dereferencing aliases.
+The default policy is to never dereference aliases.
+.TP 
+\*(T<\fBreferrals\fR\*(T> yes|no
+Specifies whether automatic referral chasing should be enabled.
+The default behaviour is to chase referrals.
+.TP 
+\*(T<\fBfilter\fR\*(T> \fIMAP\fR \fIFILTER\fR
+The \fIFILTER\fR
+is an LDAP search filter to use for a
+specific map.
+The default filter is a basic search on the
+objectClass for the map (e.g. \*(T<(objectClass=posixAccount)\*(T>).
+.TP 
+\*(T<\fBmap\fR\*(T> \fIMAP\fR \fIATTRIBUTE\fR \fINEWATTRIBUTE\fR
+This option allows for custom attributes to be looked up instead of
+the default RFC 2307 attributes.
+The \fIMAP\fR may be one of
+the supported maps below.
+The \fIATTRIBUTE\fR is the one as
+used in RFC 2307 (e.g. \*(T<userPassword\*(T>,
+\*(T<ipProtocolNumber\*(T>, \*(T<macAddress\*(T>, etc.).
+The \fINEWATTRIBUTE\fR may be any attribute
+as it is available in the directory.
+
+If the \fINEWATTRIBUTE\fR is presented in
+quotes (") it is treated as an expression which will be evaluated
+to build up the actual value used.
+See the section on attribute mapping expressions below for more details.
+
+Only some attributes for group, passwd and shadow entries may be mapped
+with an expression (because other attributes may be used in search
+filters).
+For group entries only the \*(T<userPassword\*(T> attribute
+may be mapped with an expression.
+For passwd entries the following attributes may be mapped with an
+expression: \*(T<userPassword\*(T>, \*(T<gidNumber\*(T>,
+\*(T<gecos\*(T>, \*(T<homeDirectory\*(T> and
+\*(T<loginShell\*(T>.
+For shadow entries the following attributes may be mapped with an
+expression: \*(T<userPassword\*(T>, \*(T<shadowLastChange\*(T>,
+\*(T<shadowMin\*(T>, \*(T<shadowMax\*(T>,
+\*(T<shadowWarning\*(T>, \*(T<shadowInactive\*(T>,
+\*(T<shadowExpire\*(T> and \*(T<shadowFlag\*(T>.
+
+The \*(T<uidNumber\*(T> and \*(T<gidNumber\*(T>
+attributes in the \*(T<passwd\*(T> and \*(T<group\*(T>
+maps may be mapped to the \*(T<objectSid\*(T> followed by
+the domain SID to derive numeric user and group ids from the SID
+(e.g. \*(T<objectSid:S\-1\-5\-21\-3623811015\-3361044348\-30300820\*(T>).
+
+By default all \*(T<userPassword\*(T> attributes are mapped
+to the unmatchable password ("*") to avoid accidentally leaking
+password information.
+.SS "TIMING/RECONNECT OPTIONS"
+.TP 
+\*(T<\fBbind_timelimit\fR\*(T> \fISECONDS\fR
+Specifies the time limit (in seconds) to use when connecting to the
+directory server.
+This is distinct from the time limit specified in
+\*(T<\fBtimelimit\fR\*(T> and affects the set-up of the connection only.
+Note that not all LDAP client libraries have support
+for setting the connection time out.
+The default \*(T<\fBbind_timelimit\fR\*(T> is 10 seconds.
+.TP 
+\*(T<\fBtimelimit\fR\*(T> \fISECONDS\fR
+Specifies the time limit (in seconds) to wait for a response from the
+LDAP server.
+A value of zero (0), which is the default, is to wait indefinitely for
+searches to be completed.
+.TP 
+\*(T<\fBidle_timelimit\fR\*(T> \fISECONDS\fR
+Specifies the period if inactivity (in seconds) after which the
+connection to the LDAP server will be closed.
+The default is not to time out connections.
+.TP 
+\*(T<\fBreconnect_sleeptime\fR\*(T> \fISECONDS\fR
+Specifies the number of seconds to sleep when connecting to all
+LDAP servers fails.
+By default 1 second is waited between the first failure and the first
+retry.
+.TP 
+\*(T<\fBreconnect_retrytime\fR\*(T> \fISECONDS\fR
+Specifies the time after which the LDAP server is
+considered to be permanently unavailable.
+Once this time is reached retries will be done only once per this time period.
+The default value is 10 seconds.
+.PP
+Note that the reconnect logic as described above is the mechanism that
+is used between \fBnslcd\fR and the LDAP
+server. The mechanism between the NSS and
+PAM client libraries on one end and
+\fBnslcd\fR on the other is simpler with a fixed compiled-in
+time out of a 10 seconds for writing to \fBnslcd\fR and
+a time out of 60 seconds for reading answers.
+\fBnslcd\fR itself has a read time out of 0.5 seconds
+and a write time out of 60 seconds.
+.SS "SSL/TLS OPTIONS"
+.TP 
+\*(T<\fBssl\fR\*(T> on|off|start_tls
+Specifies whether to use SSL/TLS or not (the default is not to). If
+\fIstart_tls\fR
+is specified then StartTLS is used rather than raw LDAP over SSL.
+Not all LDAP client libraries support both SSL,
+StartTLS and all related configuration options.
+.TP 
+\*(T<\fBtls_reqcert\fR\*(T> never|allow|try|demand|hard
+Specifies what checks to perform on a server-supplied certificate.
+The meaning of the values is described in the
+\fBldap.conf\fR(5)
+manual page.
+At least one of \*(T<\fBtls_cacertdir\fR\*(T> and
+\*(T<\fBtls_cacertfile\fR\*(T> is required if peer verification is
+enabled.
+.TP 
+\*(T<\fBtls_cacertdir\fR\*(T> \fIPATH\fR
+Specifies the directory containing X.509 certificates for peer
+authentication.
+This parameter is ignored when using GnuTLS.
+On Debian OpenLDAP is linked against GnuTLS.
+.TP 
+\*(T<\fBtls_cacertfile\fR\*(T> \fIPATH\fR
+Specifies the path to the X.509 certificate for peer authentication.
+.TP 
+\*(T<\fBtls_randfile\fR\*(T> \fIPATH\fR
+Specifies the path to an entropy source.
+This parameter is ignored when using GnuTLS.
+On Debian OpenLDAP is linked against GnuTLS.
+.TP 
+\*(T<\fBtls_ciphers\fR\*(T> \fICIPHERS\fR
+Specifies the ciphers to use for TLS.
+See your TLS implementation's
+documentation for further information.
+.TP 
+\*(T<\fBtls_cert\fR\*(T> \fIPATH\fR
+Specifies the path to the file containing the local certificate for
+client TLS authentication.
+.TP 
+\*(T<\fBtls_key\fR\*(T> \fIPATH\fR
+Specifies the path to the file containing the private key for client
+TLS authentication.
+.SS "OTHER OPTIONS"
+.TP 
+\*(T<\fBpagesize\fR\*(T> \fINUMBER\fR
+Set this to a number greater than 0 to request paged results from
+the LDAP server in accordance with RFC2696.
+The default (0) is to not request paged results.
+
+This is useful for LDAP servers that contain a
+lot of entries (e.g. more than 500) and limit the number of entries
+that are returned with one request.
+For OpenLDAP servers you may need to set
+\*(T<\fBsizelimit size.prtotal=unlimited\fR\*(T>
+for allowing more entries to be returned over multiple pages.
+.TP 
+\*(T<\fBnss_initgroups_ignoreusers\fR\*(T> user1,user2,...
+This option prevents group membership lookups through
+LDAP for the specified users. This can be useful
+in case of unavailability of the LDAP server.
+This option may be specified multiple times.
+
+Alternatively, the value \*(T<ALLLOCAL\*(T> may be
+used. With that value nslcd builds a full list of
+non-LDAP users on startup.
+.TP 
+\*(T<\fBnss_min_uid\fR\*(T> \fIUID\fR
+This option ensures that LDAP users with a numeric
+user id lower than the specified value are ignored. Also requests for
+users with a lower user id are ignored.
+.TP 
+\*(T<\fBnss_uid_offset\fR\*(T> \fINUMBER\fR
+This option specifies an offset that is added to all
+LDAP numeric user ids.
+This can be used to avoid user id collisions with local users or,
+when using \*(T<objectSid\*(T> attributes, for compatibility
+reasons.
+
+The value from the \*(T<\fBnss_min_uid\fR\*(T> option is evaluated
+after applying the offset.
+.TP 
+\*(T<\fBnss_gid_offset\fR\*(T> \fINUMBER\fR
+This option specifies an offset that is added to all
+LDAP numeric group ids.
+This can be used to avoid user id collisions with local groups or,
+when using \*(T<objectSid\*(T> attributes, for compatibility
+reasons.
+.TP 
+\*(T<\fBnss_nested_groups\fR\*(T> yes|no
+If this option is set, the \*(T<member\*(T> attribute of a
+group may point to another group.
+Members of nested groups are also returned in the higher level group
+and parent groups are returned when finding groups for a specific user.
+The default is not to perform extra searches for nested groups.
+.TP 
+\*(T<\fBnss_getgrent_skipmembers\fR\*(T> yes|no
+If this option is set, the group member list is not retrieved when
+looking up groups.
+Lookups for finding which groups a user belongs to will remain
+functional so the user will likely still get the correct groups
+assigned on login.
+
+This can offer a speed-up on systems that have very large groups.
+It has the downside of returning inconsistent information about
+group membership which may confuse some applications.
+This option is not recommended for most configurations.
+.TP 
+\*(T<\fBnss_disable_enumeration\fR\*(T> yes|no
+If this option is set, functions which cause all user/group entries to
+be loaded (getpwent(), getgrent(), setspent()) from the directory will
+not succeed in doing so.
+Applications that depend on being able to sequentially read all users
+and/or groups may fail to operate correctly.
+
+This can dramatically reduce LDAP server load in
+situations where there are a great number of users and/or groups.
+This is typically used in situations where user/program access to
+enumerate the entire directory is undesirable, and changing the
+behavior of the user/program is not possible.
+This option is not recommended for most configurations.
+.TP 
+\*(T<\fBvalidnames\fR\*(T> \fIREGEX\fR
+This option can be used to specify how user and group names are
+verified within the system. This pattern is used to check all user and
+group names that are requested and returned from LDAP.
+
+The regular expression should be specified as a POSIX extended regular
+expression. The expression itself needs to be separated by slash (/)
+characters and the 'i' flag may be appended at the end to indicate
+that the match should be case-insensetive.
+The default value is
+\*(T</^[a\-z0\-9._@$()]([a\-z0\-9._@$() \e\e~\-]*[a\-z0\-9._@$()~\-])?$/i\*(T>
+.TP 
+\*(T<\fBignorecase\fR\*(T> yes|no
+This specifies whether or not to perform searches for group,
+netgroup, passwd, protocols, rpc, services and shadow maps using
+case-insensitive matching.
+Setting this to \*(T<yes\*(T> could open up the system
+to authorisation bypass vulnerabilities and introduce nscd cache poisoning
+vulnerabilities which allow denial of service.
+The default is to perform case-sensitve filtering of LDAP search
+results for the above maps.
+.TP 
+\*(T<\fBpam_authc_ppolicy\fR\*(T> yes|no
+This option specifies whether password policy controls are requested
+and handled from the LDAP server when performing
+user authentication.
+By default the controls are requested and handled if available.
+.TP 
+\*(T<\fBpam_authc_search\fR\*(T> \fIFILTER\fR
+By default \fBnslcd\fR performs an
+LDAP search with the user's credentials after BIND
+(authentication) to ensure that the BIND operation was successful.
+The default search is a simple check to see if the user's DN exists.
+
+A search filter can be specified that will be used instead.
+The same substitutions as with the \*(T<\fBpam_authz_search\fR\*(T>
+option will be performed and the search should at least return one
+entry.
+
+The value \*(T<BASE\*(T> may be used to force the default
+search for the user DN.
+
+The value \*(T<NONE\*(T> may be used to indicate that no
+search should be performed after BIND.
+Note that some LDAP servers do not always return a
+correct error code as a result of a failed BIND operation (e.g. when
+an empty password is supplied).
+.TP 
+\*(T<\fBpam_authz_search\fR\*(T> \fIFILTER\fR
+This option allows flexible fine tuning of the authorisation check that
+should be performed. The search filter specified is executed and
+if any entries match, access is granted, otherwise access is denied.
+
+The search filter can contain the following variable references:
+\*(T<$username\*(T>, \*(T<$service\*(T>,
+\*(T<$ruser\*(T>, \*(T<$rhost\*(T>,
+\*(T<$tty\*(T>, \*(T<$hostname\*(T>,
+\*(T<$fqdn\*(T>, 
+\*(T<$dn\*(T>, and \*(T<$uid\*(T>.
+These references are substituted in the search filter using the
+same syntax as described in the section on attribute mapping
+expressions below.
+
+For example, to check that the user has a proper \*(T<authorizedService\*(T>
+value if the attribute is present (this almost emulates the
+\*(T<\fBpam_check_service_attr\fR\*(T> option in PADL's pam_ldap):
+
+.nf
+\*(T<(&(objectClass=posixAccount)(uid=$username)(|(authorizedService=$service)(!(authorizedService=*))))\*(T>
+.fi
+
+The \*(T<\fBpam_check_host_attr\fR\*(T> option can be emulated with:
+
+.nf
+\*(T<(&(objectClass=posixAccount)(uid=$username)(|(host=$hostname)(host=$fqdn)(host=\e\e*)))\*(T>
+.fi
+
+This option may be specified multiple times and all specified searches
+should at least return one entry for access to be granted.
+.TP 
+\*(T<\fBpam_password_prohibit_message\fR\*(T> "\fIMESSAGE\fR"
+If this option is set password modification using pam_ldap will be
+denied and the specified message will be presented to the user instead.
+The message can be used to direct the user to an alternative means
+of changing their password.
+.TP 
+\*(T<\fBreconnect_invalidate\fR\*(T> \fIDB\fR,\fIDB\fR,...
+If this option is set, \fBnslcd\fR will try to flush the
+specified external caches on start-up and whenever a connection to the
+LDAP server is re-established after an error.
+
+\fIDB\fR can refer to one of the nsswitch maps,
+in which case \fBnscd\fR is contacted to flush its cache
+for the specified database.
+If \fIDB\fR is \*(T<nfsidmap\*(T>,
+\fBnfsidmap\fR is contacted to clear its cache.
+
+Using this option ensures that external caches are cleared of
+incorrect information (typically the absence of users) that may
+be present due to unavailability of the LDAP server.
+.TP 
+\*(T<\fBcache\fR\*(T> \fICACHE\fR \fITIME\fR [\fITIME\fR]
+Configure the time entries are kept in the specified internal cache.
+
+The first \fITIME\fR value specifies the time
+to keep found entries in the cache.
+The second \fITIME\fR value specifies to the
+time to remember that a particular entry was not found.
+If the second parameter is absent, it is assumed to be the same as
+the first.
+
+Time values are specified as a number followed by an
+\*(T<s\*(T> for seconds, \*(T<m\*(T> for minutes,
+\*(T<h\*(T> for hours or \*(T<d\*(T> for days.
+Use \*(T<0\*(T> or \*(T<off\*(T> to disable the
+cache.
+
+Currently, only the \*(T<dn2uid\*(T> cache is supported
+that is used to remember DN to username lookups that are used when the
+\*(T<member\*(T> attribute is used.
+The default time value for this cache is \*(T<15m\*(T>.
+.SH "SUPPORTED MAPS"
+The following maps are supported. They are referenced as
+\fIMAP\fR in the options above.
+.TP 
+alias[es]
+Mail aliases.
+Note that most mail servers do not use the NSS
+interface for requesting mail aliases and parse
+\*(T<\fI/etc/aliases\fR\*(T> on their own.
+.TP 
+ether[s]
+Ethernet numbers (mac addresses).
+.TP 
+group
+Posix groups.
+.TP 
+host[s]
+Host names.
+.TP 
+netgroup
+Host and user groups used for access control.
+.TP 
+network[s]
+Network numbers.
+.TP 
+passwd
+Posix users.
+.TP 
+protocol[s]
+Protocol definitions (like in \*(T<\fI/etc/protocols\fR\*(T>).
+.TP 
+rpc
+Remote procedure call names and numbers.
+.TP 
+service[s]
+Network service names and numbers.
+.TP 
+shadow
+Shadow user password information.
+.SH "ATTRIBUTE MAPPING EXPRESSIONS"
+For some attributes a mapping expression may be used to construct the
+resulting value.
+This is currently only possible for attributes that do
+not need to be used in search filters.
+The expressions are a subset of the double quoted string expressions in the
+Bourne (POSIX) shell.
+Instead of variable substitution, attribute lookups are done on the current
+entry and the attribute value is substituted.
+The following expressions are supported:
+.TP 
+\*(T<${attr}\*(T> (or \*(T<$attr\*(T> for short)
+will substitute the value of the attribute
+.TP 
+\*(T<${attr:\-word}\*(T>
+(use default) will substitbute the value of the attribute or, if the
+attribute is not set or empty substitute the word
+.TP 
+\*(T<${attr:+word}\*(T>
+(use alternative) will substitute \*(T<word\*(T> if attribute
+is set, otherwise substitute the empty string
+.TP 
+\*(T<${attr:offset:length}\*(T>
+will substitute \*(T<length\*(T> characters (actually
+bytes) starting from position \*(T<offset\*(T> (which
+is counted starting at zero); the substituted string is
+truncated if it is too long; in particular, it can be of length
+zero (if \*(T<length\*(T> is zero or
+\*(T<offset\*(T> falls out of the original string)
+.TP 
+\*(T<${attr#word}\*(T>
+remove the shortest possible match of \*(T<word\*(T> from the
+left of the attribute value
+.TP 
+\*(T<${attr##word}\*(T>
+remove the longest possible match of \*(T<word\*(T> from the
+left of the attribute value (\fBpynslcd\fR only)
+.TP 
+\*(T<${attr%word}\*(T>
+remove the shortest possible match of \*(T<word\*(T> from the
+right of the attribute value (\fBpynslcd\fR only)
+.TP 
+\*(T<${attr%%word}\*(T>
+remove the longest possible match of \*(T<word\*(T> from the
+right of the attribute value (\fBpynslcd\fR only)
+.PP
+Only the # matching expression is supported in \fBnslcd\fR
+and only with the ? wildcard symbol. The \fBpynslcd\fR
+implementation supports full matching.
+.PP
+Quote (\*(T<"\*(T>), dollar (\*(T<$\*(T>) and
+backslash (\*(T<\e\*(T>) characters should be escaped with a
+backslash (\*(T<\e\*(T>).
+.PP
+The expressions are inspected to automatically fetch the appropriate
+attributes from LDAP.
+Some examples to demonstrate how these expressions may be used in
+attribute mapping:
+.TP 
+\*(T<"${shadowFlag:\-0}"\*(T>
+use the \*(T<shadowFlag\*(T> attribute, using the
+value 0 as default
+.TP 
+\*(T<"${homeDirectory:\-/home/$uid}"\*(T>
+use the \*(T<uid\*(T> attribute to build a
+\*(T<homeDirectory\*(T> value if that attribute is missing
+.TP 
+\*(T<"${isDisabled:+100}"\*(T>
+if the \*(T<isDisabled\*(T> attribute is set, return 100,
+otherwise leave value empty
+.TP 
+\*(T<"${userPassword#{crypt\e}}"\*(T>
+strip the {crypt} prefix from the userPassword attribute, returning
+the raw hash value
+.SH FILES
+.TP 
+\*(T<\fI/etc/nslcd.conf\fR\*(T>
+the main configuration file
+.TP 
+\*(T<\fI/etc/nsswitch.conf\fR\*(T>
+Name Service Switch configuration file
+.SH "SEE ALSO"
+\fBnslcd\fR(8),
+\fBnsswitch.conf\fR(5)
+.SH AUTHOR
+This manual was written by Arthur de Jong <arthur@arthurdejong.org>
+and is based on the
+\fBnss_ldap\fR(5)
+manual developed by PADL Software Pty Ltd.

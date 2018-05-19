@@ -1,0 +1,89 @@
+'\" -*- coding: utf-8 -*-
+.if \n(.g .ds T< \\FC
+.if \n(.g .ds T> \\F[\n[.fam]]
+.de URL
+\\$2 \(la\\$1\(ra\\$3
+..
+.if \n(.g .mso www.tmac
+.TH pam_ldap 8 "Feb 2018" "Version 0.9.9" "System Manager's Manual"
+.SH NAME
+pam_ldap \- PAM module for LDAP-based authentication
+.SH SYNOPSIS
+'nh
+.fi
+.ad l
+\fBpam_ldap.so\fR \kx
+.if (\nx>(\n(.l/2)) .nr x (\n(.l/5)
+'in \n(.iu+\nxu
+[\fI...\fR]
+'in \n(.iu-\nxu
+.ad b
+'hy
+.SH DESCRIPTION
+This is a PAM module that uses an
+LDAP server to verify user access rights and
+credentials.
+.SH OPTIONS
+.TP 
+\*(T<\fBuse_first_pass\fR\*(T> 
+Specifies that the PAM module should use the first
+password provided in the authentication stack and not prompt the user
+for a password.
+.TP 
+\*(T<\fBtry_first_pass\fR\*(T> 
+Specifies that the PAM module should use the first
+password provided in the authentication stack and if that fails prompt
+the user for a password.
+.TP 
+\*(T<\fBnullok\fR\*(T> 
+Specifying this option allows users to log in with a blank password.
+Normally logins without a password are denied.
+.TP 
+\*(T<\fBignore_unknown_user\fR\*(T> 
+Specifies that the PAM module should return
+PAM_IGNORE for users that are not present in the LDAP
+directory.
+This causes the PAM framework to ignore this module.
+.TP 
+\*(T<\fBignore_authinfo_unavail\fR\*(T> 
+Specifies that the PAM module should return
+PAM_IGNORE if it cannot contact the LDAP server.
+This causes the PAM framework to ignore this module.
+.TP 
+\*(T<\fBno_warn\fR\*(T> 
+Specifies that warning messages should not be propagated to the
+PAM application.
+.TP 
+\*(T<\fBuse_authtok\fR\*(T> 
+This causes the PAM module to use the earlier
+provided password when changing the password. The module will not
+prompt the user for a new password (it is analogous to
+\*(T<\fBuse_first_pass\fR\*(T>).
+.TP 
+\*(T<\fBdebug\fR\*(T> 
+This option causes the PAM module to log debugging
+information to
+\fBsyslog\fR(3).
+.TP 
+\*(T<\fBminimum_uid=\fR\*(T>\fIUID\fR 
+This option causes the PAM module to ignore the user
+if the user id is lower than the specified value. This can be used to
+bypass LDAP checks for system users
+(e.g. by setting it to \*(T<1000\*(T>).
+.SH "MODULE SERVICES PROVIDED"
+All services are provided by this module but currently sessions changes
+are not implemented in the nslcd daemon.
+.SH FILES
+.TP 
+\*(T<\fI/etc/pam.conf\fR\*(T>
+the main PAM configuration file
+.TP 
+\*(T<\fI/etc/nslcd.conf\fR\*(T>
+The configuration file for the \fBnslcd\fR daemon
+(see \fBnslcd.conf\fR(5))
+.SH "SEE ALSO"
+\fBpam.conf\fR(5),
+\fBnslcd\fR(8),
+\fBnslcd.conf\fR(5)
+.SH AUTHOR
+This manual was written by Arthur de Jong <arthur@arthurdejong.org>.

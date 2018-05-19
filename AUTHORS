@@ -1,0 +1,145 @@
+The original nss_ldap library was written by Luke Howard of PADL Software Pty
+Ltd. In 2006 Arthur de Jong of West Consuling forked the library to split it
+into a thin NSS part and a server part. The copyright holders of most of the
+code are:
+
+Luke Howard <lukeh@padl.com>
+West Consulting <info@west.nl>
+Arthur de Jong <arthur@arthurdejong.org>
+Howard Chu <hyc@symas.com>
+Symas Corporation (contributed by Ted C. Cheng <tedcheng@symas.com>)
+
+The following people (in no particular order) have also volunteered their
+time, effort, and ideas to make this software available. If you feel you are
+unjustly left out of this list, please send an email.
+
+Steven Barrus <sbarrus@eng.utah.edu>
+David Begley <david@avarice.nepean.uws.edu.au>
+Maxim Batourine <Batourine_M@ald.utoronto.ca>
+Michael Brownea <mbrown@fensystems.co.uk>
+Max Caines <Max.Caines@wlv.ac.uk>
+Carlos Celso <carlos.celso@embraer.com.br>
+Peter Cherny <peterc@luddite.com.au>
+Ben Collins <bcollins@debian.org>
+Stephan Cremer <scremer@dohle.com>
+Alejandro Forero Cuervo <azul@freaks-unidos.net>
+Guenther Deschner <gd@samba.org>
+Luca Filipozzi <lucaf+nssldap@ece.ubc.ca>
+Andrew Findlay <Andrew.Findlay@skills-1st.co.uk>
+Cristian Gafton <gafton@redhat.com>
+Gabor Gombas <gombasg@inf.elte.hu>
+DJ Gregor <dj@gregor.com>
+Bob Guo <bob@mail.ied.ac.cn>
+Daniel Hanks <hanksdc@plug.org>
+Leif Hedstrom <leif@ogre.com>
+Emile Heitor <eheitor@isdnet.net>
+Geert Jansen <undisclosed>
+Szymon Juraszczyk <szymon@ssk.pl>
+Anselm Kruis <kruis@till-photonics.com>
+Thorsten Kukuk <kukuk@suse.de>
+Steve Langasek <vorlon@netexpress.net>
+Joe Little <jlittle@open-it.org>
+Phillip Liu <phillip@loudcloud.com>
+Larry Lile <llile@dreamworks.com>
+Jeff Mandel <jeff.mandel@probes.com>
+Peter Marschall <peter@adpm.de>
+Michael Mattice <mike@bmisystems.com>
+Dejan Muhamedagic <dejan.muhamedagic@at.ibm.com>
+Doug Nazar <nazard@dragoninc.on.ca>
+Frode Nordahl <frode@nordahl.net>
+Lars Oergel <lars.oergel@innominate.de>
+Fredrik Ohrn <ohrn@chl.chalmers.se>
+Rakesh Patel <rpatel@globix.com>
+Nathan Hawkins <Nathan.Hawkins@FMR.COM>
+Andrew Rechenberg <ARechenberg@shermanfinancialgroup.com>
+Greg Retowski <greg@rage.net>
+Alain Richard <alain.richard@equation.fr>
+Michael Shuey <shuey@ecn.purdue.edu>
+Oliver Schulze L. <oliver@samera.com.py>
+Alexander Spannagel <spannagel@jobpilot.com>
+Scott M. Stone <sstone@foo3.com>
+Gero Treuner <gero@faveve.uni-stuttgart.de>
+Jarkko Turkulainen <jt@wapit.com>
+Stein Vrale <stein@terminator.net>
+Simon Wilkinson <sxw@sxw.org.uk>
+Davide Puricelli <evo@debian.org>
+Sami Haahtinen <ressu@debian.org>
+Stephen Frost <sfrost@debian.org>
+Américo Monteiro <a_monteiro@netcabo.pt>
+Cyril Brulebois <cyril.brulebois@enst-bretagne.fr>
+Kenshi Muto <kmuto@debian.org>
+Andreas Schneider <anschneider@suse.de>
+Ralf Haferkamp <rhafer@suse.de>
+Michael Calmer <mc@suse.de>
+Erik Schanze <eriks@debian.org>
+Bart Cornelis <cobaco@skolelinux.no>
+Rudy Godoy Guillén <rudy@debian.org>
+Petter Reinholdtsen <pere@hungry.com>
+Dan White <dwhite@olp.net>
+Leigh Wedding <lwedding@bigpond.com>
+Jan Schampera <jan.schampera@web.de>
+Nalin Dahyabhai <nalin@redhat.com>
+Daniel Dehennin <daniel.dehennin@baby-gnu.org>
+Bjørn Steensrud <bjornst@skogkatt.homelinux.org>
+Chris Leick <c.leick@vollbio.de>
+Christian Perrier <bubulle@debian.org>
+David Bartley <dtbartle@csclub.uwaterloo.ca>
+Esko Arajärvi <edu@iki.fi>
+Francisco Javier Cuadrado <fcocuadrado@gmail.com>
+Guillaume Delacour <gui@iroqwa.org>
+Jonas Smedegaard <dr@jones.dk>
+Justin B Rye <jbr@edlug.org.uk>
+Marce Villarino <mvillarino@gmail.com>
+Martin Ågren <martin.agren@gmail.com>
+Miroslav Kure <kurem@debian.cz>
+Thaddeus J. Kollar <thaddeus.j.kollar@nasa.gov>
+Vincenzo Campanella <vinz65@gmail.com>
+Yuri Kozlov <yuray@komyakino.ru>
+zym <zym@3721.com>
+Agustí Grau <fletxa@gmail.com>
+Clytie Siddall <clytie@riverland.net.au>
+Pierre Gambarotto <pierre.gambarotto@enseeiht.fr>
+Ted C. Cheng <tedcheng@symas.com>
+Jacques Vidrine <nectar@freebsd.org>
+Artem Kazakov <kazakov@gmail.com>
+Alexander V. Chernikov <melifaro@ipfw.ru>
+SATOH Fumiyasu <fumiyas@osstech.co.jp>
+Wesley Mason <wmason@ittc.ku.edu>
+Stefan Völkel <stefan.volkel.ext@nsn.com>
+Slavko <linux@slavino.sk>
+Joe Hansen <joedalton2@yahoo.dk>
+Denis Doria <denisdoria@gmail.com>
+James M. Leddy <james.leddy@redhat.com>
+Jakub Hrozek <jhrozek@redhat.com>
+Andreas B. Mundt <andi.mundt@web.de>
+Paul Gevers <paul@climbing.nl>
+Jeroen Schot <schot@A-Eskwadraat.nl>
+Tom Judge <tom@tomjudge.com>
+Maxim Vetrov <muxas@mail.ru>
+Matthew L. Dailey <matthew.l.dailey@dartmouth.edu>
+Chris Hiestand <chiestand@salk.edu>
+Jon Severinsson <jon@severinsson.net>
+Thorsten Glaser <t.glaser@tarent.de>
+Steve Hill <steve@opendium.com>
+Caleb Callaway <enlightened.despot@gmail.com>
+Bersl <bersl2@bersl2.info>
+John Sullivan <jsrhbz@kanargh.force9.co.uk>
+Joshua Shire <jshire@hyduke.com>
+Francois Tigeot <ftigeot@wolfpond.org>
+Davy Defaud <davy.defaud@free.fr>
+Lukas Slebodnik <lslebodn@redhat.com>
+ushi <ushi@honkgong.info>
+Tim Harder <radhermit@gmail.com>
+Patrick McLean <chutzpah@gentoo.org>
+Jianhai Luan <luanjianhai@163.com>
+Jason Luan <jianhai.luan@oracle.com>
+Mark R Bannister <dbis@proseconsulting.co.uk>
+Dalibor Pospíšil <dapospis@redhat.com>
+Tim Rice <tim@multitalents.net>
+Andrew Elble <aweits@rit.edu>
+Jed Liu <jed-nss-pam-ldapd-users@uma.litech.org>
+Geoffrey McRae <gnif@xbmc.org>
+Mathieu Baeumler <mathieu.baeumler@gmail.com>
+Vasilis Tsiligiannis <vasilis.tsiligiannis@nokia.com>
+Giovanni Mascellani <mascellani@poisson.phc.unipi.it>
+Seth Wright <seth@crosse.org>
