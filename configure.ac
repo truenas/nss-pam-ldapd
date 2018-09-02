@@ -33,10 +33,10 @@ configure.ac file for more details.])
 
 # initialize and set version and bugreport address
 AC_INIT([nss-pam-ldapd],
-        [0.9.9],
+        [0.9.10],
         [nss-pam-ldapd-users@lists.arthurdejong.org],,
         [https://arthurdejong.org/nss-pam-ldapd/])
-RELEASE_MONTH="Feb 2018"
+RELEASE_MONTH="Sep 2018"
 AC_SUBST(RELEASE_MONTH)
 AC_CONFIG_SRCDIR([nslcd.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -545,7 +545,7 @@ then
     case "$with_nss_flavour" in
       glibc)   with_nss_maps="aliases,ethers,group,hosts,netgroup,networks,passwd,protocols,rpc,services,shadow" ;;
       solaris) with_nss_maps="ethers,group,hosts,netgroup,networks,passwd,protocols,rpc,services,shadow" ;;
-      freebsd) with_nss_maps="group,hosts,passwd" ;;
+      freebsd) with_nss_maps="group,hosts,passwd,netgroup" ;;
     esac
   fi
   AC_MSG_RESULT($with_nss_maps)
