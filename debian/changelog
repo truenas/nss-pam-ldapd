@@ -1,5 +1,11 @@
-nss-pam-ldapd (0.9.9-2) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.10-1) UNRELEASED; urgency=medium
 
+  * New upstream release:
+    - make password expiry messages correct and consistent (thanks Têko
+      Mihinto)
+    - add domain variable for use in pam_authz_search
+    - allow logging longer lines
+    - create nslcd socket after dropping privileges to avoid slow start-ups
   * Set Vcs-* to salsa.debian.org
 
  -- Arthur de Jong <adejong@debian.org>  Sat, 19 May 2018 23:14:58 +0200

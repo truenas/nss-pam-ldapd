@@ -2,7 +2,7 @@
    pam.c - pam processing routines
 
    Copyright (C) 2009 Howard Chu
-   Copyright (C) 2009-2017 Arthur de Jong
+   Copyright (C) 2009-2018 Arthur de Jong
    Copyright (C) 2015 Nokia Solutions and Networks
 
    This library is free software; you can redistribute it and/or
@@ -71,7 +71,7 @@ static DICT *search_vars_new(const char *dn, const char *username,
   char hostname[BUFLEN_HOSTNAME];
   /* allocating this on the stack is OK because search_var_add()
      will allocate new memory for the value */
-  const char *fqdn;
+  const char *fqdn, *found;
   DICT *dict;
   dict = dict_new();
   if (dict == NULL)
@@ -89,7 +89,11 @@ static DICT *search_vars_new(const char *dn, const char *username,
   if (gethostname(hostname, sizeof(hostname)) == 0)
     search_var_add(dict, "hostname", hostname);
   if ((fqdn = getfqdn()) != NULL)
+  {
     search_var_add(dict, "fqdn", fqdn);
+    if (((found = strchr(fqdn, '.'))) != NULL && (found[1] != '\0'))
+      search_var_add(dict, "domain", found + 1);
+  }
   search_var_add(dict, "dn", dn);
   search_var_add(dict, "uid", username);
   return dict;
@@ -325,7 +329,7 @@ static int check_shadow(MYLDAP_SESSION *session, const char *username,
   if ((expiredate != -1) && (today >= expiredate))
   {
     daysleft = today - expiredate;
-    mysnprintf(authzmsg, authzmsgsz - 1, "account expired %ld days ago",
+    mysnprintf(authzmsg, authzmsgsz - 1, "Account expired %ld days ago",
                daysleft);
     log_log(LOG_WARNING, "%s: %s: %s",
             myldap_get_dn(entry), attmap_shadow_shadowExpire, authzmsg);
@@ -339,7 +343,7 @@ static int check_shadow(MYLDAP_SESSION *session, const char *username,
     /* check lastchanged */
     if (lastchangedate == 0)
     {
-      mysnprintf(authzmsg, authzmsgsz - 1, "need a new password");
+      mysnprintf(authzmsg, authzmsgsz - 1, "Need a new password");
       log_log(LOG_WARNING, "%s: %s: %s",
               myldap_get_dn(entry), attmap_shadow_shadowLastChange, authzmsg);
       return NSLCD_PAM_NEW_AUTHTOK_REQD;
@@ -352,9 +356,9 @@ static int check_shadow(MYLDAP_SESSION *session, const char *username,
       /* check maxdays */
       daysleft = lastchangedate + maxdays - today;
       if (daysleft == 0)
-        mysnprintf(authzmsg, authzmsgsz - 1, "password will expire today");
+        mysnprintf(authzmsg, authzmsgsz - 1, "Password will expire today");
       else if (daysleft < 0)
-        mysnprintf(authzmsg, authzmsgsz - 1, "password expired %ld days ago",
+        mysnprintf(authzmsg, authzmsgsz - 1, "Password expired %ld days ago",
                    -daysleft);
       /* check inactdays */
       if ((daysleft <= 0) && (inactdays != -1))
@@ -386,7 +390,7 @@ static int check_shadow(MYLDAP_SESSION *session, const char *username,
       if ((warndays > 0) && (daysleft <= warndays))
       {
         mysnprintf(authzmsg, authzmsgsz - 1,
-                   "password will expire in %ld days", daysleft);
+                   "Password will expire in %ld days", daysleft);
         log_log(LOG_WARNING, "%s: %s: %s",
                 myldap_get_dn(entry), attmap_shadow_shadowWarning, authzmsg);
       }
@@ -398,7 +402,7 @@ static int check_shadow(MYLDAP_SESSION *session, const char *username,
     if ((mindays != -1) && (daysleft > 0))
     {
       mysnprintf(authzmsg, authzmsgsz - 1,
-                 "password cannot be changed for another %ld days", daysleft);
+                 "Password cannot be changed for another %ld days", daysleft);
       log_log(LOG_WARNING, "%s: %s: %s",
               myldap_get_dn(entry), attmap_shadow_shadowMin, authzmsg);
       return NSLCD_PAM_AUTHTOK_ERR;
