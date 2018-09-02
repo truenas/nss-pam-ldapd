@@ -7,7 +7,6 @@ Build-Depends: debhelper (>=11), libkrb5-dev, libldap2-dev,
                libsasl2-dev, po-debconf (>= 0.5.0), docbook2x, docbook-xml,
                libpam0g-dev, python (>= 2.6.6-3~), python-daemon, python-ldap,
                python-pyasn1, python-pyasn1-modules
-X-Python-Version: >= 2.6
 Homepage: https://arthurdejong.org/nss-pam-ldapd/
 Vcs-Git: https://salsa.debian.org/debian/nss-pam-ldapd.git
 Vcs-Browser: https://salsa.debian.org/debian/nss-pam-ldapd
