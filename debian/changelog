@@ -1,4 +1,4 @@
-nss-pam-ldapd (0.9.10-1) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.10-1) unstable; urgency=medium
 
   * New upstream release:
     - make password expiry messages correct and consistent (thanks Têko
@@ -9,7 +9,7 @@ nss-pam-ldapd (0.9.10-1) UNRELEASED; urgency=medium
   * Set Vcs-* to salsa.debian.org
   * Upgrade to standards-version 4.2.1 (no changes needed)
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 19 May 2018 23:14:58 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 02 Sep 2018 17:25:16 +0200
 
 nss-pam-ldapd (0.9.9-1) unstable; urgency=medium
 
