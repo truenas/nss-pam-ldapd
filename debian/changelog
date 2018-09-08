@@ -1,3 +1,9 @@
+nss-pam-ldapd (0.9.10-2) UNRELEASED; urgency=medium
+
+  * Fix crash in chsh.ldap (closes: 908319)
+
+ -- Arthur de Jong <adejong@debian.org>  Sat, 08 Sep 2018 17:43:56 +0200
+
 nss-pam-ldapd (0.9.10-1) unstable; urgency=medium
 
   * New upstream release:
