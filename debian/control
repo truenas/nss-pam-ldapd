@@ -2,7 +2,7 @@ Source: nss-pam-ldapd
 Section: admin
 Priority: optional
 Maintainer: Arthur de Jong <adejong@debian.org>
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Build-Depends: debhelper (>=11), libkrb5-dev, libldap2-dev,
                libsasl2-dev, po-debconf (>= 0.5.0), docbook2x, docbook-xml,
                libpam0g-dev, python (>= 2.6.6-3~), python-daemon, python-ldap,
