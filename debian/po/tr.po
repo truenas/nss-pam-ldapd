@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2014-06-08 11:45+0200\n"
+"POT-Creation-Date: 2019-01-20 16:57+0100\n"
 "PO-Revision-Date: 2014-07-07 17:05+0200\n"
 "Last-Translator: Mert Dirik <mertdirik@gmail.com>\n"
 "Language-Team: Turkish <debian-l10n-turkish@lists.debian.org>\n"
@@ -404,123 +404,6 @@ msgstr ""
 "Sertifika denetimi etkinleştirildiğinde bu dosya, sunucu tarafından sağlanan "
 "sertifikayı denetlemekte kullanılan X.509 sertifikasını barındırır."
 
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr ""
-"Yükseltme işleminden önce xscreensaver ve xlockmore yeniden başlatılmalı"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid ""
-"One or more running instances of xscreensaver or xlockmore have been "
-"detected on this system. Because of incompatible library changes, the "
-"upgrade of nslcd may leave you unable to authenticate to these programs. You "
-"should arrange for these programs to be restarted or stopped before "
-"continuing this upgrade, to avoid locking your users out of their current "
-"sessions."
-msgstr ""
-"Sisteminizde çalışmakta olan birden fazla xscreensaver ya da xlockmore "
-"örneğine rastlandı. Uyumsuz kitaplık değişiklikleri yüzünden, nslcd "
-"paketinin yükseltilmesi bu programlarda kimlik doğrulamasını olanaksız hale "
-"getirecek. Mevcut oturumların kilitlenmesi önlemek için, yükseltme işlemine "
-"devam etmeden önce bu programları durdurmalı ya da yeniden başlatmalısınız."
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid "Restart services during package upgrades without asking?"
-msgstr "Paket yükseltme esnasında hizmetler sorulmadan yeniden başlatılsın mı?"
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid ""
-"There are services installed on your system which need to be restarted when "
-"certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
-"these restarts may cause interruptions of service for the system, you will "
-"normally be prompted on each upgrade for the list of services you wish to "
-"restart.  You can choose this option to avoid being prompted; instead, all "
-"necessary restarts will be done for you automatically so you can avoid being "
-"asked questions on each library upgrade."
-msgstr ""
-"Sisteminizde libpam, libc ve libssl gibi bazı kitaplıklar yükseltildiğinde "
-"yeniden başlatılması gereken bazı hizmetler kurulu. Yeniden başlatma "
-"işlemleri sisteminizin sunduğu hizmetlerde kesintilere neden olabileceğinden "
-"dolayı her yükseltme işlemi esnasında yeniden başlatmak istediğiniz "
-"hizmetler size sorulacaktır. Eğer bu sorunun sorulmasını istemiyorsanız bu "
-"seçeneği kullanabilirsiniz. Bu seçenek seçildiği takdirde bir kitaplık "
-"yükseltmesi yapılırken gereken tüm yeniden başlatma işlemleri size "
-"sorulmaksızın otomatik olarak yapılacaktır."
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid "Services to restart for nslcd upgrade:"
-msgstr ""
-"nslcd kitaplığının yükseltilmesi için yeniden başlatılacak olan hizmetler:"
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid ""
-"Running services and programs that are using nslcd need to be restarted, "
-"otherwise they might not be able to do lookup or authentication any more "
-"(for services such as ssh, this can affect your ability to login). Please "
-"review the following space-separated list of init.d scripts for services to "
-"be restarted now, and correct it if needed."
-msgstr ""
-"nslcd kullanan hizmetler yeniden başlatılmadıkları takdirde arama veya "
-"kimlik doğrulama gibi işlemleri yapamayacaklardır (örneğin ssh gibi "
-"hizmetler için, bu durumda oturum açamayabilirsiniz). Lütfen yeniden "
-"başlatılacak hizmetlere ilişkin init.d betiklerinin boşluklarla ayrılmış "
-"aşağıdaki listesini inceleyin ve gerekliyse listeyi düzeltin."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Bazı hizmetler nslcd yükseltmesi için yeniden başlatılamadı"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "The following services could not be restarted:"
-msgstr "Aşağıdaki hizmetler yeniden başlatılamadı:"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid ""
-"You will need to start these manually by running '/etc/init.d/<service> "
-"start'."
-msgstr ""
-"Bu hizmetleri '/etc/init.d/<hizmet> start' komutunu kullanarak elinizle "
-"başlatmanız gerekecek."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid "Display manager must be restarted manually"
-msgstr "Görüntü yöneticisinin elle yeniden başlatılması gerekli"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid ""
-"The wdm and xdm display managers require a restart for the new version of "
-"nslcd, but there are X login sessions active on your system that would be "
-"terminated by this restart.  You will therefore need to restart these "
-"services by hand before further X logins will be possible."
-msgstr ""
-"wdm ve xdm görüntü yöneticileri, nslcd'nin yeni sürümünden yararlanabilmek "
-"için yeniden başlatılmalı; fakat sisteminizde etkin X oturumları var. "
-"Görüntü yöneticisi yeniden başlatılırsa bu oturumlar da kapatılır. Bu yüzden "
-"ileride yeni X oturumları açabilmek için bu hizmetleri elle yeniden "
-"başlatmanız gerekecek. "
-
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
@@ -594,6 +477,93 @@ msgstr ""
 "kendiliğinden çıkarılmasını seçebilirsiniz. Girdilerin kendiliğinden "
 "çıkarılmasını seçerseniz, /etc/nsswitch.conf dosyasında yapılan "
 "değişiklikleri denetlediğinizden emin olunuz."
+
+#~ msgid "xscreensaver and xlockmore must be restarted before upgrading"
+#~ msgstr ""
+#~ "Yükseltme işleminden önce xscreensaver ve xlockmore yeniden başlatılmalı"
+
+#~ msgid ""
+#~ "One or more running instances of xscreensaver or xlockmore have been "
+#~ "detected on this system. Because of incompatible library changes, the "
+#~ "upgrade of nslcd may leave you unable to authenticate to these programs. "
+#~ "You should arrange for these programs to be restarted or stopped before "
+#~ "continuing this upgrade, to avoid locking your users out of their current "
+#~ "sessions."
+#~ msgstr ""
+#~ "Sisteminizde çalışmakta olan birden fazla xscreensaver ya da xlockmore "
+#~ "örneğine rastlandı. Uyumsuz kitaplık değişiklikleri yüzünden, nslcd "
+#~ "paketinin yükseltilmesi bu programlarda kimlik doğrulamasını olanaksız "
+#~ "hale getirecek. Mevcut oturumların kilitlenmesi önlemek için, yükseltme "
+#~ "işlemine devam etmeden önce bu programları durdurmalı ya da yeniden "
+#~ "başlatmalısınız."
+
+#~ msgid "Restart services during package upgrades without asking?"
+#~ msgstr ""
+#~ "Paket yükseltme esnasında hizmetler sorulmadan yeniden başlatılsın mı?"
+
+#~ msgid ""
+#~ "There are services installed on your system which need to be restarted "
+#~ "when certain libraries, such as libpam, libc, and libssl, are upgraded. "
+#~ "Since these restarts may cause interruptions of service for the system, "
+#~ "you will normally be prompted on each upgrade for the list of services "
+#~ "you wish to restart.  You can choose this option to avoid being prompted; "
+#~ "instead, all necessary restarts will be done for you automatically so you "
+#~ "can avoid being asked questions on each library upgrade."
+#~ msgstr ""
+#~ "Sisteminizde libpam, libc ve libssl gibi bazı kitaplıklar "
+#~ "yükseltildiğinde yeniden başlatılması gereken bazı hizmetler kurulu. "
+#~ "Yeniden başlatma işlemleri sisteminizin sunduğu hizmetlerde kesintilere "
+#~ "neden olabileceğinden dolayı her yükseltme işlemi esnasında yeniden "
+#~ "başlatmak istediğiniz hizmetler size sorulacaktır. Eğer bu sorunun "
+#~ "sorulmasını istemiyorsanız bu seçeneği kullanabilirsiniz. Bu seçenek "
+#~ "seçildiği takdirde bir kitaplık yükseltmesi yapılırken gereken tüm "
+#~ "yeniden başlatma işlemleri size sorulmaksızın otomatik olarak "
+#~ "yapılacaktır."
+
+#~ msgid "Services to restart for nslcd upgrade:"
+#~ msgstr ""
+#~ "nslcd kitaplığının yükseltilmesi için yeniden başlatılacak olan hizmetler:"
+
+#~ msgid ""
+#~ "Running services and programs that are using nslcd need to be restarted, "
+#~ "otherwise they might not be able to do lookup or authentication any more "
+#~ "(for services such as ssh, this can affect your ability to login). Please "
+#~ "review the following space-separated list of init.d scripts for services "
+#~ "to be restarted now, and correct it if needed."
+#~ msgstr ""
+#~ "nslcd kullanan hizmetler yeniden başlatılmadıkları takdirde arama veya "
+#~ "kimlik doğrulama gibi işlemleri yapamayacaklardır (örneğin ssh gibi "
+#~ "hizmetler için, bu durumda oturum açamayabilirsiniz). Lütfen yeniden "
+#~ "başlatılacak hizmetlere ilişkin init.d betiklerinin boşluklarla ayrılmış "
+#~ "aşağıdaki listesini inceleyin ve gerekliyse listeyi düzeltin."
+
+#~ msgid "Failure restarting some services for nslcd upgrade"
+#~ msgstr "Bazı hizmetler nslcd yükseltmesi için yeniden başlatılamadı"
+
+#~ msgid "The following services could not be restarted:"
+#~ msgstr "Aşağıdaki hizmetler yeniden başlatılamadı:"
+
+#~ msgid ""
+#~ "You will need to start these manually by running '/etc/init.d/<service> "
+#~ "start'."
+#~ msgstr ""
+#~ "Bu hizmetleri '/etc/init.d/<hizmet> start' komutunu kullanarak elinizle "
+#~ "başlatmanız gerekecek."
+
+#~ msgid "Display manager must be restarted manually"
+#~ msgstr "Görüntü yöneticisinin elle yeniden başlatılması gerekli"
+
+#~ msgid ""
+#~ "The wdm and xdm display managers require a restart for the new version of "
+#~ "nslcd, but there are X login sessions active on your system that would be "
+#~ "terminated by this restart.  You will therefore need to restart these "
+#~ "services by hand before further X logins will be possible."
+#~ msgstr ""
+#~ "wdm ve xdm görüntü yöneticileri, nslcd'nin yeni sürümünden "
+#~ "yararlanabilmek için yeniden başlatılmalı; fakat sisteminizde etkin X "
+#~ "oturumları var. Görüntü yöneticisi yeniden başlatılırsa bu oturumlar da "
+#~ "kapatılır. Bu yüzden ileride yeni X oturumları açabilmek için bu "
+#~ "hizmetleri elle yeniden başlatmanız gerekecek. "
 
 #~ msgid ""
 #~ "If certificate checking is enabled, at least one of the tls_cacertdir or "

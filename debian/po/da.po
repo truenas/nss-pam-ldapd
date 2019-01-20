@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2014-06-08 11:45+0200\n"
+"POT-Creation-Date: 2019-01-20 16:57+0100\n"
 "PO-Revision-Date: 2014-07-06 23:51+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -410,122 +410,7 @@ msgid ""
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
 "Når certifikatkontrol er aktiveret, så indeholde denne fil X.509-"
-"certifikatet, som bruges til at kontrollere certifikatet leveret af "
-"serveren."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr "xscreensaver og xlockmore skal genstartes før opgradering"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid ""
-"One or more running instances of xscreensaver or xlockmore have been "
-"detected on this system. Because of incompatible library changes, the "
-"upgrade of nslcd may leave you unable to authenticate to these programs. You "
-"should arrange for these programs to be restarted or stopped before "
-"continuing this upgrade, to avoid locking your users out of their current "
-"sessions."
-msgstr ""
-"En eller flere kørende instanser af xscreensaver eller xlockmore er blevet "
-"registreret på dette system. På grund af biblioteksændringer der ikke er "
-"kompatible, vil opgraderingen af nslcd gøre, at du ikke kan godkende disse "
-"programmer. Du skal sørge for, at disse programmer bliver genstartet eller "
-"stoppet, før du fortsætter denne opgradering, så du undgår at lukke dine "
-"brugere ud af deres igangværende sessioner."
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid "Restart services during package upgrades without asking?"
-msgstr "Genstart tjenester under pakkeopgraderinger uden at spørge?"
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid ""
-"There are services installed on your system which need to be restarted when "
-"certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
-"these restarts may cause interruptions of service for the system, you will "
-"normally be prompted on each upgrade for the list of services you wish to "
-"restart.  You can choose this option to avoid being prompted; instead, all "
-"necessary restarts will be done for you automatically so you can avoid being "
-"asked questions on each library upgrade."
-msgstr ""
-"Der er tjenester installeret på dit system, som kræver at blive genstartet "
-"når bestemte biblioteker, såsom libpam, libc og libssl, opgraderes. Da disse "
-"genstarter kan medføre forstyrrelse af systemets tjenester, vil du normalt "
-"blive spurgt ved hver opgradering om listen over tjenester, du ønsker at "
-"genstarte. Du kan vælge denne indstilling for at undgå at blive spurgt; i "
-"stedet for vil alle nødvendige genstarter blive udført automatisk, så du kan "
-"undgå spørgsmål ved hver biblioteksopgradering."
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid "Services to restart for nslcd upgrade:"
-msgstr "Tjenester at genstarte for nslcd-opgradering:"
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid ""
-"Running services and programs that are using nslcd need to be restarted, "
-"otherwise they might not be able to do lookup or authentication any more "
-"(for services such as ssh, this can affect your ability to login). Please "
-"review the following space-separated list of init.d scripts for services to "
-"be restarted now, and correct it if needed."
-msgstr ""
-"Kørende tjenester og programmer som bruger nslcd skal genstartes, ellers vil "
-"de måske ikke mere kunne foretage opslag eller opnå godkendelse (for "
-"tjenester såsom ssh, kan dette påvirke din mulighed for at logge ind). "
-"Gennemse venligst den følgende kommaadskilte liste af init.d-skripter til "
-"tjenester som genstartes nu, og ret den hvis behovet er der."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "Failure restarting some services for nslcd upgrade"
-msgstr ""
-"Der opstod en fejl under genstart af nogle tjenester til nslcd-opgradering"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "The following services could not be restarted:"
-msgstr "De følgende tjenester kunne ikke genstartes:"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid ""
-"You will need to start these manually by running '/etc/init.d/<service> "
-"start'."
-msgstr ""
-"Du skal genstarte disse manuelt ved at køre »/etc/init.d/<service> start«."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid "Display manager must be restarted manually"
-msgstr "Visningshåndtering skal genstartes manuelt"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid ""
-"The wdm and xdm display managers require a restart for the new version of "
-"nslcd, but there are X login sessions active on your system that would be "
-"terminated by this restart.  You will therefore need to restart these "
-"services by hand before further X logins will be possible."
-msgstr ""
-"Wdm- og xdm-visningshåndteringerne kræver en genstart for den nye version af "
-"nslcd, men der er X-logindsessioner, som er aktive på dit system og som vil "
-"blive afsluttet af denne genstart. Du skal derfor manuelt genstarte disse "
-"tjenester, før yderligere X-logind'er vil være mulige."
+"certifikatet, som bruges til at kontrollere certifikatet leveret af serveren."
 
 #. Type: multiselect
 #. Description
@@ -599,3 +484,85 @@ msgstr ""
 "Du kan redigere /etc/nsswitch.conf i hånden eller vælge at fjerne punkterne "
 "automatisk nu. Sørg for at gennemse ændringer til /etc/nsswitch.conf hvis du "
 "vælger at fjerne indlæggene nu."
+
+#~ msgid "xscreensaver and xlockmore must be restarted before upgrading"
+#~ msgstr "xscreensaver og xlockmore skal genstartes før opgradering"
+
+#~ msgid ""
+#~ "One or more running instances of xscreensaver or xlockmore have been "
+#~ "detected on this system. Because of incompatible library changes, the "
+#~ "upgrade of nslcd may leave you unable to authenticate to these programs. "
+#~ "You should arrange for these programs to be restarted or stopped before "
+#~ "continuing this upgrade, to avoid locking your users out of their current "
+#~ "sessions."
+#~ msgstr ""
+#~ "En eller flere kørende instanser af xscreensaver eller xlockmore er "
+#~ "blevet registreret på dette system. På grund af biblioteksændringer der "
+#~ "ikke er kompatible, vil opgraderingen af nslcd gøre, at du ikke kan "
+#~ "godkende disse programmer. Du skal sørge for, at disse programmer bliver "
+#~ "genstartet eller stoppet, før du fortsætter denne opgradering, så du "
+#~ "undgår at lukke dine brugere ud af deres igangværende sessioner."
+
+#~ msgid "Restart services during package upgrades without asking?"
+#~ msgstr "Genstart tjenester under pakkeopgraderinger uden at spørge?"
+
+#~ msgid ""
+#~ "There are services installed on your system which need to be restarted "
+#~ "when certain libraries, such as libpam, libc, and libssl, are upgraded. "
+#~ "Since these restarts may cause interruptions of service for the system, "
+#~ "you will normally be prompted on each upgrade for the list of services "
+#~ "you wish to restart.  You can choose this option to avoid being prompted; "
+#~ "instead, all necessary restarts will be done for you automatically so you "
+#~ "can avoid being asked questions on each library upgrade."
+#~ msgstr ""
+#~ "Der er tjenester installeret på dit system, som kræver at blive "
+#~ "genstartet når bestemte biblioteker, såsom libpam, libc og libssl, "
+#~ "opgraderes. Da disse genstarter kan medføre forstyrrelse af systemets "
+#~ "tjenester, vil du normalt blive spurgt ved hver opgradering om listen "
+#~ "over tjenester, du ønsker at genstarte. Du kan vælge denne indstilling "
+#~ "for at undgå at blive spurgt; i stedet for vil alle nødvendige genstarter "
+#~ "blive udført automatisk, så du kan undgå spørgsmål ved hver "
+#~ "biblioteksopgradering."
+
+#~ msgid "Services to restart for nslcd upgrade:"
+#~ msgstr "Tjenester at genstarte for nslcd-opgradering:"
+
+#~ msgid ""
+#~ "Running services and programs that are using nslcd need to be restarted, "
+#~ "otherwise they might not be able to do lookup or authentication any more "
+#~ "(for services such as ssh, this can affect your ability to login). Please "
+#~ "review the following space-separated list of init.d scripts for services "
+#~ "to be restarted now, and correct it if needed."
+#~ msgstr ""
+#~ "Kørende tjenester og programmer som bruger nslcd skal genstartes, ellers "
+#~ "vil de måske ikke mere kunne foretage opslag eller opnå godkendelse (for "
+#~ "tjenester såsom ssh, kan dette påvirke din mulighed for at logge ind). "
+#~ "Gennemse venligst den følgende kommaadskilte liste af init.d-skripter til "
+#~ "tjenester som genstartes nu, og ret den hvis behovet er der."
+
+#~ msgid "Failure restarting some services for nslcd upgrade"
+#~ msgstr ""
+#~ "Der opstod en fejl under genstart af nogle tjenester til nslcd-opgradering"
+
+#~ msgid "The following services could not be restarted:"
+#~ msgstr "De følgende tjenester kunne ikke genstartes:"
+
+#~ msgid ""
+#~ "You will need to start these manually by running '/etc/init.d/<service> "
+#~ "start'."
+#~ msgstr ""
+#~ "Du skal genstarte disse manuelt ved at køre »/etc/init.d/<service> start«."
+
+#~ msgid "Display manager must be restarted manually"
+#~ msgstr "Visningshåndtering skal genstartes manuelt"
+
+#~ msgid ""
+#~ "The wdm and xdm display managers require a restart for the new version of "
+#~ "nslcd, but there are X login sessions active on your system that would be "
+#~ "terminated by this restart.  You will therefore need to restart these "
+#~ "services by hand before further X logins will be possible."
+#~ msgstr ""
+#~ "Wdm- og xdm-visningshåndteringerne kræver en genstart for den nye version "
+#~ "af nslcd, men der er X-logindsessioner, som er aktive på dit system og "
+#~ "som vil blive afsluttet af denne genstart. Du skal derfor manuelt "
+#~ "genstarte disse tjenester, før yderligere X-logind'er vil være mulige."

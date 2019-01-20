@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2014-06-08 11:45+0200\n"
+"POT-Creation-Date: 2019-01-20 16:57+0100\n"
 "PO-Revision-Date: 2014-07-09 15:14+0200\n"
 "Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: slovenčina <linux@slavino.sk>\n"
@@ -416,121 +416,6 @@ msgstr ""
 "Keď je zapnutá kontrola certifikátu, tento súbor obsahuje certifikát X.509, "
 "ktorý slúži na kontrolu certifikátu poskytnutého serverom."
 
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr "xscreensaver a xlockmore je nutné pred aktualizáciou reštartovať"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid ""
-"One or more running instances of xscreensaver or xlockmore have been "
-"detected on this system. Because of incompatible library changes, the "
-"upgrade of nslcd may leave you unable to authenticate to these programs. You "
-"should arrange for these programs to be restarted or stopped before "
-"continuing this upgrade, to avoid locking your users out of their current "
-"sessions."
-msgstr ""
-"Bola zistená jedna alebo viacero bežiacich inštancií xscreensaver alebo "
-"xlockmore. Kvôli nekompatibilným zmenám v knižniciach, vás aktualizácia GNU "
-"libc nechá bez možnosti overenia totožnosti v týchto programoch. Mali by ste "
-"zabezpečiť reštart alebo zastavenie týchto programov predtým, než budete "
-"pokračovať v aktualizácii, aby ste sa vyhli zablokovaniu prístupu vašich "
-"používateľov k ich bežiacim reláciám."
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid "Restart services during package upgrades without asking?"
-msgstr "Reštartovať služby počas aktualizácie balíka bez pýtania sa?"
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid ""
-"There are services installed on your system which need to be restarted when "
-"certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
-"these restarts may cause interruptions of service for the system, you will "
-"normally be prompted on each upgrade for the list of services you wish to "
-"restart.  You can choose this option to avoid being prompted; instead, all "
-"necessary restarts will be done for you automatically so you can avoid being "
-"asked questions on each library upgrade."
-msgstr ""
-"Na vašom systéme sú nainštalované služby, ktoré je potrebné reštartovať pri "
-"aktualizácii určitých knižníc ako libpam, libc, a libssl. Keďže tieto "
-"reštarty môžu spôsobiť prerušenie služby systému, za bežných okolností sa "
-"vám systém správy balíkov pri každej aktualizácii ponúkne zoznam služieb, "
-"ktoré chcete reštartovať. Môžete zvoliť, aby sa vás systém správy balíkov už "
-"viac nepýtal, ale aby sa namiesto toho všetky potrebné reštarty vykonávali "
-"automaticky, takže sa vyhnete kladeniu otázok pri každej aktualizácii "
-"knižnice."
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid "Services to restart for nslcd upgrade:"
-msgstr "Služby na reštart kvôli aktualizácii nslcd:"
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid ""
-"Running services and programs that are using nslcd need to be restarted, "
-"otherwise they might not be able to do lookup or authentication any more "
-"(for services such as ssh, this can affect your ability to login). Please "
-"review the following space-separated list of init.d scripts for services to "
-"be restarted now, and correct it if needed."
-msgstr ""
-"Bežiace programy a služby, ktoré používajú nslcd je potrebné reštartovať, "
-"inak nebudú schopné vykonávať vyhľadávanie alebo autentifikáciu (pri "
-"službách ako ssh to môže ovplyvniť schopnosť prihlásiť sa). Prosím, "
-"skontrolujte nasledujúci zoznam (položky sú oddelené medzerami) init.d "
-"skriptov služieb, ktoré je treba reštartovať a ak je to potrebné, opravte ho."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Zlyhal reštart niektorých služieb pri aktualizácii nslcd"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "The following services could not be restarted:"
-msgstr "Nasledujúce služby nebolo možné reštartovať:"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid ""
-"You will need to start these manually by running '/etc/init.d/<service> "
-"start'."
-msgstr ""
-"Budete musieť tieto služby spustiť ručne pomocou „/etc/init.d/<service> "
-"start“."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid "Display manager must be restarted manually"
-msgstr "Správcu obrazovky je potrebné reštartovať ručne"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid ""
-"The wdm and xdm display managers require a restart for the new version of "
-"nslcd, but there are X login sessions active on your system that would be "
-"terminated by this restart.  You will therefore need to restart these "
-"services by hand before further X logins will be possible."
-msgstr ""
-"Správci obrazovky wdm a xdm vyžadujú reštart kvôli novej verzii nslcd, ale "
-"na vašom systéme sú aktívne prihlasovacie relácie X, ktoré by tento reštart "
-"ukončil. Preto tieto služby budete musieť reštartovať ručne predtým, než "
-"bude možné uskutočniť ďalšie prihlásenie k X."
-
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
@@ -603,6 +488,89 @@ msgstr ""
 "Súbor /etc/nsswitch.conf môžete upraviť manuálne alebo si zvoliť odstránenie "
 "položiek automaticky teraz. Ak si vyberiete odstránenie položiek teraz, "
 "nezabudnite si skontrolovať zmeny v /etc/nsswitch.conf."
+
+#~ msgid "xscreensaver and xlockmore must be restarted before upgrading"
+#~ msgstr "xscreensaver a xlockmore je nutné pred aktualizáciou reštartovať"
+
+#~ msgid ""
+#~ "One or more running instances of xscreensaver or xlockmore have been "
+#~ "detected on this system. Because of incompatible library changes, the "
+#~ "upgrade of nslcd may leave you unable to authenticate to these programs. "
+#~ "You should arrange for these programs to be restarted or stopped before "
+#~ "continuing this upgrade, to avoid locking your users out of their current "
+#~ "sessions."
+#~ msgstr ""
+#~ "Bola zistená jedna alebo viacero bežiacich inštancií xscreensaver alebo "
+#~ "xlockmore. Kvôli nekompatibilným zmenám v knižniciach, vás aktualizácia "
+#~ "GNU libc nechá bez možnosti overenia totožnosti v týchto programoch. Mali "
+#~ "by ste zabezpečiť reštart alebo zastavenie týchto programov predtým, než "
+#~ "budete pokračovať v aktualizácii, aby ste sa vyhli zablokovaniu prístupu "
+#~ "vašich používateľov k ich bežiacim reláciám."
+
+#~ msgid "Restart services during package upgrades without asking?"
+#~ msgstr "Reštartovať služby počas aktualizácie balíka bez pýtania sa?"
+
+#~ msgid ""
+#~ "There are services installed on your system which need to be restarted "
+#~ "when certain libraries, such as libpam, libc, and libssl, are upgraded. "
+#~ "Since these restarts may cause interruptions of service for the system, "
+#~ "you will normally be prompted on each upgrade for the list of services "
+#~ "you wish to restart.  You can choose this option to avoid being prompted; "
+#~ "instead, all necessary restarts will be done for you automatically so you "
+#~ "can avoid being asked questions on each library upgrade."
+#~ msgstr ""
+#~ "Na vašom systéme sú nainštalované služby, ktoré je potrebné reštartovať "
+#~ "pri aktualizácii určitých knižníc ako libpam, libc, a libssl. Keďže tieto "
+#~ "reštarty môžu spôsobiť prerušenie služby systému, za bežných okolností sa "
+#~ "vám systém správy balíkov pri každej aktualizácii ponúkne zoznam služieb, "
+#~ "ktoré chcete reštartovať. Môžete zvoliť, aby sa vás systém správy balíkov "
+#~ "už viac nepýtal, ale aby sa namiesto toho všetky potrebné reštarty "
+#~ "vykonávali automaticky, takže sa vyhnete kladeniu otázok pri každej "
+#~ "aktualizácii knižnice."
+
+#~ msgid "Services to restart for nslcd upgrade:"
+#~ msgstr "Služby na reštart kvôli aktualizácii nslcd:"
+
+#~ msgid ""
+#~ "Running services and programs that are using nslcd need to be restarted, "
+#~ "otherwise they might not be able to do lookup or authentication any more "
+#~ "(for services such as ssh, this can affect your ability to login). Please "
+#~ "review the following space-separated list of init.d scripts for services "
+#~ "to be restarted now, and correct it if needed."
+#~ msgstr ""
+#~ "Bežiace programy a služby, ktoré používajú nslcd je potrebné reštartovať, "
+#~ "inak nebudú schopné vykonávať vyhľadávanie alebo autentifikáciu (pri "
+#~ "službách ako ssh to môže ovplyvniť schopnosť prihlásiť sa). Prosím, "
+#~ "skontrolujte nasledujúci zoznam (položky sú oddelené medzerami) init.d "
+#~ "skriptov služieb, ktoré je treba reštartovať a ak je to potrebné, opravte "
+#~ "ho."
+
+#~ msgid "Failure restarting some services for nslcd upgrade"
+#~ msgstr "Zlyhal reštart niektorých služieb pri aktualizácii nslcd"
+
+#~ msgid "The following services could not be restarted:"
+#~ msgstr "Nasledujúce služby nebolo možné reštartovať:"
+
+#~ msgid ""
+#~ "You will need to start these manually by running '/etc/init.d/<service> "
+#~ "start'."
+#~ msgstr ""
+#~ "Budete musieť tieto služby spustiť ručne pomocou „/etc/init.d/<service> "
+#~ "start“."
+
+#~ msgid "Display manager must be restarted manually"
+#~ msgstr "Správcu obrazovky je potrebné reštartovať ručne"
+
+#~ msgid ""
+#~ "The wdm and xdm display managers require a restart for the new version of "
+#~ "nslcd, but there are X login sessions active on your system that would be "
+#~ "terminated by this restart.  You will therefore need to restart these "
+#~ "services by hand before further X logins will be possible."
+#~ msgstr ""
+#~ "Správci obrazovky wdm a xdm vyžadujú reštart kvôli novej verzii nslcd, "
+#~ "ale na vašom systéme sú aktívne prihlasovacie relácie X, ktoré by tento "
+#~ "reštart ukončil. Preto tieto služby budete musieť reštartovať ručne "
+#~ "predtým, než bude možné uskutočniť ďalšie prihlásenie k X."
 
 #~ msgid ""
 #~ "If certificate checking is enabled, at least one of the tls_cacertdir or "

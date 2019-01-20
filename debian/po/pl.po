@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2014-06-08 11:45+0200\n"
+"POT-Creation-Date: 2019-01-20 16:57+0100\n"
 "PO-Revision-Date: 2014-07-06 21:33+0200\n"
 "Last-Translator: Michał Kułach <michal.kulach@gmail.com>\n"
 "Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
@@ -405,119 +405,6 @@ msgstr ""
 "Gdy włączone jest sprawdzanie certyfikatu plik ten zawiera certyfikat X.509 "
 "używany do sprawdzenia certyfikatu dostarczonego przez serwer."
 
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr "xscreensaver i xlockmore muszą zostać zrestartowane przed aktualizacją"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid ""
-"One or more running instances of xscreensaver or xlockmore have been "
-"detected on this system. Because of incompatible library changes, the "
-"upgrade of nslcd may leave you unable to authenticate to these programs. You "
-"should arrange for these programs to be restarted or stopped before "
-"continuing this upgrade, to avoid locking your users out of their current "
-"sessions."
-msgstr ""
-"Wykryto jedną lub więcej działających kopii programu xscreensaver lub "
-"xlockmore. Z powodu niekompatybilnych zmian biblioteki, aktualizacja nslcd "
-"uniemożliwiłaby autoryzację użytkownika do tych programów. Należy "
-"zrestartować lub zatrzymać te programy przed aktualizacją, aby zapobiec "
-"utknięciu użytkowników poza ich aktualnymi sesjami."
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid "Restart services during package upgrades without asking?"
-msgstr "Zrestartować usługi podczas aktualizacji pakietu bez pytania?"
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid ""
-"There are services installed on your system which need to be restarted when "
-"certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
-"these restarts may cause interruptions of service for the system, you will "
-"normally be prompted on each upgrade for the list of services you wish to "
-"restart.  You can choose this option to avoid being prompted; instead, all "
-"necessary restarts will be done for you automatically so you can avoid being "
-"asked questions on each library upgrade."
-msgstr ""
-"Niektóre z zainstalowanych usług wymagają restartu, gdy są aktualizowane "
-"określone biblioteki (np. libpam, libc i libss1). Ponieważ restarty mogą "
-"spowodować przerwanie tych usług, użytkownik jest zwykle pytany podczas "
-"każdej aktualizacji o listę usług, które chce zrestartować. Można wybrać tę "
-"opcję, aby zapobiec takim pytaniom; wtedy wszystkie potrzebne restarty "
-"odbędą się automatycznie, a użytkownik uniknie pytania przy każdej "
-"aktualizacji biblioteki."
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid "Services to restart for nslcd upgrade:"
-msgstr "Usługi które mają być zrestartowane, w związku z aktualizacją nslcd:"
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid ""
-"Running services and programs that are using nslcd need to be restarted, "
-"otherwise they might not be able to do lookup or authentication any more "
-"(for services such as ssh, this can affect your ability to login). Please "
-"review the following space-separated list of init.d scripts for services to "
-"be restarted now, and correct it if needed."
-msgstr ""
-"Uruchomione usługi i programy wykorzystujące nslcd wymagają restartu. W "
-"przeciwnym wypadku operacje związane z autoryzacją nie będą działały "
-"prawidłowo. Przy usługach takich jak ssh będzie to oznaczało brak możliwości "
-"zalogowania. Zalecane jest przejrzenie listy skryptów startowych i jej "
-"ewentualne poprawienie."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Nie udało się zrestartować niektórych usług w celu aktualizacji nslcd"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "The following services could not be restarted:"
-msgstr "Następujące usługi nie mogły zostać zrestartowane:"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid ""
-"You will need to start these manually by running '/etc/init.d/<service> "
-"start'."
-msgstr ""
-"Aby zrestartować te usługi ręcznie należy wywołać \"/etc/init.d/<service> "
-"start\"."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid "Display manager must be restarted manually"
-msgstr "Menedżer logowania musi być zrestartowany ręcznie"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid ""
-"The wdm and xdm display managers require a restart for the new version of "
-"nslcd, but there are X login sessions active on your system that would be "
-"terminated by this restart.  You will therefore need to restart these "
-"services by hand before further X logins will be possible."
-msgstr ""
-"Menedżery logowania wdm i xdm wymagają restartu z powodu nowej wersji nslcd, "
-"ale występują aktywne sesje logowania X, które mogą być przerwane przez ten "
-"restart. Będzie istniała potrzeba ręcznego restartu tych usług, aby kolejne "
-"logowania X stały się możliwe."
-
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
@@ -590,6 +477,89 @@ msgstr ""
 "Można dokonać ręcznej edycji pliku /etc/nsswitch.conf lub wybrać teraz "
 "automatyczne usunięcie odpowiednich wpisów. W tym drugim przypadku proszę "
 "pamiętać o przejrzeniu plik /etc/nsswitch.conf po zakończeniu konfiguracji."
+
+#~ msgid "xscreensaver and xlockmore must be restarted before upgrading"
+#~ msgstr ""
+#~ "xscreensaver i xlockmore muszą zostać zrestartowane przed aktualizacją"
+
+#~ msgid ""
+#~ "One or more running instances of xscreensaver or xlockmore have been "
+#~ "detected on this system. Because of incompatible library changes, the "
+#~ "upgrade of nslcd may leave you unable to authenticate to these programs. "
+#~ "You should arrange for these programs to be restarted or stopped before "
+#~ "continuing this upgrade, to avoid locking your users out of their current "
+#~ "sessions."
+#~ msgstr ""
+#~ "Wykryto jedną lub więcej działających kopii programu xscreensaver lub "
+#~ "xlockmore. Z powodu niekompatybilnych zmian biblioteki, aktualizacja "
+#~ "nslcd uniemożliwiłaby autoryzację użytkownika do tych programów. Należy "
+#~ "zrestartować lub zatrzymać te programy przed aktualizacją, aby zapobiec "
+#~ "utknięciu użytkowników poza ich aktualnymi sesjami."
+
+#~ msgid "Restart services during package upgrades without asking?"
+#~ msgstr "Zrestartować usługi podczas aktualizacji pakietu bez pytania?"
+
+#~ msgid ""
+#~ "There are services installed on your system which need to be restarted "
+#~ "when certain libraries, such as libpam, libc, and libssl, are upgraded. "
+#~ "Since these restarts may cause interruptions of service for the system, "
+#~ "you will normally be prompted on each upgrade for the list of services "
+#~ "you wish to restart.  You can choose this option to avoid being prompted; "
+#~ "instead, all necessary restarts will be done for you automatically so you "
+#~ "can avoid being asked questions on each library upgrade."
+#~ msgstr ""
+#~ "Niektóre z zainstalowanych usług wymagają restartu, gdy są aktualizowane "
+#~ "określone biblioteki (np. libpam, libc i libss1). Ponieważ restarty mogą "
+#~ "spowodować przerwanie tych usług, użytkownik jest zwykle pytany podczas "
+#~ "każdej aktualizacji o listę usług, które chce zrestartować. Można wybrać "
+#~ "tę opcję, aby zapobiec takim pytaniom; wtedy wszystkie potrzebne restarty "
+#~ "odbędą się automatycznie, a użytkownik uniknie pytania przy każdej "
+#~ "aktualizacji biblioteki."
+
+#~ msgid "Services to restart for nslcd upgrade:"
+#~ msgstr ""
+#~ "Usługi które mają być zrestartowane, w związku z aktualizacją nslcd:"
+
+#~ msgid ""
+#~ "Running services and programs that are using nslcd need to be restarted, "
+#~ "otherwise they might not be able to do lookup or authentication any more "
+#~ "(for services such as ssh, this can affect your ability to login). Please "
+#~ "review the following space-separated list of init.d scripts for services "
+#~ "to be restarted now, and correct it if needed."
+#~ msgstr ""
+#~ "Uruchomione usługi i programy wykorzystujące nslcd wymagają restartu. W "
+#~ "przeciwnym wypadku operacje związane z autoryzacją nie będą działały "
+#~ "prawidłowo. Przy usługach takich jak ssh będzie to oznaczało brak "
+#~ "możliwości zalogowania. Zalecane jest przejrzenie listy skryptów "
+#~ "startowych i jej ewentualne poprawienie."
+
+#~ msgid "Failure restarting some services for nslcd upgrade"
+#~ msgstr ""
+#~ "Nie udało się zrestartować niektórych usług w celu aktualizacji nslcd"
+
+#~ msgid "The following services could not be restarted:"
+#~ msgstr "Następujące usługi nie mogły zostać zrestartowane:"
+
+#~ msgid ""
+#~ "You will need to start these manually by running '/etc/init.d/<service> "
+#~ "start'."
+#~ msgstr ""
+#~ "Aby zrestartować te usługi ręcznie należy wywołać \"/etc/init.d/<service> "
+#~ "start\"."
+
+#~ msgid "Display manager must be restarted manually"
+#~ msgstr "Menedżer logowania musi być zrestartowany ręcznie"
+
+#~ msgid ""
+#~ "The wdm and xdm display managers require a restart for the new version of "
+#~ "nslcd, but there are X login sessions active on your system that would be "
+#~ "terminated by this restart.  You will therefore need to restart these "
+#~ "services by hand before further X logins will be possible."
+#~ msgstr ""
+#~ "Menedżery logowania wdm i xdm wymagają restartu z powodu nowej wersji "
+#~ "nslcd, ale występują aktywne sesje logowania X, które mogą być przerwane "
+#~ "przez ten restart. Będzie istniała potrzeba ręcznego restartu tych usług, "
+#~ "aby kolejne logowania X stały się możliwe."
 
 #~ msgid ""
 #~ "If certificate checking is enabled, at least one of the tls_cacertdir or "

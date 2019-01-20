@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.7.9\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2014-06-08 11:45+0200\n"
+"POT-Creation-Date: 2019-01-20 16:57+0100\n"
 "PO-Revision-Date: 2010-09-29 22:21+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: \n"
@@ -391,143 +391,6 @@ msgid ""
 "certificate that is used to check the certificate provided by the server."
 msgstr ""
 
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr ""
-"Trước khi nâng cấp thì cần phải khởi chạy lại xscreensaver và xlockmore"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-#, fuzzy
-#| msgid ""
-#| "One or more running instances of xscreensaver or xlockmore have been "
-#| "detected on this system. Because of incompatible library changes, the "
-#| "upgrade of the GNU libc library will leave you unable to authenticate to "
-#| "these programs. You should arrange for these programs to be restarted or "
-#| "stopped before continuing this upgrade, to avoid locking your users out "
-#| "of their current sessions."
-msgid ""
-"One or more running instances of xscreensaver or xlockmore have been "
-"detected on this system. Because of incompatible library changes, the "
-"upgrade of nslcd may leave you unable to authenticate to these programs. You "
-"should arrange for these programs to be restarted or stopped before "
-"continuing this upgrade, to avoid locking your users out of their current "
-"sessions."
-msgstr ""
-"Một hay nhiều tiến trình đang chạy của xscreensaver hay xlockmore đã được "
-"phát hiện trên hệ thống này. Do thay đổi không tương thích nhau trong các "
-"thư viện, việc nâng cấp thư viện libc của GNU có thể dẫn đến hai chương "
-"trình này không cho phép xác thực. Để tránh trường hợp này, dừng chạy hay "
-"khởi chạy lại tiến trình nào đang chạy của hai chương trình này trước khi "
-"tiếp tục nâng cấp."
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid "Restart services during package upgrades without asking?"
-msgstr ""
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid ""
-"There are services installed on your system which need to be restarted when "
-"certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
-"these restarts may cause interruptions of service for the system, you will "
-"normally be prompted on each upgrade for the list of services you wish to "
-"restart.  You can choose this option to avoid being prompted; instead, all "
-"necessary restarts will be done for you automatically so you can avoid being "
-"asked questions on each library upgrade."
-msgstr ""
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-#, fuzzy
-#| msgid "Services to restart for PAM library upgrade:"
-msgid "Services to restart for nslcd upgrade:"
-msgstr "Dịch vụ cần khởi chạy lại để nâng cấp thư viện PAM:"
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-#, fuzzy
-#| msgid ""
-#| "Running services and programs that are using NSS need to be restarted, "
-#| "otherwise they might not be able to do lookup or authentication any more "
-#| "(for services such as ssh, this can affect your ability to login). Please "
-#| "review the following space-separated list of init.d scripts for services "
-#| "to be restarted now, and correct it if needed."
-msgid ""
-"Running services and programs that are using nslcd need to be restarted, "
-"otherwise they might not be able to do lookup or authentication any more "
-"(for services such as ssh, this can affect your ability to login). Please "
-"review the following space-separated list of init.d scripts for services to "
-"be restarted now, and correct it if needed."
-msgstr ""
-"Các dịch vụ và chương trình đều đang chạy khi sử dụng NSS thì cần phải được "
-"khởi chạy lại: không thì không còn có khả năng tra tìm hay xác thực lại (đối "
-"với dịch vụ như SSH, trường hợp này có thể ngăn cản bạn đăng nhập). Hãy xem "
-"lại danh sách định giới bằng dấu cách các văn lệnh init.d cho dịch vụ cần "
-"khởi chạy lại ngay bây giờ, và sửa nếu thích hợp."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-#, fuzzy
-#| msgid "Failure restarting some services for PAM upgrade"
-msgid "Failure restarting some services for nslcd upgrade"
-msgstr "Lỗi khởi chạy lại một số dịch vụ để nâng cấp PAM"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-#, fuzzy
-#| msgid ""
-#| "The following services could not be restarted for the PAM library upgrade:"
-msgid "The following services could not be restarted:"
-msgstr ""
-"Những dịch vụ theo đây không thể được khởi chạy lại để nâng cấp thư viện PAM:"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid ""
-"You will need to start these manually by running '/etc/init.d/<service> "
-"start'."
-msgstr ""
-"Bạn sẽ cần phải tự khởi chạy lại các dịch vụ này, bằng cách chạy lệnh « /etc/"
-"init.d/<service> start »."
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid "Display manager must be restarted manually"
-msgstr "Trình quản lý trình bày phải được khởi chạy bằng tay"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-#, fuzzy
-#| msgid ""
-#| "The kdm, wdm, and xdm display managers require a restart for the new "
-#| "version of libpam, but there are X login sessions active on your system "
-#| "that would be terminated by this restart.  You will therefore need to "
-#| "restart these services by hand before further X logins will be possible."
-msgid ""
-"The wdm and xdm display managers require a restart for the new version of "
-"nslcd, but there are X login sessions active on your system that would be "
-"terminated by this restart.  You will therefore need to restart these "
-"services by hand before further X logins will be possible."
-msgstr ""
-"Trình quản lý trình bày kdm, wdm, hay xdm cần thiết được khởi chạy lại để sử "
-"dụng phiên bản mới của thư viện libpam, nhưng việc khởi chạy lại sẽ cũng "
-"chấm dứt một số buổi hợp đang nhập X đang chạy. Sau đó thì bạn cần phải tự "
-"khởi chạy lại những dịch vụ này để đăng nhập lại vào X."
-
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
@@ -604,6 +467,99 @@ msgstr ""
 "Bạn có thể tự sửa đổi tập tin cấu hình « /etc/nsswitch.conf », hoặc chọn tự "
 "động gỡ bỏ các mục nhập ngay bây giờ. Xem lại kỹ các thay đổi trong « /etc/"
 "nsswitch.conf » nếu bạn chọn gỡ bỏ các mục nhập ngay bây giờ."
+
+#~ msgid "xscreensaver and xlockmore must be restarted before upgrading"
+#~ msgstr ""
+#~ "Trước khi nâng cấp thì cần phải khởi chạy lại xscreensaver và xlockmore"
+
+#, fuzzy
+#~| msgid ""
+#~| "One or more running instances of xscreensaver or xlockmore have been "
+#~| "detected on this system. Because of incompatible library changes, the "
+#~| "upgrade of the GNU libc library will leave you unable to authenticate to "
+#~| "these programs. You should arrange for these programs to be restarted or "
+#~| "stopped before continuing this upgrade, to avoid locking your users out "
+#~| "of their current sessions."
+#~ msgid ""
+#~ "One or more running instances of xscreensaver or xlockmore have been "
+#~ "detected on this system. Because of incompatible library changes, the "
+#~ "upgrade of nslcd may leave you unable to authenticate to these programs. "
+#~ "You should arrange for these programs to be restarted or stopped before "
+#~ "continuing this upgrade, to avoid locking your users out of their current "
+#~ "sessions."
+#~ msgstr ""
+#~ "Một hay nhiều tiến trình đang chạy của xscreensaver hay xlockmore đã được "
+#~ "phát hiện trên hệ thống này. Do thay đổi không tương thích nhau trong các "
+#~ "thư viện, việc nâng cấp thư viện libc của GNU có thể dẫn đến hai chương "
+#~ "trình này không cho phép xác thực. Để tránh trường hợp này, dừng chạy hay "
+#~ "khởi chạy lại tiến trình nào đang chạy của hai chương trình này trước khi "
+#~ "tiếp tục nâng cấp."
+
+#, fuzzy
+#~| msgid "Services to restart for PAM library upgrade:"
+#~ msgid "Services to restart for nslcd upgrade:"
+#~ msgstr "Dịch vụ cần khởi chạy lại để nâng cấp thư viện PAM:"
+
+#, fuzzy
+#~| msgid ""
+#~| "Running services and programs that are using NSS need to be restarted, "
+#~| "otherwise they might not be able to do lookup or authentication any more "
+#~| "(for services such as ssh, this can affect your ability to login). "
+#~| "Please review the following space-separated list of init.d scripts for "
+#~| "services to be restarted now, and correct it if needed."
+#~ msgid ""
+#~ "Running services and programs that are using nslcd need to be restarted, "
+#~ "otherwise they might not be able to do lookup or authentication any more "
+#~ "(for services such as ssh, this can affect your ability to login). Please "
+#~ "review the following space-separated list of init.d scripts for services "
+#~ "to be restarted now, and correct it if needed."
+#~ msgstr ""
+#~ "Các dịch vụ và chương trình đều đang chạy khi sử dụng NSS thì cần phải "
+#~ "được khởi chạy lại: không thì không còn có khả năng tra tìm hay xác thực "
+#~ "lại (đối với dịch vụ như SSH, trường hợp này có thể ngăn cản bạn đăng "
+#~ "nhập). Hãy xem lại danh sách định giới bằng dấu cách các văn lệnh init.d "
+#~ "cho dịch vụ cần khởi chạy lại ngay bây giờ, và sửa nếu thích hợp."
+
+#, fuzzy
+#~| msgid "Failure restarting some services for PAM upgrade"
+#~ msgid "Failure restarting some services for nslcd upgrade"
+#~ msgstr "Lỗi khởi chạy lại một số dịch vụ để nâng cấp PAM"
+
+#, fuzzy
+#~| msgid ""
+#~| "The following services could not be restarted for the PAM library "
+#~| "upgrade:"
+#~ msgid "The following services could not be restarted:"
+#~ msgstr ""
+#~ "Những dịch vụ theo đây không thể được khởi chạy lại để nâng cấp thư viện "
+#~ "PAM:"
+
+#~ msgid ""
+#~ "You will need to start these manually by running '/etc/init.d/<service> "
+#~ "start'."
+#~ msgstr ""
+#~ "Bạn sẽ cần phải tự khởi chạy lại các dịch vụ này, bằng cách chạy lệnh « /"
+#~ "etc/init.d/<service> start »."
+
+#~ msgid "Display manager must be restarted manually"
+#~ msgstr "Trình quản lý trình bày phải được khởi chạy bằng tay"
+
+#, fuzzy
+#~| msgid ""
+#~| "The kdm, wdm, and xdm display managers require a restart for the new "
+#~| "version of libpam, but there are X login sessions active on your system "
+#~| "that would be terminated by this restart.  You will therefore need to "
+#~| "restart these services by hand before further X logins will be possible."
+#~ msgid ""
+#~ "The wdm and xdm display managers require a restart for the new version of "
+#~ "nslcd, but there are X login sessions active on your system that would be "
+#~ "terminated by this restart.  You will therefore need to restart these "
+#~ "services by hand before further X logins will be possible."
+#~ msgstr ""
+#~ "Trình quản lý trình bày kdm, wdm, hay xdm cần thiết được khởi chạy lại để "
+#~ "sử dụng phiên bản mới của thư viện libpam, nhưng việc khởi chạy lại sẽ "
+#~ "cũng chấm dứt một số buổi hợp đang nhập X đang chạy. Sau đó thì bạn cần "
+#~ "phải tự khởi chạy lại những dịch vụ này để đăng nhập lại vào X."
 
 #~ msgid ""
 #~ "If certificate checking is enabled, at least one of the tls_cacertdir or "

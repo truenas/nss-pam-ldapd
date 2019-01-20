@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nss-pam-ldapd 0.9.4-2\n"
 "Report-Msgid-Bugs-To: nss-pam-ldapd@packages.debian.org\n"
-"POT-Creation-Date: 2014-06-08 11:45+0200\n"
+"POT-Creation-Date: 2019-01-20 16:57+0100\n"
 "PO-Revision-Date: 2014-06-08 18:45+0900\n"
 "Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -391,121 +391,6 @@ msgstr ""
 "これは、証明書の検証を有効にした場合にサーバから提供された証明書を検証するの"
 "に利用する X.509 証明書を収録するファイルです。"
 
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid "xscreensaver and xlockmore must be restarted before upgrading"
-msgstr ""
-"xscreensaver と xlockmore はアップグレードする前に再起動する必要があります。"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:15001
-msgid ""
-"One or more running instances of xscreensaver or xlockmore have been "
-"detected on this system. Because of incompatible library changes, the "
-"upgrade of nslcd may leave you unable to authenticate to these programs. You "
-"should arrange for these programs to be restarted or stopped before "
-"continuing this upgrade, to avoid locking your users out of their current "
-"sessions."
-msgstr ""
-"このシステムで 1 つ以上の xscreensaver あるいは xlockmore の動作が検出されま"
-"した。非互換のライブラリ変更のため、nslcd パッケージの更新はこれらのプログラ"
-"ムでの認証ができない状態になるかもしれません。ユーザが現在のセッションの外に"
-"締め出されるのを避けるため、このパッケージの更新を続ける前に、これらのプログ"
-"ラムを再起動するか停止するように手配すべきです。"
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid "Restart services during package upgrades without asking?"
-msgstr ""
-"パッケージのアップグレード中、質問することなくサービスを再起動しますか?"
-
-#. Type: boolean
-#. Description
-#: ../nslcd.templates:16001
-msgid ""
-"There are services installed on your system which need to be restarted when "
-"certain libraries, such as libpam, libc, and libssl, are upgraded. Since "
-"these restarts may cause interruptions of service for the system, you will "
-"normally be prompted on each upgrade for the list of services you wish to "
-"restart.  You can choose this option to avoid being prompted; instead, all "
-"necessary restarts will be done for you automatically so you can avoid being "
-"asked questions on each library upgrade."
-msgstr ""
-"このシステムには、libpam や libc、libssl といった特定のライブラリがアップグ"
-"レードされたときに再起動を必要とするサービスがインストールされています。この"
-"再起動はそのシステムで動作しているサービスの中断を伴う可能性があるため、通常"
-"は再起動させるサービス一覧をアップグレードの度に質問します。このオプションを"
-"選択するとその質問を避けられます。代わりに、再起動が必要な場合は全て自動で再"
-"起動させるため、ライブラリをアップグレードする度に質問されるのを避けられま"
-"す。"
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid "Services to restart for nslcd upgrade:"
-msgstr "nslcd の更新のために再起動するサービス:"
-
-#. Type: string
-#. Description
-#: ../nslcd.templates:17001
-msgid ""
-"Running services and programs that are using nslcd need to be restarted, "
-"otherwise they might not be able to do lookup or authentication any more "
-"(for services such as ssh, this can affect your ability to login). Please "
-"review the following space-separated list of init.d scripts for services to "
-"be restarted now, and correct it if needed."
-msgstr ""
-"nslcd を利用している実行中のサービスおよびプログラムは、再起動する必要があり"
-"ます。さもないと、ルックアップおよび認証がもう利用できないことになります "
-"(ssh のようなサービスでは、これはログインできるかどうかに影響します)。以下の"
-"スペースで区切られた、以下の init.d スクリプト一覧を確認して、サービスをここ"
-"で再起動する必要があれば修正してください。"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "Failure restarting some services for nslcd upgrade"
-msgstr "nslcd 更新のためのいくつかのサービスの再起動で失敗"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid "The following services could not be restarted:"
-msgstr "以下のサービスの再起動ができませんでした:"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:18001
-msgid ""
-"You will need to start these manually by running '/etc/init.d/<service> "
-"start'."
-msgstr ""
-"'/etc/init.d/<サービス> start' を実行することで、これらを手動で起動する必要が"
-"あります。"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid "Display manager must be restarted manually"
-msgstr "ディスプレイマネージャは手動で再起動されなければなりません"
-
-#. Type: error
-#. Description
-#: ../nslcd.templates:19001
-msgid ""
-"The wdm and xdm display managers require a restart for the new version of "
-"nslcd, but there are X login sessions active on your system that would be "
-"terminated by this restart.  You will therefore need to restart these "
-"services by hand before further X logins will be possible."
-msgstr ""
-"wdm および xdm ディスプレイマネージャは nslcd の新しいバージョンのために再起"
-"動が必要ですが、あなたのシステムには、この再起動で強制終了してしまう実行中の "
-"X ログインセッションが存在します。そのため、以降の X のログインが可能な状態の"
-"うちに、これらのサービスを手動で再起動する必要があります。"
-
 #. Type: multiselect
 #. Description
 #: ../libnss-ldapd.templates:1001
@@ -576,3 +461,86 @@ msgstr ""
 "/etc/nsswitch.conf を手動で編集するか、エントリを自動で今削除することを選べま"
 "す。エントリを今削除することを選ぶ場合、/etc/nsswitch.conf の変更内容を確認し"
 "てください。"
+
+#~ msgid "xscreensaver and xlockmore must be restarted before upgrading"
+#~ msgstr ""
+#~ "xscreensaver と xlockmore はアップグレードする前に再起動する必要がありま"
+#~ "す。"
+
+#~ msgid ""
+#~ "One or more running instances of xscreensaver or xlockmore have been "
+#~ "detected on this system. Because of incompatible library changes, the "
+#~ "upgrade of nslcd may leave you unable to authenticate to these programs. "
+#~ "You should arrange for these programs to be restarted or stopped before "
+#~ "continuing this upgrade, to avoid locking your users out of their current "
+#~ "sessions."
+#~ msgstr ""
+#~ "このシステムで 1 つ以上の xscreensaver あるいは xlockmore の動作が検出され"
+#~ "ました。非互換のライブラリ変更のため、nslcd パッケージの更新はこれらのプロ"
+#~ "グラムでの認証ができない状態になるかもしれません。ユーザが現在のセッション"
+#~ "の外に締め出されるのを避けるため、このパッケージの更新を続ける前に、これら"
+#~ "のプログラムを再起動するか停止するように手配すべきです。"
+
+#~ msgid "Restart services during package upgrades without asking?"
+#~ msgstr ""
+#~ "パッケージのアップグレード中、質問することなくサービスを再起動しますか?"
+
+#~ msgid ""
+#~ "There are services installed on your system which need to be restarted "
+#~ "when certain libraries, such as libpam, libc, and libssl, are upgraded. "
+#~ "Since these restarts may cause interruptions of service for the system, "
+#~ "you will normally be prompted on each upgrade for the list of services "
+#~ "you wish to restart.  You can choose this option to avoid being prompted; "
+#~ "instead, all necessary restarts will be done for you automatically so you "
+#~ "can avoid being asked questions on each library upgrade."
+#~ msgstr ""
+#~ "このシステムには、libpam や libc、libssl といった特定のライブラリがアップ"
+#~ "グレードされたときに再起動を必要とするサービスがインストールされています。"
+#~ "この再起動はそのシステムで動作しているサービスの中断を伴う可能性があるた"
+#~ "め、通常は再起動させるサービス一覧をアップグレードの度に質問します。このオ"
+#~ "プションを選択するとその質問を避けられます。代わりに、再起動が必要な場合は"
+#~ "全て自動で再起動させるため、ライブラリをアップグレードする度に質問されるの"
+#~ "を避けられます。"
+
+#~ msgid "Services to restart for nslcd upgrade:"
+#~ msgstr "nslcd の更新のために再起動するサービス:"
+
+#~ msgid ""
+#~ "Running services and programs that are using nslcd need to be restarted, "
+#~ "otherwise they might not be able to do lookup or authentication any more "
+#~ "(for services such as ssh, this can affect your ability to login). Please "
+#~ "review the following space-separated list of init.d scripts for services "
+#~ "to be restarted now, and correct it if needed."
+#~ msgstr ""
+#~ "nslcd を利用している実行中のサービスおよびプログラムは、再起動する必要があ"
+#~ "ります。さもないと、ルックアップおよび認証がもう利用できないことになりま"
+#~ "す (ssh のようなサービスでは、これはログインできるかどうかに影響します)。"
+#~ "以下のスペースで区切られた、以下の init.d スクリプト一覧を確認して、サービ"
+#~ "スをここで再起動する必要があれば修正してください。"
+
+#~ msgid "Failure restarting some services for nslcd upgrade"
+#~ msgstr "nslcd 更新のためのいくつかのサービスの再起動で失敗"
+
+#~ msgid "The following services could not be restarted:"
+#~ msgstr "以下のサービスの再起動ができませんでした:"
+
+#~ msgid ""
+#~ "You will need to start these manually by running '/etc/init.d/<service> "
+#~ "start'."
+#~ msgstr ""
+#~ "'/etc/init.d/<サービス> start' を実行することで、これらを手動で起動する必"
+#~ "要があります。"
+
+#~ msgid "Display manager must be restarted manually"
+#~ msgstr "ディスプレイマネージャは手動で再起動されなければなりません"
+
+#~ msgid ""
+#~ "The wdm and xdm display managers require a restart for the new version of "
+#~ "nslcd, but there are X login sessions active on your system that would be "
+#~ "terminated by this restart.  You will therefore need to restart these "
+#~ "services by hand before further X logins will be possible."
+#~ msgstr ""
+#~ "wdm および xdm ディスプレイマネージャは nslcd の新しいバージョンのために再"
+#~ "起動が必要ですが、あなたのシステムには、この再起動で強制終了してしまう実行"
+#~ "中の X ログインセッションが存在します。そのため、以降の X のログインが可能"
+#~ "な状態のうちに、これらのサービスを手動で再起動する必要があります。"
