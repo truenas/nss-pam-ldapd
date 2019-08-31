@@ -1,3 +1,9 @@
+nss-pam-ldapd (0.9.10-3) UNRELEASED; urgency=medium
+
+  * Mark the pynslcd tests as flaky because they are likely to fail
+
+ -- Arthur de Jong <adejong@debian.org>  Sat, 31 Aug 2019 17:08:03 +0200
+
 nss-pam-ldapd (0.9.10-2) unstable; urgency=medium
 
   [ Arthur de Jong ]

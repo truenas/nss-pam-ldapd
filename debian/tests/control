@@ -4,4 +4,4 @@ Restrictions: needs-root
 
 Tests: testsuite
 Depends: pynslcd, libnss-ldapd, libpam-ldapd, slapd, ldap-utils, expect
-Restrictions: needs-root
+Restrictions: needs-root, flaky
