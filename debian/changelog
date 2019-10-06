@@ -1,8 +1,9 @@
 nss-pam-ldapd (0.9.10-3) UNRELEASED; urgency=medium
 
   * Mark the pynslcd tests as flaky because they are likely to fail
+  * Include upstream portability patch in test suite
 
- -- Arthur de Jong <adejong@debian.org>  Sat, 31 Aug 2019 17:08:03 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 06 Oct 2019 13:57:13 +0200
 
 nss-pam-ldapd (0.9.10-2) unstable; urgency=medium
 
