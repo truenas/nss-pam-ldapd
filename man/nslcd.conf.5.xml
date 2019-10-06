@@ -6,7 +6,7 @@
    nslcd.conf.5.xml - docbook manual page for nslcd.conf
 
    Copyright (C) 1997-2005 Luke Howard
-   Copyright (C) 2007-2018 Arthur de Jong
+   Copyright (C) 2007-2019 Arthur de Jong
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Lesser General Public
@@ -36,9 +36,9 @@
  <refmeta>
   <refentrytitle>nslcd.conf</refentrytitle>
   <manvolnum>5</manvolnum>
-  <refmiscinfo class="version">Version 0.9.10</refmiscinfo>
+  <refmiscinfo class="version">Version 0.9.11</refmiscinfo>
   <refmiscinfo class="manual">System Manager's Manual</refmiscinfo>
-  <refmiscinfo class="date">Sep 2018</refmiscinfo>
+  <refmiscinfo class="date">Oct 2019</refmiscinfo>
  </refmeta>
 
  <refnamediv id="name">
@@ -820,7 +820,7 @@
        The regular expression should be specified as a POSIX extended regular
        expression. The expression itself needs to be separated by slash (/)
        characters and the 'i' flag may be appended at the end to indicate
-       that the match should be case-insensetive.
+       that the match should be case-insensitive.
        The default value is
        <literal>/^[a-z0-9._@$()]([a-z0-9._@$() \\~-]*[a-z0-9._@$()~-])?$/i</literal>
       </para>
@@ -837,7 +837,7 @@
        Setting this to <literal>yes</literal> could open up the system
        to authorisation bypass vulnerabilities and introduce nscd cache poisoning
        vulnerabilities which allow denial of service.
-       The default is to perform case-sensitve filtering of LDAP search
+       The default is to perform case-sensitive filtering of LDAP search
        results for the above maps.
       </para>
      </listitem>
@@ -1081,7 +1081,7 @@
    <varlistentry>
     <term><literal>${attr:-word}</literal></term>
     <listitem><para>
-     (use default) will substitbute the value of the attribute or, if the
+     (use default) will substitute the value of the attribute or, if the
      attribute is not set or empty substitute the word
     </para></listitem>
    </varlistentry>

@@ -1,9 +1,12 @@
-nss-pam-ldapd (0.9.10-3) UNRELEASED; urgency=medium
+nss-pam-ldapd (0.9.11-1) UNRELEASED; urgency=medium
 
-  * Mark the pynslcd tests as flaky because they are likely to fail
-  * Include upstream portability patch in test suite
+  * New upstream release:
+    - add support for Python 3 in pynslcd and utilities
+    - fix crash in chsh.ldap (thanks Mizunashi Mana)
+    - test suite improvements
+  * Drop patches
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 06 Oct 2019 13:57:13 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 06 Oct 2019 21:24:30 +0200
 
 nss-pam-ldapd (0.9.10-2) unstable; urgency=medium
 

@@ -1,7 +1,7 @@
 # Makefile.am - use automake to generate Makefile.in
 #
 # Copyright (C) 2006 West Consulting
-# Copyright (C) 2006-2017 Arthur de Jong
+# Copyright (C) 2006-2019 Arthur de Jong
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -32,6 +32,10 @@ if ENABLE_UTILS
   TESTS += test_ldapcmds.sh
 endif
 
+TEST_EXTENSIONS = .sh .py
+SH_LOG_COMPILER = $(SHELL)
+PY_LOG_COMPILER = $(PYTHON)
+
 AM_TESTS_ENVIRONMENT = PYTHON='@PYTHON@'; export PYTHON; \
                        builddir=$(builddir); export builddir;
 
@@ -43,11 +47,15 @@ check_PROGRAMS = test_dict test_set test_tio test_expr test_getpeercred \
 EXTRA_DIST = README nslcd-test.conf usernames.txt testenv.sh test_myldap.sh \
              test_nsscmds.sh test_ldapcmds.sh test_pamcmds.sh \
              test_pamcmds.expect test_manpages.sh \
-             test_pycompile.sh test_pylint.sh pylint.rc test_doctest.sh \
+             test_pycompile.sh test_doctest.sh \
+             test_pylint.sh pylint.rc \
+             test_flake8.sh flake8.ini \
              test_pynslcd_cache.py \
              setup_slapd.sh config.ldif test.ldif
 
 CLEANFILES = $(EXTRA_PROGRAMS) test_pamcmds.log
+clean-local:
+	-rm -rf *.pyc *.pyo __pycache__ flake8-venv
 
 AM_CPPFLAGS = -I$(top_srcdir)
 AM_CFLAGS = $(PTHREAD_CFLAGS) -g

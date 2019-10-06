@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# test_pycompile.sh - see if all Python files compile
+# test_flake8.sh - run Python flake8 tests
 #
-# Copyright (C) 2013-2019 Arthur de Jong
+# Copyright (C) 2019 Arthur de Jong
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -23,7 +23,9 @@ set -e
 
 # find source directory
 srcdir="${srcdir-`dirname "$0"`}"
+builddir="${builddir-`dirname "$0"`}"
 top_srcdir="${top_srcdir-${srcdir}/..}"
+top_builddir="${top_builddir-${builddir}/..}"
 python="${PYTHON-python}"
 
 # if Python is missing, ignore
@@ -33,31 +35,42 @@ then
   exit 77
 fi
 
-# compile all Python files (without writing pyc files)
-${python} -c "
-import os
-import py_compile
-import sys
-import traceback
+# find virtualenv command
+if ! virtualenv --version > /dev/null 2>&1
+then
+  echo "virtualenv: command not found"
+  exit 77
+fi
 
-top_srcdir = '$top_srcdir'
-errors_found = 0
-tmpfile = 'tmpfile.pyc'
+# create virtualenv
+venv="${builddir}/flake8-venv"
+[ -x "$venv"/bin/pip ] || virtualenv "$venv" --python="$python"
+"$venv"/bin/pip install \
+  flake8 \
+  flake8-author \
+  flake8-blind-except \
+  flake8-class-newline \
+  flake8-commas \
+  flake8-deprecated \
+  flake8-docstrings \
+  flake8-exact-pin \
+  flake8-print \
+  flake8-quotes \
+  flake8-tidy-imports \
+  flake8-tuple \
+  pep8-naming
 
-for root, dirs, files in os.walk(top_srcdir):
-    for f in files:
-        if f.endswith('.py'):
-            filename = os.path.join(root, f)
-            try:
-                py_compile.compile(filename, tmpfile, doraise=True)
-            except py_compile.PyCompileError as e:
-                print('Compiling %s ...' % os.path.abspath(filename))
-                print(e)
-                errors_found += 1
+# run flake8 over pynslcd
+"$venv"/bin/flake8 \
+  --config="${srcdir}/flake8.ini" \
+  "${top_srcdir}/pynslcd"
 
-os.unlink(tmpfile)
+# run flake8 over utils
+"$venv"/bin/flake8 \
+  --config="${srcdir}/flake8.ini" \
+  "${top_srcdir}/utils"
 
-if errors_found:
-    print('%d errors found' % errors_found)
-    sys.exit(1)
-"
+# run flake8 over tests
+"$venv"/bin/flake8 \
+  --config="${srcdir}/flake8.ini" \
+  "${top_srcdir}/tests"/*.py

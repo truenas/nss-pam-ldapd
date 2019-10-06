@@ -373,6 +373,7 @@ SUBDIRS = compat common $(am__append_1) $(am__append_2) \
 EXTRA_DIST = nslcd.conf nslcd.h $(wildcard ChangeLog-20??) \
              $(wildcard m4/*.m4) HACKING ldapns.schema ldapns.ldif
 
+DISTCLEANFILES = confinc.out
 DISTCHECK_CONFIGURE_FLAGS = --enable-warnings --enable-pynslcd --enable-utils \
                             --with-pam-seclib-dir="\$${libdir}/security" \
                             --with-ldap-conf-file="\$${prefix}/nslcd.conf" \
@@ -766,6 +767,7 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"

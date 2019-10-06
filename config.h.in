@@ -731,7 +731,7 @@
 /* Define to `sockaddr_in' if not defined elsewhere. */
 #undef sockaddr_storage
 
-/* Define to `size_t' if not defined elswhere. */
+/* Define to `size_t' if not defined elsewhere. */
 #undef socklen_t
 
 /* Define to `int' if <sys/types.h> doesn't define. */
