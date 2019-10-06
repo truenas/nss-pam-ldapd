@@ -9,7 +9,7 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
 %:
-	dh $@ --with python2
+	dh $@ --with python3
 
 # pass extra flags to configure
 override_dh_auto_configure:
@@ -17,7 +17,8 @@ override_dh_auto_configure:
 	            --libdir=/lib/$(DEB_HOST_MULTIARCH) \
 	            --with-pam-seclib-dir=/lib/$(DEB_HOST_MULTIARCH)/security \
 	            --enable-warnings \
-	            --enable-pynslcd
+	            --enable-pynslcd \
+	            PYTHON=python3
 
 # run the tests but ignore the results
 override_dh_auto_test:

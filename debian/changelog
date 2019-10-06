@@ -5,8 +5,9 @@ nss-pam-ldapd (0.9.11-1) UNRELEASED; urgency=medium
     - fix crash in chsh.ldap (thanks Mizunashi Mana)
     - test suite improvements
   * Drop patches
+  * Switch to Python 3 (closes: #937165)
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 06 Oct 2019 21:24:30 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 06 Oct 2019 21:43:38 +0200
 
 nss-pam-ldapd (0.9.10-2) unstable; urgency=medium
 
