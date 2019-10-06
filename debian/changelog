@@ -6,8 +6,9 @@ nss-pam-ldapd (0.9.11-1) UNRELEASED; urgency=medium
     - test suite improvements
   * Drop patches
   * Switch to Python 3 (closes: #937165)
+  * Update debian/copyright
 
- -- Arthur de Jong <adejong@debian.org>  Sun, 06 Oct 2019 21:43:38 +0200
+ -- Arthur de Jong <adejong@debian.org>  Sun, 06 Oct 2019 22:35:56 +0200
 
 nss-pam-ldapd (0.9.10-2) unstable; urgency=medium
 
