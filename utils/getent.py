@@ -3,7 +3,7 @@
 
 # getent.py - program for querying nslcd
 #
-# Copyright (C) 2013-2017 Arthur de Jong
+# Copyright (C) 2013-2019 Arthur de Jong
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -26,9 +26,9 @@ import socket
 import struct
 import sys
 
+import constants
 from cmdline import VersionAction
 from nslcd import NslcdClient
-import constants
 
 
 epilog = '''
@@ -56,9 +56,8 @@ parser.add_argument('keys', metavar='KEY', nargs='*',
 def write_aliases(con):
     while con.get_response() == constants.NSLCD_RESULT_BEGIN:
         print('%-16s%s' % (
-                con.read_string() + ': ',
-                ', '.join(con.read_stringlist()),
-            ))
+            con.read_string() + ': ',
+            ', '.join(con.read_stringlist())))
 
 
 def getent_aliases(database, keys=None):
@@ -95,11 +94,10 @@ def getent_ethers(database, keys=None):
 def write_group(con):
     while con.get_response() == constants.NSLCD_RESULT_BEGIN:
         print('%s:%s:%d:%s' % (
-                con.read_string(),
-                con.read_string(),
-                con.read_int32(),
-                ','.join(con.read_stringlist()),
-            ))
+            con.read_string(),
+            con.read_string(),
+            con.read_int32(),
+            ','.join(con.read_stringlist())))
 
 
 def getent_group(database, keys=None):
@@ -110,7 +108,7 @@ def getent_group(database, keys=None):
         if database == 'group.bymember':
             con = NslcdClient(constants.NSLCD_ACTION_GROUP_BYMEMBER)
             con.write_string(key)
-        elif re.match('^\d+$', key):
+        elif re.match(r'^\d+$', key):
             con = NslcdClient(constants.NSLCD_ACTION_GROUP_BYGID)
             con.write_int32(int(key))
         else:
@@ -171,7 +169,7 @@ def getent_hosts(database, keys=None):
 
 
 def _read_netgroup(con):
-    """Read netgroup name, members and tripples from stream."""
+    """Read netgroup name, members and triples from stream."""
     name = con.read_string()
     members = []
     tripples = []
@@ -181,9 +179,7 @@ def _read_netgroup(con):
             members.append(con.read_string())
         elif member_type == constants.NSLCD_NETGROUP_TYPE_TRIPLE:
             tripples.append((
-                    con.read_string(), con.read_string(),
-                    con.read_string()
-                ))
+                con.read_string(), con.read_string(), con.read_string()))
         else:
             break
     return name, members, tripples
@@ -212,10 +208,9 @@ def _get_getgroups(con, recurse, netgroups=None):
 def write_netgroup(con, recurse):
     for name, members, tripples in _get_getgroups(con, recurse):
         print('%-15s %s' % (name, ' '.join(
-                members +
-                ['(%s, %s, %s)' % (host, user, domain)
-                 for host, user, domain in tripples]
-            )))
+            members +
+            ['(%s, %s, %s)' % (host, user, domain)
+             for host, user, domain in tripples])))
 
 
 def getent_netgroup(database, keys=None):
@@ -261,14 +256,13 @@ def getent_networks(database, keys=None):
 def write_passwd(con):
     while con.get_response() == constants.NSLCD_RESULT_BEGIN:
         print('%s:%s:%d:%d:%s:%s:%s' % (
-                con.read_string(),
-                con.read_string(),
-                con.read_int32(),
-                con.read_int32(),
-                con.read_string(),
-                con.read_string(),
-                con.read_string(),
-            ))
+            con.read_string(),
+            con.read_string(),
+            con.read_int32(),
+            con.read_int32(),
+            con.read_string(),
+            con.read_string(),
+            con.read_string()))
 
 
 def getent_passwd(database, keys=None):
@@ -276,7 +270,7 @@ def getent_passwd(database, keys=None):
         write_passwd(NslcdClient(constants.NSLCD_ACTION_PASSWD_ALL))
         return
     for key in keys:
-        if re.match('^\d+$', key):
+        if re.match(r'^\d+$', key):
             con = NslcdClient(constants.NSLCD_ACTION_PASSWD_BYUID)
             con.write_int32(int(key))
         else:
@@ -298,7 +292,7 @@ def getent_protocols(database, keys=None):
         write_protocols(NslcdClient(constants.NSLCD_ACTION_PROTOCOL_ALL))
         return
     for key in keys:
-        if re.match('^\d+$', key):
+        if re.match(r'^\d+$', key):
             con = NslcdClient(constants.NSLCD_ACTION_PROTOCOL_BYNUMBER)
             con.write_int32(int(key))
         else:
@@ -320,7 +314,7 @@ def getent_rpc(database, keys=None):
         write_rpc(NslcdClient(constants.NSLCD_ACTION_RPC_ALL))
         return
     for key in keys:
-        if re.match('^\d+$', key):
+        if re.match(r'^\d+$', key):
             con = NslcdClient(constants.NSLCD_ACTION_RPC_BYNUMBER)
             con.write_int32(int(key))
         else:
@@ -347,7 +341,7 @@ def getent_services(database, keys=None):
         protocol = ''
         if '/' in value:
             value, protocol = value.split('/', 1)
-        if re.match('^\d+$', value):
+        if re.match(r'^\d+$', value):
             con = NslcdClient(constants.NSLCD_ACTION_SERVICE_BYNUMBER)
             con.write_int32(int(value))
             con.write_string(protocol)
@@ -365,16 +359,15 @@ def _shadow_value2str(number):
 def write_shadow(con):
     while con.get_response() == constants.NSLCD_RESULT_BEGIN:
         print('%s:%s:%s:%s:%s:%s:%s:%s:%s' % (
-                con.read_string(),
-                con.read_string(),
-                _shadow_value2str(con.read_int32()),
-                _shadow_value2str(con.read_int32()),
-                _shadow_value2str(con.read_int32()),
-                _shadow_value2str(con.read_int32()),
-                _shadow_value2str(con.read_int32()),
-                _shadow_value2str(con.read_int32()),
-                _shadow_value2str(con.read_int32()),
-            ))
+            con.read_string(),
+            con.read_string(),
+            _shadow_value2str(con.read_int32()),
+            _shadow_value2str(con.read_int32()),
+            _shadow_value2str(con.read_int32()),
+            _shadow_value2str(con.read_int32()),
+            _shadow_value2str(con.read_int32()),
+            _shadow_value2str(con.read_int32()),
+            _shadow_value2str(con.read_int32())))
 
 
 def getent_shadow(database, keys=None):
@@ -387,7 +380,7 @@ def getent_shadow(database, keys=None):
         write_shadow(con)
 
 
-if __name__ == '__main__':
+def main():  # noqa: C901
     args = parser.parse_args()
     try:
         if args.database == 'aliases':
@@ -417,3 +410,7 @@ if __name__ == '__main__':
     except struct.error:
         print('Problem communicating with nslcd')
         sys.exit(1)
+
+
+if __name__ == '__main__':
+    main()

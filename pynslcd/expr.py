@@ -1,7 +1,7 @@
 
 # expr.py - expression handling functions
 #
-# Copyright (C) 2011, 2012, 2013 Arthur de Jong
+# Copyright (C) 2011-2019 Arthur de Jong
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301 USA
 
-"""Module for handling expressions used for LDAP searches.
+r"""Module for handling expressions used for LDAP searches.
 
 >>> expr = Expression('foo=$foo')
 >>> expr.value(dict(foo='XX'))
@@ -91,6 +91,9 @@ class MyIter(object):
         except IndexError:
             return None
 
+    def __next__(self):
+        return self.next()
+
     def startswith(self, value):
         return self.value[self.pos].startswith(value)
 
@@ -112,8 +115,7 @@ class MyIter(object):
 
 
 class DollarExpression(object):
-    """Class for handling a variable $xxx ${xxx}, ${xxx:-yyy} or ${xxx:+yyy}
-    expression."""
+    """Handle variable $xxx ${xxx}, ${xxx:-yyy} or ${xxx:+yyy} expansion."""
 
     def __init__(self, value):
         """Parse the expression as the start of a $-expression."""
@@ -166,22 +168,29 @@ class DollarExpression(object):
             value = value[0]
         # TODO: try to return multiple values, one for each value of the list
         if self.op == ':-':
+            # ${attr:-expr} use expr as default for variable
             return value if value else self.expr.value(variables)
         elif self.op == ':+':
+            # ${attr:+expr} expand expr if variable is set
             return self.expr.value(variables) if value else ''
         elif self.op == ':':
+            # ${attr:offset:length} provide substring of variable
             offset, length = self.expr.value(variables).split(':')
             offset, length = int(offset), int(length)
             return value[offset:offset + length]
         elif self.op in ('#', '##', '%', '%%'):
             match = fnmatch.translate(self.expr.value(variables))
             if self.op == '#':
+                # ${attr#word} remove shortest match of word
                 match = match.replace('*', '*?').replace(r'\Z', r'(?P<replace>.*)\Z')
             elif self.op == '##':
+                # ${attr#word} remove longest match of word
                 match = match.replace(r'\Z', r'(?P<replace>.*?)\Z')
             elif self.op == '%':
+                # ${attr#word} remove shortest match from right
                 match = r'(?P<replace>.*)' + match.replace('*', '*?')
             elif self.op == '%%':
+                # ${attr#word} remove longest match from right
                 match = r'(?P<replace>.*?)' + match
             match = re.match(match, value)
             return match.group('replace') if match else value

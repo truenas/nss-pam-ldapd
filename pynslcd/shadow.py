@@ -1,7 +1,7 @@
 
 # shadow.py - lookup functions for shadow information
 #
-# Copyright (C) 2010, 2011, 2012, 2013 Arthur de Jong
+# Copyright (C) 2010-2019 Arthur de Jong
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -18,6 +18,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 # 02110-1301 USA
 
+import logging
+
 import cache
 import cfg
 import common
@@ -25,15 +27,16 @@ import constants
 import search
 
 
-attmap = common.Attributes(uid='uid',
-                           userPassword='"*"',
-                           shadowLastChange='"${shadowLastChange:--1}"',
-                           shadowMin='"${shadowMin:--1}"',
-                           shadowMax='"${shadowMax:--1}"',
-                           shadowWarning='"${shadowWarning:--1}"',
-                           shadowInactive='"${shadowInactive:--1}"',
-                           shadowExpire='"${shadowExpire:--1}"',
-                           shadowFlag='"${shadowFlag:-0}"')
+attmap = common.Attributes(
+    uid='uid',
+    userPassword='"*"',
+    shadowLastChange='"${shadowLastChange:--1}"',
+    shadowMin='"${shadowMin:--1}"',
+    shadowMax='"${shadowMax:--1}"',
+    shadowWarning='"${shadowWarning:--1}"',
+    shadowInactive='"${shadowInactive:--1}"',
+    shadowExpire='"${shadowExpire:--1}"',
+    shadowFlag='"${shadowFlag:-0}"')
 filter = '(objectClass=shadowAccount)'
 
 
@@ -111,8 +114,11 @@ class ShadowRequest(common.Request):
             flag = 0
         # return results
         for name in names:
-            yield (name, passwd, lastchangedate, mindays, maxdays, warndays,
-                   inactdays, expiredate, flag)
+            if not common.is_valid_name(name):
+                logging.warning('%s: %s: denied by validnames option', dn, attmap['uid'])
+            else:
+                yield (name, passwd, lastchangedate, mindays, maxdays, warndays,
+                       inactdays, expiredate, flag)
 
 
 class ShadowByNameRequest(ShadowRequest):
@@ -120,7 +126,9 @@ class ShadowByNameRequest(ShadowRequest):
     action = constants.NSLCD_ACTION_SHADOW_BYNAME
 
     def read_parameters(self, fp):
-        return dict(uid=fp.read_string())
+        name = fp.read_string()
+        common.validate_name(name)
+        return dict(uid=name)
 
 
 class ShadowAllRequest(ShadowRequest):

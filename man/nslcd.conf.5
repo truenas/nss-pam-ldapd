@@ -5,7 +5,7 @@
 \\$2 \(la\\$1\(ra\\$3
 ..
 .if \n(.g .mso www.tmac
-.TH nslcd.conf 5 "Sep 2018" "Version 0.9.10" "System Manager's Manual"
+.TH nslcd.conf 5 "Oct 2018" "Version 0.9.11" "System Manager's Manual"
 .SH NAME
 nslcd.conf \- configuration file for LDAP nameservice daemon
 .SH DESCRIPTION
@@ -414,7 +414,7 @@ group names that are requested and returned from LDAP.
 The regular expression should be specified as a POSIX extended regular
 expression. The expression itself needs to be separated by slash (/)
 characters and the 'i' flag may be appended at the end to indicate
-that the match should be case-insensetive.
+that the match should be case-insensitive.
 The default value is
 \*(T</^[a\-z0\-9._@$()]([a\-z0\-9._@$() \e\e~\-]*[a\-z0\-9._@$()~\-])?$/i\*(T>
 .TP 
@@ -425,7 +425,7 @@ case-insensitive matching.
 Setting this to \*(T<yes\*(T> could open up the system
 to authorisation bypass vulnerabilities and introduce nscd cache poisoning
 vulnerabilities which allow denial of service.
-The default is to perform case-sensitve filtering of LDAP search
+The default is to perform case-sensitive filtering of LDAP search
 results for the above maps.
 .TP 
 \*(T<\fBpam_authc_ppolicy\fR\*(T> yes|no
@@ -582,7 +582,7 @@ The following expressions are supported:
 will substitute the value of the attribute
 .TP 
 \*(T<${attr:\-word}\*(T>
-(use default) will substitbute the value of the attribute or, if the
+(use default) will substitute the value of the attribute or, if the
 attribute is not set or empty substitute the word
 .TP 
 \*(T<${attr:+word}\*(T>

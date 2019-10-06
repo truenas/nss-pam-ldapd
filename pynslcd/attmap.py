@@ -1,7 +1,7 @@
 
 # attmap.py - attribute mapping class
 #
-# Copyright (C) 2011, 2012, 2013 Arthur de Jong
+# Copyright (C) 2011-2019 Arthur de Jong
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -20,17 +20,20 @@
 
 """Module for handling attribute mappings used for LDAP searches.
 
->>> attrs = Attributes(uid='uid',
-...                    userPassword='userPassword',
-...                    uidNumber='uidNumber',
-...                    gidNumber='gidNumber',
-...                    gecos='"${gecos:-$cn}"',
-...                    homeDirectory='homeDirectory',
-...                    loginShell='loginShell')
+>>> attrs = Attributes(
+...     uid='uid',
+...     userPassword='userPassword',
+...     uidNumber='uidNumber',
+...     gidNumber='gidNumber',
+...     gecos='"${gecos:-$cn}"',
+...     homeDirectory='homeDirectory',
+...     loginShell='loginShell')
 >>> 'cn' in attrs.attributes()
 True
->>> attrs.translate({'uid': ['UIDVALUE', '2nduidvalue'], 'cn': ['COMMON NAME', ]})
-{'uid': ['UIDVALUE', '2nduidvalue'], 'loginShell': [], 'userPassword': [], 'uidNumber': [], 'gidNumber': [], 'gecos': ['COMMON NAME'], 'homeDirectory': []}
+>>> attrs.translate({'uid': ['UIDVALUE', '2nduidvalue'], 'cn': ['COMMON NAME', ]}) == {
+...     'uid': ['UIDVALUE', '2nduidvalue'], 'loginShell': [], 'userPassword': [],
+...     'uidNumber': [], 'gidNumber': [], 'gecos': ['COMMON NAME'], 'homeDirectory': []}
+True
 >>> attrs['uidNumber']  # a representation fit for logging and filters
 'uidNumber'
 >>> attrs['gecos']
@@ -39,8 +42,8 @@ True
 
 import re
 
-from ldap.filter import escape_filter_chars
 import ldap.dn
+from ldap.filter import escape_filter_chars
 
 from expr import Expression
 
@@ -53,7 +56,7 @@ __all__ = ('Attributes', )
 
 
 # regular expression to match function attributes
-attribute_func_re = re.compile('^(?P<function>[a-z]+)\((?P<attribute>.*)\)$')
+attribute_func_re = re.compile(r'^(?P<function>[a-z]+)\((?P<attribute>.*)\)$')
 
 
 class SimpleMapping(str):
@@ -64,21 +67,26 @@ class SimpleMapping(str):
 
     def mk_filter(self, value):
         return '(%s=%s)' % (
-                self, escape_filter_chars(str(value))
-            )
+            self, escape_filter_chars(str(value)))
 
     def values(self, variables):
         """Expand the expression using the variables specified."""
         return variables.get(self, [])
 
 
-class ExpressionMapping(str):
+class ExpressionMapping(object):
     """Class for parsing and expanding an expression."""
 
     def __init__(self, value):
         """Parse the expression as a string."""
+        self.value = value
         self.expression = Expression(value[1:-1])
-        super(ExpressionMapping, self).__init__(value)
+
+    def __str__(self):
+        return self.value
+
+    def __repr__(self):
+        return repr(str(self))
 
     def values(self, variables):
         """Expand the expression using the variables specified."""
@@ -89,7 +97,7 @@ class ExpressionMapping(str):
         return self.expression.variables()
 
 
-class FunctionMapping(str):
+class FunctionMapping(object):
     """Mapping to a function to another attribute."""
 
     def __init__(self, mapping):
@@ -97,7 +105,12 @@ class FunctionMapping(str):
         m = attribute_func_re.match(mapping)
         self.attribute = m.group('attribute')
         self.function = getattr(self, m.group('function'))
-        super(FunctionMapping, self).__init__(mapping)
+
+    def __str__(self):
+        return self.mapping
+
+    def __repr__(self):
+        return repr(str(self))
 
     def upper(self, value):
         return value.upper()
@@ -110,8 +123,7 @@ class FunctionMapping(str):
 
     def mk_filter(self, value):
         return '(%s=%s)' % (
-                self.attribute, escape_filter_chars(value)
-            )
+            self.attribute, escape_filter_chars(value))
 
     def values(self, variables):
         return [self.function(value)
@@ -143,32 +155,30 @@ class Attributes(dict):
             self[key] = kwargs[key]
 
     def attributes(self):
-        """Return the list of attributes that are referenced in this
-        attribute mapping. These are the attributes that should be
-        requested in the search."""
+        """Return the attributes that are referenced in this attribute mapping.
+
+        These are the attributes that should be requested in the search.
+        """
         attributes = set()
-        for mapping in self.itervalues():
+        for mapping in self.values():
             attributes.update(mapping.attributes())
         return list(attributes)
 
     def mk_filter(self, attribute, value):
-        """Construct a search filter for searching for the attribute value
-        combination."""
+        """Construct a search filter for the attribute value combination."""
         mapping = self.get(attribute, SimpleMapping(attribute))
         return mapping.mk_filter(value)
 
     def translate(self, variables):
-        """Return a dictionary with every attribute mapped to their value from
-        the specified variables."""
+        """Return a dictionary with every attribute mapped to their value."""
         results = dict()
-        for attribute, mapping in self.iteritems():
+        for attribute, mapping in self.items():
             results[attribute] = mapping.values(variables)
         return results
 
     def get_rdn_value(self, dn, attribute):
-        """Extract the attribute value from from DN if possible. Return None
-        otherwise."""
+        """Extract the attribute value from from DN or return None."""
         return self.translate(dict(
-                (x, [y])
-                for x, y, z in ldap.dn.str2dn(dn)[0]
-            ))[attribute][0]
+            (x, [y])
+            for x, y, z in ldap.dn.str2dn(dn)[0]
+        ))[attribute][0]
