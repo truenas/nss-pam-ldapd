@@ -41,6 +41,7 @@
 #include <lber.h>
 #include <ldap.h>
 
+#include <jansson.h>
 #include "compat/attrs.h"
 
 #ifndef LDAP_SCOPE_DEFAULT
@@ -169,5 +170,8 @@ int myldap_modify(MYLDAP_SESSION *session, const char *dn, LDAPMod * mods[]);
    information in the connection. */
 int myldap_error_message(MYLDAP_SESSION *session, int rc,
                          char *buffer, size_t buflen);
+
+/* Dump full URI state in JSON. Allocates memory. */
+char *myldap_dumpstate(void);
 
 #endif /* not NSLCD__MYLDAP_H */
