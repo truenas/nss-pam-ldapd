@@ -22,12 +22,14 @@ sbin_PROGRAMS = nslcd
 
 AM_CPPFLAGS=-I$(top_srcdir)
 AM_CFLAGS = $(PTHREAD_CFLAGS)
+AM_LDFLAGS = $(LDFLAGS) -ljansson
 
 nslcd_SOURCES = nslcd.c ../nslcd.h ../common/nslcd-prot.h \
                 ../compat/attrs.h \
                 log.c log.h \
                 daemonize.c daemonize.h \
                 common.c common.h \
+                nslcd_json.c nslcd_json.h \
                 myldap.c myldap.h \
                 cfg.c cfg.h \
                 attmap.c attmap.h \

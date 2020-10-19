@@ -3,7 +3,7 @@ Section: admin
 Priority: optional
 Maintainer: Arthur de Jong <adejong@debian.org>
 Standards-Version: 4.4.1
-Build-Depends: debhelper (>=11), libkrb5-dev, libldap2-dev,
+Build-Depends: debhelper (>=11), libkrb5-dev, libldap2-dev, libjansson-dev,
                libsasl2-dev, po-debconf (>= 0.5.0), docbook2x, docbook-xml,
                libpam0g-dev, dh-python, python3, python3-daemon, python3-ldap,
                python3-pyasn1, python3-pyasn1-modules
@@ -17,7 +17,7 @@ Multi-Arch: foreign
 Provides: nslcd-2
 Pre-Depends: ${misc:Pre-Depends}, debconf (>= 0.5) | debconf-2.0
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, lsb-base (>= 3.0-6),
-         ca-certificates
+         libjansson-dev, ca-certificates
 Recommends: nscd,
             libnss-ldapd | libnss-ldap,
             libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss,

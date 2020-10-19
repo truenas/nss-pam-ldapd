@@ -995,7 +995,7 @@ then
 
   # save nslcd LIBS and CFLAGS and restore originals
   nslcd_CFLAGS="$CFLAGS"
-  nslcd_LIBS="$LIBS"
+  nslcd_LIBS="$LIBS -ljansson"
   CFLAGS="$nslcd_save_CFLAGS"
   LIBS="$nslcd_save_LIBS"
 
