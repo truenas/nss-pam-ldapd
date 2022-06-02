@@ -16,8 +16,9 @@ Architecture: any
 Multi-Arch: foreign
 Provides: nslcd-2
 Pre-Depends: ${misc:Pre-Depends}, debconf (>= 0.5) | debconf-2.0
+Build-Depends: libjansson-dev
 Depends: ${misc:Depends}, ${shlibs:Depends}, adduser, lsb-base (>= 3.0-6),
-         libjansson-dev, ca-certificates
+         ca-certificates
 Recommends: nscd,
             libnss-ldapd | libnss-ldap,
             libpam-ldapd | libpam-ldap | libpam-krb5 | libpam-heimdal | libpam-sss,
