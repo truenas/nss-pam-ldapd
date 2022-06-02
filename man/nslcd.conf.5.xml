@@ -6,7 +6,7 @@
    nslcd.conf.5.xml - docbook manual page for nslcd.conf
 
    Copyright (C) 1997-2005 Luke Howard
-   Copyright (C) 2007-2019 Arthur de Jong
+   Copyright (C) 2007-2021 Arthur de Jong
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Lesser General Public
@@ -36,9 +36,9 @@
  <refmeta>
   <refentrytitle>nslcd.conf</refentrytitle>
   <manvolnum>5</manvolnum>
-  <refmiscinfo class="version">Version 0.9.11</refmiscinfo>
+  <refmiscinfo class="version">Version 0.9.12</refmiscinfo>
   <refmiscinfo class="manual">System Manager's Manual</refmiscinfo>
-  <refmiscinfo class="date">Oct 2019</refmiscinfo>
+  <refmiscinfo class="date">Nov 2021</refmiscinfo>
  </refmeta>
 
  <refnamediv id="name">
@@ -157,17 +157,20 @@
        <acronym>SRV</acronym> records. <!-- since 0.5 -->
        By default the current domain is used but another domain can
        be queried by using the
-       <literal>DNS:</literal><replaceable>DOMAIN</replaceable> syntax.
+       <literal>DNS:DOMAIN</literal> syntax.
        <!-- since 0.8.4 -->
+       To convert <acronym>SRV</acronym> records for port 389 into an
+       <literal>ldaps://</literal> <acronym>URI</acronym>, <literal>DNSLDAPS</literal>
+       can be used. <!-- since 0.9.12 -->
       </para>
       <para>
-       When using the ldapi scheme, %2f should be used to escape slashes
-       (e.g. ldapi://%2fvar%2frun%2fslapd%2fldapi/), although most of the
+       When using the <literal>ldapi</literal> scheme, <literal>%2f</literal> should be used to escape slashes
+       (e.g. <literal>ldapi://%2fvar%2frun%2fslapd%2fldapi/</literal>), although most of the
        time this should not be needed.
       </para>
       <para>
        This option may be specified multiple times and/or with more
-       URIs on the line, separated by space. Normally, only the first
+       URIs on the line, separated by spaces. Normally, only the first
        server will be used with the following servers as fall-back (see
        <option>bind_timelimit</option> below).
       </para>
@@ -351,7 +354,7 @@
            <replaceable>DN</replaceable></term>
      <listitem>
       <para>
-       Specifies the base distinguished name (<acronym>DN</acronym>)
+       Specifies the distinguished name (<acronym>DN</acronym>)
        to use as search base.
        This option may be supplied multiple times and all specified bases
        will be searched.
@@ -364,10 +367,13 @@
        If, instead of a <acronym>DN</acronym>, the value
        <replaceable>DOMAIN</replaceable> is specified, the host's
        <acronym>DNS</acronym> domain is used to construct a search base.
+       A value of <replaceable>""</replaceable> can be used to indicate an
+       empty search base (quotes are not otherwise supported for base
+       values and not all LDAP server configurations support this). <!-- since 0.9.12 -->
       </para>
       <para>
        If this value is not defined an attempt is made to look it up
-       in the configured <acronym>LDAP</acronym> server. Note that if the
+       in the configured <acronym>LDAP</acronym> server. If the
        <acronym>LDAP</acronym> server is unavailable during start-up
        <command>nslcd</command> will not start.
       </para>
@@ -514,7 +520,7 @@
      <term><option>idle_timelimit</option> <replaceable>SECONDS</replaceable></term>
      <listitem>
       <para>
-       Specifies the period if inactivity (in seconds) after which the
+       Specifies the period of inactivity (in seconds) after which the
        connection to the <acronym>LDAP</acronym> server will be closed.
        The default is not to time out connections.
       </para>
@@ -652,6 +658,45 @@
       <para>
        Specifies the path to the file containing the private key for client
        <acronym>TLS</acronym> authentication.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry id="tls_reqsan"> <!-- since 0.9.12 -->
+     <term><option>tls_reqsan</option> never|allow|try|demand|hard</term>
+     <listitem>
+      <para>
+       Specifies the way server Subject Alternative Name (SAN) is checked in
+       the server-supplied certificate.
+       The meaning of the values is described in the
+       <citerefentry><refentrytitle>ldap.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry>
+       manual page.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry id="tls_crlcheck"> <!-- since 0.9.12 -->
+     <term><option>tls_crlcheck</option> none|peer|all</term>
+     <listitem>
+      <para>
+       Specifies if the Certificate Revocation List (CRL) of the CA should
+       be used to verify if the server certificates have not been revoked.
+       The meaning of the values is described in the
+       <citerefentry><refentrytitle>ldap.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry>
+       manual page.
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry id="tls_crlfile"> <!-- since 0.9.12 -->
+     <term><option>tls_crlfile</option> <replaceable>PATH</replaceable></term>
+     <listitem>
+      <para>
+       Specifies the path to the file containing a Certificate Revocation List
+       to be used to verify if the server certificates.
+       The meaning of the values is described in the
+       <citerefentry><refentrytitle>ldap.conf</refentrytitle><manvolnum>5</manvolnum></citerefentry>
+       manual page.
       </para>
      </listitem>
     </varlistentry>

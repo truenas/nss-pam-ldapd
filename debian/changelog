@@ -1,3 +1,22 @@
+nss-pam-ldapd (0.9.12-2) unstable; urgency=medium
+ * update to latest upstream release
+
+ -- Andrew Walker <awalker@ixsystems.com>  Thu, 02 Jun 2022 15:00:00 +0200
+
+nss-pam-ldapd (0.9.11-1) unstable; urgency=medium
+
+  * New upstream release:
+    - add support for Python 3 in pynslcd and utilities
+    - fix crash in chsh.ldap (thanks Mizunashi Mana)
+    - test suite improvements
+  * Drop patches
+  * Mark the pynslcd tests as flaky because they are likely to fail
+  * Switch to Python 3 (closes: #937165)
+  * Update debian/copyright
+  * Upgrade to standards-version 4.4.1 (no changes needed)
+
+ -- Arthur de Jong <adejong@debian.org>  Sun, 06 Oct 2019 23:00:06 +0200
+
 nss-pam-ldapd (0.9.11-1) unstable; urgency=medium
 
   * New upstream release:

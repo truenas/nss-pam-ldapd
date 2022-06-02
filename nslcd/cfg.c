@@ -5,7 +5,7 @@
 
    Copyright (C) 1997-2005 Luke Howard
    Copyright (C) 2007 West Consulting
-   Copyright (C) 2007-2018 Arthur de Jong
+   Copyright (C) 2007-2021 Arthur de Jong
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Lesser General Public
@@ -421,11 +421,12 @@ static const char *cfg_getdomainname(const char *filename, int lnr)
 
 /* add URIs by doing DNS queries for SRV records */
 static void add_uris_from_dns(const char *filename, int lnr,
-                              struct ldap_config *cfg, const char *domain)
+                              struct ldap_config *cfg, const char *domain,
+                              int force_ldaps)
 {
   int rc;
   char *hostlist = NULL, *nxt;
-  char buf[BUFLEN_HOSTNAME + sizeof("ldap://")];
+  char buf[BUFLEN_HOSTNAME + sizeof("ldaps://")];
   log_log(LOG_DEBUG, "query %s for SRV records", domain);
   rc = ldap_domain2hostlist(domain, &hostlist);
   if (rc != LDAP_SUCCESS)
@@ -467,7 +468,7 @@ static void add_uris_from_dns(const char *filename, int lnr,
       /* strip default port number */
       if ((strlen(hostlist) > 4) && (strcmp(hostlist + strlen(hostlist) - 4, ":389") == 0))
         hostlist[strlen(hostlist) - 4] = '\0';
-      if (mysnprintf(buf, sizeof(buf), "ldap://%s", hostlist))
+      if (mysnprintf(buf, sizeof(buf), "ldap%s://%s", force_ldaps ? "s" : "", hostlist))
       {
         log_log(LOG_ERR, "add_uris_from_dns(): buf buffer too small (%lu required)",
                 (unsigned long) strlen(hostlist) + 7);
@@ -683,6 +684,8 @@ static void handle_base(const char *filename, int lnr,
     exit(EXIT_FAILURE);
 #endif /* not HAVE_LDAP_DOMAIN2DN */
   }
+  if (strcasecmp(value, "\"\"") == 0)
+    value = "";
   /* find the spot in the list of bases */
   for (i = 0; i < NSS_LDAP_CONFIG_MAX_BASES; i++)
     if (bases[i] == NULL)
@@ -842,35 +845,30 @@ static const char *print_ssl(int ssl)
   }
 }
 
-static void handle_tls_reqcert(const char *filename, int lnr,
-                               const char *keyword, char *line)
+static int get_tls_reqcert(const char *filename, int lnr,
+                           const char *keyword, char **line)
 {
   char token[16];
-  int value, rc;
-  /* get token */
   check_argumentcount(filename, lnr, keyword,
-                      get_token(&line, token, sizeof(token)) != NULL);
-  get_eol(filename, lnr, keyword, &line);
+                      get_token(line, token, sizeof(token)) != NULL);
   /* check if it is a valid value for tls_reqcert option */
   if ((strcasecmp(token, "never") == 0) || (strcasecmp(token, "no") == 0))
-    value = LDAP_OPT_X_TLS_NEVER;
+    return LDAP_OPT_X_TLS_NEVER;
   else if (strcasecmp(token, "allow") == 0)
-    value = LDAP_OPT_X_TLS_ALLOW;
+    return LDAP_OPT_X_TLS_ALLOW;
   else if (strcasecmp(token, "try") == 0)
-    value = LDAP_OPT_X_TLS_TRY;
+    return LDAP_OPT_X_TLS_TRY;
   else if ((strcasecmp(token, "demand") == 0) ||
            (strcasecmp(token, "yes") == 0))
-    value = LDAP_OPT_X_TLS_DEMAND;
+    return LDAP_OPT_X_TLS_DEMAND;
   else if (strcasecmp(token, "hard") == 0)
-    value = LDAP_OPT_X_TLS_HARD;
+    return LDAP_OPT_X_TLS_HARD;
   else
   {
     log_log(LOG_ERR, "%s:%d: %s: invalid argument: '%s'",
             filename, lnr, keyword, token);
     exit(EXIT_FAILURE);
   }
-  log_log(LOG_DEBUG, "ldap_set_option(LDAP_OPT_X_TLS_REQUIRE_CERT,%s)", token);
-  LDAP_SET_OPTION(NULL, LDAP_OPT_X_TLS_REQUIRE_CERT, &value);
 }
 
 static const char *print_tls_reqcert(int value)
@@ -885,6 +883,69 @@ static const char *print_tls_reqcert(int value)
     default:                    return "???";
   }
 }
+
+static void handle_tls_reqcert(const char *filename, int lnr,
+                               const char *keyword, char *line)
+{
+  int value, rc;
+  value = get_tls_reqcert(filename, lnr, keyword, &line);
+  get_eol(filename, lnr, keyword, &line);
+  log_log(LOG_DEBUG, "ldap_set_option(LDAP_OPT_X_TLS_REQUIRE_CERT,%s)",
+          print_tls_reqcert(value));
+  LDAP_SET_OPTION(NULL, LDAP_OPT_X_TLS_REQUIRE_CERT, &value);
+}
+
+#ifdef LDAP_OPT_X_TLS_REQUIRE_SAN
+static void handle_tls_reqsan(const char *filename, int lnr,
+                                   const char *keyword, char *line)
+{
+  int value, rc;
+  value = get_tls_reqcert(filename, lnr, keyword, &line);
+  get_eol(filename, lnr, keyword, &line);
+  log_log(LOG_DEBUG, "ldap_set_option(LDAP_OPT_X_TLS_REQUIRE_SAN,%s)",
+          print_tls_reqcert(value));
+  LDAP_SET_OPTION(NULL, LDAP_OPT_X_TLS_REQUIRE_SAN, &value);
+}
+#endif /* LDAP_OPT_X_TLS_REQUIRE_SAN */
+
+#ifdef LDAP_OPT_X_TLS_CRLCHECK
+static void handle_tls_crlcheck(const char *filename, int lnr,
+                               const char *keyword, char *line)
+{
+  char token[16];
+  int value, rc;
+  /* get token */
+  check_argumentcount(filename, lnr, keyword,
+                      get_token(&line, token, sizeof(token)) != NULL);
+  get_eol(filename, lnr, keyword, &line);
+  /* check if it is a valid value for tls_crlcheck option */
+  if (strcasecmp(token, "none") == 0)
+    value = LDAP_OPT_X_TLS_CRL_NONE;
+  else if (strcasecmp(token, "peer") == 0)
+    value = LDAP_OPT_X_TLS_CRL_PEER;
+  else if (strcasecmp(token, "all") == 0)
+    value = LDAP_OPT_X_TLS_CRL_ALL;
+  else
+  {
+    log_log(LOG_ERR, "%s:%d: %s: invalid argument: '%s'",
+            filename, lnr, keyword, token);
+    exit(EXIT_FAILURE);
+  }
+  log_log(LOG_DEBUG, "ldap_set_option(LDAP_OPT_X_TLS_CRLCHECK,%s)", token);
+  LDAP_SET_OPTION(NULL, LDAP_OPT_X_TLS_CRLCHECK, &value);
+}
+
+static const char *print_tls_crlcheck(int value)
+{
+  switch (value)
+  {
+    case LDAP_OPT_X_TLS_CRL_NONE:  return "none";
+    case LDAP_OPT_X_TLS_CRL_PEER:  return "peer";
+    case LDAP_OPT_X_TLS_CRL_ALL:   return "all";
+    default:                       return "???";
+  }
+}
+#endif /* LDAP_OPT_X_TLS_CRLCHECK */
 #endif /* LDAP_OPT_X_TLS */
 
 /* this function modifies the line argument passed */
@@ -1329,8 +1390,7 @@ static void cfg_read(const char *filename, struct ldap_config *cfg)
         if (strcasecmp(token, "dns") == 0)
         {
 #ifdef HAVE_LDAP_DOMAIN2HOSTLIST
-          add_uris_from_dns(filename, lnr, cfg,
-                            cfg_getdomainname(filename, lnr));
+          add_uris_from_dns(filename, lnr, cfg, cfg_getdomainname(filename, lnr), 0);
 #else /* not HAVE_LDAP_DOMAIN2HOSTLIST */
           log_log(LOG_ERR, "%s:%d: value %s not supported on platform",
                   filename, lnr, token);
@@ -1340,7 +1400,27 @@ static void cfg_read(const char *filename, struct ldap_config *cfg)
         else if (strncasecmp(token, "dns:", 4) == 0)
         {
 #ifdef HAVE_LDAP_DOMAIN2HOSTLIST
-          add_uris_from_dns(filename, lnr, cfg, strdup(token + 4));
+          add_uris_from_dns(filename, lnr, cfg, strdup(token + 4), 0);
+#else /* not HAVE_LDAP_DOMAIN2HOSTLIST */
+          log_log(LOG_ERR, "%s:%d: value %s not supported on platform",
+                  filename, lnr, token);
+          exit(EXIT_FAILURE);
+#endif /* not HAVE_LDAP_DOMAIN2HOSTLIST */
+        }
+        else if (strcasecmp(token, "dnsldaps") == 0)
+        {
+#ifdef HAVE_LDAP_DOMAIN2HOSTLIST
+          add_uris_from_dns(filename, lnr, cfg, cfg_getdomainname(filename, lnr), 1);
+#else /* not HAVE_LDAP_DOMAIN2HOSTLIST */
+          log_log(LOG_ERR, "%s:%d: value %s not supported on platform",
+                  filename, lnr, token);
+          exit(EXIT_FAILURE);
+#endif /* not HAVE_LDAP_DOMAIN2HOSTLIST */
+        }
+        else if (strncasecmp(token, "dnsldaps:", 9) == 0)
+        {
+#ifdef HAVE_LDAP_DOMAIN2HOSTLIST
+          add_uris_from_dns(filename, lnr, cfg, strdup(token + 9), 1);
 #else /* not HAVE_LDAP_DOMAIN2HOSTLIST */
           log_log(LOG_ERR, "%s:%d: value %s not supported on platform",
                   filename, lnr, token);
@@ -1560,6 +1640,42 @@ static void cfg_read(const char *filename, struct ldap_config *cfg)
       LDAP_SET_OPTION(NULL, LDAP_OPT_X_TLS_KEYFILE, value);
       free(value);
     }
+    else if (strcasecmp(keyword, "tls_reqsan") == 0)
+    {
+#ifdef LDAP_OPT_X_TLS_REQUIRE_SAN
+      handle_tls_reqsan(filename, lnr, keyword, line);
+#else /* not LDAP_OPT_X_TLS_REQUIRE_SAN */
+      log_log(LOG_ERR, "%s:%d: option %s not supported on platform",
+              filename, lnr, keyword);
+      exit(EXIT_FAILURE);
+#endif /* LDAP_OPT_X_TLS_REQUIRE_SAN */
+    }
+    else if (strcasecmp(keyword, "tls_crlcheck") == 0)
+    {
+#ifdef LDAP_OPT_X_TLS_CRLCHECK
+      handle_tls_crlcheck(filename, lnr, keyword, line);
+#else /* not LDAP_OPT_X_TLS_CRLCHECK */
+      log_log(LOG_ERR, "%s:%d: option %s not supported on platform",
+              filename, lnr, keyword);
+      exit(EXIT_FAILURE);
+#endif /* LDAP_OPT_X_TLS_CRLCHECK */
+    }
+    else if (strcasecmp(keyword, "tls_crlfile") == 0)
+    {
+#ifdef LDAP_OPT_X_TLS_CRLFILE
+      value = get_strdup(filename, lnr, keyword, &line);
+      get_eol(filename, lnr, keyword, &line);
+      check_readable(filename, lnr, keyword, value);
+      log_log(LOG_DEBUG, "ldap_set_option(LDAP_OPT_X_TLS_CRLFILE,\"%s\")",
+              value);
+      LDAP_SET_OPTION(NULL, LDAP_OPT_X_TLS_CRLFILE, value);
+      free(value);
+#else /* not LDAP_OPT_X_TLS_CRLFILE */
+      log_log(LOG_ERR, "%s:%d: option %s not supported on platform",
+              filename, lnr, keyword);
+      exit(EXIT_FAILURE);
+#endif /* LDAP_OPT_X_TLS_CRLFILE */
+    }
 #endif /* LDAP_OPT_X_TLS */
     /* other options */
     else if (strcasecmp(keyword, "pagesize") == 0)
@@ -1754,14 +1870,14 @@ static void cfg_dump(void)
     log_log(LOG_DEBUG, "CFG: krb5_ccname %s", str);
   for (i = 0; i < NSS_LDAP_CONFIG_MAX_BASES; i++)
     if (nslcd_cfg->bases[i] != NULL)
-      log_log(LOG_DEBUG, "CFG: base %s", nslcd_cfg->bases[i]);
+      log_log(LOG_DEBUG, "CFG: base %s", nslcd_cfg->bases[i][0] == '\0' ? "\"\"" : nslcd_cfg->bases[i]);
   for (map = LM_ALIASES; map < LM_NONE; map++)
   {
     strp = base_get_var(map);
     if (strp != NULL)
       for (i = 0; i < NSS_LDAP_CONFIG_MAX_BASES; i++)
         if (strp[i] != NULL)
-          log_log(LOG_DEBUG, "CFG: base %s %s", print_map(map), strp[i]);
+          log_log(LOG_DEBUG, "CFG: base %s %s", print_map(map), strp[i][0] == '\0' ? "\"\"" : strp[i]);
   }
   log_log(LOG_DEBUG, "CFG: scope %s", print_scope(nslcd_cfg->scope));
   for (map = LM_ALIASES; map < LM_NONE; map++)
@@ -1851,6 +1967,20 @@ static void cfg_dump(void)
   LOG_LDAP_OPT_STRING("tls_ciphers", LDAP_OPT_X_TLS_CIPHER_SUITE);
   LOG_LDAP_OPT_STRING("tls_cert", LDAP_OPT_X_TLS_CERTFILE);
   LOG_LDAP_OPT_STRING("tls_key", LDAP_OPT_X_TLS_KEYFILE);
+#ifdef LDAP_OPT_X_TLS_REQUIRE_SAN
+  rc = ldap_get_option(NULL, LDAP_OPT_X_TLS_REQUIRE_SAN, &i);
+  if (rc != LDAP_SUCCESS)
+    log_log(LOG_DEBUG, "CFG: # tls_reqsan ERROR: %s", ldap_err2string(rc));
+  else
+    log_log(LOG_DEBUG, "CFG: tls_reqsan %s", print_tls_reqcert(i));
+#endif /* LDAP_OPT_X_TLS_REQUIRE_SAN */
+#ifdef LDAP_OPT_X_TLS_CRLCHECK
+  rc = ldap_get_option(NULL, LDAP_OPT_X_TLS_CRLCHECK, &i);
+  if (rc != LDAP_SUCCESS)
+    log_log(LOG_DEBUG, "CFG: # tls_crlcheck ERROR: %s", ldap_err2string(rc));
+  else
+    log_log(LOG_DEBUG, "CFG: tls_crlcheck %s", print_tls_crlcheck(i));
+#endif /* LDAP_OPT_X_TLS_CRLCHECK */
 #endif /* LDAP_OPT_X_TLS */
   log_log(LOG_DEBUG, "CFG: pagesize %d", nslcd_cfg->pagesize);
   if (nslcd_cfg->nss_initgroups_ignoreusers != NULL)
@@ -1953,12 +2083,6 @@ void cfg_init(const char *fname)
   if (nslcd_cfg->bases[0] == NULL)
     nslcd_cfg->bases[0] = get_base_from_rootdse();
   /* TODO: handle the case gracefully when no LDAP server is available yet */
-  /* see if we have a valid basedn */
-  if ((nslcd_cfg->bases[0] == NULL) || (nslcd_cfg->bases[0][0] == '\0'))
-  {
-    log_log(LOG_ERR, "no base defined in config and couldn't get one from server");
-    exit(EXIT_FAILURE);
-  }
   /* dump configuration */
   cfg_dump();
   /* initialise all database modules */
