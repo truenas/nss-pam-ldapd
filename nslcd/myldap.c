@@ -5,7 +5,7 @@
 
    Copyright (C) 1997-2006 Luke Howard
    Copyright (C) 2006-2007 West Consulting
-   Copyright (C) 2006-2017 Arthur de Jong
+   Copyright (C) 2006-2020 Arthur de Jong
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Lesser General Public
@@ -634,25 +634,22 @@ static int do_ppolicy_bind(MYLDAP_SESSION *session, LDAP *ld, const char *uri)
       ldap_msgfree(result);
     return LDAP_TIMEOUT;
   }
+  /* parse the result from the bind operation (frees result, gets controls) */
   responsectrls = NULL;
-  /* ignore any response controls unless we're interested in ppolicy */
-  if (nslcd_cfg->pam_authc_ppolicy)
+  parserc = ldap_parse_result(ld, result, &rc, NULL, NULL, NULL, &responsectrls, 1);
+  if (parserc != LDAP_SUCCESS)
   {
-    /* parse the result from the bind operation (frees result, gets controls) */
-    parserc = ldap_parse_result(ld, result, &rc, NULL, NULL, NULL, &responsectrls, 1);
-    if (parserc != LDAP_SUCCESS)
-    {
-      myldap_err(LOG_ERR, ld, parserc, "ldap_parse_result() failed");
-      if (responsectrls != NULL)
-        ldap_controls_free(responsectrls);
-      return parserc;
-    }
-    /* handle any returned controls */
+    myldap_err(LOG_ERR, ld, parserc, "ldap_parse_result() failed");
     if (responsectrls != NULL)
-    {
-      handle_ppolicy_controls(session, ld, responsectrls);
       ldap_controls_free(responsectrls);
-    }
+    return parserc;
+  }
+  /* handle any returned controls */
+  if (responsectrls != NULL)
+  {
+    if (nslcd_cfg->pam_authc_ppolicy)
+      handle_ppolicy_controls(session, ld, responsectrls);
+    ldap_controls_free(responsectrls);
   }
   /* return the result of the BIND operation */
   if (rc != LDAP_SUCCESS)
@@ -660,7 +657,6 @@ static int do_ppolicy_bind(MYLDAP_SESSION *session, LDAP *ld, const char *uri)
     myldap_err(LOG_DEBUG, ld, rc, "ldap_parse_result() result");
     return rc;
   }
-  /* check the returned controls */
   return LDAP_SUCCESS;
 }
 #endif /* no SASL, so no ppolicy */
@@ -913,17 +909,17 @@ static int do_set_options(MYLDAP_SESSION *session)
   tv.tv_usec = 0;
 #ifdef LDAP_OPT_TIMEOUT
   log_log(LOG_DEBUG, "ldap_set_option(LDAP_OPT_TIMEOUT,%d)",
-          nslcd_cfg->timelimit);
+          nslcd_cfg->bind_timelimit);
   LDAP_SET_OPTION(session->ld, LDAP_OPT_TIMEOUT, &tv);
 #endif /* LDAP_OPT_TIMEOUT */
 #ifdef LDAP_OPT_NETWORK_TIMEOUT
   log_log(LOG_DEBUG, "ldap_set_option(LDAP_OPT_NETWORK_TIMEOUT,%d)",
-          nslcd_cfg->timelimit);
+          nslcd_cfg->bind_timelimit);
   LDAP_SET_OPTION(session->ld, LDAP_OPT_NETWORK_TIMEOUT, &tv);
 #endif /* LDAP_OPT_NETWORK_TIMEOUT */
 #ifdef LDAP_X_OPT_CONNECT_TIMEOUT
   log_log(LOG_DEBUG, "ldap_set_option(LDAP_X_OPT_CONNECT_TIMEOUT,%d)",
-          nslcd_cfg->timelimit);
+          nslcd_cfg->bind_timelimit);
   LDAP_SET_OPTION(session->ld, LDAP_X_OPT_CONNECT_TIMEOUT, &tv);
 #endif /* LDAP_X_OPT_CONNECT_TIMEOUT */
   log_log(LOG_DEBUG, "ldap_set_option(LDAP_OPT_REFERRALS,%s)",
@@ -1068,6 +1064,8 @@ void myldap_session_check(MYLDAP_SESSION *session)
       {
         log_log(LOG_DEBUG, "myldap_session_check(): idle_timelimit reached");
         do_close(session);
+        /* try to use the first URI from the list again */
+        session->current_uri = 0;
       }
     }
   }
